@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="US-ASCII"?>
 <!--XBRL Document Created with Wdesk from Workiva-->
 <!-- -->
-<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.facebook.com/20190930" xmlns:fb="http://www.facebook.com/20190930" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:nonnum="http://www.xbrl.org/dtr/type/non-numeric" xmlns:num="http://www.xbrl.org/dtr/type/numeric" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.facebook.com/20190930" 
+  xmlns:fb="http://www.facebook.com/20190930" 
+  xmlns:link="http://www.xbrl.org/2003/linkbase" 
+  xmlns:nonnum="http://www.xbrl.org/dtr/type/non-numeric" 
+  xmlns:num="http://www.xbrl.org/dtr/type/numeric" 
+  xmlns:xbrldt="http://xbrl.org/2005/xbrldt" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:import namespace="http://fasb.org/srt-types/2019-01-31" schemaLocation="http://xbrl.fasb.org/srt/2019/elts/srt-types-2019-01-31.xsd" />
   <xsd:import namespace="http://fasb.org/srt/2019-01-31" schemaLocation="http://xbrl.fasb.org/srt/2019/elts/srt-2019-01-31.xsd" />
   <xsd:import namespace="http://fasb.org/us-gaap/2019-01-31" schemaLocation="http://xbrl.fasb.org/us-gaap/2019/elts/us-gaap-2019-01-31.xsd" />

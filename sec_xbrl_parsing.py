@@ -5,7 +5,7 @@ import collections
 import xml.etree.ElementTree as ET
 
 # Define Current Working Directory:
-sec_directory = pathlib.Path.cwd().joinpath('0001326801-19-000069-xbrl')
+sec_directory = pathlib.Path.cwd().joinpath('facebook10Q')
 
 # Define the file path.
 file_htm = sec_directory.joinpath('fb-09302019x10q.htm').resolve()
@@ -183,7 +183,7 @@ for element in tree.iter():
 
 
 # first write the xbrl_content.
-file_name = 'sec_xbrl_scrape_content.csv'
+file_name = 'data\sec_xbrl_scrape_content.csv'
 
 # open the file.
 with open(file_name, mode='w', newline='') as sec_file:
@@ -201,7 +201,7 @@ with open(file_name, mode='w', newline='') as sec_file:
 
 
 # second write the filing_values.
-file_name = 'sec_xbrl_scrape_values.csv'
+file_name = 'data\sec_xbrl_scrape_values.csv'
 
 # open the file.
 with open(file_name, mode='w', newline='') as sec_file:
