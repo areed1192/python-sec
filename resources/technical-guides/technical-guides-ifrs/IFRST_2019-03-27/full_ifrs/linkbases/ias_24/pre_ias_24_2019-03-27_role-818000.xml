@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+		Taxonomy: 2019-03-27 (Final)
+		********************** 
+        Copyright (c) 2019 IFRS Foundation
+        All rights reserved. Reproduction and use rights are strictly limited.
+		For more information on the IFRS Foundation's copyright and the terms and conditions of use for these files, please refer to http://go.ifrs.org/IFRSTterms.
+		The IFRS Foundation has trade marks registered around the world (Marks) including 'IAS', 'IASB', the IASB logo, 'IFRIC', 'IFRS', the IFRS logo, 'IFRS for SMEs', the IFRS for SMEs logo, the 'Hexagon Device', 'International Accounting Standards', 'International Financial Reporting Standards', 'NIIF' and 'SIC'. Further details of the IFRS Foundation's Marks are available from the IFRS Foundation on request.
+        **********************
+--><link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ias_24_2019-03-27_role-818000" xlink:href="rol_ias_24_2019-03-27.xsd#ias_24_2019-03-27_role-818000" xlink:type="simple"/>
+  <link:presentationLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ias_24_2019-03-27_role-818000" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_NameOfParentEntity" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfRelatedPartyExplanatory" xlink:label="loc_2" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_NameOfGovernmentAndNatureOfRelationshipWithGovernment" xlink:label="loc_3" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfWhetherEntityAppliesExemptionInIAS2425" xlink:label="loc_4" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_4" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfTransactionsBetweenRelatedPartiesAbstract" xlink:label="loc_5" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfTransactionsBetweenRelatedPartiesExplanatory" xlink:label="loc_6" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_6" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfTransactionsBetweenRelatedPartiesTable" xlink:label="loc_7" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_5" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_CategoriesOfRelatedPartiesAxis" xlink:label="loc_8" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_7" xlink:to="loc_8" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfTransactionsWithRelatedParty" xlink:label="loc_9" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfTransactionsBetweenRelatedPartiesLineItems" xlink:label="loc_10" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_10" xlink:to="loc_9" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PurchasesOfGoodsRelatedPartyTransactions" xlink:label="loc_11" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RelatedPartyTransactionsAbstract" xlink:label="loc_12" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_11" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountsPayableRelatedPartyTransactions" xlink:label="loc_13" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OutstandingBalancesForRelatedPartyTransactionsAbstract" xlink:label="loc_14" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_13" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForRelatedPartiesMember" xlink:label="loc_15" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_8" xlink:to="loc_15" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RelatedPartiesMember" xlink:label="loc_16" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_15" xlink:to="loc_16" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ParentMember" xlink:label="loc_17" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_17" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfAmountsIncurredByEntityForProvisionOfKeyManagementPersonnelServicesProvidedBySeparateManagementEntitiesAbstract" xlink:label="loc_18" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfAmountsIncurredByEntityForProvisionOfKeyManagementPersonnelServicesProvidedBySeparateManagementEntitiesExplanatory" xlink:label="loc_19" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_19" xlink:to="loc_18" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfAmountsIncurredByEntityForProvisionOfKeyManagementPersonnelServicesProvidedBySeparateManagementEntitiesTable" xlink:label="loc_20" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_18" xlink:to="loc_20" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SeparateManagementEntitiesAxis" xlink:label="loc_21" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_20" xlink:to="loc_21" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SeparateManagementEntitiesMember" xlink:label="loc_22" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_21" xlink:to="loc_22" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountIncurredByEntityForProvisionOfKeyManagementPersonnelServicesProvidedBySeparateManagementEntity" xlink:label="loc_23" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfAmountsIncurredByEntityForProvisionOfKeyManagementPersonnelServicesProvidedBySeparateManagementEntitiesLineItems" xlink:label="loc_24" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_24" xlink:to="loc_23" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_NameOfUltimateParentOfGroup" xlink:label="loc_25" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_25" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfNatureAndAmountOfSignificantTransactions" xlink:label="loc_26" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_4" xlink:to="loc_26" xlink:type="arc"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_5" xlink:to="loc_10" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfNatureOfRelatedPartyRelationship" xlink:label="loc_27" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_10" xlink:to="loc_27" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfGoodsRelatedPartyTransactions" xlink:label="loc_28" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_28" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountsReceivableRelatedPartyTransactions" xlink:label="loc_29" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_29" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_JointControlOrSignificantInfluenceMember" xlink:label="loc_30" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_30" xlink:type="arc"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_18" xlink:to="loc_24" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_NameOfMostSeniorParentEntityProducingPubliclyAvailableFinancialStatements" xlink:label="loc_31" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_31" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfOtherTransactionsThatAreCollectivelySignificant" xlink:label="loc_32" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_4" xlink:to="loc_32" xlink:type="arc"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_10" xlink:to="loc_12" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PurchasesOfPropertyAndOtherAssetsRelatedPartyTransactions" xlink:label="loc_33" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_33" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OutstandingCommitmentsMadeByEntityRelatedPartyTransactions" xlink:label="loc_34" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_34" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SubsidiariesMember" xlink:label="loc_35" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_35" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfRelationshipsBetweenParentsAndEntity" xlink:label="loc_36" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_36" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SalesOfPropertyAndOtherAssetsRelatedPartyTransactions" xlink:label="loc_37" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_37" xlink:type="arc"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_10" xlink:to="loc_14" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OutstandingCommitmentsMadeOnBehalfOfEntityRelatedPartyTransactions" xlink:label="loc_38" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_38" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AssociatesMember" xlink:label="loc_39" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_39" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_KeyManagementPersonnelCompensationShorttermEmployeeBenefits" xlink:label="loc_40" xlink:type="locator"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_40" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ProvisionsForDoubtfulDebtsRelatedToOutstandingBalancesOfRelatedPartyTransaction" xlink:label="loc_41" xlink:type="locator"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_10" xlink:to="loc_41" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ServicesReceivedRelatedPartyTransactions" xlink:label="loc_42" xlink:type="locator"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_42" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfTermsAndConditionsOfOutstandingBalancesForRelatedPartyTransaction" xlink:label="loc_43" xlink:type="locator"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_43" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_JointVenturesWhereEntityIsVenturerMember" xlink:label="loc_44" xlink:type="locator"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_44" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_KeyManagementPersonnelCompensationPostemploymentBenefits" xlink:label="loc_45" xlink:type="locator"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_45" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExpenseRecognisedDuringPeriodForBadAndDoubtfulDebtsForRelatedPartyTransaction" xlink:label="loc_46" xlink:type="locator"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_10" xlink:to="loc_46" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfServicesRelatedPartyTransactions" xlink:label="loc_47" xlink:type="locator"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_47" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfDetailsOfGuaranteesGivenOrReceivedOfOutstandingBalancesForRelatedPartyTransaction" xlink:label="loc_48" xlink:type="locator"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_48" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_KeyManagementPersonnelOfEntityOrParentMember" xlink:label="loc_49" xlink:type="locator"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_49" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_KeyManagementPersonnelCompensationOtherLongtermBenefits" xlink:label="loc_50" xlink:type="locator"/>
+    <link:presentationArc order="70.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_50" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_LeasesAsLessorRelatedPartyTransactions" xlink:label="loc_51" xlink:type="locator"/>
+    <link:presentationArc order="70.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_51" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherRelatedPartiesMember" xlink:label="loc_52" xlink:type="locator"/>
+    <link:presentationArc order="70.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_52" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_KeyManagementPersonnelCompensationTerminationBenefits" xlink:label="loc_53" xlink:type="locator"/>
+    <link:presentationArc order="80.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_53" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_LeasesAsLesseeRelatedPartyTransactions" xlink:label="loc_54" xlink:type="locator"/>
+    <link:presentationArc order="80.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_54" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_KeyManagementPersonnelCompensationSharebasedPayment" xlink:label="loc_55" xlink:type="locator"/>
+    <link:presentationArc order="90.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_55" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TransfersOfResearchAndDevelopmentFromEntityRelatedPartyTransactions" xlink:label="loc_56" xlink:type="locator"/>
+    <link:presentationArc order="90.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_56" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_KeyManagementPersonnelCompensation" xlink:label="loc_57" xlink:type="locator"/>
+    <link:presentationArc order="100.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_57" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TransfersOfResearchAndDevelopmentToEntityRelatedPartyTransactions" xlink:label="loc_58" xlink:type="locator"/>
+    <link:presentationArc order="100.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_58" xlink:type="arc"/>
+    <link:presentationArc order="110.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TransfersUnderLicenseAgreementsFromEntityRelatedPartyTransactions" xlink:label="loc_59" xlink:type="locator"/>
+    <link:presentationArc order="110.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_59" xlink:type="arc"/>
+    <link:presentationArc order="120.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_19" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TransfersUnderLicenseAgreementsToEntityRelatedPartyTransactions" xlink:label="loc_60" xlink:type="locator"/>
+    <link:presentationArc order="120.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_60" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureThatRelatedPartyTransactionsWereMadeOnTermsEquivalentToThoseThatPrevailInArmsLengthTransactions" xlink:label="loc_61" xlink:type="locator"/>
+    <link:presentationArc order="130.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_61" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TransfersUnderFinanceAgreementsFromEntityRelatedPartyTransactions" xlink:label="loc_62" xlink:type="locator"/>
+    <link:presentationArc order="130.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_62" xlink:type="arc"/>
+    <link:presentationArc order="140.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TransfersUnderFinanceAgreementsToEntityRelatedPartyTransactions" xlink:label="loc_63" xlink:type="locator"/>
+    <link:presentationArc order="140.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_63" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ProvisionOfGuaranteesOrCollateralByEntityRelatedPartyTransactions" xlink:label="loc_64" xlink:type="locator"/>
+    <link:presentationArc order="150.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_64" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ProvisionOfGuaranteesOrCollateralToEntityRelatedPartyTransactions" xlink:label="loc_65" xlink:type="locator"/>
+    <link:presentationArc order="160.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_65" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_CommitmentsMadeByEntityRelatedPartyTransactions" xlink:label="loc_66" xlink:type="locator"/>
+    <link:presentationArc order="170.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_66" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_CommitmentsMadeOnBehalfOfEntityRelatedPartyTransactions" xlink:label="loc_67" xlink:type="locator"/>
+    <link:presentationArc order="180.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_67" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SettlementOfLiabilitiesByEntityOnBehalfOfRelatedPartyRelatedPartyTransactions" xlink:label="loc_68" xlink:type="locator"/>
+    <link:presentationArc order="190.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_68" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SettlementOfLiabilitiesOnBehalfOfEntityByRelatedPartyRelatedPartyTransactions" xlink:label="loc_69" xlink:type="locator"/>
+    <link:presentationArc order="200.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_69" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ParticipationInDefinedBenefitPlanThatSharesRisksBetweenGroupEntitiesRelatedPartyTransactions" xlink:label="loc_70" xlink:type="locator"/>
+    <link:presentationArc order="210.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_70" xlink:type="arc"/>
+  </link:presentationLink>
+</link:linkbase>

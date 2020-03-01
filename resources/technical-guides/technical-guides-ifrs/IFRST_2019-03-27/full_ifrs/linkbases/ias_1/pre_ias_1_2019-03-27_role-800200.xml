@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+		Taxonomy: 2019-03-27 (Final)
+		********************** 
+        Copyright (c) 2019 IFRS Foundation
+        All rights reserved. Reproduction and use rights are strictly limited.
+		For more information on the IFRS Foundation's copyright and the terms and conditions of use for these files, please refer to http://go.ifrs.org/IFRSTterms.
+		The IFRS Foundation has trade marks registered around the world (Marks) including 'IAS', 'IASB', the IASB logo, 'IFRIC', 'IFRS', the IFRS logo, 'IFRS for SMEs', the IFRS for SMEs logo, the 'Hexagon Device', 'International Accounting Standards', 'International Financial Reporting Standards', 'NIIF' and 'SIC'. Further details of the IFRS Foundation's Marks are available from the IFRS Foundation on request.
+        **********************
+--><link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ias_1_2019-03-27_role-800200" xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-800200" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2009/role/negatedLabel" xlink:href="http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd#negatedLabel" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2009/role/netLabel" xlink:href="http://www.xbrl.org/lrr/role/net-2009-12-16.xsd#netLabel" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2009/role/negatedTotalLabel" xlink:href="http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd#negatedTotalLabel" xlink:type="simple"/>
+  <link:presentationLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ias_1_2019-03-27_role-800200" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestIncomeOnAvailableforsaleFinancialAssets" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromInterest" xlink:label="loc_2" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TradingIncomeExpenseOnDebtInstruments" xlink:label="loc_3" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TradingIncomeExpenseAbstract" xlink:label="loc_4" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_4" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestExpenseOnBankLoansAndOverdrafts" xlink:label="loc_5" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestExpense" xlink:label="loc_6" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_6" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillNotBeReclassifiedToProfitOrLoss" xlink:label="loc_7" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeAbstract" xlink:label="loc_8" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_8" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_BasicAndDilutedEarningsPerShareAbstract" xlink:label="loc_9" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EarningsPerShareAbstract" xlink:label="loc_10" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_10" xlink:to="loc_9" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_BasicAndDilutedEarningsLossPerShareFromContinuingOperations" xlink:label="loc_11" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_9" xlink:to="loc_11" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueAbstract" xlink:label="loc_12" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AnalysisOfIncomeAndExpenseAbstract" xlink:label="loc_13" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_13" xlink:to="loc_12" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfGoods" xlink:label="loc_14" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_14" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_WritedownsReversalsOfWritedownsOfInventoriesAbstract" xlink:label="loc_15" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_MaterialIncomeAndExpenseAbstract" xlink:label="loc_16" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_15" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InventoryWritedown2011" xlink:label="loc_17" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_15" xlink:to="loc_17" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ImpairmentLossRecognisedInProfitOrLossPropertyPlantAndEquipment" xlink:label="loc_18" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_WritedownsReversalsOfWritedownsOfPropertyPlantAndEquipmentAbstract" xlink:label="loc_19" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_19" xlink:to="loc_18" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsOnDisposalsOfPropertyPlantAndEquipment" xlink:label="loc_20" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsLossesOnDisposalsOfPropertyPlantAndEquipmentAbstract" xlink:label="loc_21" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_21" xlink:to="loc_20" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsOnDisposalsOfInvestments" xlink:label="loc_22" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsLossesOnDisposalsOfInvestmentsAbstract" xlink:label="loc_23" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_23" xlink:to="loc_22" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsOnLitigationSettlements" xlink:label="loc_24" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsLossesOnLitigationSettlementsAbstract" xlink:label="loc_25" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_25" xlink:to="loc_24" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RawMaterialsAndConsumablesUsed" xlink:label="loc_26" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExpenseByNatureAbstract" xlink:label="loc_27" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_27" xlink:to="loc_26" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncreaseDecreaseInAccumulatedDeferredTaxRecognisedInOtherComprehensiveIncomeDueToChangeInTaxRate" xlink:label="loc_28" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_MiscellaneousOtherComprehensiveIncomeAbstract" xlink:label="loc_29" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_29" xlink:to="loc_28" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethodThatWillNotBeReclassifiedToProfitOrLossNetOfTax" xlink:label="loc_30" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethodNetOfTaxAbstract" xlink:label="loc_31" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_31" xlink:to="loc_30" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethodThatWillNotBeReclassifiedToProfitOrLossBeforeTax" xlink:label="loc_32" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethodBeforeTaxAbstract" xlink:label="loc_33" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_33" xlink:to="loc_32" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeTaxRelatingToShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethodThatWillNotBeReclassifiedToProfitOrLoss" xlink:label="loc_34" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeTaxRelatingToShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethodAbstract" xlink:label="loc_35" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_35" xlink:to="loc_34" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherFinanceIncomeCost" xlink:label="loc_36" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinanceIncomeCost" xlink:label="loc_37" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_37" xlink:to="loc_36" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsOnDisposalsOfNoncurrentAssets" xlink:label="loc_38" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsLossesOnDisposalsOfNoncurrentAssetsAbstract" xlink:label="loc_39" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_39" xlink:to="loc_38" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_BrokerageFeeIncome" xlink:label="loc_40" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FeeAndCommissionIncomeAbstract" xlink:label="loc_41" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_41" xlink:to="loc_40" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_BrokerageFeeExpense" xlink:label="loc_42" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FeeAndCommissionExpenseAbstract" xlink:label="loc_43" xlink:type="locator"/>
+    <link:presentationArc order="10.0" preferredLabel="http://www.xbrl.org/2009/role/negatedLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_43" xlink:to="loc_42" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TradingIncomeExpenseOnForeignExchangeContracts" xlink:label="loc_44" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TradingIncomeExpenseOnDerivativeFinancialInstruments" xlink:label="loc_45" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_45" xlink:to="loc_44" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_WagesAndSalaries" xlink:label="loc_46" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShorttermEmployeeBenefitsExpenseAbstract" xlink:label="loc_47" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_47" xlink:to="loc_46" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FeeAndCommissionIncomeExpenseAbstract" xlink:label="loc_48" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_48" xlink:to="loc_41" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ClassesOfEmployeeBenefitsExpenseAbstract" xlink:label="loc_49" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_49" xlink:to="loc_47" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsOnChangeInFairValueOfDerivatives" xlink:label="loc_50" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsLossesOnChangeInFairValueOfDerivativesAbstract" xlink:label="loc_51" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_51" xlink:to="loc_50" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfCopper" xlink:label="loc_52" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_52" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InsuranceExpense" xlink:label="loc_53" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ServicesExpense" xlink:label="loc_54" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_54" xlink:to="loc_53" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfTelecommunicationServicesAbstract" xlink:label="loc_55" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfServices" xlink:label="loc_56" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_56" xlink:to="loc_55" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfTelephoneServices" xlink:label="loc_57" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_55" xlink:to="loc_57" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfLandLineTelephoneServices" xlink:label="loc_58" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_57" xlink:to="loc_58" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfInternetServices" xlink:label="loc_59" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfInternetAndDataServicesAbstract" xlink:label="loc_60" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_60" xlink:to="loc_59" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DepreciationAndAmortisationExpenseAbstract" xlink:label="loc_61" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DepreciationAmortisationAndImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLossAbstract" xlink:label="loc_62" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_62" xlink:to="loc_61" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DepreciationExpense" xlink:label="loc_63" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_61" xlink:to="loc_63" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsOnDisposalsOfInvestmentProperties" xlink:label="loc_64" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsLossesOnDisposalsOfInvestmentPropertiesAbstract" xlink:label="loc_65" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_65" xlink:to="loc_64" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PropertyServiceChargeIncome" xlink:label="loc_66" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PropertyServiceChargeIncomeExpenseAbstract" xlink:label="loc_67" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_67" xlink:to="loc_66" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PropertyTaxExpense" xlink:label="loc_68" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TaxExpenseOtherThanIncomeTaxExpense" xlink:label="loc_69" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_69" xlink:to="loc_68" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ImpairmentLossRecognisedInProfitOrLossTradeReceivables" xlink:label="loc_70" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ImpairmentLossReversalOfImpairmentLossOnTradeReceivablesAbstract" xlink:label="loc_71" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_71" xlink:to="loc_70" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfPassengerTransportServices" xlink:label="loc_72" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfTransportServices" xlink:label="loc_73" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_73" xlink:to="loc_72" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FuelExpense" xlink:label="loc_74" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FuelAndEnergyExpenseAbstract" xlink:label="loc_75" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_75" xlink:to="loc_74" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfInformationTechnologyMaintenanceAndSupportServices" xlink:label="loc_76" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfInformationTechnologyServices" xlink:label="loc_77" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_77" xlink:to="loc_76" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_CostOfPurchasedEnergySold" xlink:label="loc_78" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_CostOfMerchandiseSold" xlink:label="loc_79" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_79" xlink:to="loc_78" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_CirculationRevenue" xlink:label="loc_80" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfPublications" xlink:label="loc_81" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_81" xlink:to="loc_80" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SubscriptionCirculationRevenue" xlink:label="loc_82" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_80" xlink:to="loc_82" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfProfitLossOfAssociatesAccountedForUsingEquityMethod" xlink:label="loc_83" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethodAbstract" xlink:label="loc_84" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_84" xlink:to="loc_83" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRoomOccupancyServices" xlink:label="loc_85" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromHotelOperations" xlink:label="loc_86" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_86" xlink:to="loc_85" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_CostOfSalesRoomOccupancyServices" xlink:label="loc_87" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_CostOfSalesHotelOperations" xlink:label="loc_88" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_88" xlink:to="loc_87" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SellingExpense" xlink:label="loc_89" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SellingGeneralAndAdministrativeExpenseAbstract" xlink:label="loc_90" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_90" xlink:to="loc_89" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ImpairmentLossRecognisedInProfitOrLossLoansAndAdvances" xlink:label="loc_91" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLossLoansAndAdvancesAbstract" xlink:label="loc_92" xlink:type="locator"/>
+    <link:presentationArc order="10.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_92" xlink:to="loc_91" xlink:type="arc"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_27" xlink:to="loc_79" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestIncomeOnCashAndBankBalancesAtCentralBanks" xlink:label="loc_93" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_93" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TradingIncomeExpenseOnEquityInstruments" xlink:label="loc_94" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_4" xlink:to="loc_94" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestExpenseOnBonds" xlink:label="loc_95" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_6" xlink:to="loc_95" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillBeReclassifiedToProfitOrLoss" xlink:label="loc_96" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_8" xlink:to="loc_96" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_BasicAndDilutedEarningsLossPerShareFromDiscontinuedOperations" xlink:label="loc_97" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_9" xlink:to="loc_97" xlink:type="arc"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_56" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ReversalOfInventoryWritedown" xlink:label="loc_98" xlink:type="locator"/>
+    <link:presentationArc order="20.0" preferredLabel="http://www.xbrl.org/2009/role/negatedLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_15" xlink:to="loc_98" xlink:type="arc"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_19" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ReversalOfImpairmentLossRecognisedInProfitOrLossPropertyPlantAndEquipment" xlink:label="loc_99" xlink:type="locator"/>
+    <link:presentationArc order="20.0" preferredLabel="http://www.xbrl.org/2009/role/negatedLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_19" xlink:to="loc_99" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_LossesOnDisposalsOfPropertyPlantAndEquipment" xlink:label="loc_100" xlink:type="locator"/>
+    <link:presentationArc order="20.0" preferredLabel="http://www.xbrl.org/2009/role/negatedLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_21" xlink:to="loc_100" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_LossesOnDisposalsOfInvestments" xlink:label="loc_101" xlink:type="locator"/>
+    <link:presentationArc order="20.0" preferredLabel="http://www.xbrl.org/2009/role/negatedLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_23" xlink:to="loc_101" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_LossesOnLitigationSettlements" xlink:label="loc_102" xlink:type="locator"/>
+    <link:presentationArc order="20.0" preferredLabel="http://www.xbrl.org/2009/role/negatedLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_25" xlink:to="loc_102" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherComprehensiveIncomeAttributableToOwnersOfParent" xlink:label="loc_103" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_29" xlink:to="loc_103" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethodThatWillBeReclassifiedToProfitOrLossNetOfTax" xlink:label="loc_104" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_31" xlink:to="loc_104" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethodThatWillBeReclassifiedToProfitOrLossBeforeTax" xlink:label="loc_105" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_33" xlink:to="loc_105" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeTaxRelatingToShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethodThatWillBeReclassifiedToProfitOrLoss" xlink:label="loc_106" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_35" xlink:to="loc_106" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_LossesOnDisposalsOfNoncurrentAssets" xlink:label="loc_107" xlink:type="locator"/>
+    <link:presentationArc order="20.0" preferredLabel="http://www.xbrl.org/2009/role/negatedLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_39" xlink:to="loc_107" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PortfolioAndOtherManagementFeeIncome" xlink:label="loc_108" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_41" xlink:to="loc_108" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherFeeAndCommissionExpense" xlink:label="loc_109" xlink:type="locator"/>
+    <link:presentationArc order="20.0" preferredLabel="http://www.xbrl.org/2009/role/negatedLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_43" xlink:to="loc_109" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SocialSecurityContributions" xlink:label="loc_110" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_47" xlink:to="loc_110" xlink:type="arc"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_48" xlink:to="loc_43" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PostemploymentBenefitExpenseDefinedContributionPlans" xlink:label="loc_111" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_49" xlink:to="loc_111" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_LossesOnChangeInFairValueOfDerivatives" xlink:label="loc_112" xlink:type="locator"/>
+    <link:presentationArc order="20.0" preferredLabel="http://www.xbrl.org/2009/role/negatedLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_51" xlink:to="loc_112" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfGold" xlink:label="loc_113" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_113" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ProfessionalFeesExpense" xlink:label="loc_114" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_54" xlink:to="loc_114" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfMobileTelephoneServices" xlink:label="loc_115" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_57" xlink:to="loc_115" xlink:type="arc"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_55" xlink:to="loc_60" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfDataServices" xlink:label="loc_116" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_60" xlink:to="loc_116" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLoss" xlink:label="loc_117" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_62" xlink:to="loc_117" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmortisationExpense" xlink:label="loc_118" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_61" xlink:to="loc_118" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_LossesOnDisposalsOfInvestmentProperties" xlink:label="loc_119" xlink:type="locator"/>
+    <link:presentationArc order="20.0" preferredLabel="http://www.xbrl.org/2009/role/negatedLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_65" xlink:to="loc_119" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PropertyServiceChargeExpense" xlink:label="loc_120" xlink:type="locator"/>
+    <link:presentationArc order="20.0" preferredLabel="http://www.xbrl.org/2009/role/negatedLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_67" xlink:to="loc_120" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ReversalOfImpairmentLossRecognisedInProfitOrLossTradeReceivables" xlink:label="loc_121" xlink:type="locator"/>
+    <link:presentationArc order="20.0" preferredLabel="http://www.xbrl.org/2009/role/negatedLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_71" xlink:to="loc_121" xlink:type="arc"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_56" xlink:to="loc_73" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfCargoAndMailTransportServices" xlink:label="loc_122" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_73" xlink:to="loc_122" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EnergyExpense" xlink:label="loc_123" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_75" xlink:to="loc_123" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfInformationTechnologyConsultingServices" xlink:label="loc_124" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_77" xlink:to="loc_124" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_NonsubscriptionCirculationRevenue" xlink:label="loc_125" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_80" xlink:to="loc_125" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfBooks" xlink:label="loc_126" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_81" xlink:to="loc_126" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfProfitLossOfJointVenturesAccountedForUsingEquityMethod" xlink:label="loc_127" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_84" xlink:to="loc_127" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_CostOfSalesFoodAndBeverage" xlink:label="loc_128" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_88" xlink:to="loc_128" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GeneralAndAdministrativeExpense" xlink:label="loc_129" xlink:type="locator"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_90" xlink:to="loc_129" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ReversalOfImpairmentLossRecognisedInProfitOrLossLoansAndAdvances" xlink:label="loc_130" xlink:type="locator"/>
+    <link:presentationArc order="20.0" preferredLabel="http://www.xbrl.org/2009/role/negatedLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_92" xlink:to="loc_130" xlink:type="arc"/>
+    <link:presentationArc order="20.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_13" xlink:to="loc_16" xlink:type="arc"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_27" xlink:to="loc_54" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfAdvertisingServices" xlink:label="loc_131" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_56" xlink:to="loc_131" xlink:type="arc"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_71" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestIncomeOnCashAndCashEquivalents" xlink:label="loc_132" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_132" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestExpenseOnBorrowings" xlink:label="loc_133" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_6" xlink:to="loc_133" xlink:type="arc"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_4" xlink:to="loc_45" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome" xlink:label="loc_134" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_8" xlink:to="loc_134" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_BasicAndDilutedEarningsLossPerShare" xlink:label="loc_135" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_9" xlink:to="loc_135" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromConstructionContracts" xlink:label="loc_136" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_136" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_WritedownsReversalsOfInventories" xlink:label="loc_137" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2009/role/netLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_15" xlink:to="loc_137" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_WritedownsReversalsOfPropertyPlantAndEquipment" xlink:label="loc_138" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2009/role/netLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_19" xlink:to="loc_138" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsLossesOnDisposalsOfPropertyPlantAndEquipment" xlink:label="loc_139" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2009/role/netLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_21" xlink:to="loc_139" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsLossesOnDisposalsOfInvestments" xlink:label="loc_140" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2009/role/netLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_23" xlink:to="loc_140" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsLossesOnLitigationSettlements" xlink:label="loc_141" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2009/role/netLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_25" xlink:to="loc_141" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherComprehensiveIncomeAttributableToNoncontrollingInterests" xlink:label="loc_142" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_29" xlink:to="loc_142" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethod" xlink:label="loc_143" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_31" xlink:to="loc_143" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethodBeforeTax" xlink:label="loc_144" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_33" xlink:to="loc_144" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeTaxRelatingToShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethod" xlink:label="loc_145" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_35" xlink:to="loc_145" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FeeAndCommissionIncomeExpense" xlink:label="loc_146" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2009/role/netLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_48" xlink:to="loc_146" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsLossesOnDisposalsOfNoncurrentAssets" xlink:label="loc_147" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2009/role/netLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_39" xlink:to="loc_147" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_CreditrelatedFeeAndCommissionIncome" xlink:label="loc_148" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_41" xlink:to="loc_148" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FeeAndCommissionExpense" xlink:label="loc_149" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2009/role/negatedTotalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_43" xlink:to="loc_149" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherShorttermEmployeeBenefits" xlink:label="loc_150" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_47" xlink:to="loc_150" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PostemploymentBenefitExpenseDefinedBenefitPlans" xlink:label="loc_151" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_49" xlink:to="loc_151" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsLossesOnChangeInFairValueOfDerivatives" xlink:label="loc_152" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2009/role/netLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_51" xlink:to="loc_152" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfSilver" xlink:label="loc_153" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_153" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TransportationExpense" xlink:label="loc_154" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_54" xlink:to="loc_154" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfInternetAndDataServices" xlink:label="loc_155" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_60" xlink:to="loc_155" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfInterconnectionServices" xlink:label="loc_156" xlink:type="locator"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_55" xlink:to="loc_156" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DepreciationAmortisationAndImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLoss" xlink:label="loc_157" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_62" xlink:to="loc_157" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DepreciationAndAmortisationExpense" xlink:label="loc_158" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_61" xlink:to="loc_158" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsLossesOnDisposalsOfInvestmentProperties" xlink:label="loc_159" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2009/role/netLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_65" xlink:to="loc_159" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PropertyServiceChargeIncomeExpense" xlink:label="loc_160" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2009/role/netLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_67" xlink:to="loc_160" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLossTradeReceivables" xlink:label="loc_161" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2009/role/netLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_71" xlink:to="loc_161" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FuelAndEnergyExpense" xlink:label="loc_162" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_75" xlink:to="loc_162" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod" xlink:label="loc_163" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_84" xlink:to="loc_163" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SellingGeneralAndAdministrativeExpense" xlink:label="loc_164" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_90" xlink:to="loc_164" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLossLoansAndAdvances" xlink:label="loc_165" xlink:type="locator"/>
+    <link:presentationArc order="30.0" preferredLabel="http://www.xbrl.org/2009/role/netLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_92" xlink:to="loc_165" xlink:type="arc"/>
+    <link:presentationArc order="30.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_13" xlink:to="loc_27" xlink:type="arc"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_92" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfPrintingServices" xlink:label="loc_166" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_56" xlink:to="loc_166" xlink:type="arc"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_27" xlink:to="loc_49" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestIncomeOnDebtInstrumentsHeld" xlink:label="loc_167" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_167" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestExpenseOnDebtInstrumentsIssued" xlink:label="loc_168" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_6" xlink:to="loc_168" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherTradingIncomeExpense" xlink:label="loc_169" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_4" xlink:to="loc_169" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRoyalties" xlink:label="loc_170" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_170" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherIndividuallyImmaterialComponentsOfOtherComprehensiveIncomeNetOfTax" xlink:label="loc_171" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_29" xlink:to="loc_171" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherFeeAndCommissionIncome" xlink:label="loc_172" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_41" xlink:to="loc_172" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShorttermEmployeeBenefitsExpense" xlink:label="loc_173" xlink:type="locator"/>
+    <link:presentationArc order="40.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_47" xlink:to="loc_173" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TerminationBenefitsExpense" xlink:label="loc_174" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_49" xlink:to="loc_174" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfOilAndGasProducts" xlink:label="loc_175" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_175" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfOtherTelecommunicationServices" xlink:label="loc_176" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_55" xlink:to="loc_176" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_BankAndSimilarCharges" xlink:label="loc_177" xlink:type="locator"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_54" xlink:to="loc_177" xlink:type="arc"/>
+    <link:presentationArc order="40.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_13" xlink:to="loc_10" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainOnRecoveryOfLoansAndAdvancesPreviouslyWrittenOff" xlink:label="loc_178" xlink:type="locator"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_178" xlink:type="arc"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_56" xlink:to="loc_77" xlink:type="arc"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_27" xlink:to="loc_62" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_LicenceFeeIncome" xlink:label="loc_179" xlink:type="locator"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_179" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestIncomeOnDeposits" xlink:label="loc_180" xlink:type="locator"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_180" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestExpenseOnDepositsFromBanks" xlink:label="loc_181" xlink:type="locator"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_6" xlink:to="loc_181" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TradingIncomeExpense" xlink:label="loc_182" xlink:type="locator"/>
+    <link:presentationArc order="50.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_4" xlink:to="loc_182" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherIndividuallyImmaterialComponentsOfOtherComprehensiveIncomeBeforeTax" xlink:label="loc_183" xlink:type="locator"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_29" xlink:to="loc_183" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FeeAndCommissionIncome" xlink:label="loc_184" xlink:type="locator"/>
+    <link:presentationArc order="50.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_41" xlink:to="loc_184" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherLongtermBenefits" xlink:label="loc_185" xlink:type="locator"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_49" xlink:to="loc_185" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfCrudeOil" xlink:label="loc_186" xlink:type="locator"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_186" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfTelecommunicationServices" xlink:label="loc_187" xlink:type="locator"/>
+    <link:presentationArc order="50.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_55" xlink:to="loc_187" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EnergyTransmissionCharges" xlink:label="loc_188" xlink:type="locator"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_54" xlink:to="loc_188" xlink:type="arc"/>
+    <link:presentationArc order="50.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_13" xlink:to="loc_29" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExpenseOfRestructuringActivities" xlink:label="loc_189" xlink:type="locator"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_189" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FranchiseFeeIncome" xlink:label="loc_190" xlink:type="locator"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_190" xlink:type="arc"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_27" xlink:to="loc_69" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestIncomeOnFinancialAssetsDesignatedAtFairValueThroughProfitOrLoss" xlink:label="loc_191" xlink:type="locator"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_191" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestExpenseOnDepositsFromCustomers" xlink:label="loc_192" xlink:type="locator"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_6" xlink:to="loc_192" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeTaxRelatingToOtherIndividuallyImmaterialComponentsOfOtherComprehensiveIncome" xlink:label="loc_193" xlink:type="locator"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_29" xlink:to="loc_193" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherEmployeeExpense" xlink:label="loc_194" xlink:type="locator"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_49" xlink:to="loc_194" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfNaturalGas" xlink:label="loc_195" xlink:type="locator"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_195" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TravelExpense" xlink:label="loc_196" xlink:type="locator"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_54" xlink:to="loc_196" xlink:type="arc"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_56" xlink:to="loc_86" xlink:type="arc"/>
+    <link:presentationArc order="60.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_13" xlink:to="loc_84" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ReversalOfProvisionsForCostOfRestructuring" xlink:label="loc_197" xlink:type="locator"/>
+    <link:presentationArc order="70.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_197" xlink:type="arc"/>
+    <link:presentationArc order="70.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_2" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherExpenseByNature" xlink:label="loc_198" xlink:type="locator"/>
+    <link:presentationArc order="70.0" preferredLabel="http://www.xbrl.org/2003/role/terseLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_27" xlink:to="loc_198" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestIncomeOnFinancialAssetsHeldForTrading" xlink:label="loc_199" xlink:type="locator"/>
+    <link:presentationArc order="70.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_199" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestExpenseOnLiabilitiesDueToCentralBanks" xlink:label="loc_200" xlink:type="locator"/>
+    <link:presentationArc order="70.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_6" xlink:to="loc_200" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EmployeeBenefitsExpense" xlink:label="loc_201" xlink:type="locator"/>
+    <link:presentationArc order="70.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_49" xlink:to="loc_201" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfPetroleumAndPetrochemicalProducts" xlink:label="loc_202" xlink:type="locator"/>
+    <link:presentationArc order="70.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_202" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_CommunicationExpense" xlink:label="loc_203" xlink:type="locator"/>
+    <link:presentationArc order="70.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_54" xlink:to="loc_203" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromRenderingOfGamingServices" xlink:label="loc_204" xlink:type="locator"/>
+    <link:presentationArc order="70.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_56" xlink:to="loc_204" xlink:type="arc"/>
+    <link:presentationArc order="70.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_13" xlink:to="loc_31" xlink:type="arc"/>
+    <link:presentationArc order="80.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_39" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromDividends" xlink:label="loc_205" xlink:type="locator"/>
+    <link:presentationArc order="80.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_205" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExpenseByNature" xlink:label="loc_206" xlink:type="locator"/>
+    <link:presentationArc order="80.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_27" xlink:to="loc_206" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestIncomeOnHeldtomaturityInvestments" xlink:label="loc_207" xlink:type="locator"/>
+    <link:presentationArc order="80.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_207" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfTelecommunicationEquipment" xlink:label="loc_208" xlink:type="locator"/>
+    <link:presentationArc order="80.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_208" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_UtilitiesExpense" xlink:label="loc_209" xlink:type="locator"/>
+    <link:presentationArc order="80.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_54" xlink:to="loc_209" xlink:type="arc"/>
+    <link:presentationArc order="80.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_13" xlink:to="loc_33" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestExpenseOnFinancialLiabilitiesDesignatedAtFairValueThroughProfitOrLoss" xlink:label="loc_212" xlink:type="locator"/>
+    <link:presentationArc order="80.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_6" xlink:to="loc_212" xlink:type="arc"/>
+    <link:presentationArc order="90.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_21" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherRevenue" xlink:label="loc_210" xlink:type="locator"/>
+    <link:presentationArc order="90.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_210" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestIncomeOnLoansAndAdvancesToBanks" xlink:label="loc_211" xlink:type="locator"/>
+    <link:presentationArc order="90.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_211" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfElectricity" xlink:label="loc_213" xlink:type="locator"/>
+    <link:presentationArc order="90.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_213" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AdvertisingExpense" xlink:label="loc_214" xlink:type="locator"/>
+    <link:presentationArc order="90.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_54" xlink:to="loc_214" xlink:type="arc"/>
+    <link:presentationArc order="90.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_13" xlink:to="loc_35" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestExpenseOnFinancialLiabilitiesHeldForTrading" xlink:label="loc_217" xlink:type="locator"/>
+    <link:presentationArc order="90.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_6" xlink:to="loc_217" xlink:type="arc"/>
+    <link:presentationArc order="100.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_65" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_Revenue" xlink:label="loc_215" xlink:type="locator"/>
+    <link:presentationArc order="100.0" preferredLabel="http://www.xbrl.org/2003/role/totalLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_12" xlink:to="loc_215" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestIncomeOnLoansAndAdvancesToCustomers" xlink:label="loc_216" xlink:type="locator"/>
+    <link:presentationArc order="100.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_216" xlink:type="arc"/>
+    <link:presentationArc order="100.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_81" xlink:type="arc"/>
+    <link:presentationArc order="100.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_13" xlink:to="loc_8" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestExpenseOnOtherFinancialLiabilities" xlink:label="loc_219" xlink:type="locator"/>
+    <link:presentationArc order="100.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_6" xlink:to="loc_219" xlink:type="arc"/>
+    <link:presentationArc order="110.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_23" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestIncomeOnLoansAndReceivables" xlink:label="loc_218" xlink:type="locator"/>
+    <link:presentationArc order="110.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_218" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfAgriculturalProduce" xlink:label="loc_220" xlink:type="locator"/>
+    <link:presentationArc order="110.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_220" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestExpenseOnRepurchaseAgreementsAndCashCollateralOnSecuritiesLent" xlink:label="loc_223" xlink:type="locator"/>
+    <link:presentationArc order="110.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_6" xlink:to="loc_223" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainsLossesOnDisposalsOfOtherNoncurrentAssets" xlink:label="loc_221" xlink:type="locator"/>
+    <link:presentationArc order="120.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_221" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestIncomeOnOtherFinancialAssets" xlink:label="loc_222" xlink:type="locator"/>
+    <link:presentationArc order="120.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_222" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfSugar" xlink:label="loc_224" xlink:type="locator"/>
+    <link:presentationArc order="120.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_224" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GainLossArisingFromDifferenceBetweenCarryingAmountOfFinancialLiabilityExtinguishedAndConsiderationPaid" xlink:label="loc_225" xlink:type="locator"/>
+    <link:presentationArc order="130.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_225" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestIncomeOnReverseRepurchaseAgreementsAndCashCollateralOnSecuritiesBorrowed" xlink:label="loc_226" xlink:type="locator"/>
+    <link:presentationArc order="130.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_2" xlink:to="loc_226" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfAlcoholAndAlcoholicDrinks" xlink:label="loc_227" xlink:type="locator"/>
+    <link:presentationArc order="130.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_227" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueFromSaleOfFoodAndBeverage" xlink:label="loc_228" xlink:type="locator"/>
+    <link:presentationArc order="140.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_14" xlink:to="loc_228" xlink:type="arc"/>
+    <link:presentationArc order="140.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_25" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherReversalsOfProvisions" xlink:label="loc_229" xlink:type="locator"/>
+    <link:presentationArc order="150.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_229" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeFromContinuingOperationsAttributableToOwnersOfParent" xlink:label="loc_230" xlink:type="locator"/>
+    <link:presentationArc order="160.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_230" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeFromDiscontinuedOperationsAttributableToOwnersOfParent" xlink:label="loc_231" xlink:type="locator"/>
+    <link:presentationArc order="170.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_231" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ProfitLossFromContinuingOperationsAttributableToNoncontrollingInterests" xlink:label="loc_232" xlink:type="locator"/>
+    <link:presentationArc order="180.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_232" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ProfitLossFromDiscontinuedOperationsAttributableToNoncontrollingInterests" xlink:label="loc_233" xlink:type="locator"/>
+    <link:presentationArc order="190.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_233" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DividendsClassifiedAsExpense" xlink:label="loc_234" xlink:type="locator"/>
+    <link:presentationArc order="200.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_234" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RoyaltyExpense" xlink:label="loc_235" xlink:type="locator"/>
+    <link:presentationArc order="210.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_235" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ResearchAndDevelopmentExpense" xlink:label="loc_236" xlink:type="locator"/>
+    <link:presentationArc order="220.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_236" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InvestmentIncome" xlink:label="loc_237" xlink:type="locator"/>
+    <link:presentationArc order="230.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_237" xlink:type="arc"/>
+    <link:presentationArc order="240.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_37" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherFinanceIncome" xlink:label="loc_238" xlink:type="locator"/>
+    <link:presentationArc order="250.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_238" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherFinanceCost" xlink:label="loc_239" xlink:type="locator"/>
+    <link:presentationArc order="260.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_239" xlink:type="arc"/>
+    <link:presentationArc order="270.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InterestRevenueExpense" xlink:label="loc_240" xlink:type="locator"/>
+    <link:presentationArc order="280.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_240" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExpenseDueToUnwindingOfDiscountOnProvisions" xlink:label="loc_241" xlink:type="locator"/>
+    <link:presentationArc order="290.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_241" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RepairsAndMaintenanceExpense" xlink:label="loc_242" xlink:type="locator"/>
+    <link:presentationArc order="300.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_242" xlink:type="arc"/>
+    <link:presentationArc order="310.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_75" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherOperatingIncomeExpense" xlink:label="loc_243" xlink:type="locator"/>
+    <link:presentationArc order="320.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_243" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_MiscellaneousOtherOperatingIncome" xlink:label="loc_244" xlink:type="locator"/>
+    <link:presentationArc order="330.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_244" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_MiscellaneousOtherOperatingExpense" xlink:label="loc_245" xlink:type="locator"/>
+    <link:presentationArc order="340.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_245" xlink:type="arc"/>
+    <link:presentationArc order="350.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_90" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DistributionAndAdministrativeExpense" xlink:label="loc_246" xlink:type="locator"/>
+    <link:presentationArc order="360.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_246" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DonationsAndSubsidiesExpense" xlink:label="loc_247" xlink:type="locator"/>
+    <link:presentationArc order="370.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_247" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DirectorsRemunerationExpense" xlink:label="loc_248" xlink:type="locator"/>
+    <link:presentationArc order="380.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_248" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OccupancyExpense" xlink:label="loc_249" xlink:type="locator"/>
+    <link:presentationArc order="390.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_249" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RevenueAndOperatingIncome" xlink:label="loc_250" xlink:type="locator"/>
+    <link:presentationArc order="400.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_250" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RentalIncome" xlink:label="loc_251" xlink:type="locator"/>
+    <link:presentationArc order="410.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_251" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RentalExpense" xlink:label="loc_252" xlink:type="locator"/>
+    <link:presentationArc order="420.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_252" xlink:type="arc"/>
+    <link:presentationArc order="430.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_67" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PropertyDevelopmentAndProjectManagementIncome" xlink:label="loc_253" xlink:type="locator"/>
+    <link:presentationArc order="440.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_253" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PropertyDevelopmentAndProjectManagementExpense" xlink:label="loc_254" xlink:type="locator"/>
+    <link:presentationArc order="450.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_254" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PropertyManagementExpense" xlink:label="loc_255" xlink:type="locator"/>
+    <link:presentationArc order="460.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_255" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeFromReimbursementsUnderInsurancePolicies" xlink:label="loc_256" xlink:type="locator"/>
+    <link:presentationArc order="470.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_256" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeFromFinesAndPenalties" xlink:label="loc_257" xlink:type="locator"/>
+    <link:presentationArc order="480.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_257" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OperatingExpense" xlink:label="loc_258" xlink:type="locator"/>
+    <link:presentationArc order="490.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_258" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OperatingExpenseExcludingCostOfSales" xlink:label="loc_259" xlink:type="locator"/>
+    <link:presentationArc order="500.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_259" xlink:type="arc"/>
+    <link:presentationArc order="510.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_88" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SalesAndMarketingExpense" xlink:label="loc_260" xlink:type="locator"/>
+    <link:presentationArc order="520.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_260" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_MediaProductionExpense" xlink:label="loc_261" xlink:type="locator"/>
+    <link:presentationArc order="530.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_261" xlink:type="arc"/>
+    <link:presentationArc order="540.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_51" xlink:type="arc"/>
+    <link:presentationArc order="550.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_48" xlink:type="arc"/>
+    <link:presentationArc order="560.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_NetEarnedPremium" xlink:label="loc_262" xlink:type="locator"/>
+    <link:presentationArc order="570.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_262" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ClaimsAndBenefitsPaidNetOfReinsuranceRecoveries" xlink:label="loc_263" xlink:type="locator"/>
+    <link:presentationArc order="580.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_263" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncreaseDecreaseInProvisionForUnearnedPremium" xlink:label="loc_264" xlink:type="locator"/>
+    <link:presentationArc order="590.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_264" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PremiumsWrittenNetOfReinsurance" xlink:label="loc_265" xlink:type="locator"/>
+    <link:presentationArc order="600.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_265" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncreaseDecreaseInInsuranceLiabilitiesNetOfReinsurance" xlink:label="loc_266" xlink:type="locator"/>
+    <link:presentationArc order="610.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_266" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AcquisitionAndAdministrationExpenseRelatedToInsuranceContracts" xlink:label="loc_267" xlink:type="locator"/>
+    <link:presentationArc order="620.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="loc_16" xlink:to="loc_267" xlink:type="arc"/>
+  </link:presentationLink>
+</link:linkbase>

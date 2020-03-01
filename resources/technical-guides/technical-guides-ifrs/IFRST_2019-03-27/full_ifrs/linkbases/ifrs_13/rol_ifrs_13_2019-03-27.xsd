@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+		Taxonomy: 2019-03-27 (Final)
+		********************** 
+        Copyright (c) 2019 IFRS Foundation
+        All rights reserved. Reproduction and use rights are strictly limited.
+		For more information on the IFRS Foundation's copyright and the terms and conditions of use for these files, please refer to http://go.ifrs.org/IFRSTterms.
+		The IFRS Foundation has trade marks registered around the world (Marks) including 'IAS', 'IASB', the IASB logo, 'IFRIC', 'IFRS', the IFRS logo, 'IFRS for SMEs', the IFRS for SMEs logo, the 'Hexagon Device', 'International Accounting Standards', 'International Financial Reporting Standards', 'NIIF' and 'SIC'. Further details of the IFRS Foundation's Marks are available from the IFRS Foundation on request.
+        **********************
+--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xbrl.ifrs.org/role/ifrs/rol_ifrs_13_2019-03-27" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:rol_ifrs_13_2019-03-27="http://xbrl.ifrs.org/role/ifrs/rol_ifrs_13_2019-03-27" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:annotation>
+    <xsd:appinfo>
+      <link:roleType id="ifrs_13_2019-03-27_role-823000" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_13_2019-03-27_role-823000">
+        <link:definition>[823000] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_2019-03-27_role-823000a" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_13_2019-03-27_role-823000a">
+        <link:definition>[823000a] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_2019-03-27_role-823000b" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_13_2019-03-27_role-823000b">
+        <link:definition>[823000b] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_2019-03-27_role-823000c" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_13_2019-03-27_role-823000c">
+        <link:definition>[823000c] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_2019-03-27_role-823000d" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_13_2019-03-27_role-823000d">
+        <link:definition>[823000d] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_2019-03-27_role-823000e" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_13_2019-03-27_role-823000e">
+        <link:definition>[823000e] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_2019-03-27_role-823000f" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_13_2019-03-27_role-823000f">
+        <link:definition>[823000f] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_2019-03-27_role-823000g" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_13_2019-03-27_role-823000g">
+        <link:definition>[823000g] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_2019-03-27_role-823000h" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_13_2019-03-27_role-823000h">
+        <link:definition>[823000h] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_2019-03-27_role-823000i" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_13_2019-03-27_role-823000i">
+        <link:definition>[823000i] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+    </xsd:appinfo>
+  </xsd:annotation>
+</xsd:schema>

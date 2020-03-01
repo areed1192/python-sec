@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?><link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:ref="http://www.xbrl.org/2006/ref" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2006/ref http://www.xbrl.org/2006/ref-2006-02-27.xsd http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:roleRef roleURI="http://www.xbrl.org/2009/role/commonPracticeRef" xlink:href="http://www.xbrl.org/lrr/role/reference-2009-12-16.xsd#commonPracticeRef" xlink:type="simple"/>
+  <link:referenceLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:reference xlink:label="res_1" xlink:role="http://www.xbrl.org/2003/role/exampleRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>127</ref:Paragraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_127&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_PropertyPlantAndEquipmentMember" xlink:label="loc_1" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_1" xlink:to="res_1" xlink:type="arc"/>
+    <link:reference xlink:label="res_2" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>126</ref:Paragraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_126&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ClassesOfAssetsAxis" xlink:label="loc_2" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_2" xlink:to="res_2" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ClassesOfAssetsMember" xlink:label="loc_3" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_3" xlink:to="res_2" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IntangibleAssetsOtherThanGoodwillMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_4" xlink:to="res_1" xlink:type="arc"/>
+    <link:reference xlink:label="res_3" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>a</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_a&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_Goodwill" xlink:label="loc_5" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_5" xlink:to="res_3" xlink:type="arc"/>
+    <link:reference xlink:label="res_4" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>135</ref:Paragraph>
+      <ref:Subparagraph>a</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_135_a&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_5" xlink:to="res_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfImpairmentLossAndReversalOfImpairmentLossExplanatory" xlink:label="loc_6" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_6" xlink:to="res_2" xlink:type="arc"/>
+    <link:reference xlink:label="res_5" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>126</ref:Paragraph>
+      <ref:Subparagraph>b</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_126_b&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ReversalOfImpairmentLossRecognisedInProfitOrLoss" xlink:label="loc_7" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_7" xlink:to="res_5" xlink:type="arc"/>
+    <link:reference xlink:label="res_6" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>129</ref:Paragraph>
+      <ref:Subparagraph>b</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_129_b&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_7" xlink:to="res_6" xlink:type="arc"/>
+    <link:reference xlink:label="res_7" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>126</ref:Paragraph>
+      <ref:Subparagraph>a</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_126_a&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ImpairmentLossRecognisedInProfitOrLoss" xlink:label="loc_8" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_8" xlink:to="res_7" xlink:type="arc"/>
+    <link:reference xlink:label="res_8" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>129</ref:Paragraph>
+      <ref:Subparagraph>a</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_129_a&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_8" xlink:to="res_8" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfImpairmentLossAndReversalOfImpairmentLossTable" xlink:label="loc_9" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_9" xlink:to="res_2" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GoodwillMember" xlink:label="loc_10" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_10" xlink:to="res_1" xlink:type="arc"/>
+    <link:reference xlink:label="res_9" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Section>Disclosure</ref:Section>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;doctype=Standard&amp;dita_xref=IAS36_g126-137_TI</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfImpairmentOfAssetsExplanatory" xlink:label="loc_11" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_11" xlink:to="res_9" xlink:type="arc"/>
+    <link:reference xlink:label="res_10" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>126</ref:Paragraph>
+      <ref:Subparagraph>d</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_126_d&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ReversalOfImpairmentLossRecognisedInOtherComprehensiveIncome" xlink:label="loc_12" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_12" xlink:to="res_10" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_12" xlink:to="res_6" xlink:type="arc"/>
+    <link:reference xlink:label="res_11" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>126</ref:Paragraph>
+      <ref:Subparagraph>c</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_126_c&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ImpairmentLossRecognisedInOtherComprehensiveIncome" xlink:label="loc_13" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_13" xlink:to="res_11" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_13" xlink:to="res_8" xlink:type="arc"/>
+    <link:reference xlink:label="res_12" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>133</ref:Paragraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_133&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfGoodwillNotAllocatedToCashgeneratingUnitExplanatory" xlink:label="loc_14" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_14" xlink:to="res_12" xlink:type="arc"/>
+    <link:reference xlink:label="res_13" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>131</ref:Paragraph>
+      <ref:Subparagraph>b</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_131_b&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfMainEventsAndCircumstancesThatLedToRecognitionOfImpairmentLossesAndReversalsOfImpairmentLosses" xlink:label="loc_15" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_15" xlink:to="res_13" xlink:type="arc"/>
+    <link:reference xlink:label="res_14" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>130</ref:Paragraph>
+      <ref:Subparagraph>a</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_130_a&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_15" xlink:to="res_14" xlink:type="arc"/>
+    <link:reference xlink:label="res_15" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>131</ref:Paragraph>
+      <ref:Subparagraph>a</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_131_a&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfMainClassesOfAssetsAffectedByImpairmentLossesOrReversalsOfImpairmentLosses" xlink:label="loc_16" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_16" xlink:to="res_15" xlink:type="arc"/>
+    <link:reference xlink:label="res_16" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>135</ref:Paragraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_135&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfFactThatCarryingAmountOfGoodwillOrIntangibleAssetsWithIndefiniteUsefulLivesIsNotSignificant" xlink:label="loc_17" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_17" xlink:to="res_16" xlink:type="arc"/>
+    <link:reference xlink:label="res_17" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>130</ref:Paragraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_130&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationForEachMaterialImpairmentLossRecognisedOrReversedForIndividualAssetOrCashgeneratingUnitExplanatory" xlink:label="loc_18" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_18" xlink:to="res_17" xlink:type="arc"/>
+    <link:reference xlink:label="res_18" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>130</ref:Paragraph>
+      <ref:Subparagraph>b</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_130_b&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ImpairmentLoss" xlink:label="loc_19" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_19" xlink:to="res_18" xlink:type="arc"/>
+    <link:reference xlink:label="res_19" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>130</ref:Paragraph>
+      <ref:Subparagraph>c</ref:Subparagraph>
+      <ref:Clause>i</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_130_c_i&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfNatureOfIndividualAsset" xlink:label="loc_20" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_20" xlink:to="res_19" xlink:type="arc"/>
+    <link:reference xlink:label="res_20" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>130</ref:Paragraph>
+      <ref:Subparagraph>c</ref:Subparagraph>
+      <ref:Clause>ii</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_130_c_ii&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfReportableSegmentToWhichIndividualAssetBelongs" xlink:label="loc_21" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_21" xlink:to="res_20" xlink:type="arc"/>
+    <link:reference xlink:label="res_21" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>130</ref:Paragraph>
+      <ref:Subparagraph>d</ref:Subparagraph>
+      <ref:Clause>i</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_130_d_i&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfCashgeneratingUnit" xlink:label="loc_22" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_22" xlink:to="res_21" xlink:type="arc"/>
+    <link:reference xlink:label="res_22" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>130</ref:Paragraph>
+      <ref:Subparagraph>d</ref:Subparagraph>
+      <ref:Clause>iii</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_130_d_iii&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfCurrentAndFormerWayOfAggregatingAssets" xlink:label="loc_23" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_23" xlink:to="res_22" xlink:type="arc"/>
+    <link:reference xlink:label="res_23" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>130</ref:Paragraph>
+      <ref:Subparagraph>e</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_130_e&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InformationWhetherRecoverableAmountOfAssetIsFairValueLessCostsToSellOrValueInUse" xlink:label="loc_24" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_24" xlink:to="res_23" xlink:type="arc"/>
+    <link:reference xlink:label="res_24" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>130</ref:Paragraph>
+      <ref:Subparagraph>g</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_130_g&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfDiscountRatesUsedInCurrentEstimateOfValueInUse" xlink:label="loc_25" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_25" xlink:to="res_24" xlink:type="arc"/>
+    <link:reference xlink:label="res_25" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>d</ref:Subparagraph>
+      <ref:Clause>i</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_d_i&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfKeyAssumptionsOnWhichManagementHasBasedCashFlowProjections" xlink:label="loc_26" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_26" xlink:to="res_25" xlink:type="arc"/>
+    <link:reference xlink:label="res_26" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>135</ref:Paragraph>
+      <ref:Subparagraph>c</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_135_c&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_26" xlink:to="res_26" xlink:type="arc"/>
+    <link:reference xlink:label="res_27" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>d</ref:Subparagraph>
+      <ref:Clause>ii</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_d_ii&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfManagementsApproachToDeterminingValuesAssignedToKeyAssumptions" xlink:label="loc_27" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_27" xlink:to="res_27" xlink:type="arc"/>
+    <link:reference xlink:label="res_28" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>135</ref:Paragraph>
+      <ref:Subparagraph>d</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_135_d&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_27" xlink:to="res_28" xlink:type="arc"/>
+    <link:reference xlink:label="res_29" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>e</ref:Subparagraph>
+      <ref:Clause>ii</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_e_ii&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_27" xlink:to="res_29" xlink:type="arc"/>
+    <link:reference xlink:label="res_30" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>d</ref:Subparagraph>
+      <ref:Clause>iii</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_d_iii&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfPeriodOverWhichManagementHasProjectedCashFlows" xlink:label="loc_28" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_28" xlink:to="res_30" xlink:type="arc"/>
+    <link:reference xlink:label="res_31" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>e</ref:Subparagraph>
+      <ref:Clause>iii</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_e_iii&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_28" xlink:to="res_31" xlink:type="arc"/>
+    <link:reference xlink:label="res_32" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>d</ref:Subparagraph>
+      <ref:Clause>iv</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_d_iv&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfGrowthRateUsedToExtrapolateCashFlowProjections" xlink:label="loc_29" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_29" xlink:to="res_32" xlink:type="arc"/>
+    <link:reference xlink:label="res_33" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>e</ref:Subparagraph>
+      <ref:Clause>iv</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_e_iv&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_29" xlink:to="res_33" xlink:type="arc"/>
+    <link:reference xlink:label="res_34" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>d</ref:Subparagraph>
+      <ref:Clause>v</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_d_v&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfDiscountRatesAppliedToCashFlowProjections" xlink:label="loc_30" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_30" xlink:to="res_34" xlink:type="arc"/>
+    <link:reference xlink:label="res_35" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>e</ref:Subparagraph>
+      <ref:Clause>v</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_e_v&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_30" xlink:to="res_35" xlink:type="arc"/>
+    <link:reference xlink:label="res_36" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>f</ref:Subparagraph>
+      <ref:Clause>i</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_f_i&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountByWhichUnitsRecoverableAmountExceedsItsCarryingAmount" xlink:label="loc_31" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_31" xlink:to="res_36" xlink:type="arc"/>
+    <link:reference xlink:label="res_37" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>135</ref:Paragraph>
+      <ref:Subparagraph>e</ref:Subparagraph>
+      <ref:Clause>i</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_135_e_i&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_31" xlink:to="res_37" xlink:type="arc"/>
+    <link:reference xlink:label="res_38" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>f</ref:Subparagraph>
+      <ref:Clause>ii</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_f_ii&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfValueAssignedToKeyAssumption" xlink:label="loc_32" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_32" xlink:to="res_38" xlink:type="arc"/>
+    <link:reference xlink:label="res_39" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>135</ref:Paragraph>
+      <ref:Subparagraph>e</ref:Subparagraph>
+      <ref:Clause>ii</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_135_e_ii&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_32" xlink:to="res_39" xlink:type="arc"/>
+    <link:reference xlink:label="res_40" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>f</ref:Subparagraph>
+      <ref:Clause>iii</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_f_iii&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountByWhichValueAssignedToKeyAssumptionMustChangeInOrderForUnitsRecoverableAmountToBeEqualToCarryingAmount" xlink:label="loc_33" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_33" xlink:to="res_40" xlink:type="arc"/>
+    <link:reference xlink:label="res_41" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>135</ref:Paragraph>
+      <ref:Subparagraph>e</ref:Subparagraph>
+      <ref:Clause>iii</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_135_e_iii&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_33" xlink:to="res_41" xlink:type="arc"/>
+    <link:reference xlink:label="res_42" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IndividualAssetsOrCashgeneratingUnitsWithSignificantAmountOfGoodwillOrIntangibleAssetsWithIndefiniteUsefulLivesAxis" xlink:label="loc_34" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_34" xlink:to="res_42" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ReversalOfImpairmentLoss" xlink:label="loc_35" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_35" xlink:to="res_18" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForCashgeneratingUnitsMember" xlink:label="loc_36" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_36" xlink:to="res_42" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_36" xlink:to="res_16" xlink:type="arc"/>
+    <link:reference xlink:label="res_43" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>e</ref:Subparagraph>
+      <ref:Clause>i</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_e_i&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfKeyAssumptionsOnWhichManagementHasBasedDeterminationOfFairValueLessCostsOfDisposal" xlink:label="loc_37" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_37" xlink:to="res_43" xlink:type="arc"/>
+    <link:reference xlink:label="res_44" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>e</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_e&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfValuationTechniquesUsedToMeasureFairValueLessCostsOfDisposal" xlink:label="loc_38" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_38" xlink:to="res_44" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherImpairedAssetsMember" xlink:label="loc_39" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_39" xlink:to="res_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_UnallocatedGoodwill" xlink:label="loc_40" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_40" xlink:to="res_12" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AggregateNotSignificantIndividualAssetsOrCashgeneratingUnitsMember" xlink:label="loc_41" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_41" xlink:to="res_16" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfFactThatAggregateCarryingAmountOfGoodwillOrIntangibleAssetsWithIndefiniteUsefulLivesAllocatedToRecoverableAmountsIsSignificant" xlink:label="loc_42" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_42" xlink:to="res_16" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationForEachMaterialImpairmentLossRecognisedOrReversedForIndividualAssetOrCashgeneratingUnitTable" xlink:label="loc_43" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_43" xlink:to="res_17" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IndividualAssetsOrCashgeneratingUnitsAxis" xlink:label="loc_44" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_44" xlink:to="res_17" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IndividualAssetsOrCashgeneratingUnitsMember" xlink:label="loc_45" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_45" xlink:to="res_17" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForIndividualAssetsOrCashgeneratingUnitsMember" xlink:label="loc_46" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_46" xlink:to="res_17" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfReasonsForChangingWayCashgeneratingUnitIsIdentified" xlink:label="loc_47" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_47" xlink:to="res_22" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfDiscountRatesUsedInPreviousEstimateOfValueInUse" xlink:label="loc_48" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_48" xlink:to="res_24" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationForIndividualAssetOrCashgeneratingUnitWithSignificantAmountOfGoodwillOrIntangibleAssetsWithIndefiniteUsefulLivesExplanatory" xlink:label="loc_49" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_49" xlink:to="res_42" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationForIndividualAssetOrCashgeneratingUnitWithSignificantAmountOfGoodwillOrIntangibleAssetsWithIndefiniteUsefulLivesTable" xlink:label="loc_50" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_50" xlink:to="res_42" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IndividualAssetsOrCashgeneratingUnitsWithSignificantAmountOfGoodwillOrIntangibleAssetsWithIndefiniteUsefulLivesMember" xlink:label="loc_51" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_51" xlink:to="res_42" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfLineItemsInStatementOfComprehensiveIncomeInWhichImpairmentLossesRecognisedInProfitOrLossAreIncluded" xlink:label="loc_52" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_52" xlink:to="res_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfLineItemsInStatementOfComprehensiveIncomeInWhichImpairmentLossesRecognisedInProfitOrLossAreReversed" xlink:label="loc_53" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_53" xlink:to="res_5" xlink:type="arc"/>
+    <link:reference xlink:label="res_45" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>b</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_b&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IntangibleAssetsWithIndefiniteUsefulLife" xlink:label="loc_54" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_54" xlink:to="res_45" xlink:type="arc"/>
+    <link:reference xlink:label="res_46" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>135</ref:Paragraph>
+      <ref:Subparagraph>b</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_135_b&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_54" xlink:to="res_46" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfJustificationForUsingGrowthRateThatExceedsLongtermAverageGrowthRate" xlink:label="loc_55" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_55" xlink:to="res_32" xlink:type="arc"/>
+    <link:reference xlink:label="res_47" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>e</ref:Subparagraph>
+      <ref:Clause>iiA</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_e_iiA&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfLevelOfFairValueHierarchyWithinWhichFairValueMeasurementIsCategorised" xlink:label="loc_56" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_56" xlink:to="res_47" xlink:type="arc"/>
+    <link:reference xlink:label="res_48" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>130</ref:Paragraph>
+      <ref:Subparagraph>d</ref:Subparagraph>
+      <ref:Clause>ii</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_130_d_ii&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SegmentsAxis" xlink:label="loc_57" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_57" xlink:to="res_48" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SegmentsMember" xlink:label="loc_58" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_58" xlink:to="res_48" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_2" xlink:to="res_48" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_19" xlink:to="res_48" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_35" xlink:to="res_48" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfImpairmentLossRecognisedOrReversedByClassOfAssetsAndByReportableSegment" xlink:label="loc_59" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_59" xlink:to="res_48" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfImpairmentLossRecognisedOrReversedTable" xlink:label="loc_60" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_60" xlink:to="res_48" xlink:type="arc"/>
+    <link:reference xlink:label="res_49" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>c</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_c&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfBasisOnWhichUnitsRecoverableAmountHasBeenDetermined" xlink:label="loc_61" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_61" xlink:to="res_49" xlink:type="arc"/>
+    <link:reference xlink:label="res_50" xlink:role="http://www.xbrl.org/2009/role/commonPracticeRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>127</ref:Paragraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_127&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplorationAndEvaluationAssetsMember" xlink:label="loc_62" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_62" xlink:to="res_50" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InvestmentsAccountedForUsingEquityMethodMember" xlink:label="loc_63" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_63" xlink:to="res_50" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_NoncurrentAssetsOrDisposalGroupsClassifiedAsHeldForSaleMember" xlink:label="loc_64" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_64" xlink:to="res_50" xlink:type="arc"/>
+    <link:reference xlink:label="res_51" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>134</ref:Paragraph>
+      <ref:Subparagraph>e</ref:Subparagraph>
+      <ref:Clause>iiB</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_134_e_iiB&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfChangeInValuationTechniqueUsedToMeasureFairValueLessCostsOfDisposal" xlink:label="loc_65" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_65" xlink:to="res_51" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfReasonsForChangeInValuationTechniqueUsedToMeasureFairValueLessCostsOfDisposal" xlink:label="loc_66" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_66" xlink:to="res_51" xlink:type="arc"/>
+    <link:reference xlink:label="res_52" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>130</ref:Paragraph>
+      <ref:Subparagraph>f</ref:Subparagraph>
+      <ref:Clause>iii</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_130_f_iii&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DiscountRateUsedInCurrentMeasurementOfFairValueLessCostsOfDisposal" xlink:label="loc_67" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_67" xlink:to="res_52" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_RecoverableAmountOfAssetOrCashgeneratingUnit" xlink:label="loc_68" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_68" xlink:to="res_23" xlink:type="arc"/>
+    <link:reference xlink:label="res_53" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>130</ref:Paragraph>
+      <ref:Subparagraph>f</ref:Subparagraph>
+      <ref:Clause>ii</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_130_f_ii&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_38" xlink:to="res_53" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_37" xlink:to="res_52" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DiscountRateUsedInPreviousMeasurementOfFairValueLessCostsOfDisposal" xlink:label="loc_69" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_69" xlink:to="res_52" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_65" xlink:to="res_53" xlink:type="arc"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_66" xlink:to="res_53" xlink:type="arc"/>
+    <link:reference xlink:label="res_54" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IAS</ref:Name>
+      <ref:Number>36</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>130</ref:Paragraph>
+      <ref:Subparagraph>f</ref:Subparagraph>
+      <ref:Clause>i</ref:Clause>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&amp;num=36&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_130_f_i&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_56" xlink:to="res_54" xlink:type="arc"/>
+  </link:referenceLink>
+</link:linkbase>
+  
+  

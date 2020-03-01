@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+		Taxonomy: 2019-03-27 (Final)
+		********************** 
+        Copyright (c) 2019 IFRS Foundation
+        All rights reserved. Reproduction and use rights are strictly limited.
+		For more information on the IFRS Foundation's copyright and the terms and conditions of use for these files, please refer to http://go.ifrs.org/IFRSTterms.
+		The IFRS Foundation has trade marks registered around the world (Marks) including 'IAS', 'IASB', the IASB logo, 'IFRIC', 'IFRS', the IFRS logo, 'IFRS for SMEs', the IFRS for SMEs logo, the 'Hexagon Device', 'International Accounting Standards', 'International Financial Reporting Standards', 'NIIF' and 'SIC'. Further details of the IFRS Foundation's Marks are available from the IFRS Foundation on request.
+        **********************
+--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xbrl.ifrs.org/role/ifrs/rol_ifrs_7_2019-03-27" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:rol_ifrs_7_2019-03-27="http://xbrl.ifrs.org/role/ifrs/rol_ifrs_7_2019-03-27" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:annotation>
+    <xsd:appinfo>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390">
+        <link:definition>[822390] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390a" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390a">
+        <link:definition>[822390a] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390b" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390b">
+        <link:definition>[822390b] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390c" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390c">
+        <link:definition>[822390c] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390d" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390d">
+        <link:definition>[822390d] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390e" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390e">
+        <link:definition>[822390e] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390f" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390f">
+        <link:definition>[822390f] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390g" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390g">
+        <link:definition>[822390g] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390h" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390h">
+        <link:definition>[822390h] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390i" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390i">
+        <link:definition>[822390i] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390j" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390j">
+        <link:definition>[822390j] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390k" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390k">
+        <link:definition>[822390k] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390l" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390l">
+        <link:definition>[822390l] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390m" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390m">
+        <link:definition>[822390m] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390n" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390n">
+        <link:definition>[822390n] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390o" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390o">
+        <link:definition>[822390o] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390p" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390p">
+        <link:definition>[822390p] Notes - Financial Instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390q" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390q">
+        <link:definition>[822390q] Notes - Financial Instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390r" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390r">
+        <link:definition>[822390r] Notes - Financial Instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390s" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390s">
+        <link:definition>[822390s] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390t" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390t">
+        <link:definition>[822390t] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390u" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390u">
+        <link:definition>[822390u] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390v" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390v">
+        <link:definition>[822390v] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390w" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390w">
+        <link:definition>[822390w] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390x" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390x">
+        <link:definition>[822390x] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390y" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390y">
+        <link:definition>[822390y] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390z" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390z">
+        <link:definition>[822390z] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390za" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390za">
+        <link:definition>[822390za] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390zb" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390zb">
+        <link:definition>[822390zb] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390zc" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390zc">
+        <link:definition>[822390zc] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390zd" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390zd">
+        <link:definition>[822390zd] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390ze" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390ze">
+        <link:definition>[822390ze] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390zf" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390zf">
+        <link:definition>[822390zf] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_2019-03-27_role-822390zg" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_7_2019-03-27_role-822390zg">
+        <link:definition>[822390zg] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+    </xsd:appinfo>
+  </xsd:annotation>
+</xsd:schema>

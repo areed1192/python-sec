@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+		Taxonomy: 2019-03-27 (Final)
+		********************** 
+        Copyright (c) 2019 IFRS Foundation
+        All rights reserved. Reproduction and use rights are strictly limited.
+		For more information on the IFRS Foundation's copyright and the terms and conditions of use for these files, please refer to http://go.ifrs.org/IFRSTterms.
+		The IFRS Foundation has trade marks registered around the world (Marks) including 'IAS', 'IASB', the IASB logo, 'IFRIC', 'IFRS', the IFRS logo, 'IFRS for SMEs', the IFRS for SMEs logo, the 'Hexagon Device', 'International Accounting Standards', 'International Financial Reporting Standards', 'NIIF' and 'SIC'. Further details of the IFRS Foundation's Marks are available from the IFRS Foundation on request.
+        **********************
+--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xbrl.ifrs.org/role/ifrs/rol_ifrs_12_2019-03-27" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:rol_ifrs_12_2019-03-27="http://xbrl.ifrs.org/role/ifrs/rol_ifrs_12_2019-03-27" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:annotation>
+    <xsd:appinfo>
+      <link:roleType id="ifrs_12_2019-03-27_role-825700" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_12_2019-03-27_role-825700">
+        <link:definition>[825700] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_2019-03-27_role-825700a" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_12_2019-03-27_role-825700a">
+        <link:definition>[825700a] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_2019-03-27_role-825700b" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_12_2019-03-27_role-825700b">
+        <link:definition>[825700b] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_2019-03-27_role-825700c" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_12_2019-03-27_role-825700c">
+        <link:definition>[825700c] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_2019-03-27_role-825700d" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_12_2019-03-27_role-825700d">
+        <link:definition>[825700d] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_2019-03-27_role-825700e" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_12_2019-03-27_role-825700e">
+        <link:definition>[825700e] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_2019-03-27_role-825700f" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_12_2019-03-27_role-825700f">
+        <link:definition>[825700f] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_2019-03-27_role-825700g" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_12_2019-03-27_role-825700g">
+        <link:definition>[825700g] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+    </xsd:appinfo>
+  </xsd:annotation>
+</xsd:schema>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:ref="http://www.xbrl.org/2006/ref" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2006/ref http://www.xbrl.org/2006/ref-2006-02-27.xsd http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:referenceLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+    <link:reference xlink:label="res_1" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IFRS</ref:Name>
+      <ref:Number>6</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>25</ref:Paragraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IFRS&amp;num=6&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_25&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IntangibleExplorationAndEvaluationAssets" xlink:label="loc_1" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_1" xlink:to="res_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IntangibleExplorationAndEvaluationAssetsMember" xlink:label="loc_2" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_2" xlink:to="res_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TangibleExplorationAndEvaluationAssetsMember" xlink:label="loc_3" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_3" xlink:to="res_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TangibleExplorationAndEvaluationAssets" xlink:label="loc_4" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_4" xlink:to="res_1" xlink:type="arc"/>
+    <link:reference xlink:label="res_2" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IFRS</ref:Name>
+      <ref:Number>6</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Section>Disclosure</ref:Section>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IFRS&amp;num=6&amp;code=ifrs-tx-2019-en-r&amp;doctype=Standard&amp;dita_xref=IFRS06_g23-25_TI</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfExplorationAndEvaluationAssetsExplanatory" xlink:label="loc_5" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_5" xlink:to="res_2" xlink:type="arc"/>
+    <link:reference xlink:label="res_3" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IFRS</ref:Name>
+      <ref:Number>6</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>24</ref:Paragraph>
+      <ref:Subparagraph>a</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IFRS&amp;num=6&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_24_a&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfAccountingPolicyForExplorationAndEvaluationExpenditures" xlink:label="loc_6" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_6" xlink:to="res_3" xlink:type="arc"/>
+    <link:reference xlink:label="res_4" xlink:role="http://www.xbrl.org/2003/role/disclosureRef" xlink:type="resource">
+      <ref:Name>IFRS</ref:Name>
+      <ref:Number>6</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+      <ref:Paragraph>24</ref:Paragraph>
+      <ref:Subparagraph>b</ref:Subparagraph>
+      <ref:URI>http://eifrs.ifrs.org/eifrs/xifrs-link?type=IFRS&amp;num=6&amp;code=ifrs-tx-2019-en-r&amp;anchor=para_24_b&amp;doctype=Standard</ref:URI>
+      <ref:URIDate>2019-03-27</ref:URIDate>
+      </link:reference>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AssetsArisingFromExplorationForAndEvaluationOfMineralResources" xlink:label="loc_7" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_7" xlink:to="res_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_LiabilitiesArisingFromExplorationForAndEvaluationOfMineralResources" xlink:label="loc_8" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_8" xlink:to="res_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeArisingFromExplorationForAndEvaluationOfMineralResources" xlink:label="loc_9" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_9" xlink:to="res_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExpenseArisingFromExplorationForAndEvaluationOfMineralResources" xlink:label="loc_10" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_10" xlink:to="res_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_CashFlowsFromUsedInExplorationForAndEvaluationOfMineralResourcesClassifiedAsOperatingActivities" xlink:label="loc_11" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_11" xlink:to="res_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_CashFlowsFromUsedInExplorationForAndEvaluationOfMineralResourcesClassifiedAsInvestingActivities" xlink:label="loc_12" xlink:type="locator"/>
+    <link:referenceArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="loc_12" xlink:to="res_4" xlink:type="arc"/>
+  </link:referenceLink>
+</link:linkbase>
+  

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+		Taxonomy: 2019-03-27 (Final)
+		********************** 
+        Copyright (c) 2019 IFRS Foundation
+        All rights reserved. Reproduction and use rights are strictly limited.
+		For more information on the IFRS Foundation's copyright and the terms and conditions of use for these files, please refer to http://go.ifrs.org/IFRSTterms.
+		The IFRS Foundation has trade marks registered around the world (Marks) including 'IAS', 'IASB', the IASB logo, 'IFRIC', 'IFRS', the IFRS logo, 'IFRS for SMEs', the IFRS for SMEs logo, the 'Hexagon Device', 'International Accounting Standards', 'International Financial Reporting Standards', 'NIIF' and 'SIC'. Further details of the IFRS Foundation's Marks are available from the IFRS Foundation on request.
+        **********************
+--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xbrl.ifrs.org/role/ifrs/rol_ifrs_17_2019-03-27" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:rol_ifrs_17_2019-03-27="http://xbrl.ifrs.org/role/ifrs/rol_ifrs_17_2019-03-27" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:annotation>
+    <xsd:appinfo>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600">
+        <link:definition>[836600] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600a" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600a">
+        <link:definition>[836600a] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600b" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600b">
+        <link:definition>[836600b] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600c" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600c">
+        <link:definition>[836600c] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600d" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600d">
+        <link:definition>[836600d] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600e" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600e">
+        <link:definition>[836600e] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600f" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600f">
+        <link:definition>[836600f] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600g" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600g">
+        <link:definition>[836600g] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600h" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600h">
+        <link:definition>[836600h] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600i" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600i">
+        <link:definition>[836600i] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600j" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600j">
+        <link:definition>[836600j] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600k" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600k">
+        <link:definition>[836600k] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600l" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600l">
+        <link:definition>[836600l] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600m" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600m">
+        <link:definition>[836600m] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_2019-03-27_role-836600n" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_17_2019-03-27_role-836600n">
+        <link:definition>[836600n] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+    </xsd:appinfo>
+  </xsd:annotation>
+</xsd:schema>

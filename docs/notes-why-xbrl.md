@@ -15,7 +15,7 @@ As much as I would love to get into the scraping of the content I can't because 
 
 We live in a world of information, and everyone is constantly looking for more insightful information to make informed decisions. No where else is this more apparaent then in the World of business. Public companies across the world are required, in many countries, to disclose their financial performance and the overall health and outlook of the company. The belief is that transparency promotes economic activity and builds a level of trust between investors and corporations.
 
-To help promote transparecny and consistency in the way financial information is disclosed and shared with investors, a group decided that a new way of storing this data was needed. This framework would be called XBRL. By providing a framework that allows companies to provide detailed information on any of their financial metrics, XBRL is the go to solution for financial disclosure. In fact, it's so valuable that the SEC is requiring Public companies to follow the standard by a certain deadline.
+To help promote transparency and consistency in the way financial information is disclosed and shared with investors, a group decided that a new way of storing this data was needed. This framework would be called XBRL. By providing a framework that allows companies to provide detailed information on any of their financial metrics, XBRL is the go to solution for financial disclosure. In fact, it's so valuable that the SEC is requiring Public companies to follow the standard by a certain deadline.
 
 ### **Organzing Content to Promote Transparency**
 

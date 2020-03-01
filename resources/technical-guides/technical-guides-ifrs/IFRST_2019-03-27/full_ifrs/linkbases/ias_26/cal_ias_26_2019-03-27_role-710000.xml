@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+		Taxonomy: 2019-03-27 (Final)
+		********************** 
+        Copyright (c) 2019 IFRS Foundation
+        All rights reserved. Reproduction and use rights are strictly limited.
+		For more information on the IFRS Foundation's copyright and the terms and conditions of use for these files, please refer to http://go.ifrs.org/IFRSTterms.
+		The IFRS Foundation has trade marks registered around the world (Marks) including 'IAS', 'IASB', the IASB logo, 'IFRIC', 'IFRS', the IFRS logo, 'IFRS for SMEs', the IFRS for SMEs logo, the 'Hexagon Device', 'International Accounting Standards', 'International Financial Reporting Standards', 'NIIF' and 'SIC'. Further details of the IFRS Foundation's Marks are available from the IFRS Foundation on request.
+        **********************
+--><link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ias_26_2019-03-27_role-710000" xlink:href="rol_ias_26_2019-03-27.xsd#ias_26_2019-03-27_role-710000" xlink:type="simple"/>
+  <link:calculationLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ias_26_2019-03-27_role-710000" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EmployerContributions" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncreaseDecreaseInNetAssetsAvailableForBenefits" xlink:label="loc_2" xlink:type="locator"/>
+    <link:calculationArc order="10.0" weight="1" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EmployeeContributions" xlink:label="loc_3" xlink:type="locator"/>
+    <link:calculationArc order="20.0" weight="1" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="loc_2" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InvestmentIncome" xlink:label="loc_4" xlink:type="locator"/>
+    <link:calculationArc order="30.0" weight="1" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="loc_2" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherIncome" xlink:label="loc_5" xlink:type="locator"/>
+    <link:calculationArc order="40.0" weight="1" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="loc_2" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_BenefitsPaidOrPayable" xlink:label="loc_6" xlink:type="locator"/>
+    <link:calculationArc order="50.0" weight="-1" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="loc_2" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AdministrativeExpense" xlink:label="loc_7" xlink:type="locator"/>
+    <link:calculationArc order="60.0" weight="-1" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="loc_2" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_OtherExpenseByFunction" xlink:label="loc_8" xlink:type="locator"/>
+    <link:calculationArc order="70.0" weight="-1" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="loc_2" xlink:to="loc_8" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeTaxExpenseContinuingOperations" xlink:label="loc_9" xlink:type="locator"/>
+    <link:calculationArc order="80.0" weight="-1" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="loc_2" xlink:to="loc_9" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ProfitsLossesOnDisposalOfInvestmentsAndChangesInValueOfInvestments" xlink:label="loc_10" xlink:type="locator"/>
+    <link:calculationArc order="90.0" weight="1" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="loc_2" xlink:to="loc_10" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TransfersFromToOtherRetirementBenefitPlans" xlink:label="loc_11" xlink:type="locator"/>
+    <link:calculationArc order="100.0" weight="1" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="loc_2" xlink:to="loc_11" xlink:type="arc"/>
+  </link:calculationLink>
+</link:linkbase>

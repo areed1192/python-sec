@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+		Taxonomy: 2019-03-27 (Final)
+		********************** 
+        Copyright (c) 2019 IFRS Foundation
+        All rights reserved. Reproduction and use rights are strictly limited.
+		For more information on the IFRS Foundation's copyright and the terms and conditions of use for these files, please refer to http://go.ifrs.org/IFRSTterms.
+		The IFRS Foundation has trade marks registered around the world (Marks) including 'IAS', 'IASB', the IASB logo, 'IFRIC', 'IFRS', the IFRS logo, 'IFRS for SMEs', the IFRS for SMEs logo, the 'Hexagon Device', 'International Accounting Standards', 'International Financial Reporting Standards', 'NIIF' and 'SIC'. Further details of the IFRS Foundation's Marks are available from the IFRS Foundation on request.
+        **********************
+--><link:linkbase xmlns:gen="http://xbrl.org/2008/generic" xmlns:label="http://xbrl.org/2008/label" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd http://xbrl.org/2008/label http://www.xbrl.org/2008/generic-label.xsd http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd http://www.w3.org/1999/xlink http://www.xbrl.org/2003/xlink-2003-12-31.xsd">
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:href="http://www.xbrl.org/2008/generic-link.xsd#standard-link-role" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/label" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#standard-label" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/element-label" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#element-label" xlink:type="simple"/>
+  <gen:link xlink:role="http://www.xbrl.org/2008/role/link" xlink:type="extended">
+    <label:label xlink:label="res_1" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[110000] General information about financial statements</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-110000" xlink:label="loc_1" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_1" xlink:to="res_1" xlink:type="arc"/>
+    <label:label xlink:label="res_2" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[210000] Statement of financial position, current/non-current</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-210000" xlink:label="loc_2" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_2" xlink:to="res_2" xlink:type="arc"/>
+    <label:label xlink:label="res_3" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[220000] Statement of financial position, order of liquidity</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-220000" xlink:label="loc_3" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_3" xlink:to="res_3" xlink:type="arc"/>
+    <label:label xlink:label="res_4" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[310000] Statement of comprehensive income, profit or loss, by function of expense</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-310000" xlink:label="loc_4" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_4" xlink:to="res_4" xlink:type="arc"/>
+    <label:label xlink:label="res_5" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[320000] Statement of comprehensive income, profit or loss, by nature of expense</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-320000" xlink:label="loc_5" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_5" xlink:to="res_5" xlink:type="arc"/>
+    <label:label xlink:label="res_6" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[410000] Statement of comprehensive income, OCI components presented net of tax</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-410000" xlink:label="loc_6" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_6" xlink:to="res_6" xlink:type="arc"/>
+    <label:label xlink:label="res_7" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[420000] Statement of comprehensive income, OCI components presented before tax</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-420000" xlink:label="loc_7" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_7" xlink:to="res_7" xlink:type="arc"/>
+    <label:label xlink:label="res_8" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[610000] Statement of changes in equity</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-610000" xlink:label="loc_8" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_8" xlink:to="res_8" xlink:type="arc"/>
+    <label:label xlink:label="res_9" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[810000] Notes - Corporate information and statement of IFRS compliance</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-810000" xlink:label="loc_9" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_9" xlink:to="res_9" xlink:type="arc"/>
+    <label:label xlink:label="res_10" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[810000a] Notes - Corporate information and statement of IFRS compliance</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-810000a" xlink:label="loc_10" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_10" xlink:to="res_10" xlink:type="arc"/>
+    <label:label xlink:label="res_11" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[810000b] Notes - Corporate information and statement of IFRS compliance</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-810000b" xlink:label="loc_11" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_11" xlink:to="res_11" xlink:type="arc"/>
+    <label:label xlink:label="res_12" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[810000c] Notes - Corporate information and statement of IFRS compliance</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-810000c" xlink:label="loc_12" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_12" xlink:to="res_12" xlink:type="arc"/>
+    <label:label xlink:label="res_13" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[800100] Notes - Subclassifications of assets, liabilities and equities</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-800100" xlink:label="loc_13" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_13" xlink:to="res_13" xlink:type="arc"/>
+    <label:label xlink:label="res_14" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[800200] Notes - Analysis of income and expense</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-800200" xlink:label="loc_14" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_14" xlink:to="res_14" xlink:type="arc"/>
+    <label:label xlink:label="res_15" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[861000] Notes - Analysis of other comprehensive income by item</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-861000" xlink:label="loc_15" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_15" xlink:to="res_15" xlink:type="arc"/>
+    <label:label xlink:label="res_16" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[861200] Notes - Share capital, reserves and other equity interest</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-861200" xlink:label="loc_16" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_16" xlink:to="res_16" xlink:type="arc"/>
+    <label:label xlink:label="res_17" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[861200a] Notes - Share capital, reserves and other equity interest</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-861200a" xlink:label="loc_17" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_17" xlink:to="res_17" xlink:type="arc"/>
+    <label:label xlink:label="res_18" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[861200b] Notes - Share capital, reserves and other equity interest</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-861200b" xlink:label="loc_18" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_18" xlink:to="res_18" xlink:type="arc"/>
+    <label:label xlink:label="res_19" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[800400] Notes - Statement of changes in equity, additional disclosures</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-800400" xlink:label="loc_19" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_19" xlink:to="res_19" xlink:type="arc"/>
+    <label:label xlink:label="res_20" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[800500] Notes - List of notes</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-800500" xlink:label="loc_20" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_20" xlink:to="res_20" xlink:type="arc"/>
+    <label:label xlink:label="res_21" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[800600] Notes - List of accounting policies</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-800600" xlink:label="loc_21" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_21" xlink:to="res_21" xlink:type="arc"/>
+    <label:label xlink:label="res_22" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[880000] Notes - Additional information</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-880000" xlink:label="loc_22" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_22" xlink:to="res_22" xlink:type="arc"/>
+    <label:label xlink:label="res_23" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[800100a] Notes - Subclassifications of assets, liabilities and equities</label:label>
+    <link:loc xlink:href="rol_ias_1_2019-03-27.xsd#ias_1_2019-03-27_role-800100a" xlink:label="loc_23" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_23" xlink:to="res_23" xlink:type="arc"/>
+  </gen:link>
+</link:linkbase>

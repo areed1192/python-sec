@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+		Taxonomy: 2019-03-27 (Final)
+		********************** 
+        Copyright (c) 2019 IFRS Foundation
+        All rights reserved. Reproduction and use rights are strictly limited.
+		For more information on the IFRS Foundation's copyright and the terms and conditions of use for these files, please refer to http://go.ifrs.org/IFRSTterms.
+		The IFRS Foundation has trade marks registered around the world (Marks) including 'IAS', 'IASB', the IASB logo, 'IFRIC', 'IFRS', the IFRS logo, 'IFRS for SMEs', the IFRS for SMEs logo, the 'Hexagon Device', 'International Accounting Standards', 'International Financial Reporting Standards', 'NIIF' and 'SIC'. Further details of the IFRS Foundation's Marks are available from the IFRS Foundation on request.
+        **********************
+--><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xbrl.ifrs.org/role/ifrs/rol_ifrs_8_2019-03-27" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:rol_ifrs_8_2019-03-27="http://xbrl.ifrs.org/role/ifrs/rol_ifrs_8_2019-03-27" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:annotation>
+    <xsd:appinfo>
+      <link:roleType id="ifrs_8_2019-03-27_role-871100" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_8_2019-03-27_role-871100">
+        <link:definition>[871100] Notes - Operating segments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_8_2019-03-27_role-871100a" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_8_2019-03-27_role-871100a">
+        <link:definition>[871100a] Notes - Operating segments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_8_2019-03-27_role-871100b" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_8_2019-03-27_role-871100b">
+        <link:definition>[871100b] Notes - Operating segments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_8_2019-03-27_role-871100c" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_8_2019-03-27_role-871100c">
+        <link:definition>[871100c] Notes - Operating segments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_8_2019-03-27_role-871100d" roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_8_2019-03-27_role-871100d">
+        <link:definition>[871100d] Notes - Operating segments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+    </xsd:appinfo>
+  </xsd:annotation>
+</xsd:schema>

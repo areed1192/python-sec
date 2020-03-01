@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+		Taxonomy: 2019-03-27 (Final)
+		********************** 
+        Copyright (c) 2019 IFRS Foundation
+        All rights reserved. Reproduction and use rights are strictly limited.
+		For more information on the IFRS Foundation's copyright and the terms and conditions of use for these files, please refer to http://go.ifrs.org/IFRSTterms.
+		The IFRS Foundation has trade marks registered around the world (Marks) including 'IAS', 'IASB', the IASB logo, 'IFRIC', 'IFRS', the IFRS logo, 'IFRS for SMEs', the IFRS for SMEs logo, the 'Hexagon Device', 'International Accounting Standards', 'International Financial Reporting Standards', 'NIIF' and 'SIC'. Further details of the IFRS Foundation's Marks are available from the IFRS Foundation on request.
+        **********************
+--><link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500a" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500a" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500b" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500b" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500c" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500c" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500d" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500d" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500e" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500e" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500f" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500f" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500g" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500g" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500h" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500h" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500i" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500i" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500j" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500j" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500k" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500k" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500l" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500l" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500m" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500m" xlink:type="simple"/>
+  <link:roleRef roleURI="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500n" xlink:href="rol_ifrs_4_2019-03-27.xsd#ifrs_4_2019-03-27_role-836500n" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/all" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple"/>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfTypesOfInsuranceContractsTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfTypesOfInsuranceContractsAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_TypesOfInsuranceContractsAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InsuranceContractsMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_LifeInsuranceContractsMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeArisingFromInsuranceContracts" xlink:label="loc_6" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfTypesOfInsuranceContractsLineItems" xlink:label="loc_7" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_7" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_NonlifeInsuranceContractsMember" xlink:label="loc_8" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_8" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExpenseArisingFromInsuranceContracts" xlink:label="loc_9" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_7" xlink:to="loc_9" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500a" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfNetGrossAndReinsurersShareForAmountsArisingFromInsuranceContractsTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfNetGrossAndReinsurersShareForAmountsArisingFromInsuranceContractsAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountsArisingFromInsuranceContractsAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_NetAmountArisingFromInsuranceContractsMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_GrossAmountArisingFromInsuranceContractsMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncomeArisingFromInsuranceContracts" xlink:label="loc_6" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfNetGrossAndReinsurersShareForAmountsArisingFromInsuranceContractsLineItems" xlink:label="loc_7" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_7" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ReinsurersShareOfAmountArisingFromInsuranceContractsMember" xlink:label="loc_8" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_8" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExpenseArisingFromInsuranceContracts" xlink:label="loc_9" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_7" xlink:to="loc_9" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500b" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfFinancialAssetsToWhichOverlayApproachIsAppliedTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfFinancialAssetsToWhichOverlayApproachIsAppliedAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ClassesOfFinancialAssetsAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsToWhichOverlayApproachIsApplied" xlink:label="loc_5" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfFinancialAssetsToWhichOverlayApproachIsAppliedLineItems" xlink:label="loc_6" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_6" xlink:to="loc_5" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_6" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500c" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfEffectOfOverlayApproachReclassificationOnProfitOrLossTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfEffectOfOverlayApproachReclassificationOnProfitOrLossAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EffectOfOverlayApproachReclassificationAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InAccordanceWithIFRS9Member" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EffectOfOverlayApproachReclassificationMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ProfitLoss" xlink:label="loc_6" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfEffectOfOverlayApproachReclassificationOnProfitOrLossLineItems" xlink:label="loc_7" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_7" xlink:to="loc_6" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_7" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500d" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationAboutOverlayApproachForAssociatesTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationAboutOverlayApproachForAssociatesAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SignificantInvestmentsInAssociatesAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForAssociatesMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AssociatesMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AggregatedIndividuallyImmaterialAssociatesMember" xlink:label="loc_6" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_5" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_StatementThatInsurerIsApplyingOverlayApproach" xlink:label="loc_7" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationAboutOverlayApproachForAssociatesLineItems" xlink:label="loc_8" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfDesignatedFinancialAssetsThatAreHeldOutsideLegalEntityThatIssuesContractsWithinScopeOfIFRS4" xlink:label="loc_9" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfBasisForDesignatingFinancialAssetsForOverlayApproach" xlink:label="loc_10" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_9" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountReportedInProfitOrLossApplyingIFRS9FinancialAssetsToWhichOverlayApproachIsApplied" xlink:label="loc_11" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfAmountReclassifiedBetweenProfitOrLossAndOtherComprehensiveIncomeApplyingOverlayApproach" xlink:label="loc_12" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_12" xlink:to="loc_11" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_8" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_10" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountThatWouldHaveBeenReportedInProfitOrLossIfIAS39HadBeenAppliedFinancialAssetsToWhichOverlayApproachIsApplied" xlink:label="loc_13" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_12" xlink:to="loc_13" xlink:type="arc"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_12" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountReclassifiedFromProfitOrLossToOtherComprehensiveIncomeApplyingOverlayApproachNewlyDesignatedFinancialAssets" xlink:label="loc_14" xlink:type="locator"/>
+    <link:definitionArc order="40.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_14" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountThatWouldHaveBeenReclassifiedFromProfitOrLossToOtherComprehensiveIncomeApplyingOverlayApproachIfFinancialAssetsHadNotBeenDedesignated" xlink:label="loc_15" xlink:type="locator"/>
+    <link:definitionArc order="50.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_15" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ReclassificationAdjustmentsOnFinancialAssetsThatHaveBeenDedesignatedFromOverlayApproachNetOfTax" xlink:label="loc_16" xlink:type="locator"/>
+    <link:definitionArc order="60.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_16" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ReclassificationAdjustmentsOnFinancialAssetsThatHaveBeenDedesignatedFromOverlayApproachBeforeTax" xlink:label="loc_17" xlink:type="locator"/>
+    <link:definitionArc order="70.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_17" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfAmountReportedInProfitOrLossApplyingIFRS9FinancialAssetsToWhichOverlayApproachIsApplied" xlink:label="loc_18" xlink:type="locator"/>
+    <link:definitionArc order="80.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_18" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfAmountThatWouldHaveBeenReportedInProfitOrLossIfIAS39HadBeenAppliedFinancialAssetsToWhichOverlayApproachIsApplied" xlink:label="loc_19" xlink:type="locator"/>
+    <link:definitionArc order="90.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_19" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfAmountReclassifiedFromProfitOrLossToOtherComprehensiveIncomeApplyingOverlayApproachNewlyDesignatedFinancialAssets" xlink:label="loc_20" xlink:type="locator"/>
+    <link:definitionArc order="100.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_20" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfAmountThatWouldHaveBeenReclassifiedFromProfitOrLossToOtherComprehensiveIncomeApplyingOverlayApproachIfFinancialAssetsHadNotBeenDedesignated" xlink:label="loc_21" xlink:type="locator"/>
+    <link:definitionArc order="110.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_21" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfReclassificationAdjustmentsOnFinancialAssetsThatHaveBeenDedesignatedFromOverlayApproachNetOfTax" xlink:label="loc_22" xlink:type="locator"/>
+    <link:definitionArc order="120.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_22" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfReclassificationAdjustmentsOnFinancialAssetsThatHaveBeenDedesignatedFromOverlayApproachBeforeTax" xlink:label="loc_23" xlink:type="locator"/>
+    <link:definitionArc order="130.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_23" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500e" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfFinancialAssetsToWhichOverlayApproachIsAppliedForAssociatesTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfFinancialAssetsToWhichOverlayApproachIsAppliedForAssociatesAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SignificantInvestmentsInAssociatesAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForAssociatesMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AssociatesMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AggregatedIndividuallyImmaterialAssociatesMember" xlink:label="loc_6" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_5" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsMember" xlink:label="loc_7" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ClassesOfFinancialAssetsAxis" xlink:label="loc_8" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_8" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsToWhichOverlayApproachIsApplied" xlink:label="loc_9" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfFinancialAssetsToWhichOverlayApproachIsAppliedForAssociatesLineItems" xlink:label="loc_10" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_9" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_8" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_10" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfFinancialAssetsToWhichOverlayApproachIsApplied" xlink:label="loc_11" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_11" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500f" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfEffectOfOverlayApproachReclassificationOnProfitOrLossForAssociatesTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfEffectOfOverlayApproachReclassificationOnProfitOrLossForAssociatesAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SignificantInvestmentsInAssociatesAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForAssociatesMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AssociatesMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AggregatedIndividuallyImmaterialAssociatesMember" xlink:label="loc_6" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_5" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InAccordanceWithIFRS9Member" xlink:label="loc_7" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EffectOfOverlayApproachReclassificationAxis" xlink:label="loc_8" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_8" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EffectOfOverlayApproachReclassificationMember" xlink:label="loc_9" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_7" xlink:to="loc_9" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ProfitLoss" xlink:label="loc_10" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfEffectOfOverlayApproachReclassificationOnProfitOrLossForAssociatesLineItems" xlink:label="loc_11" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_11" xlink:to="loc_10" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_8" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_11" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod" xlink:label="loc_12" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_11" xlink:to="loc_12" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethod" xlink:label="loc_13" xlink:type="locator"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_11" xlink:to="loc_13" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethodBeforeTax" xlink:label="loc_14" xlink:type="locator"/>
+    <link:definitionArc order="40.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_11" xlink:to="loc_14" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500g" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationAboutOverlayApproachForJointVenturesTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationAboutOverlayApproachForJointVenturesAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_JointVenturesAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForJointVenturesMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_JointVenturesMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AggregatedIndividuallyImmaterialJointVenturesMember" xlink:label="loc_6" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_5" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_StatementThatInsurerIsApplyingOverlayApproach" xlink:label="loc_7" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationAboutOverlayApproachForJointVenturesLineItems" xlink:label="loc_8" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfDesignatedFinancialAssetsThatAreHeldOutsideLegalEntityThatIssuesContractsWithinScopeOfIFRS4" xlink:label="loc_9" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfBasisForDesignatingFinancialAssetsForOverlayApproach" xlink:label="loc_10" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_9" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountReportedInProfitOrLossApplyingIFRS9FinancialAssetsToWhichOverlayApproachIsApplied" xlink:label="loc_11" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfAmountReclassifiedBetweenProfitOrLossAndOtherComprehensiveIncomeApplyingOverlayApproach" xlink:label="loc_12" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_12" xlink:to="loc_11" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_8" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_10" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountThatWouldHaveBeenReportedInProfitOrLossIfIAS39HadBeenAppliedFinancialAssetsToWhichOverlayApproachIsApplied" xlink:label="loc_13" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_12" xlink:to="loc_13" xlink:type="arc"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_12" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountReclassifiedFromProfitOrLossToOtherComprehensiveIncomeApplyingOverlayApproachNewlyDesignatedFinancialAssets" xlink:label="loc_14" xlink:type="locator"/>
+    <link:definitionArc order="40.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_14" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AmountThatWouldHaveBeenReclassifiedFromProfitOrLossToOtherComprehensiveIncomeApplyingOverlayApproachIfFinancialAssetsHadNotBeenDedesignated" xlink:label="loc_15" xlink:type="locator"/>
+    <link:definitionArc order="50.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_15" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ReclassificationAdjustmentsOnFinancialAssetsThatHaveBeenDedesignatedFromOverlayApproachNetOfTax" xlink:label="loc_16" xlink:type="locator"/>
+    <link:definitionArc order="60.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_16" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ReclassificationAdjustmentsOnFinancialAssetsThatHaveBeenDedesignatedFromOverlayApproachBeforeTax" xlink:label="loc_17" xlink:type="locator"/>
+    <link:definitionArc order="70.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_17" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfAmountReportedInProfitOrLossApplyingIFRS9FinancialAssetsToWhichOverlayApproachIsApplied" xlink:label="loc_18" xlink:type="locator"/>
+    <link:definitionArc order="80.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_18" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfAmountThatWouldHaveBeenReportedInProfitOrLossIfIAS39HadBeenAppliedFinancialAssetsToWhichOverlayApproachIsApplied" xlink:label="loc_19" xlink:type="locator"/>
+    <link:definitionArc order="90.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_19" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfAmountReclassifiedFromProfitOrLossToOtherComprehensiveIncomeApplyingOverlayApproachNewlyDesignatedFinancialAssets" xlink:label="loc_20" xlink:type="locator"/>
+    <link:definitionArc order="100.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_20" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfAmountThatWouldHaveBeenReclassifiedFromProfitOrLossToOtherComprehensiveIncomeApplyingOverlayApproachIfFinancialAssetsHadNotBeenDedesignated" xlink:label="loc_21" xlink:type="locator"/>
+    <link:definitionArc order="110.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_21" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfReclassificationAdjustmentsOnFinancialAssetsThatHaveBeenDedesignatedFromOverlayApproachNetOfTax" xlink:label="loc_22" xlink:type="locator"/>
+    <link:definitionArc order="120.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_22" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfReclassificationAdjustmentsOnFinancialAssetsThatHaveBeenDedesignatedFromOverlayApproachBeforeTax" xlink:label="loc_23" xlink:type="locator"/>
+    <link:definitionArc order="130.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_23" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500h" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfFinancialAssetsToWhichOverlayApproachIsAppliedForJointVenturesTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfFinancialAssetsToWhichOverlayApproachIsAppliedForJointVenturesAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_JointVenturesAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForJointVenturesMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_JointVenturesMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AggregatedIndividuallyImmaterialJointVenturesMember" xlink:label="loc_6" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_5" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsMember" xlink:label="loc_7" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ClassesOfFinancialAssetsAxis" xlink:label="loc_8" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_8" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsToWhichOverlayApproachIsApplied" xlink:label="loc_9" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfFinancialAssetsToWhichOverlayApproachIsAppliedForJointVenturesLineItems" xlink:label="loc_10" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_9" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_8" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_10" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfFinancialAssetsToWhichOverlayApproachIsApplied" xlink:label="loc_11" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_11" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500i" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfEffectOfOverlayApproachReclassificationOnProfitOrLossForJointVenturesTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfEffectOfOverlayApproachReclassificationOnProfitOrLossForJointVenturesAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_JointVenturesAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForJointVenturesMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_JointVenturesMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AggregatedIndividuallyImmaterialJointVenturesMember" xlink:label="loc_6" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_5" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InAccordanceWithIFRS9Member" xlink:label="loc_7" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EffectOfOverlayApproachReclassificationAxis" xlink:label="loc_8" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_8" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EffectOfOverlayApproachReclassificationMember" xlink:label="loc_9" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_7" xlink:to="loc_9" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ProfitLoss" xlink:label="loc_10" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfEffectOfOverlayApproachReclassificationOnProfitOrLossForJointVenturesLineItems" xlink:label="loc_11" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_11" xlink:to="loc_10" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_8" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_11" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod" xlink:label="loc_12" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_11" xlink:to="loc_12" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethod" xlink:label="loc_13" xlink:type="locator"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_11" xlink:to="loc_13" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfOtherComprehensiveIncomeOfAssociatesAndJointVenturesAccountedForUsingEquityMethodBeforeTax" xlink:label="loc_14" xlink:type="locator"/>
+    <link:definitionArc order="40.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_11" xlink:to="loc_14" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500j" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfDetailedInformationAboutFinancialAssetsDescribedInParagraph39EaOfIFRS4Table" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfDetailedInformationAboutFinancialAssetsDescribedInParagraph39EaOfIFRS4Abstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExternalCreditGradesAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForExternalCreditGradesMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExternalCreditGradesMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForInternalCreditGradesMember" xlink:label="loc_6" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InternalCreditGradesAxis" xlink:label="loc_7" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_7" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InternalCreditGradesMember" xlink:label="loc_8" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_6" xlink:to="loc_8" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsDescribedInParagraph39EaOfIFRS4CarryingAmountApplyingIAS39" xlink:label="loc_9" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfDetailedInformationAboutFinancialAssetsDescribedInParagraph39EaOfIFRS4LineItems" xlink:label="loc_10" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_9" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_7" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_10" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500k" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationAboutTemporaryExemptionFromIFRS9ForAssociatesTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationAboutTemporaryExemptionFromIFRS9ForAssociatesAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SignificantInvestmentsInAssociatesAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForAssociatesMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AssociatesMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AggregatedIndividuallyImmaterialAssociatesMember" xlink:label="loc_6" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_5" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_StatementThatInsurerIsApplyingTemporaryExemptionFromIFRS9" xlink:label="loc_7" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationAboutTemporaryExemptionFromIFRS9ForAssociatesLineItems" xlink:label="loc_8" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfNatureOfLiabilitiesConnectedWithInsuranceThatAreNotLiabilitiesArisingFromContractsWithinScopeOfIFRS4" xlink:label="loc_9" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfHowInsurerConcludedThatItQualifiesForTemporaryExemptionFromIFRS9" xlink:label="loc_10" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_9" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsDescribedInParagraph39EaOfIFRS4ThatDoNotHaveLowCreditRiskFairValue" xlink:label="loc_11" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InformationAboutCreditRiskExposureInherentInFinancialAssetsDescribedInParagraph39EaOfIFRS4" xlink:label="loc_12" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_12" xlink:to="loc_11" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DerivativeLiabilitiesUsedToMitigateRisksArisingFromContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_13" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_LiabilitiesThatAriseBecauseInsurerIssuesOrFulfilsObligationsArisingFromContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_14" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_14" xlink:to="loc_13" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfDerivativeLiabilitiesUsedToMitigateRisksArisingFromContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_15" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfLiabilitiesThatAriseBecauseInsurerIssuesOrFulfilsObligationsArisingFromContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_16" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_16" xlink:to="loc_15" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_8" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_10" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_NonderivativeInvestmentContractLiabilitiesMeasuredAtFairValueThroughProfitOrLossApplyingIAS39" xlink:label="loc_17" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_17" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsDescribedInParagraph39EaOfIFRS4ThatDoNotHaveLowCreditRiskCarryingAmountApplyingIAS39" xlink:label="loc_18" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_12" xlink:to="loc_18" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DerivativeLiabilitiesUsedToMitigateRisksArisingFromAssetsBackingContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_19" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_14" xlink:to="loc_19" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfDerivativeLiabilitiesUsedToMitigateRisksArisingFromAssetsBackingContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_20" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_16" xlink:to="loc_20" xlink:type="arc"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_14" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_StatementThatInsurerNoLongerQualifiesToApplyTemporaryExemptionFromIFRS9" xlink:label="loc_21" xlink:type="locator"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_21" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DeferredTaxLiabilitiesOnLiabilitiesArisingFromContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_22" xlink:type="locator"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_14" xlink:to="loc_22" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfDeferredTaxLiabilitiesOnLiabilitiesArisingFromContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_23" xlink:type="locator"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_16" xlink:to="loc_23" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfHowInsurerDeterminedThatItDidNotEngageInSignificantActivityUnconnectedWithInsurance" xlink:label="loc_24" xlink:type="locator"/>
+    <link:definitionArc order="40.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_24" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DateOnWhichChangeInActivitiesOccurredThatResultedInInsurerNoLongerQualifyingToApplyTemporaryExemptionFromIFRS9" xlink:label="loc_25" xlink:type="locator"/>
+    <link:definitionArc order="40.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_25" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DebtInstrumentsIssuedThatAreIncludedInInsurersRegulatoryCapital" xlink:label="loc_26" xlink:type="locator"/>
+    <link:definitionArc order="40.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_14" xlink:to="loc_26" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfDebtInstrumentsIssuedThatAreIncludedInInsurersRegulatoryCapital" xlink:label="loc_27" xlink:type="locator"/>
+    <link:definitionArc order="40.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_16" xlink:to="loc_27" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfReasonForReassessmentWhetherInsurersActivitiesArePredominantlyConnectedWithInsurance" xlink:label="loc_28" xlink:type="locator"/>
+    <link:definitionArc order="50.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_28" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfChangeInActivitiesThatResultedInInsurerNoLongerQualifyingToApplyTemporaryExemptionFromIFRS9" xlink:label="loc_29" xlink:type="locator"/>
+    <link:definitionArc order="50.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_29" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DateOnWhichChangeInActivitiesOccurredThatPermittedInsurerToReassessWhetherItsActivitiesArePredominantlyConnectedWithInsurance" xlink:label="loc_30" xlink:type="locator"/>
+    <link:definitionArc order="60.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_30" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_QualitativeDescriptionOfEffectOnFinancialStatementsOfChangeInActivitiesThatResultedInInsurerNoLongerQualifyingToApplyTemporaryExemptionFromIFRS9" xlink:label="loc_31" xlink:type="locator"/>
+    <link:definitionArc order="60.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_31" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsDescribedInParagraph39EaOfIFRS4FairValue" xlink:label="loc_32" xlink:type="locator"/>
+    <link:definitionArc order="70.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_32" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfChangeInActivitiesThatPermittedInsurerToReassessWhetherItsActivitiesArePredominantlyConnectedWithInsurance" xlink:label="loc_33" xlink:type="locator"/>
+    <link:definitionArc order="70.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_33" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncreaseDecreaseInFairValueOfFinancialAssetsDescribedInParagraph39EaOfIFRS4" xlink:label="loc_34" xlink:type="locator"/>
+    <link:definitionArc order="80.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_34" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_QualitativeDescriptionOfEffectOnFinancialStatementsOfChangeInActivitiesThatPermittedInsurerToReassessWhetherItsActivitiesArePredominantlyConnectedWithInsurance" xlink:label="loc_35" xlink:type="locator"/>
+    <link:definitionArc order="80.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_35" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsOtherThanThoseSpecifiedInParagraph39EaOfIFRS4FairValue" xlink:label="loc_36" xlink:type="locator"/>
+    <link:definitionArc order="90.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_36" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncreaseDecreaseInFairValueOfFinancialAssetsOtherThanThoseSpecifiedInParagraph39EaOfIFRS4" xlink:label="loc_37" xlink:type="locator"/>
+    <link:definitionArc order="100.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_37" xlink:type="arc"/>
+    <link:definitionArc order="110.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_12" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InformationAboutWhereUserOfFinancialStatementsCanObtainAnyPubliclyAvailableIFRS9InformationThatIsNotProvidedInConsolidatedFinancialStatements" xlink:label="loc_38" xlink:type="locator"/>
+    <link:definitionArc order="120.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_38" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfNonderivativeInvestmentContractLiabilitiesMeasuredAtFairValueThroughProfitOrLossApplyingIAS39" xlink:label="loc_39" xlink:type="locator"/>
+    <link:definitionArc order="130.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_39" xlink:type="arc"/>
+    <link:definitionArc order="140.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_16" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfFinancialAssetsDescribedInParagraph39EaOfIFRS4FairValue" xlink:label="loc_40" xlink:type="locator"/>
+    <link:definitionArc order="150.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_40" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfIncreaseDecreaseInFairValueOfFinancialAssetsDescribedInParagraph39EaOfIFRS4" xlink:label="loc_41" xlink:type="locator"/>
+    <link:definitionArc order="160.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_41" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfFinancialAssetsOtherThanThoseSpecifiedInParagraph39EaOfIFRS4FairValue" xlink:label="loc_42" xlink:type="locator"/>
+    <link:definitionArc order="170.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_42" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfIncreaseDecreaseInFairValueOfFinancialAssetsOtherThanThoseSpecifiedInParagraph39EaOfIFRS4" xlink:label="loc_43" xlink:type="locator"/>
+    <link:definitionArc order="180.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_43" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfFinancialAssetsDescribedInParagraph39EaOfIFRS4ThatDoNotHaveLowCreditRiskFairValue" xlink:label="loc_44" xlink:type="locator"/>
+    <link:definitionArc order="190.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_44" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfFinancialAssetsDescribedInParagraph39EaOfIFRS4ThatDoNotHaveLowCreditRiskCarryingAmountApplyingIAS39" xlink:label="loc_45" xlink:type="locator"/>
+    <link:definitionArc order="200.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_45" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500l" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfDetailedInformationAboutFinancialAssetsDescribedInParagraph39EaOfIFRS4ForAssociatesTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfDetailedInformationAboutFinancialAssetsDescribedInParagraph39EaOfIFRS4ForAssociatesAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_SignificantInvestmentsInAssociatesAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForAssociatesMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AssociatesMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AggregatedIndividuallyImmaterialAssociatesMember" xlink:label="loc_6" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_5" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForExternalCreditGradesMember" xlink:label="loc_7" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExternalCreditGradesAxis" xlink:label="loc_8" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_8" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExternalCreditGradesMember" xlink:label="loc_9" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_7" xlink:to="loc_9" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForInternalCreditGradesMember" xlink:label="loc_10" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InternalCreditGradesAxis" xlink:label="loc_11" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_11" xlink:to="loc_10" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InternalCreditGradesMember" xlink:label="loc_12" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_12" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsDescribedInParagraph39EaOfIFRS4CarryingAmountApplyingIAS39" xlink:label="loc_13" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfDetailedInformationAboutFinancialAssetsDescribedInParagraph39EaOfIFRS4ForAssociatesLineItems" xlink:label="loc_14" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_14" xlink:to="loc_13" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_8" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_14" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfFinancialAssetsDescribedInParagraph39EaOfIFRS4CarryingAmountApplyingIAS39" xlink:label="loc_15" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_14" xlink:to="loc_15" xlink:type="arc"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_11" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500m" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationAboutTemporaryExemptionFromIFRS9ForJointVenturesTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationAboutTemporaryExemptionFromIFRS9ForJointVenturesAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_JointVenturesAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForJointVenturesMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_JointVenturesMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AggregatedIndividuallyImmaterialJointVenturesMember" xlink:label="loc_6" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_5" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_StatementThatInsurerIsApplyingTemporaryExemptionFromIFRS9" xlink:label="loc_7" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfInformationAboutTemporaryExemptionFromIFRS9ForJointVenturesLineItems" xlink:label="loc_8" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfNatureOfLiabilitiesConnectedWithInsuranceThatAreNotLiabilitiesArisingFromContractsWithinScopeOfIFRS4" xlink:label="loc_9" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfHowInsurerConcludedThatItQualifiesForTemporaryExemptionFromIFRS9" xlink:label="loc_10" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_9" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsDescribedInParagraph39EaOfIFRS4ThatDoNotHaveLowCreditRiskFairValue" xlink:label="loc_11" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InformationAboutCreditRiskExposureInherentInFinancialAssetsDescribedInParagraph39EaOfIFRS4" xlink:label="loc_12" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_12" xlink:to="loc_11" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DerivativeLiabilitiesUsedToMitigateRisksArisingFromContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_13" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_LiabilitiesThatAriseBecauseInsurerIssuesOrFulfilsObligationsArisingFromContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_14" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_14" xlink:to="loc_13" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfDerivativeLiabilitiesUsedToMitigateRisksArisingFromContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_15" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfLiabilitiesThatAriseBecauseInsurerIssuesOrFulfilsObligationsArisingFromContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_16" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_16" xlink:to="loc_15" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_8" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_10" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_NonderivativeInvestmentContractLiabilitiesMeasuredAtFairValueThroughProfitOrLossApplyingIAS39" xlink:label="loc_17" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_17" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsDescribedInParagraph39EaOfIFRS4ThatDoNotHaveLowCreditRiskCarryingAmountApplyingIAS39" xlink:label="loc_18" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_12" xlink:to="loc_18" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DerivativeLiabilitiesUsedToMitigateRisksArisingFromAssetsBackingContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_19" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_14" xlink:to="loc_19" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfDerivativeLiabilitiesUsedToMitigateRisksArisingFromAssetsBackingContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_20" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_16" xlink:to="loc_20" xlink:type="arc"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_14" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_StatementThatInsurerNoLongerQualifiesToApplyTemporaryExemptionFromIFRS9" xlink:label="loc_21" xlink:type="locator"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_21" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DeferredTaxLiabilitiesOnLiabilitiesArisingFromContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_22" xlink:type="locator"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_14" xlink:to="loc_22" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfDeferredTaxLiabilitiesOnLiabilitiesArisingFromContractsWithinScopeOfIFRS4AndNonderivativeInvestmentContracts" xlink:label="loc_23" xlink:type="locator"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_16" xlink:to="loc_23" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfHowInsurerDeterminedThatItDidNotEngageInSignificantActivityUnconnectedWithInsurance" xlink:label="loc_24" xlink:type="locator"/>
+    <link:definitionArc order="40.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_24" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DateOnWhichChangeInActivitiesOccurredThatResultedInInsurerNoLongerQualifyingToApplyTemporaryExemptionFromIFRS9" xlink:label="loc_25" xlink:type="locator"/>
+    <link:definitionArc order="40.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_25" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DebtInstrumentsIssuedThatAreIncludedInInsurersRegulatoryCapital" xlink:label="loc_26" xlink:type="locator"/>
+    <link:definitionArc order="40.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_14" xlink:to="loc_26" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfDebtInstrumentsIssuedThatAreIncludedInInsurersRegulatoryCapital" xlink:label="loc_27" xlink:type="locator"/>
+    <link:definitionArc order="40.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_16" xlink:to="loc_27" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DescriptionOfReasonForReassessmentWhetherInsurersActivitiesArePredominantlyConnectedWithInsurance" xlink:label="loc_28" xlink:type="locator"/>
+    <link:definitionArc order="50.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_28" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfChangeInActivitiesThatResultedInInsurerNoLongerQualifyingToApplyTemporaryExemptionFromIFRS9" xlink:label="loc_29" xlink:type="locator"/>
+    <link:definitionArc order="50.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_29" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DateOnWhichChangeInActivitiesOccurredThatPermittedInsurerToReassessWhetherItsActivitiesArePredominantlyConnectedWithInsurance" xlink:label="loc_30" xlink:type="locator"/>
+    <link:definitionArc order="60.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_30" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_QualitativeDescriptionOfEffectOnFinancialStatementsOfChangeInActivitiesThatResultedInInsurerNoLongerQualifyingToApplyTemporaryExemptionFromIFRS9" xlink:label="loc_31" xlink:type="locator"/>
+    <link:definitionArc order="60.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_31" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsDescribedInParagraph39EaOfIFRS4FairValue" xlink:label="loc_32" xlink:type="locator"/>
+    <link:definitionArc order="70.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_32" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExplanationOfChangeInActivitiesThatPermittedInsurerToReassessWhetherItsActivitiesArePredominantlyConnectedWithInsurance" xlink:label="loc_33" xlink:type="locator"/>
+    <link:definitionArc order="70.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_33" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncreaseDecreaseInFairValueOfFinancialAssetsDescribedInParagraph39EaOfIFRS4" xlink:label="loc_34" xlink:type="locator"/>
+    <link:definitionArc order="80.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_34" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_QualitativeDescriptionOfEffectOnFinancialStatementsOfChangeInActivitiesThatPermittedInsurerToReassessWhetherItsActivitiesArePredominantlyConnectedWithInsurance" xlink:label="loc_35" xlink:type="locator"/>
+    <link:definitionArc order="80.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_35" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsOtherThanThoseSpecifiedInParagraph39EaOfIFRS4FairValue" xlink:label="loc_36" xlink:type="locator"/>
+    <link:definitionArc order="90.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_36" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_IncreaseDecreaseInFairValueOfFinancialAssetsOtherThanThoseSpecifiedInParagraph39EaOfIFRS4" xlink:label="loc_37" xlink:type="locator"/>
+    <link:definitionArc order="100.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_37" xlink:type="arc"/>
+    <link:definitionArc order="110.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_12" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InformationAboutWhereUserOfFinancialStatementsCanObtainAnyPubliclyAvailableIFRS9InformationThatIsNotProvidedInConsolidatedFinancialStatements" xlink:label="loc_38" xlink:type="locator"/>
+    <link:definitionArc order="120.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_38" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfNonderivativeInvestmentContractLiabilitiesMeasuredAtFairValueThroughProfitOrLossApplyingIAS39" xlink:label="loc_39" xlink:type="locator"/>
+    <link:definitionArc order="130.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_39" xlink:type="arc"/>
+    <link:definitionArc order="140.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_16" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfFinancialAssetsDescribedInParagraph39EaOfIFRS4FairValue" xlink:label="loc_40" xlink:type="locator"/>
+    <link:definitionArc order="150.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_40" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfIncreaseDecreaseInFairValueOfFinancialAssetsDescribedInParagraph39EaOfIFRS4" xlink:label="loc_41" xlink:type="locator"/>
+    <link:definitionArc order="160.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_41" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfFinancialAssetsOtherThanThoseSpecifiedInParagraph39EaOfIFRS4FairValue" xlink:label="loc_42" xlink:type="locator"/>
+    <link:definitionArc order="170.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_42" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfIncreaseDecreaseInFairValueOfFinancialAssetsOtherThanThoseSpecifiedInParagraph39EaOfIFRS4" xlink:label="loc_43" xlink:type="locator"/>
+    <link:definitionArc order="180.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_43" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfFinancialAssetsDescribedInParagraph39EaOfIFRS4ThatDoNotHaveLowCreditRiskFairValue" xlink:label="loc_44" xlink:type="locator"/>
+    <link:definitionArc order="190.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_44" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfFinancialAssetsDescribedInParagraph39EaOfIFRS4ThatDoNotHaveLowCreditRiskCarryingAmountApplyingIAS39" xlink:label="loc_45" xlink:type="locator"/>
+    <link:definitionArc order="200.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_8" xlink:to="loc_45" xlink:type="arc"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:role="http://xbrl.ifrs.org/role/ifrs/ifrs_4_2019-03-27_role-836500n" xlink:type="extended">
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfDetailedInformationAboutFinancialAssetsDescribedInParagraph39EaOfIFRS4ForJointVenturesTable" xlink:label="loc_1" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfDetailedInformationAboutFinancialAssetsDescribedInParagraph39EaOfIFRS4ForJointVenturesAbstract" xlink:label="loc_2" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xbrldt:closed="true" xbrldt:contextElement="scenario" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="loc_2" xlink:to="loc_1" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_JointVenturesAxis" xlink:label="loc_3" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_3" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForJointVenturesMember" xlink:label="loc_4" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_3" xlink:to="loc_4" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_JointVenturesMember" xlink:label="loc_5" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_4" xlink:to="loc_5" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_AggregatedIndividuallyImmaterialJointVenturesMember" xlink:label="loc_6" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_5" xlink:to="loc_6" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForExternalCreditGradesMember" xlink:label="loc_7" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExternalCreditGradesAxis" xlink:label="loc_8" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_8" xlink:to="loc_7" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ExternalCreditGradesMember" xlink:label="loc_9" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_7" xlink:to="loc_9" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_EntitysTotalForInternalCreditGradesMember" xlink:label="loc_10" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InternalCreditGradesAxis" xlink:label="loc_11" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="loc_11" xlink:to="loc_10" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_InternalCreditGradesMember" xlink:label="loc_12" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_10" xlink:to="loc_12" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_FinancialAssetsDescribedInParagraph39EaOfIFRS4CarryingAmountApplyingIAS39" xlink:label="loc_13" xlink:type="locator"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_DisclosureOfDetailedInformationAboutFinancialAssetsDescribedInParagraph39EaOfIFRS4ForJointVenturesLineItems" xlink:label="loc_14" xlink:type="locator"/>
+    <link:definitionArc order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_14" xlink:to="loc_13" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_8" xlink:type="arc"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_2" xlink:to="loc_14" xlink:type="arc"/>
+    <link:loc xlink:href="../../full_ifrs-cor_2019-03-27.xsd#ifrs-full_ShareOfFinancialAssetsDescribedInParagraph39EaOfIFRS4CarryingAmountApplyingIAS39" xlink:label="loc_15" xlink:type="locator"/>
+    <link:definitionArc order="20.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_14" xlink:to="loc_15" xlink:type="arc"/>
+    <link:definitionArc order="30.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_1" xlink:to="loc_11" xlink:type="arc"/>
+  </link:definitionLink>
+</link:linkbase>

@@ -1,20 +1,20 @@
 # Scraping SEC XBRL Documents
 
-## What is XBRL?
+## What is XBRL
 
 XBRL stands for e**X**tensible **B**usiness **R**eporting **L**anguage and is the open international standard for digital business reporting, XBRL is managed by a global not for profit consortium called XBRL International. In a nutshell, XBRL provides a language in which reporting terms can be authoritatively defined. Those terms can then be used to uniquely represent the contents of financial statements or other kinds of compliance, performance and business reports. XBRL lets reporting information move between organisations rapidly, accurately and digitally.
 
-## XBRL in the context of US GAAP:
+## XBRL in the context of US GAAP
 
 Public companies are required to submit financial disclosures multiple times a year so that investors can understand their performance and are better able to understand/analyze the business. Accounting standards and rules define how the items, that are required to be disclosed, need to be classified and organized in financial statements and disclosure documents.
 
 The US GAAP Financial Reporting Taxonomy is a list of computer-readable tags in XBRL that allows companies to label precisely the thousands of pieces of financial data that are included in typical long-form financial statements and related footnote disclosures. The tags allow computers to automatically search for and assemble data so those data can be readily accessed and analyzed by investors, analysts, journalists, and the SEC staff.
 
-## XBRL in the context of the SEC:
+## XBRL in the context of the SEC
 
 The SEC Rule **Interactive Data to Improve Financial Reporting** requires domestic and foreign companies using US GAAP and, eventually, foreign private issuers using International Financial Reporting Standards (IFRS) to provide their financial statements in the XBRL format as an exhibit to their periodic and current reports and registration statements, as well as to transition reports needed to be filed as a result of a change in fiscal year. Filers required to comply are to be phased-in over 3 years, in 2 stages, beginning with a periodic report on Form 10-Q, Form 20-F or Form 40-F (as applicable) containing financial statements for a fiscal period ending on or after June 15, 2009.
 
-# SEC XBRL - A Technical Guide
+## SEC XBRL - A Technical Guide
 
 When the SEC defines an XBRL document, it's define by what it consist of. For the SEC, an XBRL filing document will consist of the following:
 

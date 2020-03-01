@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+		Taxonomy: 2019-03-27 (Final)
+		********************** 
+        Copyright (c) 2019 IFRS Foundation
+        All rights reserved. Reproduction and use rights are strictly limited.
+		For more information on the IFRS Foundation's copyright and the terms and conditions of use for these files, please refer to http://go.ifrs.org/IFRSTterms.
+		The IFRS Foundation has trade marks registered around the world (Marks) including 'IAS', 'IASB', the IASB logo, 'IFRIC', 'IFRS', the IFRS logo, 'IFRS for SMEs', the IFRS for SMEs logo, the 'Hexagon Device', 'International Accounting Standards', 'International Financial Reporting Standards', 'NIIF' and 'SIC'. Further details of the IFRS Foundation's Marks are available from the IFRS Foundation on request.
+        **********************
+--><link:linkbase xmlns:gen="http://xbrl.org/2008/generic" xmlns:label="http://xbrl.org/2008/label" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd http://xbrl.org/2008/label http://www.xbrl.org/2008/generic-label.xsd http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd http://www.w3.org/1999/xlink http://www.xbrl.org/2003/xlink-2003-12-31.xsd">
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:href="http://www.xbrl.org/2008/generic-link.xsd#standard-link-role" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/label" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#standard-label" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/element-label" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#element-label" xlink:type="simple"/>
+  <gen:link xlink:role="http://www.xbrl.org/2008/role/link" xlink:type="extended">
+    <label:label xlink:label="res_1" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390" xlink:label="loc_1" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_1" xlink:to="res_1" xlink:type="arc"/>
+    <label:label xlink:label="res_2" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390a] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390a" xlink:label="loc_2" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_2" xlink:to="res_2" xlink:type="arc"/>
+    <label:label xlink:label="res_3" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390b] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390b" xlink:label="loc_3" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_3" xlink:to="res_3" xlink:type="arc"/>
+    <label:label xlink:label="res_4" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390c] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390c" xlink:label="loc_4" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_4" xlink:to="res_4" xlink:type="arc"/>
+    <label:label xlink:label="res_5" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390d] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390d" xlink:label="loc_5" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_5" xlink:to="res_5" xlink:type="arc"/>
+    <label:label xlink:label="res_6" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390e] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390e" xlink:label="loc_6" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_6" xlink:to="res_6" xlink:type="arc"/>
+    <label:label xlink:label="res_7" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390f] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390f" xlink:label="loc_7" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_7" xlink:to="res_7" xlink:type="arc"/>
+    <label:label xlink:label="res_8" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390g] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390g" xlink:label="loc_8" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_8" xlink:to="res_8" xlink:type="arc"/>
+    <label:label xlink:label="res_9" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390h] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390h" xlink:label="loc_9" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_9" xlink:to="res_9" xlink:type="arc"/>
+    <label:label xlink:label="res_10" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390i] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390i" xlink:label="loc_10" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_10" xlink:to="res_10" xlink:type="arc"/>
+    <label:label xlink:label="res_11" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390j] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390j" xlink:label="loc_11" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_11" xlink:to="res_11" xlink:type="arc"/>
+    <label:label xlink:label="res_12" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390k] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390k" xlink:label="loc_12" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_12" xlink:to="res_12" xlink:type="arc"/>
+    <label:label xlink:label="res_13" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390l] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390l" xlink:label="loc_13" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_13" xlink:to="res_13" xlink:type="arc"/>
+    <label:label xlink:label="res_14" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390m] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390m" xlink:label="loc_14" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_14" xlink:to="res_14" xlink:type="arc"/>
+    <label:label xlink:label="res_15" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390n] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390n" xlink:label="loc_15" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_15" xlink:to="res_15" xlink:type="arc"/>
+    <label:label xlink:label="res_16" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390o] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390o" xlink:label="loc_16" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_16" xlink:to="res_16" xlink:type="arc"/>
+    <label:label xlink:label="res_17" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390p] Notes - Financial Instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390p" xlink:label="loc_17" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_17" xlink:to="res_17" xlink:type="arc"/>
+    <label:label xlink:label="res_18" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390q] Notes - Financial Instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390q" xlink:label="loc_18" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_18" xlink:to="res_18" xlink:type="arc"/>
+    <label:label xlink:label="res_19" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390r] Notes - Financial Instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390r" xlink:label="loc_19" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_19" xlink:to="res_19" xlink:type="arc"/>
+    <label:label xlink:label="res_20" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390s] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390s" xlink:label="loc_20" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_20" xlink:to="res_20" xlink:type="arc"/>
+    <label:label xlink:label="res_21" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390t] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390t" xlink:label="loc_21" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_21" xlink:to="res_21" xlink:type="arc"/>
+    <label:label xlink:label="res_22" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390u] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390u" xlink:label="loc_22" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_22" xlink:to="res_22" xlink:type="arc"/>
+    <label:label xlink:label="res_23" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390v] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390v" xlink:label="loc_23" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_23" xlink:to="res_23" xlink:type="arc"/>
+    <label:label xlink:label="res_24" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390w] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390w" xlink:label="loc_24" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_24" xlink:to="res_24" xlink:type="arc"/>
+    <label:label xlink:label="res_25" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390x] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390x" xlink:label="loc_25" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_25" xlink:to="res_25" xlink:type="arc"/>
+    <label:label xlink:label="res_26" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390y] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390y" xlink:label="loc_26" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_26" xlink:to="res_26" xlink:type="arc"/>
+    <label:label xlink:label="res_27" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390z] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390z" xlink:label="loc_27" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_27" xlink:to="res_27" xlink:type="arc"/>
+    <label:label xlink:label="res_28" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390za] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390za" xlink:label="loc_28" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_28" xlink:to="res_28" xlink:type="arc"/>
+    <label:label xlink:label="res_29" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390zb] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390zb" xlink:label="loc_29" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_29" xlink:to="res_29" xlink:type="arc"/>
+    <label:label xlink:label="res_30" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390zc] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390zc" xlink:label="loc_30" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_30" xlink:to="res_30" xlink:type="arc"/>
+    <label:label xlink:label="res_31" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390zd] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390zd" xlink:label="loc_31" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_31" xlink:to="res_31" xlink:type="arc"/>
+    <label:label xlink:label="res_32" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390ze] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390ze" xlink:label="loc_32" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_32" xlink:to="res_32" xlink:type="arc"/>
+    <label:label xlink:label="res_33" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390zf] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390zf" xlink:label="loc_33" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_33" xlink:to="res_33" xlink:type="arc"/>
+    <label:label xlink:label="res_34" xlink:role="http://www.xbrl.org/2008/role/label" xlink:type="resource" xml:lang="en">[822390zg] Notes - Financial instruments</label:label>
+    <link:loc xlink:href="rol_ifrs_7_2019-03-27.xsd#ifrs_7_2019-03-27_role-822390zg" xlink:label="loc_34" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="loc_34" xlink:to="res_34" xlink:type="arc"/>
+  </gen:link>
+</link:linkbase>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+		Taxonomy: 2019-03-27 (Final)
+		********************** 
+        Copyright (c) 2019 IFRS Foundation
+        All rights reserved. Reproduction and use rights are strictly limited.
+		For more information on the IFRS Foundation's copyright and the terms and conditions of use for these files, please refer to http://go.ifrs.org/IFRSTterms.
+		The IFRS Foundation has trade marks registered around the world (Marks) including 'IAS', 'IASB', the IASB logo, 'IFRIC', 'IFRS', the IFRS logo, 'IFRS for SMEs', the IFRS for SMEs logo, the 'Hexagon Device', 'International Accounting Standards', 'International Financial Reporting Standards', 'NIIF' and 'SIC'. Further details of the IFRS Foundation's Marks are available from the IFRS Foundation on request.
+        **********************
+--><link:linkbase xmlns:gen="http://xbrl.org/2008/generic" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:ref="http://www.xbrl.org/2006/ref" xmlns:reference="http://xbrl.org/2008/reference" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2006/ref http://www.xbrl.org/2006/ref-2006-02-27.xsd http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd http://xbrl.org/2008/reference http://www.xbrl.org/2008/generic-reference.xsd http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd http://www.w3.org/1999/xlink http://www.xbrl.org/2003/xlink-2003-12-31.xsd">
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:href="http://www.xbrl.org/2008/generic-link.xsd#standard-link-role" xlink:type="simple"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/reference" xlink:href="http://www.xbrl.org/2008/generic-reference.xsd#standard-reference" xlink:type="simple"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/element-reference" xlink:href="http://www.xbrl.org/2008/generic-reference.xsd#element-reference" xlink:type="simple"/>
+  <gen:link xlink:role="http://www.xbrl.org/2008/role/link" xlink:type="extended">
+    <reference:reference xlink:label="res_1" xlink:role="http://www.xbrl.org/2008/role/reference" xlink:type="resource">
+      <ref:Name>IFRS</ref:Name>
+      <ref:Number>13</ref:Number>
+      <ref:IssueDate>2019-01-01</ref:IssueDate>
+    </reference:reference>
+    <link:loc xlink:href="rol_ifrs_13_2019-03-27.xsd#ifrs_13_2019-03-27_role-823000" xlink:label="loc_1" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-reference" xlink:from="loc_1" xlink:to="res_1" xlink:type="arc"/>
+    <link:loc xlink:href="rol_ifrs_13_2019-03-27.xsd#ifrs_13_2019-03-27_role-823000a" xlink:label="loc_2" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-reference" xlink:from="loc_2" xlink:to="res_1" xlink:type="arc"/>
+    <link:loc xlink:href="rol_ifrs_13_2019-03-27.xsd#ifrs_13_2019-03-27_role-823000b" xlink:label="loc_3" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-reference" xlink:from="loc_3" xlink:to="res_1" xlink:type="arc"/>
+    <link:loc xlink:href="rol_ifrs_13_2019-03-27.xsd#ifrs_13_2019-03-27_role-823000c" xlink:label="loc_4" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-reference" xlink:from="loc_4" xlink:to="res_1" xlink:type="arc"/>
+    <link:loc xlink:href="rol_ifrs_13_2019-03-27.xsd#ifrs_13_2019-03-27_role-823000d" xlink:label="loc_5" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-reference" xlink:from="loc_5" xlink:to="res_1" xlink:type="arc"/>
+    <link:loc xlink:href="rol_ifrs_13_2019-03-27.xsd#ifrs_13_2019-03-27_role-823000e" xlink:label="loc_6" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-reference" xlink:from="loc_6" xlink:to="res_1" xlink:type="arc"/>
+    <link:loc xlink:href="rol_ifrs_13_2019-03-27.xsd#ifrs_13_2019-03-27_role-823000f" xlink:label="loc_7" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-reference" xlink:from="loc_7" xlink:to="res_1" xlink:type="arc"/>
+    <link:loc xlink:href="rol_ifrs_13_2019-03-27.xsd#ifrs_13_2019-03-27_role-823000g" xlink:label="loc_8" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-reference" xlink:from="loc_8" xlink:to="res_1" xlink:type="arc"/>
+    <link:loc xlink:href="rol_ifrs_13_2019-03-27.xsd#ifrs_13_2019-03-27_role-823000h" xlink:label="loc_9" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-reference" xlink:from="loc_9" xlink:to="res_1" xlink:type="arc"/>
+    <link:loc xlink:href="rol_ifrs_13_2019-03-27.xsd#ifrs_13_2019-03-27_role-823000i" xlink:label="loc_10" xlink:type="locator"/>
+    <gen:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-reference" xlink:from="loc_10" xlink:to="res_1" xlink:type="arc"/>
+  </gen:link>
+</link:linkbase>
