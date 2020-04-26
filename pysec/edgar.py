@@ -1,5 +1,7 @@
 import requests
+from typing import List
 import xml.etree.ElementTree as ET
+from pysec.parser import EDGARParser
 
 # https://www.sec.gov/cgi-bin/srch-edgar?text=form-type%3D%2810-q*+OR+10-k*%29&first=2020&last=2020
 
@@ -9,12 +11,13 @@ class EDGARQuery():
     def __init__(self):
 
         # base URL for the SEC EDGAR browser
-        self.endpoint = r"https://www.sec.gov/cgi-bin/browse-edgar"
+        self.sec_url = r"https://www.sec.gov"
+        self.sec_archive = r"https://www.sec.gov/Archives/edgar/data"
+        self.sec_cgi_endpoint = r"https://www.sec.gov/cgi-bin"
         self.browse_service = 'browse-edgar'
         self.search_service = 'srch-edgar'
         self.cik_lookup = 'cik_lookup'
         self.mutal_fund_search = 'series'
-
 
         # define our parameters dictionary
         self.query_dict = {
@@ -28,22 +31,202 @@ class EDGARQuery():
             'count':'100'
         }
 
-    def query_filing_type(self, filing_type: str) -> list[dict]:
-        """[summary]
+        self.parser_client = EDGARParser()
+    
+    def _parse_entry_element(self, entry: ET.ElementTree, namespace: dict) -> dict:
+        pass
+
+
+    def company_directories(self, cik: str) -> dict:
+        """Grabs all the filing directories for a company.
+        
+        Overview:
+        ----
+        Companies often file many SEC disclosures, so this endpoint
+        makes grabbing all the endpoints associated with a company
+        easy, by only requiring the CIK number.
         
         Arguments:
-            filing_type {str} -- [description]
+        ----
+        cik {str} -- The company CIK number, defined by the SEC.
         
         Returns:
-            list[dict] -- [description]
+        ----
+        dict -- A Dictionary containing the directory filings path.
+
+        Usage:
+        ----
+            >>> edgar_client = EDGARQuery()
+            >>> company_filings = edgar_client.company_directories(cik='1265107')
+            [
+                {
+                    'last-modified': '2019-07-02 12:27:42',
+                    'name': '000000000019010655',
+                    'size': '',
+                    'type': 'folder.gif',
+                    'url': 'https://www.sec.gov/Archives/edgar/data/1265107/000000000019010655/index.json'
+                },
+                {
+                    'last-modified': '2019-07-01 17:17:26',
+                    'name': '000110465919038688',
+                    'size': '',
+                    'type': 'folder.gif',
+                    'url': 'https://www.sec.gov/Archives/edgar/data/1265107/000110465919038688/index.json'
+                }
+            ]
         """
 
+        url = self.sec_archive + "/{cik_number}/index.json".format(
+            cik_number=cik
+        )
+
+        cleaned_directories = []
+        directories = requests.get(url=url).json()
+
+        for directory in directories['directory']['item']:
+
+            directory['url'] = self.sec_archive + "/{cik_number}/{directory_id}/index.json".format(
+                cik_number=cik,
+                directory_id=directory['name']
+            )
+
+            directory['filing_id'] = directory.pop('name')
+            directory['last_modified'] = directory.pop('last-modified')
+
+            cleaned_directories.append(directory)
+
+        return cleaned_directories
+
+    def company_directory(self, cik: str, filing_id: str)-> dict:
+        """Grabs all the items from a specific filing.
+        
+        Overview:
+        ----
+        The SEC organizes filings by CIK number which represent a single
+        entity. Each entity can have multiple filings, which is identified
+        by a filing ID. That filing can contain multiple items in it.
+
+        This endpoint will return all the items from a specific filing that
+        belongs to a single company.
+        
+        Arguments:
+        ----
+        cik {str} -- The company CIK number, defined by the SEC.
+
+        filing_id {str} -- The ID of filing to pull.
+        
+        Returns:
+        ----
+        dict -- A Dictionary containing the filing items.
+
+        Usage:
+        ----
+            >>> edgar_client = EDGARQuery()
+            >>> company_filings = edgar_client.company_directory(cik='1265107', filing_id='000110465919038688')
+            [
+                {
+                    'item_id': '0001104659-19-038688.txt',
+                    'last_modified': '2019-07-01 17:17:26',
+                    'size': '',
+                    'type': 'text.gif',
+                    'url': 'https://www.sec.gov/Archives/edgar/data/1265107/000110465919038688/0001104659-19-038688.txt'
+                },
+                {
+                    'item_id': 'a19-12321_2425.htm',
+                    'last_modified': '2019-07-01 17:17:26',
+                    'size': '37553',
+                    'type': 'text.gif',
+                    'url': 'https://www.sec.gov/Archives/edgar/data/1265107/000110465919038688/a19-12321_2425.htm'
+                }
+            ]
+        """
+
+        url = self.sec_archive + "/{cik_number}/{filing_number}/index.json".format(
+            cik_number=cik, 
+            filing_number=filing_id
+        )
+
+
+        cleaned_items = []
+        directory = requests.get(url=url).json()
+
+        for item in directory['directory']['item']:
+
+            item['url'] = self.sec_archive + "/{cik_number}/{directory_id}/{file_id}".format(
+                cik_number=cik,
+                directory_id=filing_id,
+                file_id=item['name']
+            )
+
+            item['item_id'] = item.pop('name')
+            item['last_modified'] = item.pop('last-modified')
+            cleaned_items.append(item)
+
+        return cleaned_items
+
+    def company_filings_by_type(self, cik: str, filing_type: str) -> List[dict]:
+        """Returns all the filings of certain type for a particular company.
+        
+        Arguments:
+        ----
+        cik {str} -- The company CIK Number.
+
+        filing_type {str} -- The filing type ID.
+        
+
+        Returns:
+        ----
+        dict -- A Dictionary containing the filing items.
+
+        Usage:
+        ----
+            >>> edgar_client = EDGARQuery()
+            >>> company_filings = edgar_client.company_directory(cik='1265107', filing_id='000110465919038688')
+            [
+                {
+                    'item_id': '0001104659-19-038688.txt',
+                    'last_modified': '2019-07-01 17:17:26',
+                    'size': '',
+                    'type': 'text.gif',
+                    'url': 'https://www.sec.gov/Archives/edgar/data/1265107/000110465919038688/0001104659-19-038688.txt'
+                },
+                {
+                    'item_id': 'a19-12321_2425.htm',
+                    'last_modified': '2019-07-01 17:17:26',
+                    'size': '37553',
+                    'type': 'text.gif',
+                    'url': 'https://www.sec.gov/Archives/edgar/data/1265107/000110465919038688/a19-12321_2425.htm'
+                }
+            ]
+        """
+
+        # define the endpoint to do filing searches.
+        url = self.sec_cgi_endpoint + "/" + self.browse_service
+
+        # Set the params
         params = {
             'action':'getcompany',
-            'type':'10-k'
+            'CIK':cik,
+            'type':filing_type,
+            'output':'atom'
         }
 
-    def companies_by_state(self, state: str) -> list[dict]:
+        # Grab the response.
+        response = requests.get(url=url, params=params)
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text)
+
+        return entries
+
+    def _grab_all(self, sec_response: requests.Response) -> str:
+        
+        raw_text = sec_response.text
+
+        pass
+
+
+    def companies_by_state(self, state: str) -> List[dict]:
 
         # define the endpoint to do filing searches.
         browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
@@ -56,7 +239,7 @@ class EDGARQuery():
             'output':'atom'
         }     
 
-    def companies_by_country(self, country: str) -> list[dict]:
+    def companies_by_country(self, country: str) -> List[dict]:
 
         # define the endpoint to do filing searches.
         browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
@@ -69,7 +252,7 @@ class EDGARQuery():
             'output':'atom'
         } 
 
-    def companies_by_sic(self, sic_code: str, state: str = None, country: str = None, after: str = None, before: str = None) -> list[dict]:
+    def companies_by_sic(self, sic_code: str, state: str = None, country: str = None, after: str = None, before: str = None) -> List[dict]:
         """Grabs all companies with a certain SIC code.
 
         Returns all companies, that fall under a particular SIC code. The information returned
@@ -245,7 +428,7 @@ class EDGARQuery():
 
         return sic_company_list
 
-    def ownership_filings_by_cik(self, cik: str, before: str = None, after: str = None) -> list[dict]:
+    def ownership_filings_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
         
         # define the endpoint to do filing searches.
         browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
@@ -261,7 +444,7 @@ class EDGARQuery():
             'dateb':before
         }
     
-    def non_ownership_filings_by_cik(self, cik: str, before: str = None, after: str = None) -> list[dict]:
+    def non_ownership_filings_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
         
         # define the endpoint to do filing searches.
         browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
@@ -277,7 +460,7 @@ class EDGARQuery():
             'dateb':before
         }
 
-    def all_filings_by_cik(self, cik: str, before: str = None, after: str = None) -> list[dict]:
+    def all_filings_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
         
         # define the endpoint to do filing searches.
         browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
@@ -293,7 +476,7 @@ class EDGARQuery():
             'dateb':before
         }
 
-    def ownership_filings_by_company_name(self, company_name: str, before: str = None, after: str = None) -> list[dict]:
+    def ownership_filings_by_company_name(self, company_name: str, before: str = None, after: str = None) -> List[dict]:
         
         # define the endpoint to do filing searches.
         browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
@@ -309,7 +492,7 @@ class EDGARQuery():
             'dateb':before
         }
     
-    def non_ownership_filings_by_company_name(self, company_name: str, before: str = None, after: str = None) -> list[dict]:
+    def non_ownership_filings_by_company_name(self, company_name: str, before: str = None, after: str = None) -> List[dict]:
         
         # define the endpoint to do filing searches.
         browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
@@ -325,7 +508,7 @@ class EDGARQuery():
             'dateb':before
         }
 
-    def all_filings_by_company_name(self, company_name: str, before: str = None, after: str = None) -> list[dict]:
+    def all_filings_by_company_name(self, company_name: str, before: str = None, after: str = None) -> List[dict]:
         
         # define the endpoint to do filing searches.
         browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
