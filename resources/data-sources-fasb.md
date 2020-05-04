@@ -2,4 +2,4 @@
 
 **US GAAP Taxonomy Directory:**
 
-http://xbrl.fasb.org/us-gaap/
+<http://xbrl.fasb.org/us-gaap/>

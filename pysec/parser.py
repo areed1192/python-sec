@@ -35,7 +35,7 @@ class EDGARParser():
         )
         self.adapter = HTTPAdapter(max_retries=self.retry_strategy)
 
-    def parse_entries(self, entries_text: str) -> List[Dict]:
+    def parse_entries(self, entries_text: str, num_of_items: int = None) -> List[Dict]:
         """Parses all the entries from an entry element list.
 
         Arguments:
@@ -59,6 +59,9 @@ class EDGARParser():
             # Check for the next page Link, if there is one.
             next_page = self._check_for_next_page(root_document=root)
 
+            if next_page:
+                current_count = int(next_page.split('&start=')[1])
+
             # Find all the entries.
             for entry in root.findall('atom:entry', namespaces=self.entries_namespace):
                 
@@ -71,10 +74,9 @@ class EDGARParser():
                 keep_going = False
             else:
                 root = self._grab_next_page(next_url=next_page)
-                
                 print('Grabbed Next URL: {url}'.format(url=next_page))
                 
-                if not root:
+                if not root or (num_of_items and num_of_items < current_count):
                     keep_going = False
 
         return entries
@@ -104,7 +106,10 @@ class EDGARParser():
         http.mount("https://", self.adapter)
 
         # Make the request.
-        entries_response = http.get(url=next_url)
+        try:
+            entries_response = http.get(url=next_url)
+        except:
+            return None
 
         # If it was successful, get the data.
         if entries_response.status_code == 200:
@@ -128,18 +133,23 @@ class EDGARParser():
         entry_element_dict = {}
         replace_tag = self.entries_namespace['atom_with_quote']
 
-        for element in entry.findall("./", namespaces=self.entries_namespace):
+        for entry in entry.findall("./", namespaces=self.entries_namespace):
 
-            name = element.tag.replace(replace_tag, '')
-            
-            if element.text:
-                entry_element_dict[name] = element.text.strip()
-            else:
-                entry_element_dict[name] = ""
+            for element in entry.iter():
 
-            if element.attrib:
-                for key, value in element.attrib.items():
-                    entry_element_dict[name + "_{}".format(key)] = value
+                name = element.tag.replace(replace_tag, '')
+                # print(name)
+                # print(element.tag)
+                # print(element.attrib)
+                
+                if element.text :
+                    entry_element_dict[name] = element.text.strip()
+                # else:
+                #     entry_element_dict[name] = ""
+
+                if element.attrib:
+                    for key, value in element.attrib.items():
+                        entry_element_dict[name + "_{}".format(key)] = value
 
         return entry_element_dict
 

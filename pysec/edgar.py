@@ -11,10 +11,10 @@ class EDGARQuery():
     def __init__(self):
 
         # base URL for the SEC EDGAR browser
-        self.sec_url = r"https://www.sec.gov"
-        self.sec_archive = r"https://www.sec.gov/Archives/edgar/data"
-        self.sec_cgi_endpoint = r"https://www.sec.gov/cgi-bin"
-        self.browse_service = 'browse-edgar'
+        self.sec_url = "https://www.sec.gov"
+        self.sec_archive = "https://www.sec.gov/Archives/edgar/data"
+        self.sec_cgi_endpoint = "https://www.sec.gov/cgi-bin"
+        self.browse_service = "https://www.sec.gov/cgi-bin/browse-edgar"
         self.search_service = 'srch-edgar'
         self.cik_lookup = 'cik_lookup'
         self.mutal_fund_search = 'series'
@@ -76,6 +76,7 @@ class EDGARQuery():
             ]
         """
 
+        # Build the URL.
         url = self.sec_archive + "/{cik_number}/index.json".format(
             cik_number=cik
         )
@@ -83,8 +84,10 @@ class EDGARQuery():
         cleaned_directories = []
         directories = requests.get(url=url).json()
 
+        # Loop through each item.
         for directory in directories['directory']['item']:
-
+            
+            # Create the URL.
             directory['url'] = self.sec_archive + "/{cik_number}/{directory_id}/index.json".format(
                 cik_number=cik,
                 directory_id=directory['name']
@@ -201,7 +204,7 @@ class EDGARQuery():
         """
 
         # define the endpoint to do filing searches.
-        url = self.sec_cgi_endpoint + "/" + self.browse_service
+        url = self.browse_service
 
         # Set the params
         params = {
@@ -225,11 +228,17 @@ class EDGARQuery():
 
         pass
 
+    def companies_by_state(self, state: str , num_of_companies: int = None) -> List[dict]:
+        """Returns all the companies that fall under a given state.
 
-    def companies_by_state(self, state: str) -> List[dict]:
+        Arguments:
+        ----
+        state {str} -- [description]
 
-        # define the endpoint to do filing searches.
-        browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
+        Returns:
+        ----
+        List[dict] -- [description]
+        """        
 
         # define the arguments of the request
         search_sic_params = {
@@ -237,12 +246,32 @@ class EDGARQuery():
             'Count':'100',
             'action':'getcompany',
             'output':'atom'
-        }     
+        }
 
-    def companies_by_country(self, country: str) -> List[dict]:
+        response = requests.get(url=self.browse_service, params=search_sic_params)
 
-        # define the endpoint to do filing searches.
-        browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text, num_of_items=num_of_companies)
+
+        return entries
+
+
+    def companies_by_country(self, country: str, num_of_companies: int = None) -> List[dict]:
+        """Grabs all the companies that fall under a particular country code.
+
+        Arguments:
+        ----
+        country {str} -- The country code.
+
+        Keyword Arguments:
+        ----
+        num_of_companies {int} -- If you would like to limit the number of results, then
+            specify the number of companies you want back. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of Entry resources.
+        """        
 
         # define the arguments of the request
         search_sic_params = {
@@ -251,6 +280,14 @@ class EDGARQuery():
             'action':'getcompany',
             'output':'atom'
         } 
+        
+        # Grab the Response.
+        response = requests.get(url=self.browse_service, params=search_sic_params)
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text, num_of_items=num_of_companies)
+
+        return entries
 
     def companies_by_sic(self, sic_code: str, state: str = None, country: str = None, after: str = None, before: str = None) -> List[dict]:
         """Grabs all companies with a certain SIC code.
@@ -264,17 +301,17 @@ class EDGARQuery():
     
         Keyword Arguments:
         ----
-            state {str} -- A filter which returns companies that are based 
-                in a certain state. (default: {None})
+        state {str} -- A filter which returns companies that are based 
+            in a certain state. (default: {None})
 
-            country {str} -- A filter which returns companies that are based
-                in a certain country (default: {None})
+        country {str} -- A filter which returns companies that are based
+            in a certain country (default: {None})
 
-            after {str} -- Returns filings after a certain date.
-                (default: {None})
-                
-            before {str} -- Returns filings before a certain date. 
-                (default: {None})
+        after {str} -- Returns filings after a certain date.
+            (default: {None})
+            
+        before {str} -- Returns filings before a certain date. 
+            (default: {None})
 
         Returns:
         ----
