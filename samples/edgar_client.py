@@ -1,4 +1,5 @@
 import pprint
+from datetime import date
 from pysec.edgar import EDGARQuery
 
 # Initalize the client.
@@ -21,7 +22,10 @@ edgar_client = EDGARQuery()
 # state_content = edgar_client.companies_by_state(state='CA', num_of_companies=120)
 # pprint.pprint(state_content[:4])
 
-# Grab all the Companies that are based in a certain Country. In the example below, "Q2" represents 'New Zealand'
-# ALEX NOTE: THIS IS BROKEN, HAVE TO MANUALLY CREATE NEXT URL SINCE DEFAULTED ONE ISN'T RIGHT.
-country_content = edgar_client.companies_by_country(country='Q2', num_of_companies=120)
-pprint.pprint(country_content[:4])
+# # Grab all the Companies that are based in a certain Country. In the example below, "Q2" represents 'New Zealand'
+# # ALEX NOTE: THIS IS BROKEN, HAVE TO MANUALLY CREATE NEXT URL SINCE DEFAULTED ONE ISN'T RIGHT.
+# country_content = edgar_client.companies_by_country(country='Q2', num_of_companies=120)
+# pprint.pprint(country_content[:4])
+
+cik_ownership_filings = edgar_client.ownership_filings_by_cik(cik='1326801', before="20200301", after="20200101")
+pprint.pprint(cik_ownership_filings)

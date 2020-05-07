@@ -1,5 +1,7 @@
 import requests
 from typing import List
+from typing import Union
+from datetime import date
 import xml.etree.ElementTree as ET
 from pysec.parser import EDGARParser
 
@@ -465,7 +467,27 @@ class EDGARQuery():
 
         return sic_company_list
 
-    def ownership_filings_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
+    def ownership_filings_by_cik(self, cik: str, before: Union[str, date] = None, after: Union[str, date] = None) -> List[dict]:
+        """Returns all the ownership filings for a given CIK number in a given date range.
+
+        Arguments:
+        ----
+        cik {str} -- The CIK number of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+        
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of ownership filings.
+        """        
         
         # define the endpoint to do filing searches.
         browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
@@ -480,6 +502,14 @@ class EDGARQuery():
             'datea':after,
             'dateb':before
         }
+
+        # Make the response.
+        response = requests.get(url=self.browse_service, params=search_params)
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text)
+
+        return entries
     
     def non_ownership_filings_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
         
