@@ -1,6 +1,7 @@
 import pprint
 from datetime import date
 from pysec.edgar import EDGARQuery
+from pysec.filing_types import FILING_TYPES
 
 # Initalize the client.
 edgar_client = EDGARQuery()
@@ -15,7 +16,7 @@ edgar_client = EDGARQuery()
 # pprint.pprint(company_items[:2])
 
 # # Grab all the filings belonging to a certain type.
-# filings_10K = edgar_client.company_filings_by_type(cik='1326801', filing_type='10-K')
+# filings_10K = edgar_client.company_filings_by_type(cik='1326801', filing_type='10-k')
 # pprint.pprint(filings_10K)
 
 # # Grab all the Companies that are based in a certain US State.

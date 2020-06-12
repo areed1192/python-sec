@@ -134,13 +134,8 @@ class EDGARParser():
         replace_tag = self.entries_namespace['atom_with_quote']
 
         for entry in entry.findall("./", namespaces=self.entries_namespace):
-
             for element in entry.iter():
-
                 name = element.tag.replace(replace_tag, '')
-                # print(name)
-                # print(element.tag)
-                # print(element.attrib)
                 
                 if element.text :
                     entry_element_dict[name] = element.text.strip()

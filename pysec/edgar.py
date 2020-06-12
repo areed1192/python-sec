@@ -12,6 +12,7 @@ from pysec.parser import EDGARParser
 class EDGARQuery():
 
     def __init__(self):
+        """Initalizes the EDGAR Client with the different endpoints used."""        
 
         # base URL for the SEC EDGAR browser
         self.sec_url = "https://www.sec.gov"
@@ -21,18 +22,6 @@ class EDGARQuery():
         self.search_service = 'srch-edgar'
         self.cik_lookup = 'cik_lookup'
         self.mutal_fund_search = 'series'
-
-        # define our parameters dictionary
-        self.query_dict = {
-            'action': 'getcompany',
-            'CIK': '1265107',
-            'type': '10-k',
-            'dateb': '20190101',
-            'owner': 'exclude',
-            'start': '',
-            'output': '',
-            'count': '100'
-        }
 
         self.parser_client = EDGARParser()
 
