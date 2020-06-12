@@ -70,7 +70,7 @@ class PyRobotSession(TestCase):
         """Test grabbing a specific filing type for a particular company."""
 
         filing_types_match = [
-            {   
+            {
                 'accession-nunber': '0001265107-20-000007',
                 'act': '34',
                 'category_label': 'form type',
@@ -99,7 +99,8 @@ class PyRobotSession(TestCase):
             }
         ]
 
-        facebook_10ks = self.edgar.company_filings_by_type(cik=self.cik_number, filing_type='10-K')
+        facebook_10ks = self.edgar.company_filings_by_type(
+            cik=self.cik_number, filing_type='10-K')
 
         self.assertIsInstance(facebook_10ks, list)
         self.assertDictEqual(facebook_10ks[0], filing_types_match[0])
@@ -131,10 +132,42 @@ class PyRobotSession(TestCase):
             }
         ]
 
-        facebook_ownership = self.edgar.ownership_filings_by_cik(cik='1326801', before="20200301", after="20200101")
+        facebook_ownership = self.edgar.ownership_filings_by_cik(
+            cik='1326801', before="20200301", after="20200101")
 
         self.assertIsInstance(facebook_ownership, list)
         self.assertDictEqual(facebook_ownership[0], match[0])
+
+    def test_grab_companies_by_sic(self):
+
+
+        match = [
+            {
+                'address': '',
+                'address_type': 'mailing',
+                'addresses': '',
+                'cik': '0001406796',
+                'company-info': '',
+                'content': '',
+                'content_type': 'text/xml',
+                'id': 'urn:tag:www.sec.gov:cik=0001406796',
+                'link_href': 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001406796&owner=exclude&hidefilings=0',
+                'link_type': 'text/html',
+                'name': 'ZYTO CORP',
+                'sic': '3841',
+                'state': 'UT',
+                'summary': '<strong>CIK:</strong> 0001406796, <strong>State:</strong> UT',
+                'summary_type': 'html',
+                'title': 'ZYTO CORP',
+                'updated': '2020-05-06T23:45:54-04:00'
+            }
+        ]
+
+        sic_content = self.edgar.companies_by_sic(sic_code="3841", num_of_companies=300)
+
+        self.assertIsInstance(sic_content, list)
+        self.assertEqual(sic_content[-1].keys(), match[0].keys())
+
 
     def tearDown(self) -> None:
         """Teardown the Robot."""
