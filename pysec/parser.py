@@ -1,12 +1,17 @@
+import re
 import xml.etree.ElementTree as ET
 import requests
 
+from pprint import pprint
 from typing import List
 from typing import Dict
 from typing import Union
 
+from html.parser import HTMLParser
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+from bs4 import BeautifulSoup
+from bs4 import Tag
 
 class EDGARParser():
 
@@ -174,6 +179,145 @@ class EDGARParser():
             return None
 
         return next_page_url
+
+    def _parse_issuer_next_button(self, button_soup: Tag) -> Union[str]:
+        """Parses the next button in the issuer report.
+
+        Args:
+        ----
+        button_soup (Tag): The raw HTML of the page with the button included.
+
+        Returns:
+        ----
+        Union[str]: The link to the next page or nothing.
+        """        
+        
+        # Grab the button.
+        buttons: Tag = button_soup.find_all(
+            name='input',
+            attrs={'type': 'button'}
+        )
+
+        # Loop through each of the buttons.
+        for button in buttons:
+
+            # If there is a next button, grab the link.
+            if 'Next' in button['value']:
+                next_page = button['onclick']
+
+                # Build the URL
+                next_page_link = next_page.replace("parent.location='","https://www.sec.gov").replace("'","")
+
+                return next_page_link
+
+    def parse_issuer_table(self, entries_text: str, num_of_items: int = None) -> List[Dict]:
+        """Parses the Issuer tables found from a query to owner distribtuion page.
+
+        Arguments:
+        ----
+        entries_text (str): The raw HTML content to be parsed.
+
+        num_of_items (int, optional): The number of items to return from the query. Defaults to None.
+
+        Returns:
+        ----
+        List[Dict]: A list of dictionaries where each dictionary contains the `ownership_report`
+            and the `ownership_transaction_report`.
+        """        
+
+        master_list = []
+        ownership_report_for_issuers = []
+
+        soup = BeautifulSoup(entries_text, 'html.parser')
+        next_page_link = self._parse_issuer_next_button(button_soup=soup)
+
+        while soup is not None:
+
+            table_rows = soup.find_all(name='tr')
+            table = soup.find_all(name='table')
+
+            issuers_table: Tag = table[4]
+            issuers_transaction_report_table: Tag = soup.find_all(name='table', attrs={'id':'transaction-report'})
+
+            issuers_table_rows = issuers_table.find_all(name='tr')
+            
+            for row in issuers_table_rows:
+
+                issuer_dict = {}
+
+                row: Tag = row
+                elements = row.text.split('\n')
+                links = row.find_all('a', href=True)
+
+                issuer_dict = {
+                    'issuer': elements[0],
+                    'filings': elements[1],
+                    'transaction_date': elements[2],
+                    'type_of_owner': elements[3]
+                }
+
+                ownership_report_for_issuers.append(issuer_dict)
+
+                for link in links:
+                    new_link = 'https://www.sec.gov' + link['href']
+
+                    if 'own-disp' in new_link:
+                        issuer_dict['ownership_link'] = new_link
+                    elif 'browse-edgar' in new_link:
+                        issuer_dict['browse_company_link'] = new_link       
+            
+            master_dict = {}
+            master_dict['ownership_report'] = ownership_report_for_issuers
+            master_dict['ownership_transaction_report'] = self.parse_transaction_report(table=issuers_transaction_report_table[0])
+            master_list.append(master_dict)
+
+            print(next_page_link)
+            
+            if next_page_link:
+                entries_text = requests.get(next_page_link).content
+                soup = BeautifulSoup(entries_text, 'html.parser')
+                next_page_link = self._parse_issuer_next_button(button_soup=soup)
+            else:
+                soup = None
+
+        return master_list
+
+    def parse_transaction_report(self, table: Tag) -> List[Dict]:
+        """Parse the transaction table report.
+
+        Args:
+        ----
+        table (Tag): The raw HTML table.
+
+        Returns:
+        ----
+        List[Dict]: A list of ownership transaction reports.
+        """        
+
+        master_list = []
+        
+        all_rows = table.find_all('tr')
+        first_row = all_rows[0]
+        all_other_rows = all_rows[1:]
+
+        headers = [header.replace(' ', '_').lower() for header in first_row.strings if header != '\n']
+
+        headers.insert(5, 'link')
+
+        for row in all_other_rows:
+
+            link = row.find_all('a')[0]
+            href = 'https://www.sec.gov' + link['href']
+
+            values = [value.strip() for value in row.strings if value != '\n']
+            values.insert(5, href)
+
+            master_list.append(dict(zip(headers, values)))
+            # print([header.strip() for header in row.strings if header != '\n'])
+
+        return master_list
+
+        
 
         
 

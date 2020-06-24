@@ -36,34 +36,38 @@ edgar_client = EDGARQuery()
 # sic_companies = edgar_client.companies_by_sic(sic_code="3841", num_of_companies=300)
 # pprint.pprint(sic_companies)
 
-# Grab all non-ownership filigns by company name.
-sic_companies = edgar_client.non_ownership_filings_by_company_name(
-    company_name="facebook",
-    before="20200301",
-    after="20200101"
-)
-pprint.pprint(sic_companies)
+# # Grab all non-ownership filigns by company name.
+# sic_companies = edgar_client.non_ownership_filings_by_company_name(
+#     company_name="facebook",
+#     before="20200301",
+#     after="20200101"
+# )
+# pprint.pprint(sic_companies)
 
-# Grab all ownership filigns by company name.
-sic_companies = edgar_client.ownership_filings_by_company_name(
-    company_name="facebook",
-    before="20200301",
-    after="20200101"
-)
-pprint.pprint(sic_companies)
+# # Grab all ownership filigns by company name.
+# sic_companies = edgar_client.ownership_filings_by_company_name(
+#     company_name="facebook",
+#     before="20200301",
+#     after="20200101"
+# )
+# pprint.pprint(sic_companies)
 
-# Grab all non-ownership filigns by CIK.
-sic_companies = edgar_client.non_ownership_filings_by_cik(
-    cik='1326801',
-    before="20200301",
-    after="20200101"
-)
-pprint.pprint(sic_companies)
+# # Grab all non-ownership filigns by CIK.
+# sic_companies = edgar_client.non_ownership_filings_by_cik(
+#     cik='1326801',
+#     before="20200301",
+#     after="20200101"
+# )
+# pprint.pprint(sic_companies)
 
-# Grab all ownership filigns by CIK.
-sic_companies = edgar_client.ownership_filings_by_cik(
-    cik='1326801',
-    before="20200301",
-    after="20200101"
-)
-pprint.pprint(sic_companies)
+# # Grab all ownership filigns by CIK.
+# sic_companies = edgar_client.ownership_filings_by_cik(
+#     cik='1326801',
+#     before="20200301",
+#     after="20200101"
+# )
+# pprint.pprint(sic_companies)
+
+# Grab all the issuers.
+issuers_table = edgar_client.get_issuers_by_cik(cik='0001084869')
+pprint.pprint(issuers_table)

@@ -19,6 +19,7 @@ class EDGARQuery():
         self.sec_archive = "https://www.sec.gov/Archives/edgar/data"
         self.sec_cgi_endpoint = "https://www.sec.gov/cgi-bin"
         self.browse_service = "https://www.sec.gov/cgi-bin/browse-edgar"
+        self.issuer_service = "https://www.sec.gov/cgi-bin/own-disp"
         self.search_service = 'srch-edgar'
         self.cik_lookup = 'cik_lookup'
         self.mutal_fund_search = 'series'
@@ -162,7 +163,6 @@ class EDGARQuery():
         cik {str} -- The company CIK Number.
 
         filing_type {str} -- The filing type ID.
-
 
         Returns:
         ----
@@ -614,5 +614,35 @@ class EDGARQuery():
 
         # Parse the entries.
         entries = self.parser_client.parse_entries(entries_text=response.text)
+
+        return entries
+    
+    def get_issuers_by_cik(self, cik: str) -> List[dict]:
+        """Returns all the issuers for a given CIK number.
+
+        Arguments:
+        ----
+        cik {str} -- The CIK number of the company to be queried.
+
+        Returns:
+        ----
+        List[dict] -- A list of Issuer documents.
+        """
+
+        # define the endpoint to do filing searches.
+        browse_edgar = r"https://www.sec.gov/cgi-bin/own-disp"
+
+        # define the arguments of the request
+        search_params = {
+            'count': '100',
+            'CIK':cik,
+            'action': 'getissuer'
+        }
+
+        # Make the response.
+        response = requests.get(url=self.issuer_service, params=search_params)
+
+        # Parse the entries.
+        entries = self.parser_client.parse_issuer_table(entries_text=response.text)
 
         return entries
