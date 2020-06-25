@@ -17,10 +17,13 @@ class EDGARQuery():
         # base URL for the SEC EDGAR browser
         self.sec_url = "https://www.sec.gov"
         self.sec_archive = "https://www.sec.gov/Archives/edgar/data"
-        self.sec_cgi_endpoint = "https://www.sec.gov/cgi-bin"
+
         self.browse_service = "https://www.sec.gov/cgi-bin/browse-edgar"
         self.issuer_service = "https://www.sec.gov/cgi-bin/own-disp"
-        self.search_service = 'srch-edgar'
+        self.search_service = "https://www.sec.gov/cgi-bin/srch-edgar"
+        self.series_service = "https://www.sec.gov/cgi-bin/series"
+
+        self.sec_cgi_endpoint = "https://www.sec.gov/cgi-bin"
         self.cik_lookup = 'cik_lookup'
         self.mutal_fund_search = 'series'
 
@@ -190,9 +193,6 @@ class EDGARQuery():
             ]
         """
 
-        # define the endpoint to do filing searches.
-        url = self.browse_service
-
         # Set the params
         params = {
             'action': 'getcompany',
@@ -202,7 +202,10 @@ class EDGARQuery():
         }
 
         # Grab the response.
-        response = requests.get(url=url, params=params)
+        response = requests.get(
+            url=self.browse_service,
+            params=params
+        )
 
         # Parse the entries.
         entries = self.parser_client.parse_entries(entries_text=response.text)
@@ -328,8 +331,6 @@ class EDGARQuery():
                 }
             ]
         """
-        # define the endpoint to do filing searches.
-        browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
 
         # define the arguments of the request
         search_sic_params = {
@@ -373,9 +374,6 @@ class EDGARQuery():
         List[dict] -- A list of ownership filings.
         """
 
-        # define the endpoint to do filing searches.
-        browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
-
         # define the arguments of the request
         search_params = {
             'CIK': cik,
@@ -388,7 +386,10 @@ class EDGARQuery():
         }
 
         # Make the response.
-        response = requests.get(url=self.browse_service, params=search_params)
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
 
         # Parse the entries.
         entries = self.parser_client.parse_entries(entries_text=response.text)
@@ -417,9 +418,6 @@ class EDGARQuery():
         List[dict] -- A list of ownership filings.
         """
 
-        # define the endpoint to do filing searches.
-        browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
-
         # define the arguments of the request
         search_params = {
             'CIK': cik,
@@ -432,7 +430,10 @@ class EDGARQuery():
         }
 
         # Make the response.
-        response = requests.get(url=self.browse_service, params=search_params)
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
 
         # Parse the entries.
         entries = self.parser_client.parse_entries(entries_text=response.text)
@@ -461,9 +462,6 @@ class EDGARQuery():
         List[dict] -- A list of ownership filings.
         """
 
-        # define the endpoint to do filing searches.
-        browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
-
         # define the arguments of the request
         search_params = {
             'CIK': cik,
@@ -476,7 +474,10 @@ class EDGARQuery():
         }
 
         # Make the response.
-        response = requests.get(url=self.browse_service, params=search_params)
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
 
         # Parse the entries.
         entries = self.parser_client.parse_entries(entries_text=response.text)
@@ -505,9 +506,6 @@ class EDGARQuery():
         List[dict] -- A list of ownership filings.
         """
 
-        # define the endpoint to do filing searches.
-        browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
-
         # define the arguments of the request
         search_params = {
             'company': company_name,
@@ -520,7 +518,10 @@ class EDGARQuery():
         }
 
         # Make the response.
-        response = requests.get(url=self.browse_service, params=search_params)
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
 
         # Parse the entries.
         entries = self.parser_client.parse_entries(entries_text=response.text)
@@ -549,9 +550,6 @@ class EDGARQuery():
         List[dict] -- A list of ownership filings.
         """
 
-        # define the endpoint to do filing searches.
-        browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
-
         # define the arguments of the request
         search_params = {
             'company': company_name,
@@ -564,9 +562,10 @@ class EDGARQuery():
         }
 
         # Make the response.
-        response = requests.get(url=self.browse_service, params=search_params)
-
-        print(response.url)
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
 
         # Parse the entries.
         entries = self.parser_client.parse_entries(entries_text=response.text)
@@ -595,9 +594,6 @@ class EDGARQuery():
         List[dict] -- A list of ownership filings.
         """
 
-        # define the endpoint to do filing searches.
-        browse_edgar = r"https://www.sec.gov/cgi-bin/browse-edgar"
-
         # define the arguments of the request
         search_params = {
             'company': company_name,
@@ -610,7 +606,10 @@ class EDGARQuery():
         }
 
         # Make the response.
-        response = requests.get(url=self.browse_service, params=search_params)
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
 
         # Parse the entries.
         entries = self.parser_client.parse_entries(entries_text=response.text)
@@ -629,9 +628,6 @@ class EDGARQuery():
         List[dict] -- A list of Issuer documents.
         """
 
-        # define the endpoint to do filing searches.
-        browse_edgar = r"https://www.sec.gov/cgi-bin/own-disp"
-
         # define the arguments of the request
         search_params = {
             'count': '100',
@@ -640,9 +636,362 @@ class EDGARQuery():
         }
 
         # Make the response.
-        response = requests.get(url=self.issuer_service, params=search_params)
+        response = requests.get(
+            url=self.issuer_service,
+            params=search_params
+        )
 
         # Parse the entries.
         entries = self.parser_client.parse_issuer_table(entries_text=response.text)
+
+        return entries
+
+    def get_mutual_funds_by_name(self, company_name: str, before: str = None, after: str = None) -> List[dict]:
+        """Returns all mutual funds for a given name in a given date range.
+
+        Arguments:
+        ----
+        company_name {str} -- The name of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of mutual funds.
+        """
+
+        # define the arguments of the request
+        search_params = {
+            'company': company_name,
+            'Count': '100',
+            'myowner': 'include',
+            'action': 'getcompany',
+            'type': '485',
+            'output': 'atom',
+            'datea': after,
+            'dateb': before
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text)
+
+        return entries
+
+    def get_mutual_funds_prospectus_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
+        """Returns all the filings (ownership and non-ownership) for a given company in a given date range.
+
+        Arguments:
+        ----
+        cik {str} -- The CIK number of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of mutual fund prospectus.
+        """
+
+        # define the arguments of the request
+        search_params = {
+            'CIK': cik,
+            'Count': '100',
+            'myowner': 'include',
+            'action': 'getcompany',
+            'type': '485',
+            'hidefilings': '0',
+            'output': 'atom',
+            'datea': after,
+            'dateb': before
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text)
+
+        return entries
+
+    def get_mutual_funds_proxy_records_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
+        """Returns all the Mutual Fund Proxy records for a given CIK number.
+
+        Arguments:
+        ----
+        cik {str} -- The CIK number of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of mutual fund prospectus.
+        """
+
+        # define the arguments of the request
+        search_params = {
+            'CIK': cik,
+            'Count': '100',
+            'myowner': 'include',
+            'action': 'getcompany',
+            'type': 'N-PX',
+            'hidefilings': '0',
+            'output': 'atom',
+            'datea': after,
+            'dateb': before
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text)
+
+        return entries
+
+    def get_mutual_funds_shareholder_reports_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
+        """Returns all the Mutual Fund Proxy Shareholder Reports for a given CIK number.
+
+        Arguments:
+        ----
+        cik {str} -- The CIK number of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of mutual fund prospectus.
+        """
+
+        # define the arguments of the request
+        search_params = {
+            'CIK': cik,
+            'Count': '100',
+            'myowner': 'include',
+            'action': 'getcompany',
+            'type': 'N-CSR',
+            'hidefilings': '0',
+            'output': 'atom',
+            'datea': after,
+            'dateb': before
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text)
+
+        return entries
+
+    def get_mutual_funds_statutory_prospectus_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
+        """Returns all the Mutual Fund Statutory Prospectus for a given CIK number.
+
+        Arguments:
+        ----
+        cik {str} -- The CIK number of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of mutual fund prospectus.
+        """
+
+        # define the arguments of the request
+        search_params = {
+            'CIK': cik,
+            'Count': '100',
+            'myowner': 'include',
+            'action': 'getcompany',
+            'type': '485',
+            'hidefilings': '0',
+            'output': 'atom',
+            'datea': after,
+            'dateb': before
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text)
+
+        return entries
+
+    def get_mutual_funds_summary_prospectus_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
+        """Returns all the Mutual Fund Summary Prospectus for a given CIK number.
+
+        Arguments:
+        ----
+        cik {str} -- The CIK number of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of mutual fund prospectus.
+        """
+
+        # define the arguments of the request
+        search_params = {
+            'CIK': cik,
+            'Count': '100',
+            'myowner': 'include',
+            'action': 'getcompany',
+            'type': '497K',
+            'hidefilings': '0',
+            'output': 'atom',
+            'datea': after,
+            'dateb': before
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text)
+
+        return entries
+
+    def get_variable_insurance_products_by_name(self, product_name: str) -> List[dict]:
+        """Returns all the variable insurance products defined by the given name.
+
+        Arguments:
+        ----
+        product_name {str} -- Variable insurance products.
+
+        Returns:
+        ----
+        List[dict] -- A list of mutual funds.
+        """
+
+        # define the arguments of the request
+        search_params = {
+            'company': product_name,
+            'sc': 'companyseries'
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.series_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_variable_products_company_table(product_table_page=response.text)
+
+        return entries
+
+    def get_variable_insurance_products_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
+        """Returns all the filings (ownership and non-ownership) for a given company in a given date range.
+
+        Arguments:
+        ----
+        cik {str} -- The CIK number of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of mutual fund prospectus.
+        """
+
+        # define the arguments of the request
+        search_params = {
+            'CIK': cik,
+            'Count': '100',
+            'myowner': 'include',
+            'action': 'getcompany',
+            'type': '485',
+            'hidefilings': '0',
+            'output': 'atom',
+            'datea': after,
+            'dateb': before
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.series_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text)
 
         return entries

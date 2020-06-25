@@ -68,6 +68,34 @@ edgar_client = EDGARQuery()
 # )
 # pprint.pprint(sic_companies)
 
-# Grab all the issuers.
-issuers_table = edgar_client.get_issuers_by_cik(cik='0001084869')
-pprint.pprint(issuers_table)
+# # Grab all the issuers.
+# issuers_table = edgar_client.get_issuers_by_cik(cik='0001084869')
+# pprint.pprint(issuers_table)
+
+# # Grab all the Mutual Funds by name.
+# mutual_funds_name = edgar_client.get_mutual_funds_by_name(company_name='Goldman Sachs')
+# pprint.pprint(mutual_funds_name)
+
+# # Grab all the Mutual Funds Prospectus by CIK.
+# mutual_funds_prospectus = edgar_client.get_mutual_funds_prospectus_by_cik(cik='0000860118')
+# pprint.pprint(mutual_funds_prospectus)
+
+# Grab all the Mutual Funds Proxy Records
+mutual_funds_proxy_records = edgar_client.get_mutual_funds_proxy_records_by_cik(cik='0001039001')
+pprint.pprint(mutual_funds_proxy_records)
+
+# Grab all the Mutual Funds Shareholder Reports
+mutual_funds_shareholder_reports = edgar_client.get_mutual_funds_shareholder_reports_by_cik(cik='0001039001')
+pprint.pprint(mutual_funds_shareholder_reports)
+
+# Grab all the Mutual Funds Statutory Prospectus
+mutual_funds_statutory_prospectus = edgar_client.get_mutual_funds_statutory_prospectus_by_cik(cik='0001039001')
+pprint.pprint(mutual_funds_statutory_prospectus)
+
+# Grab all the Mutual Funds Summary Prospectus
+mutual_funds_summary_prospectus = edgar_client.get_mutual_funds_summary_prospectus_by_cik(cik='0001039001')
+pprint.pprint(mutual_funds_summary_prospectus)
+
+# # Grab Variable Products, by Name.
+# variable_products = edgar_client.get_variable_insurance_products_by_name(product_name='Goldman Sachs')
+# pprint.pprint(variable_products)

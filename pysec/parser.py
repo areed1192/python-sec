@@ -238,7 +238,6 @@ class EDGARParser():
 
             issuers_table: Tag = table[4]
             issuers_transaction_report_table: Tag = soup.find_all(name='table', attrs={'id':'transaction-report'})
-
             issuers_table_rows = issuers_table.find_all(name='tr')
             
             for row in issuers_table_rows:
@@ -268,10 +267,13 @@ class EDGARParser():
             
             master_dict = {}
             master_dict['ownership_report'] = ownership_report_for_issuers
-            master_dict['ownership_transaction_report'] = self.parse_transaction_report(table=issuers_transaction_report_table[0])
+            master_dict['ownership_transaction_report'] = self.parse_transaction_report(
+                table=issuers_transaction_report_table[0]
+            )
+
             master_list.append(master_dict)
 
-            print(next_page_link)
+            print("Pulling URL: {url}".format(url=next_page_link))
             
             if next_page_link:
                 entries_text = requests.get(next_page_link).content
@@ -285,7 +287,7 @@ class EDGARParser():
     def parse_transaction_report(self, table: Tag) -> List[Dict]:
         """Parse the transaction table report.
 
-        Args:
+        Arguments:
         ----
         table (Tag): The raw HTML table.
 
@@ -317,7 +319,152 @@ class EDGARParser():
 
         return master_list
 
-        
+    def _check_center_tag(self, product_table_soup: Tag) -> Union[List[str]]:
+        """Grabs all the links that are in the Center tag of the Product Page.
 
+        Arguments:
+        ----
+        product_table_soup (Tag): The product page HTML that has been parsed.
+
+        Returns:
+        ----
+        Union[List[str]]: A list of URL links to the other pages.
+        """
+
+        links = []
+
+        # Find the <center> tag.
+        center_tag: Tag = product_table_soup.find(name='center')
+
+        # Grab the <A> tags.
+        center_tag_hrefs = center_tag.find_all('a', href=True)
+
+        # We need to clean up the links, cause they're broken.
+        for href in center_tag_hrefs:
+
+            # Split by the ampersand.
+            split_href: list = href['href'].split('&')
+
+            # Remove the CIK parameters.
+            split_href.pop(1)
+
+            # and add a clean one.
+            split_href.insert(1, 'CIK=')
+
+            # Create a new URL.
+            links.append('https://www.sec.gov' + '&'.join(split_href))
+
+        # Don't care about the last one, just a duplicate.
+        return links[:-1]
+    
+    def parse_variable_products_company_table(self, product_table_page: str) -> List[Dict]:
+        """Parses the Variable Product page of all the different products and companies.
+
+        Arguments:
+        ----
+        product_table_page (str): The raw HTML of the Product query result page.
+
+        Returns:
+        ----
+        List[Dict]: A list of variable products.
+        """
+        # Parse the Page.
+        product_page_soup = BeautifulSoup(product_table_page, 'html.parser')
+
+        # Check for the other links.
+        href_links = self._check_center_tag(product_table_soup=product_page_soup)
+
+        # Parse the table.
+        product_list_all = self._parse_variable_product_page(product_page_soup=product_page_soup)
+
+        # Loop through all the pages, and grab those entries.
+        for link in href_links:
+            product_page_soup = BeautifulSoup(requests.get(url=link).text, 'html.parser')
+            product_list = self._parse_variable_product_page(product_page_soup=product_page_soup)
+            product_list_all = product_list_all + product_list
+
+            print("Pulling URL: {url}".format(url=link))
+            print("Total Entries Scraped: {quant}".format(quant=len(product_list_all)))
+
+        return product_list_all
+
+    def _parse_variable_product_page(self, product_page_soup: Tag) -> List[Dict]:
+        """This parses the actual table. It will grab the table with the entires and parse each row.
+
+        Arguments:
+        ----
+        product_page_soup (Tag): The parsed page with product tables.
+
+        Returns:
+        ----
+        List[Dict]: A list of variable products.
+        """        
+
+        # Grab all the Summary Tables.
+        summary_table = product_page_soup.find_all(name='table', attrs={'summary':'.'})
+
+        master_list = []
         
+        # Loop through each table.
+        for table in summary_table:
+
+            table: Tag = table
+
+            # Define a matching table.
+            criteria_1 = len(table.attrs) == 1
+            criteria_2 = table.attrs['summary'] == '.'
+            criteria_3 = len(table.find_all('input')) == 0
+
+            if criteria_1 and criteria_2 and criteria_3:
+
+                # Grab all the Rows.
+                table_rows: List[Tag] = table.find_all('tr', attrs={'valign':'top'})
+                
+                # Loop through each Row.
+                for row in table_rows:
+                    
+                    # Grab Row links
+                    row_links = [row_link['href'] for row_link in row.find_all('a', href=True)]
+                    
+                    # Grab the Strings, with text and filter our line breaks.
+                    values = [string for string in row.strings if string != '\n']
+
+                    if values:
+
+                        # Create the dictionary & store the values.
+                        row_dict = {}
+                        product_id: str = values[0]
+                        product_name: str = values[1]
+
+                        row_dict['id'] = product_id
+                        row_dict['name'] = product_name
+                        
+                        # Define the product ID based on the first Character.
+                        if product_id.startswith('S'):
+                            row_dict['id_type'] = 'Series'
+                        elif product_id.startswith('C'):
+                            row_dict['id_type'] = 'Contract'
+                        else:
+                            row_dict['id_type'] = 'CIK'
+                        
+                        # Set the Ticker symbol.
+                        try:
+                            row_dict['ticker_symbol'] = values[2]
+                        except:
+                            row_dict['ticker_symbol'] = "null"
+
+                        for link in row_links:
+
+                            if '&scd' in link:
+                                row_dict['series_link'] = 'https://www.sec.gov' + link
+                            elif 'getcompany' in link and row_dict['id_type'] == 'Contract':
+                                row_dict['contract_id_link'] = 'https://www.sec.gov' + link
+                            elif 'getcompany' in link and row_dict['id_type'] == 'Series':
+                                row_dict['series_id_link'] = 'https://www.sec.gov' + link
+                            else:
+                                row_dict['cik_id_link'] = 'https://www.sec.gov' + link
+
+                        master_list.append(row_dict)
+
+        return master_list
 
