@@ -6,6 +6,10 @@ from pysec.filing_types import FILING_TYPES
 # Initalize the client.
 edgar_client = EDGARQuery()
 
+# Grab the Quarterly Archive Indexes.
+quarterly_archives = edgar_client.get_quarterly_indexes()
+pprint.pprint(quarterly_archives)
+
 # # Grab all the directories belonging to a specific CIK number.
 # # In this case the CIK number `1326801` is Facebook.
 # company_filings = edgar_client.company_directories(cik='1326801')
@@ -80,22 +84,30 @@ edgar_client = EDGARQuery()
 # mutual_funds_prospectus = edgar_client.get_mutual_funds_prospectus_by_cik(cik='0000860118')
 # pprint.pprint(mutual_funds_prospectus)
 
-# Grab all the Mutual Funds Proxy Records
-mutual_funds_proxy_records = edgar_client.get_mutual_funds_proxy_records_by_cik(cik='0001039001')
-pprint.pprint(mutual_funds_proxy_records)
+# # Grab all the Mutual Funds Proxy Records
+# mutual_funds_proxy_records = edgar_client.get_mutual_funds_proxy_records_by_cik(cik='0001039001')
+# pprint.pprint(mutual_funds_proxy_records)
 
-# Grab all the Mutual Funds Shareholder Reports
-mutual_funds_shareholder_reports = edgar_client.get_mutual_funds_shareholder_reports_by_cik(cik='0001039001')
-pprint.pprint(mutual_funds_shareholder_reports)
+# # Grab all the Mutual Funds Shareholder Reports
+# mutual_funds_shareholder_reports = edgar_client.get_mutual_funds_shareholder_reports_by_cik(cik='0001039001')
+# pprint.pprint(mutual_funds_shareholder_reports)
 
-# Grab all the Mutual Funds Statutory Prospectus
-mutual_funds_statutory_prospectus = edgar_client.get_mutual_funds_statutory_prospectus_by_cik(cik='0001039001')
-pprint.pprint(mutual_funds_statutory_prospectus)
+# # Grab all the Mutual Funds Statutory Prospectus
+# mutual_funds_statutory_prospectus = edgar_client.get_mutual_funds_statutory_prospectus_by_cik(cik='0001039001')
+# pprint.pprint(mutual_funds_statutory_prospectus)
 
-# Grab all the Mutual Funds Summary Prospectus
-mutual_funds_summary_prospectus = edgar_client.get_mutual_funds_summary_prospectus_by_cik(cik='0001039001')
-pprint.pprint(mutual_funds_summary_prospectus)
+# # Grab all the Mutual Funds Summary Prospectus
+# mutual_funds_summary_prospectus = edgar_client.get_mutual_funds_summary_prospectus_by_cik(cik='0001039001')
+# pprint.pprint(mutual_funds_summary_prospectus)
+
+# # Grab all the Mutual Funds Effectiveness Notices
+# mutual_funds_effectiveness_notices = edgar_client.get_mutual_funds_effectiveness_notices_by_cik(cik='0001039001')
+# pprint.pprint(mutual_funds_effectiveness_notices)
 
 # # Grab Variable Products, by Name.
 # variable_products = edgar_client.get_variable_insurance_products_by_name(product_name='Goldman Sachs')
 # pprint.pprint(variable_products)
+
+# # Grab current event filings.
+# current_event_filings = edgar_client.get_current_event_filings(days_prior=5, form='10-k-annual')
+# pprint.pprint(current_event_filings)

@@ -16,12 +16,13 @@ class EDGARQuery():
 
         # base URL for the SEC EDGAR browser
         self.sec_url = "https://www.sec.gov"
-        self.sec_archive = "https://www.sec.gov/Archives/edgar/data"
 
+        self.archive_service = "https://www.sec.gov/Archives/edgar"
         self.browse_service = "https://www.sec.gov/cgi-bin/browse-edgar"
         self.issuer_service = "https://www.sec.gov/cgi-bin/own-disp"
         self.search_service = "https://www.sec.gov/cgi-bin/srch-edgar"
         self.series_service = "https://www.sec.gov/cgi-bin/series"
+        self.current_service = "https://www.sec.gov/cgi-bin/current"
 
         self.sec_cgi_endpoint = "https://www.sec.gov/cgi-bin"
         self.cik_lookup = 'cik_lookup'
@@ -69,7 +70,7 @@ class EDGARQuery():
         """
 
         # Build the URL.
-        url = self.sec_archive + "/{cik_number}/index.json".format(
+        url = self.archive_service + "/data/{cik_number}/index.json".format(
             cik_number=cik
         )
 
@@ -80,7 +81,7 @@ class EDGARQuery():
         for directory in directories['directory']['item']:
 
             # Create the URL.
-            directory['url'] = self.sec_archive + "/{cik_number}/{directory_id}/index.json".format(
+            directory['url'] = self.archive_service + "/data/{cik_number}/{directory_id}/index.json".format(
                 cik_number=cik,
                 directory_id=directory['name']
             )
@@ -136,7 +137,7 @@ class EDGARQuery():
             ]
         """
 
-        url = self.sec_archive + "/{cik_number}/{filing_number}/index.json".format(
+        url = self.archive_service + "/data/{cik_number}/{filing_number}/index.json".format(
             cik_number=cik,
             filing_number=filing_id
         )
@@ -146,7 +147,7 @@ class EDGARQuery():
 
         for item in directory['directory']['item']:
 
-            item['url'] = self.sec_archive + "/{cik_number}/{directory_id}/{file_id}".format(
+            item['url'] = self.archive_service + "/data/{cik_number}/{directory_id}/{file_id}".format(
                 cik_number=cik,
                 directory_id=filing_id,
                 file_id=item['name']
@@ -921,6 +922,51 @@ class EDGARQuery():
 
         return entries
 
+    def get_mutual_funds_effectiveness_notices_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
+        """Returns all the Mutual Fund Summary Prospectus for a given CIK number.
+
+        Arguments:
+        ----
+        cik {str} -- The CIK number of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of mutual fund prospectus.
+        """
+
+        # define the arguments of the request
+        search_params = {
+            'CIK': cik,
+            'Count': '100',
+            'myowner': 'include',
+            'action': 'getcompany',
+            'type': 'EFFECT',
+            'output': 'atom',
+            'datea': after,
+            'dateb': before
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text)
+
+        return entries
+
     def get_variable_insurance_products_by_name(self, product_name: str) -> List[dict]:
         """Returns all the variable insurance products defined by the given name.
 
@@ -995,3 +1041,95 @@ class EDGARQuery():
         entries = self.parser_client.parse_entries(entries_text=response.text)
 
         return entries
+
+    def get_current_event_filings(self, days_prior: int, form: str, form_id: str = None) -> List[dict]:
+        """Query current filigns by type.
+
+        Arguments:
+        ----
+        day (int): The number of days prior you would like to analyze. Can be one of
+            the following: [0, 1, 2, 3, 4, 5]
+        
+        form (str): The form you would like to analyze. Can be one of
+            the following: ['10-k-annual', '10-k-quarterly', '14-proxies', '485-fund-prosp.', '8-k', 's-8', 'all']
+        
+        form_id (str, optional): Represents the Form-ID and can be used to override the `form` argument. Defaults to None.
+
+        Returns:
+        ----
+        List[Dict]: A list of current event filings.
+        """        
+        
+        form_dict = {
+            '10-k-annual': 0,
+            '10-k-quarterly': 1,
+            '14-proxies': 2,
+            '485-fund-prosp.': 3,
+            '8-k': 4,
+            's-8': 5,
+            'all': 6            
+        }
+
+        if form in form_dict:
+            form_id_arg = form_dict[form]
+        else:
+            raise ValueError("The argument you've provided for form is incorrect.")
+
+        # define the arguments of the request
+        search_params = {
+            'q1': days_prior,
+            'q2': form_id_arg,
+            'q3': form_id
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.current_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_current_event_table(current_event_page=response.text)
+
+        return entries
+
+    def get_quarterly_indexes(self) -> List[dict]:
+        """Grabs all the Quarterly Index filings.
+
+        Returns:
+        ----
+        List[dict]: A list of directory links and directory files.
+        """        
+
+        url = self.archive_service + "/full-index/index.json"
+
+        cleaned_directories = []
+
+        # Make the response.
+        directories = requests.get(
+            url = url
+        ).json()
+
+        # Loop through each item.
+        for directory in directories['directory']['item']:
+
+            # Create the URL for the directory.
+            if directory['type'] == 'dir':
+                directory['yearly_url'] = self.archive_service + "/full-index/{qtr}/index.json".format(
+                    qtr=directory['name'],
+                )
+            
+            # Create the URL for downloads.
+            else:
+                directory['yearly_url'] = self.archive_service + "/full-index/{href}".format(
+                    href=directory['href']
+                )
+
+            directory['filing_id'] = directory.pop('name')
+            directory['last_modified'] = directory.pop('last-modified')
+
+            # yearly_content = requests.get(url=directory['yearly_url']).json()
+
+            cleaned_directories.append(directory)
+
+        return cleaned_directories

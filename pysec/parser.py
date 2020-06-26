@@ -12,6 +12,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from bs4 import BeautifulSoup
 from bs4 import Tag
+from bs4 import NavigableString
 
 class EDGARParser():
 
@@ -143,12 +144,12 @@ class EDGARParser():
                 name = element.tag.replace(replace_tag, '')
                 
                 if element.text :
+                    name = name.replace('-','_')
                     entry_element_dict[name] = element.text.strip()
-                # else:
-                #     entry_element_dict[name] = ""
 
                 if element.attrib:
                     for key, value in element.attrib.items():
+                        key = key.replace('-','_')
                         entry_element_dict[name + "_{}".format(key)] = value
 
         return entry_element_dict
@@ -465,6 +466,46 @@ class EDGARParser():
                                 row_dict['cik_id_link'] = 'https://www.sec.gov' + link
 
                         master_list.append(row_dict)
+
+        return master_list
+    
+    def parse_current_event_table(self, current_event_page: str) -> List[Dict]:
+        """Parses the Current Event page of all the forms.
+
+        Arguments:
+        ----
+        current_event_page (str): The raw HTML of the current event query page.
+
+        Returns:
+        ----
+        List[Dict]: A list of SEC filings.
+        """
+
+        master_list = []
+
+        # Parse the Page.
+        current_event_soup = BeautifulSoup(current_event_page, 'html.parser')
+
+        # Grab the <Pre> tag.
+        current_event_pre: Tag = current_event_soup.find('pre')
+
+        # In this case, split along Line breaks.
+        all_rows = current_event_pre.text.splitlines()
+
+        # Define the headers
+        keys = ['date_filed', 'form', 'cik', 'company_name']
+
+        # Clean up the header to get the first row.
+        header_row = all_rows[0].replace('Date Filed   Form        CIK Code     Company Name','')
+        new_string = " ".join(header_row.split()).split(' ', 3)
+
+        # add to the list.
+        master_list.append(dict(zip(keys, new_string)))
+
+        # Clean up the rest of the rows.
+        for row in all_rows[1:]:
+            new_string = " ".join(row.split()).split(' ', 3)
+            master_list.append(dict(zip(keys, new_string)))
 
         return master_list
 
