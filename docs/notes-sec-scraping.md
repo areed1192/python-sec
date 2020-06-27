@@ -21,13 +21,11 @@ When the SEC defines an XBRL document, it's define by what it consist of. For th
 1. One or more instance documents (instances) that contain actual data and facts.
 2. One or more schema documents (schemas) that declare the elements that can be used in the instance, and identify other schemas and files where relationships among those elements are declared.
 3. One or more linkbase documents (linkbases) containing additional information about, or relationships among, the elements in a schema document. There are five types of linkbases: Label, Definition, Reference, Presentation, and Calculation.
-    - Note: Although the Reference Linkbase file is a valid attachment type, at the moment it is not used.
+   - Note: Although the Reference Linkbase file is a valid attachment type, at the moment it is not used.
 
-Schema and linkbase documents contain references to each other in the form of Uniform Resource Identifiers (URIs). Taxonomies are sets of schemas and linkbases that are designed to be loaded and used together; for example, a schema may contain a list of linkbases that have the URIs of other schemas to be loaded, and so on. 
+Schema and linkbase documents contain references to each other in the form of Uniform Resource Identifiers (URIs). Taxonomies are sets of schemas and linkbases that are designed to be loaded and used together; for example, a schema may contain a list of linkbases that have the URIs of other schemas to be loaded, and so on.
 
-Taxonomies generally fall into one of two categories:
-    1. Standard base taxonomies 
-    2. Company extension taxonomies.
+Taxonomies generally fall into one of two categories: 1. Standard base taxonomies. 2. Company extension taxonomies.
 
 Filers use company extension taxonomies to supplement base taxonomies and, within limits, customize those base taxonomies to their reporting goals. Instances also use URIs to reference schemas and linkbases.The Discoverable Taxonomy Set (DTS) of an instance document is the set of all schemas and linkbases that are found by following all URI links and references.
 
@@ -69,7 +67,6 @@ EX-101.REF
 link:linkbase
 link:referenceLink
 
-
 XBRL Document
 Documentname Format
 Instance
@@ -77,21 +74,21 @@ Instance
 Schema
 {base}-{date}.xsd
 Calculation Linkbase
-{base}-{date}_cal.xml
+{base}-{date}\_cal.xml
 Definition Linkbase
-{base}-{date}_def.xml
+{base}-{date}\_def.xml
 Label Linkbase
-{base}-{date}_lab.xml
+{base}-{date}\_lab.xml
 Presentation Linkbase
-{base}-{date}_pre.xml
+{base}-{date}\_pre.xml
 Reference Linkbase
-{base}-{date}_ref.xml
+{base}-{date}\_ref.xml
 
 # GAAP Financial Reporting Taxonomy - A Technical Guide
 
 When parsing XBRL documents that exist in a SEC filing directory it's important to understand the following:
 
-1. How documents are organized. 
+1. How documents are organized.
 2. Location of Documents.
 3. Naming Conventions.
 4. Allowed tags and not allowed tags.
@@ -102,20 +99,20 @@ When parsing XBRL documents that exist in a SEC filing directory it's important 
     of how to get the data.
 
         CALCULATION FILE: TradingSymbol_EndDate_cal.xml
-        This contains links to different calculations in the file this will be useful when trying to 
+        This contains links to different calculations in the file this will be useful when trying to
         reference how certain calculations were made.
 
         DEFINITION FILE: TradingSymbol_EndDate_def.xml
-        This contains links to different definitions used in the 10K/Q and also external resources 
+        This contains links to different definitions used in the 10K/Q and also external resources
         that define those definitions, this would be entities like FASB.
 
         LABEL FILE: TradingSymbol_EndDate_lab.xml
-        This contains a section for each label in the document along with their corresponding ID used 
-        in the XML structuring. Additionally each one these labels also has a locator that will provide 
+        This contains a section for each label in the document along with their corresponding ID used
+        in the XML structuring. Additionally each one these labels also has a locator that will provide
         a hyperlink to that label in the file.
 
         PRESENTATION FILE: TradingSymbol_EndDate_pre.xml
-        This provides more links to different presentations that contain information regarding different 
+        This provides more links to different presentations that contain information regarding different
         sections of the filing.
 
     The general strategy is as follows:

@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 setup(
 
     # this will be my Library name.
-    name='pysec',
+    name='python-sec',
 
     # Want to make sure people know who made it.
     author='Alex Reed',
@@ -20,7 +20,7 @@ setup(
     version='0.1.0',
 
     # here is a simple description of the library, this will appear when someone searches for the library on https://pypi.org/search
-    description='A client library for scraping SEC filings.',
+    description='A client library for collecting and scraping SEC filings.',
 
     # I have a long description but that will just be my README file, note the variable up above where I read the file.
     long_description=long_description,
@@ -40,7 +40,12 @@ setup(
     keywords='finance, sec, api, web scraping, financial disclosures',
 
     # here are the packages I want "build."
-    packages=find_packages(include=['pysec'], exclude=['*config.py']),
+    packages=find_packages(include=['pysec']),
+
+    # here we specify any package data.
+    package_data={
+        "pysec": ["parsing/*"],
+    },
 
     # I also have some package data, like photos and JSON files, so I want to include those too.
     include_package_data=True,
