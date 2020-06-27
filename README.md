@@ -61,7 +61,7 @@ You will note the output of the above code would look like the following:
     "type": "file",
     "url": "https://www.sec.gov/Archives/edgar/full-index/2000/QTR4/company.gz"
   },
-  ...{
+  {
     "href": "company.idx",
     "last_modified": "09/06/2014 01:08:53 AM",
     "name": "company.idx",
