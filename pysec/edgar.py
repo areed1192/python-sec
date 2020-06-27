@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 
 from typing import List
 from typing import Union
+from datetime import datetime
 from datetime import date
 
 from pysec.parser import EDGARParser
@@ -1093,6 +1094,51 @@ class EDGARQuery():
 
         return entries
 
+    def get_quarterly_index(self, year: int, quarter: int) -> List[dict]:
+        """Grabs all the filings belong to a specific quarter and year.
+
+        Arguments:
+        ----
+        year (int): The year from which to query. Must be >= 1994.
+
+        quarter (int): The quarter from which to query. Can be one the
+            following: [1, 2, 3, 4]
+
+        Returns:
+        ----
+        List[dict]: A list of directory links and directory files.
+        """
+
+        if (year < 1994) or (year > datetime.now().year):
+            raise ValueError("The year you specified can not be pulled.")
+
+        if quarter not in [1, 2, 3, 4]:
+            raise ValueError("The quarter you specified is incorrect.")
+
+        quarterly_url = self.archive_service + "/full-index/{year}/{qtr}/".format(
+            year=year,
+            qtr="QTR" + str(quarter)
+        )
+
+        # Define the full URL.
+        full_url = quarterly_url + "index.json"
+
+        # Make the response.
+        directories = requests.get(
+            url = full_url
+        ).json()
+
+        cleaned_directories = []
+
+        # Loop through each item.
+        for item in directories['directory']['item']:
+            new_item = {key.replace("-","_"): value for key, value in item.items()}
+            new_item['url'] = quarterly_url + item['href']
+            cleaned_directories.append(new_item)
+
+        return cleaned_directories
+
+
     def get_quarterly_indexes(self) -> List[dict]:
         """Grabs all the Quarterly Index filings.
 
@@ -1115,20 +1161,45 @@ class EDGARQuery():
 
             # Create the URL for the directory.
             if directory['type'] == 'dir':
-                directory['yearly_url'] = self.archive_service + "/full-index/{qtr}/index.json".format(
-                    qtr=directory['name'],
+
+                directory['yearly_url'] = self.archive_service + "/full-index/{year}/index.json".format(
+                    year=directory['name'],
                 )
-            
+
+                print('Pulling Directory: {yearly_url}'.format(yearly_url=directory['yearly_url']))
+                
+                # If we have a year than grab the quarters.
+                yearly_content = requests.get(url=directory['yearly_url']).json()
+
+                directory['quarterly_directories'] = {}
+
+                for quarter in yearly_content['directory']['item']:
+
+                    quarterly_url = self.archive_service + "/full-index/{year}/{qtr}/index.json".format(
+                        year=directory['name'],
+                        qtr=quarter['name']
+                    )
+
+                    print('Pulling Directory: {qtr_url}'.format(qtr_url=quarterly_url))
+
+                    directory['quarterly_directories'][quarter['name']] = {}
+                    directory['quarterly_directories'][quarter['name']]['url'] = quarterly_url
+                    directory['quarterly_directories'][quarter['name']]['items'] = []
+
+                    quarterly_content = requests.get(url=quarterly_url).json()
+
+                    for item in quarterly_content['directory']['item']:
+                        item['url'] = quarterly_url + item['href']
+                        directory['quarterly_directories'][quarter['name']]['items'].append(item)
+
             # Create the URL for downloads.
             else:
-                directory['yearly_url'] = self.archive_service + "/full-index/{href}".format(
+                directory['file_url'] = self.archive_service + "/full-index/{href}".format(
                     href=directory['href']
                 )
 
             directory['filing_id'] = directory.pop('name')
             directory['last_modified'] = directory.pop('last-modified')
-
-            # yearly_content = requests.get(url=directory['yearly_url']).json()
 
             cleaned_directories.append(directory)
 

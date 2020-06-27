@@ -6,9 +6,13 @@ from pysec.filing_types import FILING_TYPES
 # Initalize the client.
 edgar_client = EDGARQuery()
 
-# Grab the Quarterly Archive Indexes.
-quarterly_archives = edgar_client.get_quarterly_indexes()
+# Grab a specific Quarterly Archive Indexes.
+quarterly_archives = edgar_client.get_quarterly_index(year=2000, quarter=4)
 pprint.pprint(quarterly_archives)
+
+# # Grab ALL of the Quarterly Archive Indexes.
+# quarterly_archives = edgar_client.get_quarterly_indexes()
+# pprint.pprint(quarterly_archives)
 
 # # Grab all the directories belonging to a specific CIK number.
 # # In this case the CIK number `1326801` is Facebook.
