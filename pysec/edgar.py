@@ -3,8 +3,8 @@ import xml.etree.ElementTree as ET
 
 from typing import List
 from typing import Union
-from datetime import datetime
 from datetime import date
+from datetime import datetime
 
 from pysec.parser import EDGARParser
 
