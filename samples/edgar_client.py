@@ -6,9 +6,13 @@ from pysec.filing_types import FILING_TYPES
 # Initalize the client.
 edgar_client = EDGARQuery()
 
-# Grab a specific Quarterly Archive Indexes.
-quarterly_archives = edgar_client.get_quarterly_index(year=2000, quarter=4)
-pprint.pprint(quarterly_archives)
+# Grab the EDGAR Taxonomies File.
+edgar_taxonomies = edgar_client.get_edgar_taxonomies()
+pprint.pprint(edgar_taxonomies)
+
+# # Grab a specific Quarterly Archive Indexes.
+# quarterly_archives = edgar_client.get_quarterly_index(year=2000, quarter=4)
+# pprint.pprint(quarterly_archives)
 
 # # Grab ALL of the Quarterly Archive Indexes.
 # quarterly_archives = edgar_client.get_quarterly_indexes()

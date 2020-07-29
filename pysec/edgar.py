@@ -31,6 +31,82 @@ class EDGARQuery():
 
         self.parser_client = EDGARParser()
 
+    def get_sec_datasets(self) -> dict:
+        """Grabs all the Public datasets provided by the SEC.
+
+        Returns:
+        ----
+        dict: A collection of SEC datasets.
+
+        Usage:
+        ----
+            >>> edgar_client = EDGARQuery()
+            >>> sec_datasets = edgar_client.get_sec_datasets()
+            {
+                "@context": "https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld",
+                "@id": "https://www.sec.gov/data.json",
+                "@type": "dcat:Catalog",
+                "conformsTo": "https://project-open-data.cio.gov/v1.1/schema",
+                "describedBy": "https://project-open-data.cio.gov/v1.1/schema/catalog.json",
+                "dataset": []
+            }
+        """
+        
+        # Make the request.
+        response = requests.get(
+            url='https://www.sec.gov/data.json'
+        )
+
+        if response.ok:
+            return response.json()
+
+    def get_edgar_taxonomies(self) -> dict:
+        """Grabs all the Public taxonomies datasets provided by the SEC.
+
+        Returns:
+        ----
+        dict: A collection of Taxonomy files for the SEC.
+
+        Usage:
+        ----
+            >>> edgar_client = EDGARQuery()
+            >>> sec_datasets = edgar_client.get_edgar_taxonomies()
+            [
+                {
+                    'AttType': 'SCH',
+                    'Elements': '0',
+                    'Family': 'BASE',
+                    'FileTypeName': 'Schema',
+                    'Href': 'http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd',
+                    'Namespace': 'http://www.xbrl.org/2003/linkbase',
+                    'Prefix': 'link',
+                    'Version': '2010'
+                },
+                {
+                    'AttType': 'SCH',
+                    'Elements': '0',
+                    'Family': 'BASE',
+                    'FileTypeName': 'Schema',
+                    'Href': 'http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd',
+                    'Namespace': 'http://www.xbrl.org/2003/instance',
+                    'Prefix': 'xbrli',
+                    'Version': '2010'
+                }
+            ]
+        """
+
+        # Make the request.
+        response = requests.get(
+            url='https://www.sec.gov/info/edgar/edgartaxonomies.xml'
+        )
+
+        # Parse the response.
+        taxonomies = self.parser_client.parse_loc_elements(
+            response_text=response.text
+        )
+
+        return taxonomies
+
     def company_directories(self, cik: str) -> dict:
         """Grabs all the filing directories for a company.
 

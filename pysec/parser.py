@@ -31,7 +31,8 @@ class EDGARParser():
 
         self.entries_namespace = {
             'atom': "http://www.w3.org/2005/Atom",
-            'atom_with_quote':'{http://www.w3.org/2005/Atom}'
+            'atom_with_quote':'{http://www.w3.org/2005/Atom}',
+            '':''
         }
 
         self.retry_strategy = Retry(
@@ -509,3 +510,26 @@ class EDGARParser():
 
         return master_list
 
+    def parse_loc_elements(self, response_text: str) -> List[dict]:
+        """Parses the `Loc` elements found in the Taxonomies XML content.
+
+        Arguments:
+        ----
+        response_text (str): The raw XML of the Taxonomy query.
+
+        Returns:
+        ----
+        List[Dict]: A list of taxonomy objects..
+        """
+
+        # Parse the text.
+        root = ET.fromstring(response_text)
+        entries = []
+
+        # Grab all the location elements.
+        for location in root.findall('Loc'):
+            location_dict = {element.tag: element.text for element in location.iter()}
+            del location_dict['Loc']
+            entries.append(location_dict)
+
+        return entries

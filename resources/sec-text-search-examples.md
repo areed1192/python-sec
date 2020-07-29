@@ -20,32 +20,47 @@
 
 `(form-type=8-k*) AND (items=2.01) AND (acceptance-datetime=20170605155635) AND (filing-date=20170605) AND (cik=0001084869)`
 
-<https://www.sec.gov/cgi-bin/own-disp?CIK=0001084869&action=getissuer>
-<https://www.sec.gov/cgi-bin/own-disp?CIK=0001460292&action=getowner>
-<https://www.sec.gov/cgi-bin/srch-edgar>
-<https://www.sec.gov/edgar/searchedgar/edgarzones.htm>
-<https://www.sec.gov/rss/data>
-<https://www.sec.gov/rss/investor/alerts>
-<https://www.sec.gov/rss/forms>
-<https://www.sec.gov/info/edgar/edgartaxonomies.xml>
-<https://www.sec.gov/info/edgar/edgartaxonomies.shtml>
+## CGI BIN Endpoints
 
-<https://www.sec.gov/Archives/edgar/xbrlrss.all.xml>
-https://www.sec.gov/Archives/edgar/xbrl-inline.rss.xml
-https://www.sec.gov/Archives/edgar/xbrl-rr.rss.xml
-https://www.sec.gov/Archives/edgar/usgaap.rss.xml
-https://www.sec.gov/Archives/edgar/monthly/
+- <https://www.sec.gov/cgi-bin/own-disp?CIK=0001084869&action=getissuer>
+- <https://www.sec.gov/cgi-bin/own-disp?CIK=0001460292&action=getowner>
+- <https://www.sec.gov/cgi-bin/srch-edgar>
+- <https://www.sec.gov/cgi-bin/cik_lookup>
 
-https://www.sec.gov/dera/data/financial-statement-and-notes-data-set.html
-https://www.sec.gov/Archives/edgar/monthly/xbrlrss-2020-04.xml
-https://www.sec.gov/dera/data/mutual-fund-prospectus-risk-return-summary-data-sets
+## Archives Endpoints
 
-https://www.sec.gov/Archives/edgar/data/1122304/000119312515118890/0001193125-15-118890.hdr.sgml
-https://www.sec.gov/Archives/edgar/vprr/index.html
-https://www.sec.gov/Archives/edgar/cik-lookup-data.txt
-https://www.sec.gov/Archives/edgar/Oldloads/
+- <https://www.sec.gov/Archives/edgar/xbrlrss.all.xml>
+- <https://www.sec.gov/Archives/edgar/xbrl-inline.rss.xml>
+- <https://www.sec.gov/Archives/edgar/xbrl-rr.rss.xml>
+- <https://www.sec.gov/Archives/edgar/usgaap.rss.xml>
+- <https://www.sec.gov/Archives/edgar/monthly/>
+- <https://www.sec.gov/Archives/edgar/data/1122304/000119312515118890/0001193125-15-118890.hdr.sgml>
+- <https://www.sec.gov/Archives/edgar/vprr/index.html>
+- <https://www.sec.gov/Archives/edgar/cik-lookup-data.txt>
+- <https://www.sec.gov/Archives/edgar/Oldloads/>
+- <https://www.sec.gov/Archives/edgar/monthly/xbrlrss-2020-04.xml>
 
-https://www.sec.gov/cgi-bin/cik_lookup PARAMS : {'company':'alex'}
+## RSS Feeds Endpoint
+
+- <https://www.sec.gov/rss/data>
+- <https://www.sec.gov/rss/investor/alerts>
+- <https://www.sec.gov/rss/forms>
+
+## Search EDGAR Endpoint
+
+- <https://www.sec.gov/edgar/searchedgar/edgarzones.htm>
+
+## Info Endpoint
+
+- <https://www.sec.gov/info/edgar/edgartaxonomies.xml>
+- <https://www.sec.gov/info/edgar/edgartaxonomies.shtml>
+
+## DERA Endpoint
+
+- <https://www.sec.gov/dera/data/financial-statement-and-notes-data-set.html>
+- <https://www.sec.gov/dera/data/mutual-fund-prospectus-risk-return-summary-data-sets>
+
+PARAMS : {'company':'alex'}
 
 (file-number=000-26841)
 (act=34)
@@ -58,7 +73,6 @@ https://www.sec.gov/cgi-bin/cik_lookup PARAMS : {'company':'alex'}
 (business-address=(BANDERA 140 PISO 19))
 (state-of-incorporation=ME)
 (accession-number=0001085146-15-000014)
-
 
 ```xml
 <SEC-HEADER>

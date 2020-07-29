@@ -23,15 +23,11 @@ The Python SEC library (`pysec`) is designed to make the collection and the extr
 
 ## Setup
 
-Right now, the library is not hosted on **PyPi** so you will need to do a local install on your system if you plan to use it in other scrips you use.
-
-First, clone this repo to your local system. After you clone the repo, make sure to run the `setup.py` file, so you can install any dependencies you may need. To run the `setup.py` file, run the following command in your terminal.
+To install the `python-sec` library simply use the `pip` package. To install the package, run the command in the desired python environment.
 
 ```console
 pip install python-sec
 ```
-
-This will install all the dependencies listed in the `setup.py` file. Once done you can use the library wherever you want.
 
 ## Usage
 
