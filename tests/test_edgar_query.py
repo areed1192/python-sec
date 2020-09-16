@@ -1,178 +1,103 @@
-"""Unit test module for the Azure Session.
+"""Unit test module for the EDGAR Session.
 
-Will perform an instanc test to make sure it creates it.
+Will perform an instance test to make sure it creates it.
 """
 
 import unittest
+import requests
+
+from typing import List
 from unittest import TestCase
 from pysec.edgar import EDGARQuery
-from typing import List
 
 
-class PyRobotSession(TestCase):
+class EDGARSessionTest(TestCase):
 
-    """Will perform a unit test for the Azure session."""
-
-    maxDiff = None
+    """Will perform a unit test for the `EDGARQuery` session."""
 
     def setUp(self) -> None:
-        """Set up the Robot."""
+        """Set up the `EDGARQuery` Client."""
 
+        # Initialize a new instance.
         self.edgar = EDGARQuery()
 
         # This is Facebook.
         self.cik_number = '1265107'
 
     def test_creates_instance_of_session(self):
-        """Create an instance and make sure it's a robot."""
-
+        """Create an instance and make sure it's a `EDGARQuery`."""
+        
+        # Make sure it matches.
         self.assertIsInstance(self.edgar, EDGARQuery)
 
     def test_grab_company_directories(self):
         """Test pulling the directories for a particular CIK number."""
 
-        directories_match = [
-            {
-                'filing_id': '000126510720000016',
-                'last_modified': '2020-05-06 16:24:37',
-                'size': '',
-                'type': 'folder.gif',
-                'url': 'https://www.sec.gov/Archives/edgar/data/1265107/000126510720000016/index.json'
-            }
-        ]
-
+        # Grab the Company Directories.
         company_directories = self.edgar.company_directories(
-            cik=self.cik_number)
+            cik=self.cik_number
+        )
 
+        # Make sure they match.
         self.assertIsInstance(company_directories[:2], list)
-        self.assertDictEqual(company_directories[0], directories_match[0])
+        self.assertIn("filing_id", company_directories[0])
 
     def test_grab_company_directory(self):
         """Test grabbing a single filing for a particular CIK number."""
 
-        directory_match = [
-            {
-                'item_id': '0001104659-19-038688-index-headers.html',
-                'last_modified': '2019-07-01 17:17:26',
-                'size': '',
-                'type': 'text.gif',
-                'url': 'https://www.sec.gov/Archives/edgar/data/1265107/000110465919038688/0001104659-19-038688-index-headers.html'
-            }
-        ]
-
+        # Grab for a specific Directory.
         company_directory = self.edgar.company_directory(
-            cik=self.cik_number, filing_id="000110465919038688")
+            cik=self.cik_number,
+            filing_id="000110465919038688"
+        )
 
+        # Make sure they match.
         self.assertIsInstance(company_directory, list)
-        self.assertDictEqual(company_directory[0], directory_match[0])
+        self.assertIn("item_id", company_directory[0])
 
     def test_grab_filing_by_type(self):
         """Test grabbing a specific filing type for a particular company."""
 
-        filing_types_match = [
-            {
-                'accession-nunber': '0001265107-20-000007',
-                'act': '34',
-                'category_label': 'form type',
-                'category_scheme': 'https://www.sec.gov/',
-                'category_term': '10-K',
-                'content': '',
-                'content_type': 'text/xml',
-                'file-number': '333-110025',
-                'file-number-href': 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&filenum=333-110025&owner=include&count=40',
-                'filing-date': '2020-03-30',
-                'filing-href': 'https://www.sec.gov/Archives/edgar/data/1265107/000126510720000007/0001265107-20-000007-index.htm',
-                'filing-type': '10-K',
-                'film-number': '20755403',
-                'form-name': 'Annual report [Section 13 and 15(d), not S-K Item 405]',
-                'id': 'urn:tag:sec.gov,2008:accession-number=0001265107-20-000007',
-                'size': '12 MB',
-                'link_href': 'https://www.sec.gov/Archives/edgar/data/1265107/000126510720000007/0001265107-20-000007-index.htm',
-                'link_rel': 'alternate',
-                'link_type': 'text/html',
-                'summary': '<b>Filed:</b> 2020-03-30 <b>AccNo:</b> 0001265107-20-000007 '
-                            '<b>Size:</b> 12 MB',
-                'summary_type': 'html',
-                'title': '10-K  - Annual report [Section 13 and 15(d), not S-K Item 405]',
-                'updated': '2020-03-30T12:24:51-04:00',
-                'xbrl_href': 'https://www.sec.gov/cgi-bin/viewer?action=view&cik=1265107&accession_number=0001265107-20-000007&xbrl_type=v'
-            }
-        ]
-
+        # Grab the 10Ks for Facebook.
         facebook_10ks = self.edgar.company_filings_by_type(
-            cik=self.cik_number, filing_type='10-K')
+            cik=self.cik_number,
+            filing_type='10-K'
+        )
 
+        # Make sure they match.
         self.assertIsInstance(facebook_10ks, list)
-        self.assertDictEqual(facebook_10ks[0], filing_types_match[0])
+        self.assertIn("form_name", facebook_10ks[0])
 
     def test_grab_cik_ownership_filings(self):
+        """Test grabbing the ownership filings."""
 
-        match = [
-            {
-                'accession-nunber': '0000950103-20-003878',
-                'category_label': 'form type',
-                'category_scheme': 'https://www.sec.gov/',
-                'category_term': '4',
-                'content': '',
-                'content_type': 'text/xml',
-                'filing-date': '2020-02-28',
-                'filing-href': 'https://www.sec.gov/Archives/edgar/data/1326801/000095010320003878/0000950103-20-003878-index.htm',
-                'filing-type': '4',
-                'form-name': 'Statement of changes in beneficial ownership of securities',
-                'id': 'urn:tag:sec.gov,2008:accession-number=0000950103-20-003878',
-                'link_href': 'https://www.sec.gov/Archives/edgar/data/1326801/000095010320003878/0000950103-20-003878-index.htm',
-                'link_rel': 'alternate',
-                'link_type': 'text/html',
-                'size': '5 KB',
-                'summary': '<b>Filed:</b> 2020-02-28 <b>AccNo:</b> 0000950103-20-003878 '
-                '<b>Size:</b> 5 KB',
-                'summary_type': 'html',
-                'title': '4  - Statement of changes in beneficial ownership of securities',
-                'updated': '2020-02-28T20:19:46-05:00'
-            }
-        ]
-
+        # Grab it.
         facebook_ownership = self.edgar.ownership_filings_by_cik(
-            cik='1326801', before="20200301", after="20200101")
+            cik='1326801',
+            before="20200301",
+            after="20200101"
+        )
 
+        # Make sure they match.
         self.assertIsInstance(facebook_ownership, list)
-        self.assertDictEqual(facebook_ownership[0], match[0])
+        self.assertIn("form_name", facebook_ownership[0])
 
     def test_grab_companies_by_sic(self):
+        """Test grabbing companies by SIC."""
 
-
-        match = [
-            {
-                'address': '',
-                'address_type': 'mailing',
-                'addresses': '',
-                'cik': '0001406796',
-                'company-info': '',
-                'content': '',
-                'content_type': 'text/xml',
-                'id': 'urn:tag:www.sec.gov:cik=0001406796',
-                'link_href': 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001406796&owner=exclude&hidefilings=0',
-                'link_type': 'text/html',
-                'name': 'ZYTO CORP',
-                'sic': '3841',
-                'state': 'UT',
-                'summary': '<strong>CIK:</strong> 0001406796, <strong>State:</strong> UT',
-                'summary_type': 'html',
-                'title': 'ZYTO CORP',
-                'updated': '2020-05-06T23:45:54-04:00'
-            }
-        ]
-
-        sic_content = self.edgar.companies_by_sic(sic_code="3841", num_of_companies=300)
+        # Grab the Companies.
+        sic_content = self.edgar.companies_by_sic(
+            sic_code="3841",
+            return_count=300
+        )
 
         self.assertIsInstance(sic_content, list)
-        self.assertEqual(sic_content[-1].keys(), match[0].keys())
-
+        self.assertIn("link_href", sic_content[0])
 
     def tearDown(self) -> None:
-        """Teardown the Robot."""
+        """Teardown the `Edgar` Client."""
 
-        self.robot = None
+        del self.edgar
 
 
 if __name__ == '__main__':

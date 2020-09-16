@@ -42,7 +42,7 @@ class EDGARParser():
         )
         self.adapter = HTTPAdapter(max_retries=self.retry_strategy)
 
-    def parse_entries(self, entries_text: str, num_of_items: int = None) -> List[Dict]:
+    def parse_entries(self, entries_text: str, num_of_items: int = None, start: int = None) -> List[Dict]:
         """Parses all the entries from an entry element list.
 
         Arguments:
@@ -60,13 +60,21 @@ class EDGARParser():
         root = ET.fromstring(entries_text)
         entries = []
         keep_going = True
+        
+        if start:
+            current_count = start
+        else:
+            current_count = 0
 
         while keep_going:
 
             # Check for the next page Link, if there is one.
             next_page = self._check_for_next_page(root_document=root)
-
-            if next_page:
+            
+            # Grab the next page.
+            if next_page and start:
+                current_count = (int(next_page.split('&start=')[1]) - start)
+            elif next_page:
                 current_count = int(next_page.split('&start=')[1])
 
             # Find all the entries.
@@ -235,11 +243,16 @@ class EDGARParser():
 
         while soup is not None:
 
-            table_rows = soup.find_all(name='tr')
+            # table_rows = soup.find_all(name='tr')
             table = soup.find_all(name='table')
 
             issuers_table: Tag = table[4]
-            issuers_transaction_report_table: Tag = soup.find_all(name='table', attrs={'id':'transaction-report'})
+            issuers_transaction_report_table: Tag = soup.find_all(
+                name='table',
+                attrs={
+                    'id':'transaction-report'
+                }
+            )
             issuers_table_rows = issuers_table.find_all(name='tr')
             
             for row in issuers_table_rows:
@@ -381,13 +394,14 @@ class EDGARParser():
 
         # Loop through all the pages, and grab those entries.
         for link in href_links:
+
             product_page_soup = BeautifulSoup(requests.get(url=link).text, 'html.parser')
             product_list = self._parse_variable_product_page(product_page_soup=product_page_soup)
             product_list_all = product_list_all + product_list
 
             print("Pulling URL: {url}".format(url=link))
             print("Total Entries Scraped: {quant}".format(quant=len(product_list_all)))
-
+        
         return product_list_all
 
     def _parse_variable_product_page(self, product_page_soup: Tag) -> List[Dict]:

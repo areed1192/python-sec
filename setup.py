@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 # load the README file.
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+with open(file="README.md", mode="r") as readme_file:
+    long_description = readme_file.read()
 
 setup(
 
@@ -17,7 +17,7 @@ setup(
 
     # I'm in alpha development still, so a compliant version number is a1.
     # read this as MAJOR VERSION 0, MINOR VERSION 1, MAINTENANCE VERSION 0
-    version='0.1.0',
+    version='0.1.1',
 
     # here is a simple description of the library, this will appear when someone searches for the library on https://pypi.org/search
     description='A client library for collecting and scraping SEC filings.',
@@ -33,7 +33,9 @@ setup(
 
     # there are some dependencies to use the library, so let's list them out.
     install_requires=[
-        'requests>=2.22.0'
+        'requests>=2.24.0',
+        'urllib3==1.25.9',
+        'beautifulsoup4==4.9.1'
     ],
 
     # some keywords for my library.

@@ -132,3 +132,4 @@ dmypy.json
 .pyre/
 .vscode/
 .pypirc
+configs/

@@ -9,25 +9,66 @@
 
 ## Overview
 
-The Securities & Exchange Commission (SEC) has a treasure trove of business data available to indviduals for free. However, the biggest obstacle to getting this free data boils down to two challenges:
+Current Version: **0.1.1**
+
+The Securities & Exchange Commission (SEC) has a treasure trove of business data available to indviduals
+for free. However, the biggest obstacle to getting this free data boils down to two challenges:
 
 1. Figuring out where it is
 2. Figuring out how to extract it
 
-The Python SEC library (`pysec`) is designed to make the collection and the extraction of SEC data quick and effortless. The library was designed around some of the following goals:
+The Python SEC library (`pysec`) is designed to make the collection and the extraction of SEC data quick
+and effortless. The library was designed around some of the following goals:
 
 1. Making the usage of the EDGAR search system, in a prgorammatic fashion, more intuitive.
-2. Making the definition of queries more customizeable while still maintaining the overall clearity of the library.
-3. Standardize the returning content so that content is organized consistently and ensuring gaps in data are filled in or extended that way navigating to other directories or files can be done dynamically.
+2. Making the definition of queries more customizeable while still maintaining the overall clearity
+   of the library.
+3. Standardize the returning content so that content is organized consistently and ensuring gaps in data
+   are filled in or extended that way navigating to other directories or files can be done dynamically.
 4. Simplify the parsing of XBRL files so that data can be more easily manipulated.
 
 ## Setup
 
-To install the `python-sec` library simply use the `pip` package. To install the package, run the command in the desired python environment.
+**Setup - PyPi Install:**
+
+To **install** the library, run the following command from the terminal.
 
 ```console
 pip install python-sec
 ```
+
+**Setup - PyPi Upgrade:**
+
+To **upgrade** the library, run the following command from the terminal.
+
+```console
+pip install --upgrade python-sec
+```
+
+**Setup - Local Install:**
+
+If you are planning to make modifications to this project or you would like to access it
+before it has been indexed on `PyPi`. I would recommend you either install this project
+in `editable` mode or do a `local install`. For those of you, who want to make modifications
+to this project. I would recommend you install the library in `editable` mode.
+
+If you want to install the library in `editable` mode, make sure to run the `setup.py`
+file, so you can install any dependencies you may need. To run the `setup.py` file,
+run the following command in your terminal.
+
+```console
+pip install -e .
+```
+
+If you don't plan to make any modifications to the project but still want to use it across
+your different projects, then do a local install.
+
+```console
+pip install .
+```
+
+This will install all the dependencies listed in the `setup.py` file. Once done
+you can use the library wherever you want.
 
 ## Usage
 
@@ -71,10 +112,9 @@ You will note the output of the above code would look like the following:
 ## Support these Projects
 
 **Patreon:**
-Help support this project and future projects by donating to my [Patreon Page](https://www.patreon.com/sigmacoding). I"m always looking to add more content for individuals like yourself, unfortuantely some of the APIs I would require me to pay monthly fees.
+Help support this project and future projects by donating to my [Patreon Page](https://www.patreon.com/sigmacoding).
+I"m always looking to add more content for individuals like yourself, unfortuantely some of the APIs I would require
+me to pay monthly fees.
 
 **YouTube:**
 If you"d like to watch more of my content, feel free to visit my YouTube channel [Sigma Coding](https://www.youtube.com/c/SigmaCoding).
-
-**Hire Me:**
-If you have a project, you think I can help you with feel free to reach out at [coding.sigma@gmail.com](mailto:coding.sigma@gmail.com?subject=[GitHub]%20Project%20Proposal) or fill out the [contract request form](https://forms.office.com/Pages/ResponsePage.aspx?id=ZwOBErInsUGliXx0Yo2VfcCSWZSwW25Es3vPV2veU0pUMUs5MUc2STkzSzVQMFNDVlI5NjJVNjREUi4u)

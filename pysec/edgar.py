@@ -10,10 +10,11 @@ from pysec.parser import EDGARParser
 
 # https://www.sec.gov/cgi-bin/srch-edgar?text=form-type%3D%2810-q*+OR+10-k*%29&first=2020&last=2020
 
+
 class EDGARQuery():
 
     def __init__(self):
-        """Initalizes the EDGAR Client with the different endpoints used."""        
+        """Initalizes the EDGAR Client with the different endpoints used."""
 
         # base URL for the SEC EDGAR browser
         self.sec_url = "https://www.sec.gov"
@@ -51,7 +52,7 @@ class EDGARQuery():
                 "dataset": []
             }
         """
-        
+
         # Make the request.
         response = requests.get(
             url='https://www.sec.gov/data.json'
@@ -236,6 +237,72 @@ class EDGARQuery():
 
         return cleaned_items
 
+    def company_filings(self, cik: str = None, filing_type: str = None, sic_code: str = None, filing_number: str = None, company_name: str = None,
+                        state: str = None, country: str = None, return_count: int = 100, start: int = 0, before: Union[str, date] = None,
+                        after: Union[str, date] = None) -> List[dict]:
+        """Returns all the filings of certain type for a particular company.
+
+        Arguments:
+        ----
+        cik {str} -- The company CIK Number.
+
+        filing_type {str} -- The filing type ID.
+
+        Returns:
+        ----
+        dict -- A Dictionary containing the filing items.
+
+        Usage:
+        ----
+            >>> edgar_client = EDGARQuery()
+            >>> company_filings = edgar_client.company_directory(cik='1265107', filing_id='000110465919038688')
+            [
+                {
+                    'item_id': '0001104659-19-038688.txt',
+                    'last_modified': '2019-07-01 17:17:26',
+                    'size': '',
+                    'type': 'text.gif',
+                    'url': 'https://www.sec.gov/Archives/edgar/data/1265107/000110465919038688/0001104659-19-038688.txt'
+                },
+                {
+                    'item_id': 'a19-12321_2425.htm',
+                    'last_modified': '2019-07-01 17:17:26',
+                    'size': '37553',
+                    'type': 'text.gif',
+                    'url': 'https://www.sec.gov/Archives/edgar/data/1265107/000110465919038688/a19-12321_2425.htm'
+                }
+            ]
+        """
+
+        # Set the params
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'sic': sic_code,
+            'CIK': cik,
+            'type': filing_type,
+            'filenum': filing_number,
+            'company': company_name,
+            'start': start,
+            'datea': after,
+            'dateb': before
+        }
+
+        # Grab the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(
+            entries_text=response.text,
+            num_of_items=return_count,
+            start=start
+        )
+
+        return entries
+
     def company_filings_by_type(self, cik: str, filing_type: str) -> List[dict]:
         """Returns all the filings of certain type for a particular company.
 
@@ -290,7 +357,7 @@ class EDGARQuery():
 
         return entries
 
-    def companies_by_state(self, state: str, num_of_companies: int = None) -> List[dict]:
+    def companies_by_state(self, state: str, return_count: int = 100) -> List[dict]:
         """Returns all the companies that fall under a given state.
 
         Arguments:
@@ -318,12 +385,12 @@ class EDGARQuery():
         # Parse the entries.
         entries = self.parser_client.parse_entries(
             entries_text=response.text,
-            num_of_items=num_of_companies
+            num_of_items=return_count
         )
 
         return entries
 
-    def companies_by_country(self, country: str, num_of_companies: int = None) -> List[dict]:
+    def companies_by_country(self, country: str, return_count: int = 100) -> List[dict]:
         """Grabs all the companies that fall under a particular country code.
 
         Arguments:
@@ -332,7 +399,7 @@ class EDGARQuery():
 
         Keyword Arguments:
         ----
-        num_of_companies {int} -- If you would like to limit the number of results, then
+        return_count {int} -- If you would like to limit the number of results, then
             specify the number of companies you want back. (default: {None})
 
         Returns:
@@ -357,25 +424,32 @@ class EDGARQuery():
         # Parse the entries.
         entries = self.parser_client.parse_entries(
             entries_text=response.text,
-            num_of_items=num_of_companies
+            num_of_items=return_count
         )
 
         return entries
 
-    def companies_by_sic(self, sic_code: str, num_of_companies: int = None) -> List[dict]:
-        """Grabs all companies with a certain SIC code.
+    def companies(self, sic_code: str = None, state: str = None, country: str = None, return_count: int = 100, start: int = 0) -> List[dict]:
+        """Used to grab all companies matching multiple criteria.
 
-        Returns all companies, that fall under a particular SIC code. The information returned
-        by this endpoint depends on the infromation available on the company.
+        Overview:
+        ----
+        Returns all companies, that fall under a particular filter. This 
+        endpoint allows you to grab companies matching multiple criteria 
+        instead of a single criteria like in the other endpoints
 
         Arguments:
         ----
         sic_code {str} -- The SIC code for a particular Industry.
 
-        Keyword Arguments:
-        ----
-        num_of_companies {int} -- If you would like to limit the number of results, then
+        state {str} -- The two character State Code.
+
+        country {str} -- The two character country code.
+
+        return_count {int} -- If you would like to limit the number of results, then
             specify the number of companies you want back. (default: {None})
+
+        start {int} -- Specifies the starting company number. (default: {None})
 
         Returns:
         ----
@@ -410,13 +484,18 @@ class EDGARQuery():
             ]
         """
 
+        if not start:
+            start = 0
+
         # define the arguments of the request
         search_sic_params = {
             'Count': '100',
             'SIC': sic_code,
-            'Count': '100',
+            'Country': country,
+            'State': state,
             'action': 'getcompany',
-            'output': 'atom'
+            'output': 'atom',
+            'start': start
         }
 
         # Make the response.
@@ -426,7 +505,148 @@ class EDGARQuery():
         )
 
         # Parse the entries.
-        entries = self.parser_client.parse_entries(entries_text=response.text)
+        entries = self.parser_client.parse_entries(
+            entries_text=response.text,
+            num_of_items=return_count,
+            start=start
+        )
+
+        return entries
+
+    def companies_by_sic(self, sic_code: str, return_count: int = 100, start: int = 0) -> List[dict]:
+        """Grabs all companies with a certain SIC code.
+
+        Returns all companies, that fall under a particular SIC code. The information returned
+        by this endpoint depends on the infromation available on the company.
+
+        Arguments:
+        ----
+        sic_code {str} -- The SIC code for a particular Industry.
+
+        Keyword Arguments:
+        ----
+        return_count {int} -- If you would like to limit the number of results, then
+            specify the number of companies you want back. (default: {None})
+
+        start {int} -- Specifies the starting company number. (default: {None})
+
+        Returns:
+        ----
+            list[dict] -- A list of companies with the following attributes:
+
+            [
+                {
+                    "state": "MN",
+                    "cik": "0000066740",
+                    "last-date": "",
+                    "name": "3M CO",
+                    "sic-code": "3841",
+                    "id": "urn:tag:www.sec.gov:cik=0000066740",
+                    "href": "URL",
+                    "type": "html",
+                    "summary": "<strong>CIK:</strong> 0000066740, <strong>State:</strong> MN",
+                    "title": "3M CO",
+                    "updated": "2020-04-05T15:21:24-04:00",
+                    "atom_owner_only": "URL",
+                    "atom_owner_exclude": "URL",
+                    "atom_owner_include": "URL",
+                    "html_owner_only": "URL",
+                    "html_owner_exclude": "URL",
+                    "html_owner_include": "URL",
+                    "atom_owner_only_filtered_date": "URL",
+                    "atom_owner_exclude_filtered_date": "URL",
+                    "atom_owner_include_filtered_date": "URL",
+                    "html_owner_only_filtered_date": "URL",
+                    "html_owner_exclude_filtered_date": "URL",
+                    "html_owner_include_filtered_date": "URL",
+                }
+            ]
+        """
+
+        if not start:
+            start = 0
+
+        # define the arguments of the request
+        search_sic_params = {
+            'SIC': sic_code,
+            'Count': '100',
+            'action': 'getcompany',
+            'output': 'atom',
+            'start': start
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=search_sic_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(
+            entries_text=response.text,
+            num_of_items=return_count,
+            start=start
+        )
+
+        return entries
+
+    # OWNERSHIP FILINGS
+
+    def ownership_filings(self, cik: str = None, company_name: str = None, start: int = 0,
+                          return_count: int = 100, before: Union[str, date] = None, after: Union[str, date] = None) -> List[dict]:
+        """Returns all the ownership filings for the criteria specified.
+
+        Arguments:
+        ----
+        cik {str} -- The CIK number of the company to be queried.
+
+        company_name {str} -- The name of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        return_count {int} -- If you would like to limit the number of results, then
+            specify the number of companies you want back. (default: {None})
+
+        start {int} -- Specifies the starting company number. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of ownership filings.
+        """
+
+        # define the arguments of the request
+        search_params = {
+            'CIK': cik,
+            'company': company_name,
+            'Count': '100',
+            'myowner': 'only',
+            'action': 'getcompany',
+            'output': 'atom',
+            'start': start,
+            'datea': after,
+            'dateb': before
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(
+            entries_text=response.text,
+            num_of_items=return_count,
+            start=start
+        )
 
         return entries
 
@@ -474,6 +694,106 @@ class EDGARQuery():
 
         return entries
 
+    def ownership_filings_by_company_name(self, company_name: str, before: str = None, after: str = None) -> List[dict]:
+        """Returns all the filings ownership for a given company in a given date range.
+
+        Arguments:
+        ----
+        company_name {str} -- The name of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of ownership filings.
+        """
+
+        # define the arguments of the request
+        search_params = {
+            'company': company_name,
+            'Count': '100',
+            'myowner': 'only',
+            'action': 'getcompany',
+            'output': 'atom',
+            'datea': after,
+            'dateb': before
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text)
+
+        return entries
+
+    def non_ownership_filings(self, cik: str = None, company_name: str = None, start: int = 0, return_count: int = 100,
+                              before: Union[str, date] = None, after: Union[str, date] = None) -> List[dict]:
+        """Returns all the non-ownership filings for the criteria specified.
+
+        Arguments:
+        ----
+        cik {str} -- The CIK number of the company to be queried.
+
+        company_name {str} -- The name of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        return_count {int} -- If you would like to limit the number of results, then
+            specify the number of companies you want back. (default: {None})
+
+        start {int} -- Specifies the starting company number. (default: {None})
+        Returns:
+        ----
+        List[dict] -- A list of ownership filings.
+        """
+
+        # define the arguments of the request
+        search_params = {
+            'CIK': cik,
+            'Count': '100',
+            'myowner': 'exclude',
+            'action': 'getcompany',
+            'output': 'atom',
+            'company': company_name,
+            'datea': after,
+            'dateb': before
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(
+            entries_text=response.text,
+            num_of_items=return_count,
+            start=start
+        )
+
+        return entries
+
     def non_ownership_filings_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
         """Returns all the non-ownership filings for a given CIK number in a given date range.
 
@@ -499,6 +819,50 @@ class EDGARQuery():
         # define the arguments of the request
         search_params = {
             'CIK': cik,
+            'Count': '100',
+            'myowner': 'exclude',
+            'action': 'getcompany',
+            'output': 'atom',
+            'datea': after,
+            'dateb': before
+        }
+
+        # Make the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(entries_text=response.text)
+
+        return entries
+
+    def non_ownership_filings_by_company_name(self, company_name: str, before: str = None, after: str = None) -> List[dict]:
+        """Returns all the filings non-ownership for a given company in a given date range.
+
+        Arguments:
+        ----
+        company_name {str} -- The name of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of ownership filings.
+        """
+
+        # define the arguments of the request
+        search_params = {
+            'company': company_name,
             'Count': '100',
             'myowner': 'exclude',
             'action': 'getcompany',
@@ -562,94 +926,6 @@ class EDGARQuery():
 
         return entries
 
-    def ownership_filings_by_company_name(self, company_name: str, before: str = None, after: str = None) -> List[dict]:
-        """Returns all the filings ownership for a given company in a given date range.
-
-        Arguments:
-        ----
-        company_name {str} -- The name of the company to be queried.
-
-        Keyword Arguments:
-        ----
-        before {Union[str, date]} -- Represents filings that you want before a certain
-            date. For example, "2019-12-01" means return all the filings BEFORE
-            Decemeber 1, 2019. (default: {None})
-
-        after {Union[str, date]} -- Represents filings that you want after a certain
-            date. For example, "2019-12-01" means return all the filings AFTER 
-            Decemeber 1, 2019. (default: {None})
-
-        Returns:
-        ----
-        List[dict] -- A list of ownership filings.
-        """
-
-        # define the arguments of the request
-        search_params = {
-            'company': company_name,
-            'Count': '100',
-            'myowner': 'only',
-            'action': 'getcompany',
-            'output': 'atom',
-            'datea': after,
-            'dateb': before
-        }
-
-        # Make the response.
-        response = requests.get(
-            url=self.browse_service,
-            params=search_params
-        )
-
-        # Parse the entries.
-        entries = self.parser_client.parse_entries(entries_text=response.text)
-
-        return entries
-
-    def non_ownership_filings_by_company_name(self, company_name: str, before: str = None, after: str = None) -> List[dict]:
-        """Returns all the filings non-ownership for a given company in a given date range.
-
-        Arguments:
-        ----
-        company_name {str} -- The name of the company to be queried.
-
-        Keyword Arguments:
-        ----
-        before {Union[str, date]} -- Represents filings that you want before a certain
-            date. For example, "2019-12-01" means return all the filings BEFORE
-            Decemeber 1, 2019. (default: {None})
-
-        after {Union[str, date]} -- Represents filings that you want after a certain
-            date. For example, "2019-12-01" means return all the filings AFTER 
-            Decemeber 1, 2019. (default: {None})
-
-        Returns:
-        ----
-        List[dict] -- A list of ownership filings.
-        """
-
-        # define the arguments of the request
-        search_params = {
-            'company': company_name,
-            'Count': '100',
-            'myowner': 'exclude',
-            'action': 'getcompany',
-            'output': 'atom',
-            'datea': after,
-            'dateb': before
-        }
-
-        # Make the response.
-        response = requests.get(
-            url=self.browse_service,
-            params=search_params
-        )
-
-        # Parse the entries.
-        entries = self.parser_client.parse_entries(entries_text=response.text)
-
-        return entries
-
     def all_filings_by_company_name(self, company_name: str, before: str = None, after: str = None) -> List[dict]:
         """Returns all the filings (ownership and non-ownership) for a given company in a given date range.
 
@@ -693,7 +969,7 @@ class EDGARQuery():
         entries = self.parser_client.parse_entries(entries_text=response.text)
 
         return entries
-    
+
     def get_issuers_by_cik(self, cik: str) -> List[dict]:
         """Returns all the issuers for a given CIK number.
 
@@ -709,7 +985,7 @@ class EDGARQuery():
         # define the arguments of the request
         search_params = {
             'count': '100',
-            'CIK':cik,
+            'CIK': cik,
             'action': 'getissuer'
         }
 
@@ -720,7 +996,105 @@ class EDGARQuery():
         )
 
         # Parse the entries.
-        entries = self.parser_client.parse_issuer_table(entries_text=response.text)
+        entries = self.parser_client.parse_issuer_table(
+            entries_text=response.text
+        )
+
+        return entries
+
+    def mutual_funds(self, mutual_fund_type: str = None, cik: str = None, company_name: str = None, start: int = 0, return_count: int = 100,
+                        before: str = None, after: str = None) -> List[dict]:
+        """Returns all mutual funds for a given name in a given date range.
+
+        Arguments:
+        ----
+        company_name {str} -- The name of the company to be queried.
+
+        Keyword Arguments:
+        ----
+        before {Union[str, date]} -- Represents filings that you want before a certain
+            date. For example, "2019-12-01" means return all the filings BEFORE
+            Decemeber 1, 2019. (default: {None})
+
+        after {Union[str, date]} -- Represents filings that you want after a certain
+            date. For example, "2019-12-01" means return all the filings AFTER 
+            Decemeber 1, 2019. (default: {None})
+
+        Returns:
+        ----
+        List[dict] -- A list of mutual funds.
+        """
+
+        # The common mutual fund types.
+        mutual_funds_type = {
+            'mutual-fund': {
+                'query_params': {
+                    'type': '485',
+                    'hidefilings': None
+                }
+            },
+            'mutual-fund-prospectus': {
+                'query_params': {
+                    'type': '485',
+                    'hidefilings': '0'
+                }
+            },
+            'mutual-fund-proxy-records': {
+                'query_params': {
+                    'type': 'N-PX',
+                    'hidefilings': '0'
+                }
+            },
+            'mutual-fund-shareholder-reports': {
+                'query_params': {
+                    'type': 'N-CSR',
+                    'hidefilings': '0'
+                }
+            },
+            'mutual-fund-summary-prospectus': {
+                'query_params': {
+                    'type': '497K',
+                    'hidefilings': '0'
+                }
+            },
+            'mutual-fund-effectiveness-notice': {
+                'query_params': {
+                    'type': 'EFFECT',
+                    'hidefilings': None
+                }
+            }
+        }
+        
+        # Grab the one specified.
+        query_params = mutual_funds_type[mutual_fund_type]
+
+        # define the arguments of the request
+        search_params = {
+            'CIK': cik,
+            'company': company_name,
+            'Count': '100',
+            'myowner': 'include',
+            'action': 'getcompany',
+            'output': 'atom',
+            'datea': after,
+            'dateb': before
+        }
+
+        # Add the additional arguments.
+        search_params.update(query_params)
+
+        # Make the response.
+        response = requests.get(
+            url=self.browse_service,
+            params=search_params
+        )
+
+        # Parse the entries.
+        entries = self.parser_client.parse_entries(
+            entries_text=response.text,
+            num_of_items=return_count,
+            start=start
+        )
 
         return entries
 
@@ -1069,7 +1443,9 @@ class EDGARQuery():
         )
 
         # Parse the entries.
-        entries = self.parser_client.parse_variable_products_company_table(product_table_page=response.text)
+        entries = self.parser_client.parse_variable_products_company_table(
+            product_table_page=response.text
+        )
 
         return entries
 
@@ -1126,17 +1502,17 @@ class EDGARQuery():
         ----
         day (int): The number of days prior you would like to analyze. Can be one of
             the following: [0, 1, 2, 3, 4, 5]
-        
+
         form (str): The form you would like to analyze. Can be one of
             the following: ['10-k-annual', '10-k-quarterly', '14-proxies', '485-fund-prosp.', '8-k', 's-8', 'all']
-        
+
         form_id (str, optional): Represents the Form-ID and can be used to override the `form` argument. Defaults to None.
 
         Returns:
         ----
         List[Dict]: A list of current event filings.
-        """        
-        
+        """
+
         form_dict = {
             '10-k-annual': 0,
             '10-k-quarterly': 1,
@@ -1144,13 +1520,14 @@ class EDGARQuery():
             '485-fund-prosp.': 3,
             '8-k': 4,
             's-8': 5,
-            'all': 6            
+            'all': 6
         }
 
         if form in form_dict:
             form_id_arg = form_dict[form]
         else:
-            raise ValueError("The argument you've provided for form is incorrect.")
+            raise ValueError(
+                "The argument you've provided for form is incorrect.")
 
         # define the arguments of the request
         search_params = {
@@ -1166,11 +1543,12 @@ class EDGARQuery():
         )
 
         # Parse the entries.
-        entries = self.parser_client.parse_current_event_table(current_event_page=response.text)
+        entries = self.parser_client.parse_current_event_table(
+            current_event_page=response.text)
 
         return entries
 
-    def get_quarterly_index(self, year: int, quarter: int) -> List[dict]:
+    def get_quarterly_index(self, year: int, quarter: int) -> List[dict]:       
         """Grabs all the filings belong to a specific quarter and year.
 
         Arguments:
@@ -1201,19 +1579,23 @@ class EDGARQuery():
 
         # Make the response.
         directories = requests.get(
-            url = full_url
+            url=full_url
         ).json()
 
         cleaned_directories = []
 
         # Loop through each item.
         for item in directories['directory']['item']:
-            new_item = {key.replace("-","_"): value for key, value in item.items()}
+            
+            new_item = {
+                key.replace("-", "_"): 
+                value for key, value in item.items()
+            }
+
             new_item['url'] = quarterly_url + item['href']
             cleaned_directories.append(new_item)
 
         return cleaned_directories
-
 
     def get_quarterly_indexes(self) -> List[dict]:
         """Grabs all the Quarterly Index filings.
@@ -1221,7 +1603,7 @@ class EDGARQuery():
         Returns:
         ----
         List[dict]: A list of directory links and directory files.
-        """        
+        """
 
         url = self.archive_service + "/full-index/index.json"
 
@@ -1229,7 +1611,7 @@ class EDGARQuery():
 
         # Make the response.
         directories = requests.get(
-            url = url
+            url=url
         ).json()
 
         # Loop through each item.
@@ -1242,10 +1624,12 @@ class EDGARQuery():
                     year=directory['name'],
                 )
 
-                print('Pulling Directory: {yearly_url}'.format(yearly_url=directory['yearly_url']))
-                
+                print('Pulling Directory: {yearly_url}'.format(
+                    yearly_url=directory['yearly_url']))
+
                 # If we have a year than grab the quarters.
-                yearly_content = requests.get(url=directory['yearly_url']).json()
+                yearly_content = requests.get(
+                    url=directory['yearly_url']).json()
 
                 directory['quarterly_directories'] = {}
 
@@ -1256,20 +1640,44 @@ class EDGARQuery():
                         qtr=quarter['name']
                     )
 
-                    print('Pulling Directory: {qtr_url}'.format(qtr_url=quarterly_url))
+                    # Define the URL with no JSON index.
+                    quarterly_url_no_json = self.archive_service + "/full-index/{year}/{qtr}/".format(
+                        year=directory['name'],
+                        qtr=quarter['name']
+                    )
+
+                    print(
+                        'Pulling Directory: {qtr_url}'.format(
+                            qtr_url=quarterly_url
+                        )
+                    )
 
                     directory['quarterly_directories'][quarter['name']] = {}
-                    directory['quarterly_directories'][quarter['name']]['url'] = quarterly_url
+                    directory['quarterly_directories'][quarter['name']]['quarterly_url'] = quarterly_url
                     directory['quarterly_directories'][quarter['name']]['items'] = []
 
                     quarterly_content = requests.get(url=quarterly_url).json()
 
+                    # Loop through each file.
                     for item in quarterly_content['directory']['item']:
-                        item['url'] = quarterly_url + item['href']
+                        
+                        # If 
+                        is_gz = '.gz' in item['href']
+                        is_idx = '.idx' in item['href']
+                        is_zip = '.zip' in item['href']
+                        is_Z = '.Z' in item['href']
+                        is_xml = '.xml' in item['href']
+
+                        if is_gz or is_idx or is_zip or is_Z or is_xml:
+                            item['url'] = quarterly_url_no_json + item['href']
+                        else:
+                            item['url'] = quarterly_url + item['href']
+
                         directory['quarterly_directories'][quarter['name']]['items'].append(item)
 
             # Create the URL for downloads.
             else:
+
                 directory['file_url'] = self.archive_service + "/full-index/{href}".format(
                     href=directory['href']
                 )
