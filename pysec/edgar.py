@@ -1667,11 +1667,15 @@ class EDGARQuery():
                         is_zip = '.zip' in item['href']
                         is_Z = '.Z' in item['href']
                         is_xml = '.xml' in item['href']
+                        is_xbrl = 'xbrl.sit' in item['href']
+                        is_form = 'form.sit' in item['href']
+                        is_master = 'master.sit' in item['href']
+                        is_company = 'company.sit' in item['href']
 
-                        if is_gz or is_idx or is_zip or is_Z or is_xml:
-                            item['url'] = quarterly_url_no_json + item['href']
+                        if is_gz or is_idx or is_zip or is_Z or is_xml or is_xbrl or is_form or is_master or is_company:
+                            item['file_url'] = quarterly_url_no_json + item['href']
                         else:
-                            item['url'] = quarterly_url + item['href']
+                            item['file_url'] = quarterly_url + item['href']
 
                         directory['quarterly_directories'][quarter['name']]['items'].append(item)
 

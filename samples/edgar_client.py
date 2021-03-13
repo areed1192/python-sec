@@ -11,7 +11,7 @@ edgar_taxonomies = edgar_client.get_edgar_taxonomies()
 pprint.pprint(edgar_taxonomies)
 
 # Grab a specific Quarterly Archive Indexes.
-quarterly_archives = edgar_client.get_quarterly_index(year=2000, quarter=4)
+quarterly_archives = edgar_client.get_quarterly_index(year=2020, quarter=4)
 pprint.pprint(quarterly_archives)
 
 # Grab ALL of the Quarterly Archive Indexes.

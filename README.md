@@ -9,7 +9,7 @@
 
 ## Overview
 
-Current Version: **0.1.1**
+Current Version: **0.1.2**
 
 The Securities & Exchange Commission (SEC) has a treasure trove of business data available to indviduals
 for free. However, the biggest obstacle to getting this free data boils down to two challenges:
@@ -109,12 +109,15 @@ You will note the output of the above code would look like the following:
 ]
 ```
 
-## Support these Projects
+## Support These Projects
 
 **Patreon:**
-Help support this project and future projects by donating to my [Patreon Page](https://www.patreon.com/sigmacoding).
-I"m always looking to add more content for individuals like yourself, unfortuantely some of the APIs I would require
-me to pay monthly fees.
+Help support this project and future projects by donating to my [Patreon Page](https://www.patreon.com/sigmacoding). I'm
+always looking to add more content for individuals like yourself, unfortuantely some of the APIs I would require me to
+pay monthly fees.
 
 **YouTube:**
-If you"d like to watch more of my content, feel free to visit my YouTube channel [Sigma Coding](https://www.youtube.com/c/SigmaCoding).
+If you'd like to watch more of my content, feel free to visit my YouTube channel [Sigma Coding](https://www.youtube.com/c/SigmaCoding).
+
+**Questions:**
+If you have questions please feel free to reach out to me at [coding.sigma@gmail.com](mailto:coding.sigma@gmail.com?subject=[GitHub]%20Fred%20Library)

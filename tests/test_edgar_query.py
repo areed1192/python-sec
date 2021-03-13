@@ -26,7 +26,7 @@ class EDGARSessionTest(TestCase):
 
     def test_creates_instance_of_session(self):
         """Create an instance and make sure it's a `EDGARQuery`."""
-        
+
         # Make sure it matches.
         self.assertIsInstance(self.edgar, EDGARQuery)
 
