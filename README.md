@@ -17,7 +17,7 @@ for free. However, the biggest obstacle to getting this free data boils down to 
 1. Figuring out where it is
 2. Figuring out how to extract it
 
-The Python SEC library (`pysec`) is designed to make the collection and the extraction of SEC data quick
+The Python SEC library (`edgar`) is designed to make the collection and the extraction of SEC data quick
 and effortless. The library was designed around some of the following goals:
 
 1. Making the usage of the EDGAR search system, in a prgorammatic fashion, more intuitive.
@@ -75,38 +75,34 @@ you can use the library wherever you want.
 Here is a simple example of using the `pysec` library to grab the index files for specific quarter.
 
 ```python
-import pprint
-from pysec.edgar import EDGARQuery
+from pprint import pprint
+from edgar.client import EdgarClient
+from edgar.enums import StateCodes
+from edgar.enums import CountryCodes
+from edgar.enums import StandardIndustrialClassificationCodes
 
-# Initialize the client.
-edgar_client = EDGARQuery()
+# Initialize the Edgar Client
+edgar_client = EdgarClient()
 
-# Grab a specific Quarterly Archive Indexes.
-quarterly_archives = edgar_client.get_quarterly_index(year=2000, quarter=4)
-pprint.pprint(quarterly_archives)
-```
+# Initialize the Company Services.
+company_services = edgar_client.companies()
 
-You will note the output of the above code would look like the following:
+# Grab all the companies that are based in Texas.
+pprint(company_services.get_companies_by_state(state_code='TX'))
 
-```json
-[
-  {
-    "href": "company.gz",
-    "last_modified": "09/06/2014 01:08:55 AM",
-    "name": "company.gz",
-    "size": "1287 KB",
-    "type": "file",
-    "url": "https://www.sec.gov/Archives/edgar/full-index/2000/QTR4/company.gz"
-  },
-  {
-    "href": "company.idx",
-    "last_modified": "09/06/2014 01:08:53 AM",
-    "name": "company.idx",
-    "size": "10625 KB",
-    "type": "file",
-    "url": "https://www.sec.gov/Archives/edgar/full-index/2000/QTR4/company.idx"
-  }
-]
+# Alternatively, if you didn't know the 2 letter code you coude pass through an Enum.
+pprint(
+    company_services.get_companies_by_state(
+        state_code=StateCodes.West_Virginia
+    )
+)
+
+# Grab all the companies that are based in Australia, same logic here with the Enums.
+pprint(
+    company_services.get_companies_by_country(
+        country_code=CountryCodes.AUSTRALIA
+    )
+)
 ```
 
 ## Support These Projects

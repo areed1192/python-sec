@@ -14,14 +14,14 @@ from bs4 import BeautifulSoup
 from bs4 import Tag
 from bs4 import NavigableString
 
-class EDGARParser():
+class EdgarParser():
 
     def __init__(self):
-        """Initalizes the `EDGARParser()` Object.
+        """Initalizes the `EdgarParser` Object.
 
         Parsing filings, can change depending on the filing you're working with
         and whether you're grabbing the raw filing text or the directory of the filings.
-        Regardless of what you're parsing, the `EDGARParser()` object will handle most of
+        Regardless of what you're parsing, the `EdgarParser` object will handle most of
         the finer details for you.
 
         In cases, where the user needs to parse RSS feeds for the company search, then the
@@ -45,14 +45,15 @@ class EDGARParser():
     def parse_entries(self, entries_text: str, num_of_items: int = None, start: int = None) -> List[Dict]:
         """Parses all the entries from an entry element list.
 
-        Arguments:
+        ### Parameters
         ----
-        entries_text {str} -- The raw string returned from the
-            response.
+        entries_text : str
+            The raw string returned from the response.
 
-        Returns:
+        ### Returns
         ----
-        List[Dict] -- A dictionary containing all the information from the
+        List[Dict] : 
+            A dictionary containing all the information from the
             original entry element.
         """        
 
@@ -105,13 +106,15 @@ class EDGARParser():
         by defining a retry strategy and backing off for an allotted time
         in the case of a failed request.
 
-        Arguments:
+        ### Parameters
         ----
-        next_url {str} -- URL redirecting to the next rounds of files.
+        next_url : str
+            URL redirecting to the next rounds of files.
 
-        Returns:
+        ### Returns
         ----
-        ET.ElementTree -- A parsed version of the RSS Feed.
+        ET.ElementTree :
+            A parsed version of the RSS Feed.
         """
 
         # Create a new session.
@@ -136,13 +139,15 @@ class EDGARParser():
     def parse_entry_element(self, entry: ET.ElementTree) -> dict:
         """Converts the XML entry element into a python dictionary.
 
-        Arguments:
+        ### Parameters
         ----
-        entry {ET.ElementTree} -- An entry element, that contains filing information.
+        entry : ET.ElementTree
+            An entry element, that contains filing information.
 
-        Returns:
+        ### Returns
         ----
-        dict -- A dictionary version of the entry element.
+        dict :
+            A dictionary version of the entry element.
         """        
 
         entry_element_dict = {}
@@ -166,14 +171,15 @@ class EDGARParser():
     def _check_for_next_page(self, root_document: ET.Element) -> Union[str, None]:
         """Checks if the RSS Feed has a next page.
 
-        Arguments:
+        ### Parameters
         ----
-        root_document {ET.Element} -- The Parsed root document, which contains entry
-            elements.
+        root_document : ET.Element 
+            The Parsed root document, which contains entry elements.
 
-        Returns:
+        ### Returns
         ----
-        Union[str, None] -- The URL if it was found otherwise nothing.
+        Union[str, None]:
+            The URL if it was found otherwise nothing.
         """        
 
         next_page = root_document.findall("atom:link[@rel='next']", namespaces=self.entries_namespace)
@@ -193,13 +199,15 @@ class EDGARParser():
     def _parse_issuer_next_button(self, button_soup: Tag) -> Union[str]:
         """Parses the next button in the issuer report.
 
-        Args:
+        ### Parameters
         ----
-        button_soup (Tag): The raw HTML of the page with the button included.
+        button_soup : Tag
+            The raw HTML of the page with the button included.
 
-        Returns:
+        ### Returns
         ----
-        Union[str]: The link to the next page or nothing.
+        Union[str]:
+            The link to the next page or nothing.
         """        
         
         # Grab the button.
@@ -223,16 +231,19 @@ class EDGARParser():
     def parse_issuer_table(self, entries_text: str, num_of_items: int = None) -> List[Dict]:
         """Parses the Issuer tables found from a query to owner distribtuion page.
 
-        Arguments:
+        ### Parameters
         ----
-        entries_text (str): The raw HTML content to be parsed.
+        entries_text : str 
+            The raw HTML content to be parsed.
 
-        num_of_items (int, optional): The number of items to return from the query. Defaults to None.
+        num_of_items : int (optional, Default=None): 
+            The number of items to return from the query.
 
-        Returns:
+        ### Returns
         ----
-        List[Dict]: A list of dictionaries where each dictionary contains the `ownership_report`
-            and the `ownership_transaction_report`.
+        List[Dict]: 
+            A list of dictionaries where each dictionary contains
+            the `ownership_report` and the `ownership_transaction_report`.
         """        
 
         master_list = []
@@ -302,13 +313,15 @@ class EDGARParser():
     def parse_transaction_report(self, table: Tag) -> List[Dict]:
         """Parse the transaction table report.
 
-        Arguments:
+        ### Parameters
         ----
-        table (Tag): The raw HTML table.
+        table : Tag 
+            The raw HTML table.
 
-        Returns:
+        ### Returns
         ----
-        List[Dict]: A list of ownership transaction reports.
+        List[Dict] : 
+            A list of ownership transaction reports.
         """        
 
         master_list = []
@@ -337,13 +350,15 @@ class EDGARParser():
     def _check_center_tag(self, product_table_soup: Tag) -> Union[List[str]]:
         """Grabs all the links that are in the Center tag of the Product Page.
 
-        Arguments:
+        ### Parameters
         ----
-        product_table_soup (Tag): The product page HTML that has been parsed.
+        product_table_soup : Tag 
+            The product page HTML that has been parsed.
 
-        Returns:
+        ### Returns
         ----
-        Union[List[str]]: A list of URL links to the other pages.
+        Union[List[str]] :
+            A list of URL links to the other pages.
         """
 
         links = []
@@ -375,13 +390,15 @@ class EDGARParser():
     def parse_variable_products_company_table(self, product_table_page: str) -> List[Dict]:
         """Parses the Variable Product page of all the different products and companies.
 
-        Arguments:
+        ### Parameters
         ----
-        product_table_page (str): The raw HTML of the Product query result page.
+        product_table_page : str 
+            The raw HTML of the Product query result page.
 
-        Returns:
+        ### Returns
         ----
-        List[Dict]: A list of variable products.
+        List[Dict] : 
+            A list of variable products.
         """
         # Parse the Page.
         product_page_soup = BeautifulSoup(product_table_page, 'html.parser')
@@ -407,13 +424,15 @@ class EDGARParser():
     def _parse_variable_product_page(self, product_page_soup: Tag) -> List[Dict]:
         """This parses the actual table. It will grab the table with the entires and parse each row.
 
-        Arguments:
+        ### Parameters
         ----
-        product_page_soup (Tag): The parsed page with product tables.
+        product_page_soup :Tag
+            The parsed page with product tables.
 
-        Returns:
+        ### Returns
         ----
-        List[Dict]: A list of variable products.
+        List[Dict] :
+            A list of variable products.
         """        
 
         # Grab all the Summary Tables.
@@ -487,13 +506,15 @@ class EDGARParser():
     def parse_current_event_table(self, current_event_page: str) -> List[Dict]:
         """Parses the Current Event page of all the forms.
 
-        Arguments:
+        ### Parameters
         ----
-        current_event_page (str): The raw HTML of the current event query page.
+        current_event_page : str
+            The raw HTML of the current event query page.
 
-        Returns:
+        ### Returns
         ----
-        List[Dict]: A list of SEC filings.
+        List[Dict] :
+            A list of SEC filings.
         """
 
         master_list = []
@@ -527,13 +548,15 @@ class EDGARParser():
     def parse_loc_elements(self, response_text: str) -> List[dict]:
         """Parses the `Loc` elements found in the Taxonomies XML content.
 
-        Arguments:
+        ### Parameters
         ----
-        response_text (str): The raw XML of the Taxonomy query.
+        response_text : str
+            The raw XML of the Taxonomy query.
 
-        Returns:
+        ### Returns
         ----
-        List[Dict]: A list of taxonomy objects..
+        List[Dict] :
+            A list of taxonomy objects..
         """
 
         # Parse the text.
