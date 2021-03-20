@@ -101,7 +101,7 @@ class Series():
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
-            entries_text=response
+            response_text=response
         )
 
         return response
@@ -138,7 +138,7 @@ class Series():
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
-            entries_text=response
+            response_text=response
         )
 
         return response
@@ -186,10 +186,8 @@ class Series():
         print(response)
 
         # Parse it.
-        response = self.edgar_parser.parse_entries(
-            entries_text=response,
-            num_of_items=number_of_filings,
-            start=start
+        self.edgar_parser.parse_series_filings(
+            response_text=response,
         )
 
         return response

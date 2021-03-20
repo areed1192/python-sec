@@ -105,7 +105,7 @@ class Companies():
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
-            entries_text=response,
+            response_text=response,
             num_of_items=number_of_companies,
             start=start
         )
@@ -158,7 +158,7 @@ class Companies():
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
-            entries_text=response,
+            response_text=response,
             num_of_items=number_of_companies,
             start=start
         )
@@ -213,7 +213,7 @@ class Companies():
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
-            entries_text=response,
+            response_text=response,
             num_of_items=number_of_companies,
             start=start
         )
@@ -252,7 +252,7 @@ class Companies():
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
-            entries_text=response
+            response_text=response
         )
 
         return response
@@ -288,7 +288,7 @@ class Companies():
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
-            entries_text=response
+            response_text=response
         )
 
         return response
@@ -326,7 +326,7 @@ class Companies():
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
-            entries_text=response
+            response_text=response
         )
 
         return response

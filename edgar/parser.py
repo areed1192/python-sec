@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 from bs4 import Tag
 from bs4 import NavigableString
 
+
 class EdgarParser():
 
     def __init__(self):
@@ -31,8 +32,8 @@ class EdgarParser():
 
         self.entries_namespace = {
             'atom': "http://www.w3.org/2005/Atom",
-            'atom_with_quote':'{http://www.w3.org/2005/Atom}',
-            '':''
+            'atom_with_quote': '{http://www.w3.org/2005/Atom}',
+            '': ''
         }
 
         self.retry_strategy = Retry(
@@ -42,12 +43,12 @@ class EdgarParser():
         )
         self.adapter = HTTPAdapter(max_retries=self.retry_strategy)
 
-    def parse_entries(self, entries_text: str, num_of_items: int = None, start: int = None) -> List[Dict]:
+    def parse_entries(self, response_text: str, num_of_items: int = None, start: int = None, path: str = 'atom:entry') -> List[Dict]:
         """Parses all the entries from an entry element list.
 
         ### Parameters
         ----
-        entries_text : str
+        response_text : str
             The raw string returned from the response.
 
         ### Returns
@@ -55,13 +56,13 @@ class EdgarParser():
         List[Dict] : 
             A dictionary containing all the information from the
             original entry element.
-        """        
+        """
 
         # Parse the text.
-        root = ET.fromstring(entries_text)
+        root = ET.fromstring(response_text)
         entries = []
         keep_going = True
-        
+
         if start:
             current_count = start
         else:
@@ -71,7 +72,7 @@ class EdgarParser():
 
             # Check for the next page Link, if there is one.
             next_page = self._check_for_next_page(root_document=root)
-            
+
             # Grab the next page.
             if next_page and start:
                 current_count = (int(next_page.split('&start=')[1]) - start)
@@ -79,8 +80,8 @@ class EdgarParser():
                 current_count = int(next_page.split('&start=')[1])
 
             # Find all the entries.
-            for entry in root.findall('atom:entry', namespaces=self.entries_namespace):
-                
+            for entry in root.findall(path=path, namespaces=self.entries_namespace):
+
                 # Parse the individual entry.
                 entry_dict = self.parse_entry_element(entry=entry)
                 entries.append(entry_dict)
@@ -91,12 +92,12 @@ class EdgarParser():
             else:
                 root = self._grab_next_page(next_url=next_page)
                 print('Grabbed Next URL: {url}'.format(url=next_page))
-                
+
                 if not root or (num_of_items and num_of_items < current_count):
                     keep_going = False
 
         return entries
-    
+
     def _grab_next_page(self, next_url: str) -> ET.ElementTree:
         """Grabs the next page text content.
 
@@ -136,7 +137,7 @@ class EdgarParser():
         else:
             return None
 
-    def parse_entry_element(self, entry: ET.ElementTree) -> dict:
+    def parse_entry_element(self, entry: ET.ElementTree, path: str = './') -> dict:
         """Converts the XML entry element into a python dictionary.
 
         ### Parameters
@@ -148,22 +149,23 @@ class EdgarParser():
         ----
         dict :
             A dictionary version of the entry element.
-        """        
+        """
 
         entry_element_dict = {}
         replace_tag = self.entries_namespace['atom_with_quote']
 
-        for entry in entry.findall("./", namespaces=self.entries_namespace):
+        for entry in entry.findall(path=path, namespaces=self.entries_namespace):
+            
             for element in entry.iter():
                 name = element.tag.replace(replace_tag, '')
-                
-                if element.text :
-                    name = name.replace('-','_')
+
+                if element.text:
+                    name = name.replace('-', '_')
                     entry_element_dict[name] = element.text.strip()
 
                 if element.attrib:
                     for key, value in element.attrib.items():
-                        key = key.replace('-','_')
+                        key = key.replace('-', '_')
                         entry_element_dict[name + "_{}".format(key)] = value
 
         return entry_element_dict
@@ -180,9 +182,10 @@ class EdgarParser():
         ----
         Union[str, None]:
             The URL if it was found otherwise nothing.
-        """        
+        """
 
-        next_page = root_document.findall("atom:link[@rel='next']", namespaces=self.entries_namespace)
+        next_page = root_document.findall(
+            "atom:link[@rel='next']", namespaces=self.entries_namespace)
 
         if next_page:
             element_attributes = next_page[0].attrib
@@ -208,8 +211,8 @@ class EdgarParser():
         ----
         Union[str]:
             The link to the next page or nothing.
-        """        
-        
+        """
+
         # Grab the button.
         buttons: Tag = button_soup.find_all(
             name='input',
@@ -224,16 +227,17 @@ class EdgarParser():
                 next_page = button['onclick']
 
                 # Build the URL
-                next_page_link = next_page.replace("parent.location='","https://www.sec.gov").replace("'","")
+                next_page_link = next_page.replace(
+                    "parent.location='", "https://www.sec.gov").replace("'", "")
 
                 return next_page_link
 
-    def parse_issuer_table(self, entries_text: str, num_of_items: int = None) -> List[Dict]:
+    def parse_issuer_table(self, response_text: str, num_of_items: int = None) -> List[Dict]:
         """Parses the Issuer tables found from a query to owner distribtuion page.
 
         ### Parameters
         ----
-        entries_text : str 
+        response_text : str 
             The raw HTML content to be parsed.
 
         num_of_items : int (optional, Default=None): 
@@ -244,12 +248,12 @@ class EdgarParser():
         List[Dict]: 
             A list of dictionaries where each dictionary contains
             the `ownership_report` and the `ownership_transaction_report`.
-        """        
+        """
 
         master_list = []
         ownership_report_for_issuers = []
 
-        soup = BeautifulSoup(entries_text, 'html.parser')
+        soup = BeautifulSoup(response_text, 'html.parser')
         next_page_link = self._parse_issuer_next_button(button_soup=soup)
 
         while soup is not None:
@@ -261,11 +265,11 @@ class EdgarParser():
             issuers_transaction_report_table: Tag = soup.find_all(
                 name='table',
                 attrs={
-                    'id':'transaction-report'
+                    'id': 'transaction-report'
                 }
             )
             issuers_table_rows = issuers_table.find_all(name='tr')
-            
+
             for row in issuers_table_rows:
 
                 issuer_dict = {}
@@ -289,8 +293,8 @@ class EdgarParser():
                     if 'own-disp' in new_link:
                         issuer_dict['ownership_link'] = new_link
                     elif 'browse-edgar' in new_link:
-                        issuer_dict['browse_company_link'] = new_link       
-            
+                        issuer_dict['browse_company_link'] = new_link
+
             master_dict = {}
             master_dict['ownership_report'] = ownership_report_for_issuers
             master_dict['ownership_transaction_report'] = self.parse_transaction_report(
@@ -300,11 +304,12 @@ class EdgarParser():
             master_list.append(master_dict)
 
             print("Pulling URL: {url}".format(url=next_page_link))
-            
+
             if next_page_link:
-                entries_text = requests.get(next_page_link).content
-                soup = BeautifulSoup(entries_text, 'html.parser')
-                next_page_link = self._parse_issuer_next_button(button_soup=soup)
+                response_text = requests.get(next_page_link).content
+                soup = BeautifulSoup(response_text, 'html.parser')
+                next_page_link = self._parse_issuer_next_button(
+                    button_soup=soup)
             else:
                 soup = None
 
@@ -322,15 +327,16 @@ class EdgarParser():
         ----
         List[Dict] : 
             A list of ownership transaction reports.
-        """        
+        """
 
         master_list = []
-        
+
         all_rows = table.find_all('tr')
         first_row = all_rows[0]
         all_other_rows = all_rows[1:]
 
-        headers = [header.replace(' ', '_').lower() for header in first_row.strings if header != '\n']
+        headers = [header.replace(' ', '_').lower()
+                   for header in first_row.strings if header != '\n']
 
         headers.insert(5, 'link')
 
@@ -386,13 +392,13 @@ class EdgarParser():
 
         # Don't care about the last one, just a duplicate.
         return links[:-1]
-    
-    def parse_variable_products_company_table(self, product_table_page: str) -> List[Dict]:
+
+    def parse_variable_products_company_table(self, response_text: str) -> List[Dict]:
         """Parses the Variable Product page of all the different products and companies.
 
         ### Parameters
         ----
-        product_table_page : str 
+        response_text : str 
             The raw HTML of the Product query result page.
 
         ### Returns
@@ -401,24 +407,29 @@ class EdgarParser():
             A list of variable products.
         """
         # Parse the Page.
-        product_page_soup = BeautifulSoup(product_table_page, 'html.parser')
+        product_page_soup = BeautifulSoup(response_text, 'html.parser')
 
         # Check for the other links.
-        href_links = self._check_center_tag(product_table_soup=product_page_soup)
+        href_links = self._check_center_tag(
+            product_table_soup=product_page_soup)
 
         # Parse the table.
-        product_list_all = self._parse_variable_product_page(product_page_soup=product_page_soup)
+        product_list_all = self._parse_variable_product_page(
+            product_page_soup=product_page_soup)
 
         # Loop through all the pages, and grab those entries.
         for link in href_links:
 
-            product_page_soup = BeautifulSoup(requests.get(url=link).text, 'html.parser')
-            product_list = self._parse_variable_product_page(product_page_soup=product_page_soup)
+            product_page_soup = BeautifulSoup(
+                requests.get(url=link).text, 'html.parser')
+            product_list = self._parse_variable_product_page(
+                product_page_soup=product_page_soup)
             product_list_all = product_list_all + product_list
 
             print("Pulling URL: {url}".format(url=link))
-            print("Total Entries Scraped: {quant}".format(quant=len(product_list_all)))
-        
+            print("Total Entries Scraped: {quant}".format(
+                quant=len(product_list_all)))
+
         return product_list_all
 
     def _parse_variable_product_page(self, product_page_soup: Tag) -> List[Dict]:
@@ -433,13 +444,14 @@ class EdgarParser():
         ----
         List[Dict] :
             A list of variable products.
-        """        
+        """
 
         # Grab all the Summary Tables.
-        summary_table = product_page_soup.find_all(name='table', attrs={'summary':'.'})
+        summary_table = product_page_soup.find_all(
+            name='table', attrs={'summary': '.'})
 
         master_list = []
-        
+
         # Loop through each table.
         for table in summary_table:
 
@@ -453,16 +465,23 @@ class EdgarParser():
             if criteria_1 and criteria_2 and criteria_3:
 
                 # Grab all the Rows.
-                table_rows: List[Tag] = table.find_all('tr', attrs={'valign':'top'})
-                
+                table_rows: List[Tag] = table.find_all(
+                    'tr', attrs={'valign': 'top'}
+                )
+
                 # Loop through each Row.
                 for row in table_rows:
-                    
+
                     # Grab Row links
-                    row_links = [row_link['href'] for row_link in row.find_all('a', href=True)]
-                    
+                    row_links = [
+                        row_link['href']
+                        for row_link in row.find_all('a', href=True)
+                    ]
+
                     # Grab the Strings, with text and filter our line breaks.
-                    values = [string for string in row.strings if string != '\n']
+                    values = [
+                        string for string in row.strings if string != '\n'
+                    ]
 
                     if values:
 
@@ -473,7 +492,7 @@ class EdgarParser():
 
                         row_dict['id'] = product_id
                         row_dict['name'] = product_name
-                        
+
                         # Define the product ID based on the first Character.
                         if product_id.startswith('S'):
                             row_dict['id_type'] = 'Series'
@@ -481,7 +500,7 @@ class EdgarParser():
                             row_dict['id_type'] = 'Contract'
                         else:
                             row_dict['id_type'] = 'CIK'
-                        
+
                         # Set the Ticker symbol.
                         try:
                             row_dict['ticker_symbol'] = values[2]
@@ -502,13 +521,13 @@ class EdgarParser():
                         master_list.append(row_dict)
 
         return master_list
-    
-    def parse_current_event_table(self, current_event_page: str) -> List[Dict]:
+
+    def parse_current_event_table(self, response_text: str) -> List[Dict]:
         """Parses the Current Event page of all the forms.
 
         ### Parameters
         ----
-        current_event_page : str
+        response_text : str
             The raw HTML of the current event query page.
 
         ### Returns
@@ -520,7 +539,7 @@ class EdgarParser():
         master_list = []
 
         # Parse the Page.
-        current_event_soup = BeautifulSoup(current_event_page, 'html.parser')
+        current_event_soup = BeautifulSoup(response_text, 'html.parser')
 
         # Grab the <Pre> tag.
         current_event_pre: Tag = current_event_soup.find('pre')
@@ -532,7 +551,11 @@ class EdgarParser():
         keys = ['date_filed', 'form', 'cik', 'company_name']
 
         # Clean up the header to get the first row.
-        header_row = all_rows[0].replace('Date Filed   Form        CIK Code     Company Name','')
+        header_row = all_rows[0].replace(
+            'Date Filed   Form        CIK Code     Company Name',
+            ''
+        )
+
         new_string = " ".join(header_row.split()).split(' ', 3)
 
         # add to the list.
@@ -565,8 +588,58 @@ class EdgarParser():
 
         # Grab all the location elements.
         for location in root.findall('Loc'):
-            location_dict = {element.tag: element.text for element in location.iter()}
+            location_dict = {
+                element.tag: element.text for element in location.iter()
+            }
             del location_dict['Loc']
             entries.append(location_dict)
 
         return entries
+
+    def parse_series_filings(self, response_text: str) -> List[dict]:
+
+        root = ET.fromstring(response_text)
+
+        for elem in root.iterfind('.atom:entry/atom:content/atom:company-info/atom:sids/atom:sid', namespaces=self.entries_namespace):
+            print(elem)
+
+        # soup = BeautifulSoup(response_text, 'html.parser')
+
+        # sid_data = []
+
+        # for sid in soup.find_all(name='sid'):
+
+        #     sid: Tag = sid
+        #     element_dict = {}
+
+        #     print(len(list(sid.children)))
+
+        #     for element in sid.children:
+            
+
+        #         if not isinstance(element, NavigableString) and element.name != 'cids':
+        #             element_dict[
+        #                 element.name.replace('-', '_')
+        #             ] = element.text.strip()
+
+        #         elif not isinstance(element, NavigableString) and element.name == 'cids':
+        #             element_dict['cids'] = []
+
+        #             for cid in element.find_all('cid'):
+        #                 cid_dict = {}
+        #                 cid_dict['cid_id'] = cid['id']
+
+        #                 for cid_element in cid.find_all():
+        #                     cid_dict[
+        #                         cid_element.name.replace('-', '_').strip()
+        #                     ] = cid_element.text.strip()
+
+        #                 element_dict['cids'].append(
+        #                     cid_dict
+        #                 )
+
+        #     sid_data.append(
+        #         element_dict
+        #     )
+
+        # return sid_data

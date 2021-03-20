@@ -44,7 +44,6 @@ pprint(
     company_services.get_company_by_cik(cik='1628533')
 )
 
-
 # Search a company using their name.
 pprint(
     company_services.get_companies_by_name(name='Microsoft')
