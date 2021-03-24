@@ -48,3 +48,11 @@ pprint(
 pprint(
     company_services.get_companies_by_name(name='Microsoft')
 )
+
+
+pprint(
+    company_services.query(
+        company_name='Superior Well Services, INC',
+        sic_code=StandardIndustrialClassificationCodes.OIL_AND_GAS_FIELD_SERVICES_NEC
+    )
+)
