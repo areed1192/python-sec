@@ -159,7 +159,7 @@ class EdgarSession():
         # If it's okay and no details.
         if response.ok and len(response.content) > 0:
 
-            if content_type == 'application/atom+xml' or content_type == 'text/html':
+            if content_type in ['application/atom+xml', 'text/xml', 'text/html']:
                 return response.text
             else:
                 try:
@@ -169,7 +169,6 @@ class EdgarSession():
                         b'Content-type: application/json\r\n\r\n',
                         b''
                     )
-                    print(content)
                     return json.loads(content)
 
         elif len(response.content) > 0 and response.ok:

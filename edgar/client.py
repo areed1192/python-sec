@@ -11,7 +11,8 @@ from edgar.archives import Archives
 from edgar.companies import Companies
 from edgar.series import Series
 from edgar.mutual_funds import MutualFunds
-
+from edgar.variable_insurance_products import VariableInsuranceProducts
+from edgar.datasets import Datasets
 
 class EdgarClient():
 
@@ -103,81 +104,33 @@ class EdgarClient():
 
         return object
 
-    # def get_sec_datasets(self) -> dict:
-    #     """Grabs all the Public datasets provided by the SEC.
+    def variable_insurance_products(self) -> VariableInsuranceProducts:
+        """Used to access the `VariableInsuranceProducts` services.
 
-    #     Returns:
-    #     ----
-    #     dict: A collection of SEC datasets.
+        ### Returns
+        ---
+        Users:
+            The `VariableInsuranceProducts` services Object.
+        """
 
-    #     Usage:
-    #     ----
-    #         >>> edgar_client = EDGARQuery()
-    #         >>> sec_datasets = edgar_client.get_sec_datasets()
-    #         {
-    #             "@context": "https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld",
-    #             "@id": "https://www.sec.gov/data.json",
-    #             "@type": "dcat:Catalog",
-    #             "conformsTo": "https://project-open-data.cio.gov/v1.1/schema",
-    #             "describedBy": "https://project-open-data.cio.gov/v1.1/schema/catalog.json",
-    #             "dataset": []
-    #         }
-    #     """
+        # Grab the `VariableInsuranceProducts` object.
+        object = VariableInsuranceProducts(session=self.edgar_session)
 
-    #     # Make the request.
-    #     response = requests.get(
-    #         url='https://www.sec.gov/data.json'
-    #     )
+        return object
 
-    #     if response.ok:
-    #         return response.json()
+    def datasets(self) -> Datasets:
+        """Used to access the `Datasets` services.
 
-    # def get_edgar_taxonomies(self) -> dict:
-    #     """Grabs all the Public taxonomies datasets provided by the SEC.
+        ### Returns
+        ---
+        Users:
+            The `Datasets` services Object.
+        """
 
-    #     Returns:
-    #     ----
-    #     dict: A collection of Taxonomy files for the SEC.
+        # Grab the `Datasets` object.
+        object = Datasets(session=self.edgar_session)
 
-    #     Usage:
-    #     ----
-    #         >>> edgar_client = EDGARQuery()
-    #         >>> sec_datasets = edgar_client.get_edgar_taxonomies()
-    #         [
-    #             {
-    #                 'AttType': 'SCH',
-    #                 'Elements': '0',
-    #                 'Family': 'BASE',
-    #                 'FileTypeName': 'Schema',
-    #                 'Href': 'http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd',
-    #                 'Namespace': 'http://www.xbrl.org/2003/linkbase',
-    #                 'Prefix': 'link',
-    #                 'Version': '2010'
-    #             },
-    #             {
-    #                 'AttType': 'SCH',
-    #                 'Elements': '0',
-    #                 'Family': 'BASE',
-    #                 'FileTypeName': 'Schema',
-    #                 'Href': 'http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd',
-    #                 'Namespace': 'http://www.xbrl.org/2003/instance',
-    #                 'Prefix': 'xbrli',
-    #                 'Version': '2010'
-    #             }
-    #         ]
-    #     """
-
-    #     # Make the request.
-    #     response = requests.get(
-    #         url='https://www.sec.gov/info/edgar/edgartaxonomies.xml'
-    #     )
-
-    #     # Parse the response.
-    #     taxonomies = self.parser_client.parse_loc_elements(
-    #         response_text=response.text
-    #     )
-
-    #     return taxonomies
+        return object
 
     # def company_filings(self, cik: str = None, filing_type: str = None, sic_code: str = None, filing_number: str = None, company_name: str = None,
     #                     state: str = None, country: str = None, return_count: int = 100, start: int = 0, before: Union[str, date] = None,
@@ -795,37 +748,6 @@ class EdgarClient():
 
     #     return entries
 
-    # def get_variable_insurance_products_by_name(self, product_name: str) -> List[dict]:
-    #     """Returns all the variable insurance products defined by the given name.
-
-    #     Arguments:
-    #     ----
-    #     product_name {str} -- Variable insurance products.
-
-    #     Returns:
-    #     ----
-    #     List[dict] -- A list of mutual funds.
-    #     """
-
-    #     # define the arguments of the request
-    #     search_params = {
-    #         'company': product_name,
-    #         'sc': 'companyseries'
-    #     }
-
-    #     # Make the response.
-    #     response = requests.get(
-    #         url=self.series_service,
-    #         params=search_params
-    #     )
-
-    #     # Parse the entries.
-    #     entries = self.parser_client.parse_variable_products_company_table(
-    #         product_table_page=response.text
-    #     )
-
-    #     return entries
-
     # def get_variable_insurance_products_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
     #     """Returns all the filings (ownership and non-ownership) for a given company in a given date range.
 
@@ -924,99 +846,3 @@ class EdgarClient():
     #         current_event_page=response.text)
 
     #     return entries
-
-    # def get_quarterly_indexes(self) -> List[dict]:
-    #     """Grabs all the Quarterly Index filings.
-
-    #     Returns:
-    #     ----
-    #     List[dict]: A list of directory links and directory files.
-    #     """
-
-    #     url = self.archive_service + "/full-index/index.json"
-
-    #     cleaned_directories = []
-
-    #     # Make the response.
-    #     directories = requests.get(
-    #         url=url
-    #     ).json()
-
-    #     # Loop through each item.
-    #     for directory in directories['directory']['item']:
-
-    #         # Create the URL for the directory.
-    #         if directory['type'] == 'dir':
-
-    #             directory['yearly_url'] = self.archive_service + "/full-index/{year}/index.json".format(
-    #                 year=directory['name'],
-    #             )
-
-    #             print('Pulling Directory: {yearly_url}'.format(
-    #                 yearly_url=directory['yearly_url']))
-
-    #             # If we have a year than grab the quarters.
-    #             yearly_content = requests.get(
-    #                 url=directory['yearly_url']).json()
-
-    #             directory['quarterly_directories'] = {}
-
-    #             for quarter in yearly_content['directory']['item']:
-
-    #                 quarterly_url = self.archive_service + "/full-index/{year}/{qtr}/index.json".format(
-    #                     year=directory['name'],
-    #                     qtr=quarter['name']
-    #                 )
-
-    #                 # Define the URL with no JSON index.
-    #                 quarterly_url_no_json = self.archive_service + "/full-index/{year}/{qtr}/".format(
-    #                     year=directory['name'],
-    #                     qtr=quarter['name']
-    #                 )
-
-    #                 print(
-    #                     'Pulling Directory: {qtr_url}'.format(
-    #                         qtr_url=quarterly_url
-    #                     )
-    #                 )
-
-    #                 directory['quarterly_directories'][quarter['name']] = {}
-    #                 directory['quarterly_directories'][quarter['name']]['quarterly_url'] = quarterly_url
-    #                 directory['quarterly_directories'][quarter['name']]['items'] = []
-
-    #                 quarterly_content = requests.get(url=quarterly_url).json()
-
-    #                 # Loop through each file.
-    #                 for item in quarterly_content['directory']['item']:
-
-    #                     # If
-    #                     is_gz = '.gz' in item['href']
-    #                     is_idx = '.idx' in item['href']
-    #                     is_zip = '.zip' in item['href']
-    #                     is_Z = '.Z' in item['href']
-    #                     is_xml = '.xml' in item['href']
-    #                     is_xbrl = 'xbrl.sit' in item['href']
-    #                     is_form = 'form.sit' in item['href']
-    #                     is_master = 'master.sit' in item['href']
-    #                     is_company = 'company.sit' in item['href']
-
-    #                     if is_gz or is_idx or is_zip or is_Z or is_xml or is_xbrl or is_form or is_master or is_company:
-    #                         item['file_url'] = quarterly_url_no_json + item['href']
-    #                     else:
-    #                         item['file_url'] = quarterly_url + item['href']
-
-    #                     directory['quarterly_directories'][quarter['name']]['items'].append(item)
-
-    #         # Create the URL for downloads.
-    #         else:
-
-    #             directory['file_url'] = self.archive_service + "/full-index/{href}".format(
-    #                 href=directory['href']
-    #             )
-
-    #         directory['filing_id'] = directory.pop('name')
-    #         directory['last_modified'] = directory.pop('last-modified')
-
-    #         cleaned_directories.append(directory)
-
-    #     return cleaned_directories

@@ -579,7 +579,7 @@ class EdgarParser():
         ### Returns
         ----
         List[Dict] :
-            A list of taxonomy objects..
+            A list of taxonomy objects.
         """
 
         # Parse the text.
@@ -595,6 +595,7 @@ class EdgarParser():
             entries.append(location_dict)
 
         return entries
+
 
     def parse_series_filings(self, response_text: str) -> List[dict]:
 
