@@ -12,7 +12,8 @@ from edgar.session import EdgarSession
 from edgar.series import Series
 from edgar.companies import Companies
 from edgar.archives import Archives
-
+from edgar.datasets import Datasets
+from edgar.current_events import CurrentEvents
 
 class Edg(TestCase):
 
@@ -56,6 +57,18 @@ class Edg(TestCase):
 
         # Make sure it matches.
         self.assertIsInstance(self.edgar_client.companies(), Companies)
+
+    def test_creates_instance_of_datasets(self):
+        """Create an instance and make sure it's a `Datasets`."""
+
+        # Make sure it matches.
+        self.assertIsInstance(self.edgar_client.datasets(), Datasets)
+
+    def test_creates_instance_of_current_events(self):
+        """Create an instance and make sure it's a `CurrentEvents`."""
+
+        # Make sure it matches.
+        self.assertIsInstance(self.edgar_client.current_events(), CurrentEvents)
 
     def tearDown(self) -> None:
         """Teardown the `Edgar` Client."""
