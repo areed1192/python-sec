@@ -6,17 +6,6 @@ from edgar.enums import FilingTypeCodes
 # Initalize the client.
 edgar_client = EdgarClient()
 
-# # Grab the EDGAR Taxonomies File.
-# edgar_taxonomies = edgar_client.get_edgar_taxonomies()
-# pprint.pprint(edgar_taxonomies)
-
-# # Grab a specific Quarterly Archive Indexes.
-# quarterly_archives = edgar_client.get_quarterly_index(year=2020, quarter=4)
-# pprint.pprint(quarterly_archives)
-
-# # Grab ALL of the Quarterly Archive Indexes.
-# quarterly_archives = edgar_client.get_quarterly_indexes()
-# pprint.pprint(quarterly_archives)
 
 # # Grab all the directories belonging to a specific CIK number.
 # # In this case the CIK number `1326801` is Facebook.

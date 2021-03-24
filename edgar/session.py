@@ -42,10 +42,10 @@ class EdgarSession():
 
         if not pathlib.Path('logs').exists():
             pathlib.Path('logs').mkdir()
-            pathlib.Path('logs/fred_api_log.log').touch()
+            pathlib.Path('logs/sec_api_log.log').touch()
 
         logging.basicConfig(
-            filename="logs/fred_api_log.log",
+            filename="logs/sec_api_log.log",
             level=logging.INFO,
             encoding="utf-8",
             format=log_format
