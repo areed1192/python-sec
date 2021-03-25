@@ -90,7 +90,7 @@ company_services = edgar_client.companies()
 # Grab all the companies that are based in Texas.
 pprint(company_services.get_companies_by_state(state_code='TX'))
 
-# Alternatively, if you didn't know the 2 letter code you coude pass through an Enum.
+# Alternatively, if you didn't know the 2 letter code you could pass through an Enum.
 pprint(
     company_services.get_companies_by_state(
         state_code=StateCodes.West_Virginia
