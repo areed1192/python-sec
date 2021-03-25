@@ -46,9 +46,26 @@ class Filings():
         self.params = {
             'action': 'getcompany',
             'output': 'atom',
+            'company': '',
             'CIK': '',
             'start': '0',
-            'count': '100'
+            'Count': '100',
+            'datea': '',
+            'dateb': ''
+        }
+
+    def _reset_params(self) -> None:
+        """Resets the params for the next request."""
+
+        self.params = {
+            'CIK': '',
+            'company': '',
+            'Count': '100',
+            'action': 'getcompany',
+            'output': 'atom',
+            'start': '',
+            'datea': '',
+            'dateb': ''
         }
 
     def __repr__(self) -> str:
@@ -106,7 +123,7 @@ class Filings():
             num_of_items=number_of_filings
         )
 
-        self.params['CIK'] = ''
+        self._reset_params()
 
         return response
 
@@ -169,8 +186,7 @@ class Filings():
             num_of_items=number_of_filings
         )
 
-        self.params['CIK'] = ''
-        self.params['type'] = ''
+        self._reset_params()
 
         return response
 
@@ -268,22 +284,16 @@ class Filings():
             start=start
         )
 
-        self.params['start'] = start
-        self.params['CIK'] = cik
-        self.params['SIC'] = sic
-        self.params['type'] = filing_type
-        self.params['company'] = company_name
-        self.params['datea'] = after_date
-        self.params['dateb'] = before_date
+        self._reset_params()
 
         return entries
 
     def get_filings_by_company_name(
-            self,
-            company_name: str,
-            number_of_filings : int = 100,
-            start : int = 0
-        ) -> List[dict]:
+        self,
+        company_name: str,
+        number_of_filings: int = 100,
+        start: int = 0
+    ) -> List[dict]:
         """Returns all the filings (ownership and non-ownership).
 
         ### Parameters
@@ -322,6 +332,6 @@ class Filings():
             start=start
         )
 
-        self.params['company'] = ''
+        self._reset_params()
 
         return entries
