@@ -4,18 +4,19 @@ Will perform an instance test to make sure it creates it.
 """
 
 import unittest
-
 from typing import List
 from unittest import TestCase
-from edgar.client import EdgarClient
-from edgar.session import EdgarSession
 from edgar.series import Series
-from edgar.companies import Companies
-from edgar.archives import Archives
-from edgar.datasets import Datasets
-from edgar.current_events import CurrentEvents
 from edgar.filings import Filings
 from edgar.issuers import Issuers
+from edgar.archives import Archives
+from edgar.datasets import Datasets
+from edgar.client import EdgarClient
+from edgar.session import EdgarSession
+from edgar.companies import Companies
+from edgar.current_events import CurrentEvents
+from edgar.ownership_filings import OwnershipFilings
+
 
 class Edg(TestCase):
 
@@ -70,7 +71,10 @@ class Edg(TestCase):
         """Create an instance and make sure it's a `CurrentEvents` object."""
 
         # Make sure it matches.
-        self.assertIsInstance(self.edgar_client.current_events(), CurrentEvents)
+        self.assertIsInstance(
+            self.edgar_client.current_events(),
+            CurrentEvents
+        )
 
     def test_creates_instance_of_filings(self):
         """Create an instance and make sure it's a `Filing` object."""
@@ -83,6 +87,13 @@ class Edg(TestCase):
 
         # Make sure it matches.
         self.assertIsInstance(self.edgar_client.issuers(), Issuers)
+
+    def test_creates_instance_of_ownership_filings(self):
+        """Create an instance and make sure it's a `OwnershipFilings` object."""
+
+        # Make sure it matches.
+        self.assertIsInstance(
+            self.edgar_client.ownership_filings(), OwnershipFilings)
 
     def tearDown(self) -> None:
         """Teardown the `Edgar` Client."""

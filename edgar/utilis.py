@@ -52,7 +52,8 @@ class EdgarUtilities():
 
             # Create the URL.
             directory['url'] = (
-                self.resource + directory_name + directory['name'] + "/index.json"
+                self.resource + directory_name +
+                directory['name'] + "/index.json"
             ).replace('//', '/')
             directory['filing_id'] = directory.pop('name')
             directory['last_modified'] = directory.pop('last-modified')
@@ -125,7 +126,7 @@ class EdgarUtilities():
             return date_or_datetime.isoformat()
         elif isinstance(date_or_datetime, str):
             try:
-                datetime.datetime.strptime(date_or_datetime, 'YYYY-MM-DD')
+                datetime.strptime(date_or_datetime, '%Y-%m-%d')
                 return date_or_datetime
             except:
                 raise ValueError(

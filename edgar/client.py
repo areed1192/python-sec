@@ -8,6 +8,7 @@ from edgar.datasets import Datasets
 from edgar.filings import Filings
 from edgar.current_events import CurrentEvents
 from edgar.issuers import Issuers
+from edgar.ownership_filings import OwnershipFilings
 
 
 class EdgarClient():
@@ -153,5 +154,19 @@ class EdgarClient():
 
         # Grab the `Issuers` object.
         object = Issuers(session=self.edgar_session)
+
+        return object
+
+    def ownership_filings(self) -> OwnershipFilings:
+        """Used to access the `OwnershipFilings` services.
+
+        ### Returns
+        ---
+        Users:
+            The `OwnershipFilings` services Object.
+        """
+
+        # Grab the `OwnershipFilings` object.
+        object = OwnershipFilings(session=self.edgar_session)
 
         return object
