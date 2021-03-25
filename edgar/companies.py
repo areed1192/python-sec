@@ -53,6 +53,24 @@ class Companies():
             'count': ''
         }
 
+    def _reset_params(self) -> None:
+        """Resets the params for the next request."""
+
+        self.params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'State': '',
+            'Country': '',
+            'SIC': '',
+            'CIK': '',
+            'type': '',
+            'company': '',
+            'start': '0',
+            'datea': '',
+            'dateb': '',
+            'count': ''
+        }
+
     def __repr__(self) -> str:
         """String representation of the `EdgarClient.Companies` object."""
 
@@ -111,6 +129,8 @@ class Companies():
             start=start
         )
 
+        self._reset_params()
+
         return response
 
     def get_companies_by_country(self, country_code: Union[str, Enum], number_of_companies: int = 100, start: int = 0) -> dict:
@@ -163,6 +183,8 @@ class Companies():
             num_of_items=number_of_companies,
             start=start
         )
+
+        self._reset_params()
 
         return response
 
@@ -219,6 +241,8 @@ class Companies():
             start=start
         )
 
+        self._reset_params()
+
         return response
 
     def get_company_by_file_number(self, file_number: str) -> dict:
@@ -256,6 +280,8 @@ class Companies():
             response_text=response
         )
 
+        self._reset_params()
+
         return response
 
     def get_company_by_cik(self, cik: str) -> dict:
@@ -291,6 +317,8 @@ class Companies():
         response = self.edgar_parser.parse_entries(
             response_text=response
         )
+
+        self._reset_params()
 
         return response
 
@@ -330,10 +358,19 @@ class Companies():
             response_text=response
         )
 
+        self._reset_params()
+
         return response
 
-
-    def query(self, company_name: str, sic_code: str = None, state: str = None, country: str = None, number_of_companies: int = 100, start: int = 0) -> List[dict]:
+    def query(
+        self,
+        company_name: str = None,
+        sic_code: str = None,
+        state: str = None,
+        country: str = None,
+        number_of_companies: int = 100,
+        start: int = 0
+    ) -> List[dict]:
         """Used to grab companies matching multiple criteria.
 
         ### Overview:
@@ -344,6 +381,9 @@ class Companies():
 
         ### Arguments:
         ----
+        company_name : str (optional, Default=None)
+            The company name you want to search for.
+
         sic_code : str (optional, Default=None)
             The SIC code for a particular Industry.
 
@@ -393,5 +433,7 @@ class Companies():
             num_of_items=number_of_companies,
             start=start
         )
+
+        self._reset_params()
 
         return entries

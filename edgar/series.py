@@ -60,7 +60,31 @@ class Series():
             'count': '100'
         }
 
-# action=getcompany&CIK=S000001976&owner=include&scd=filings&count=40
+
+    def _reset_params(self) -> None:
+        """Resets the params for the next request.""" 
+
+        self.series_params = {
+            'company': ''
+        }
+
+        self.browse_params = {
+            'action': 'getcompany',
+            'scd': 'series',
+            'output': 'atom',
+            'CIK': '',
+            'start': '',
+            'count': '100'
+        }
+
+        self.browse_params_filings = {
+            'action': 'getcompany',
+            'scd': 'filings',
+            'output': 'atom',
+            'CIK': '',
+            'start': '',
+            'count': '100'
+        }
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient.Series` object."""
@@ -104,6 +128,8 @@ class Series():
             response_text=response
         )
 
+        self._reset_params()
+
         return response
 
     def get_series_by_series_id(self, series_id: str) -> Dict:
@@ -140,6 +166,8 @@ class Series():
         response = self.edgar_parser.parse_entries(
             response_text=response
         )
+
+        self._reset_params()
 
         return response
 
@@ -183,11 +211,12 @@ class Series():
             endpoint=self.series_endpoint,
             params=self.browse_params_filings
         )
-        print(response)
 
         # Parse it.
         self.edgar_parser.parse_series_filings(
             response_text=response,
         )
+
+        self._reset_params()
 
         return response

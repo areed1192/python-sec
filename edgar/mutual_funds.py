@@ -2,6 +2,7 @@
 from typing import Dict
 from typing import List
 from typing import Union
+from datetime import date
 from datetime import datetime
 
 from enum import Enum
@@ -55,6 +56,25 @@ class MutualFunds():
             'dateb': ''
         }
 
+    def _reset_params(self) -> None:
+        """Resets the params for the next request."""
+
+        self.params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'Count': '100',
+            'myowner': 'include',
+            'State': '',
+            'Country': '',
+            'SIC': '',
+            'CIK': '',
+            'type': '',
+            'company': '',
+            'start': '',
+            'datea': '',
+            'dateb': ''
+        }
+
     def __repr__(self) -> str:
         """String representation of the `EdgarClient.Companies` object."""
 
@@ -62,6 +82,101 @@ class MutualFunds():
         str_representation = '<EdgarClient.MutualFunds (active=True, connected=True)>'
 
         return str_representation
+
+    def query(
+        self,
+        cik: str = None,
+        sic: str = None,
+        mutual_fund_type: str = None,
+        company_name: str = None,
+        start: int = 0,
+        number_of_filings: int = 100,
+        after_date: Union[str, datetime, date] = None,
+        before_date: Union[str, datetime, date] = None
+    ) -> List[dict]:
+        """Allows for complex queries by giving access to all query parameters.
+
+        ### Parameters
+        ----
+        cik : str (optional, Default=None)
+            Can be either the Series ID or CIK ID that you want to query.
+
+        mutual_fund_type : str (optional, Default=None)
+            The type of mutual fund you want to query. The type is
+            defined by the Filing code you pass through. For example,
+            `N-PX` represents proxy records.
+
+        company_name : str (optional, Default=None)
+            The company name you want to use as the basis of your search.
+
+        number_of_filings : int (optional, Default=1000)
+            Specifices the number of filings to return. If you want all filings
+            then set to `None`. Be cautious though becuase you may be requesting
+            100s of URLs.
+
+        start: int (optional, Default=None)
+            If you want to pick up where you left off from a previous parse, then
+            set the `start` argument. This will start parsing the filings that come
+            after this and up until the `number_of_filings`.
+
+        before_date: Union[str, datetime, date] (optional, Default=None)
+            Represents filings that you want before a certain date. For example, 
+            `2019-12-01` means return all the filings `BEFORE` Decemeber 1, 2019.
+
+        after_date : Union[str, datetime, date] (optional, Default=None)
+            Represents filings that you want after a certain date. For example, 
+            `2019-12-01` means return all the filings `AFTER` Decemeber 1, 2019.
+
+        ### Returns:
+        ----
+        List[dict]:
+            A collection of `MutualFundDocument` resources.
+
+        ### Usage
+        ----
+            >>> edgar_client = EdgarClient()
+            >>> mutual_funds_services = edgar_client.mutual_funds()
+            >>> mutual_funds_services.query(
+                cik='C000005193'
+                mutual_fund_type='N-PX'
+            )
+        """
+
+        if before_date:
+            before_date = self.edgar_utilities.parse_dates(
+                date_or_datetime=before_date
+            )
+
+        if after_date:
+            after_date = self.edgar_utilities.parse_dates(
+                date_or_datetime=after_date
+            )
+
+        self.params['start'] = start
+        self.params['CIK'] = cik
+        self.params['SIC'] = sic
+        self.params['type'] = mutual_fund_type
+        self.params['company'] = company_name
+        self.params['datea'] = after_date
+        self.params['dateb'] = before_date
+
+        # Grab the Data.
+        response = self.edgar_session.make_request(
+            method='get',
+            endpoint=self.endpoint,
+            params=self.params
+        )
+
+        # Parse the entries.
+        entries = self.edgar_parser.parse_entries(
+            response_text=response,
+            num_of_items=number_of_filings,
+            start=start
+        )
+
+        self._reset_params()
+
+        return entries
 
     def get_mutual_fund_filings_by_type(self, cik: str, mutual_fund_type: str, start: int = 0, number_of_filings: int = 100) -> List[dict]:
         """Returns all mutual fund filings matching the specified type for specific CIK.
@@ -163,6 +278,8 @@ class MutualFunds():
             start=start
         )
 
+        self._reset_params()
+
         return entries
 
     def get_mutual_funds_by_name(self, company_name: str, start: int = 0, number_of_filings: int = 100) -> List[dict]:
@@ -198,7 +315,6 @@ class MutualFunds():
         """
 
         self.params['company'] = company_name
-        self.params['start'] = start
 
         # Grab the Data.
         response = self.edgar_session.make_request(
@@ -213,6 +329,8 @@ class MutualFunds():
             num_of_items=number_of_filings,
             start=start
         )
+
+        self._reset_params()
 
         return entries
 
@@ -255,10 +373,7 @@ class MutualFunds():
             path='.atom:entry/atom:content/atom:company-info/atom:sids/atom:sid'
         )
 
-
+        self._reset_params()
         del self.params['scd']
 
         return entries
-
-
-# https: // www.sec.gov/cgi-bin/browse-edgar?action = getcompany & CIK = 0000814679 & scd = series
