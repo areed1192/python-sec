@@ -15,6 +15,7 @@ from edgar.archives import Archives
 from edgar.datasets import Datasets
 from edgar.current_events import CurrentEvents
 from edgar.filings import Filings
+from edgar.issuers import Issuers
 
 class Edg(TestCase):
 
@@ -77,6 +78,11 @@ class Edg(TestCase):
         # Make sure it matches.
         self.assertIsInstance(self.edgar_client.filings(), Filings)
 
+    def test_creates_instance_of_issuers(self):
+        """Create an instance and make sure it's a `Issuers` object."""
+
+        # Make sure it matches.
+        self.assertIsInstance(self.edgar_client.issuers(), Issuers)
 
     def tearDown(self) -> None:
         """Teardown the `Edgar` Client."""

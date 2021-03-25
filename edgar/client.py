@@ -7,6 +7,7 @@ from edgar.variable_insurance_products import VariableInsuranceProducts
 from edgar.datasets import Datasets
 from edgar.filings import Filings
 from edgar.current_events import CurrentEvents
+from edgar.issuers import Issuers
 
 
 class EdgarClient():
@@ -138,5 +139,19 @@ class EdgarClient():
 
         # Grab the `CurrentEvents` object.
         object = CurrentEvents(session=self.edgar_session)
+
+        return object
+
+    def issuers(self) -> Issuers:
+        """Used to access the `Issuers` services.
+
+        ### Returns
+        ---
+        Users:
+            The `Issuers` services Object.
+        """
+
+        # Grab the `Issuers` object.
+        object = Issuers(session=self.edgar_session)
 
         return object
