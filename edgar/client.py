@@ -5,6 +5,7 @@ from edgar.series import Series
 from edgar.mutual_funds import MutualFunds
 from edgar.variable_insurance_products import VariableInsuranceProducts
 from edgar.datasets import Datasets
+from edgar.filings import Filings
 from edgar.current_events import CurrentEvents
 
 
@@ -112,20 +113,19 @@ class EdgarClient():
 
         return object
 
-    # def company_filings(self, cik: str = None, filing_type: str = None, sic_code: str = None, filing_number: str = None, company_name: str = None,
-    #                     state: str = None, country: str = None, return_count: int = 100, start: int = 0, before: Union[str, date] = None,
-    #                     after: Union[str, date] = None) -> List[dict]:
-    #     """Returns all the filings of certain type for a particular company.
+    def filings(self) -> Filings:
+        """Used to access the `Filings` services.
 
-    #     Arguments:
-    #     ----
-    #     cik {str} -- The company CIK Number.
+        ### Returns
+        ---
+        Users:
+            The `Filings` services Object.
+        """
 
-    #     filing_type {str} -- The filing type ID.
+        # Grab the `Filings` object.
+        object = Filings(session=self.edgar_session)
 
-    #     Returns:
-    #     ----
-    #     dict -- A Dictionary containing the filing items.
+        return object
 
     def current_events(self) -> CurrentEvents:
         """Used to access the `CurrentEvents` services.
