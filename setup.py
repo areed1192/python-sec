@@ -18,7 +18,7 @@ setup(
 
     # I'm in alpha development still, so a compliant version number is a1.
     # read this as MAJOR VERSION 0, MINOR VERSION 1, MAINTENANCE VERSION 0
-    version='0.1.3',
+    version='0.1.2',
 
     # here is a simple description of the library, this will appear when someone searches for the library on https://pypi.org/search
     description='A client library for collecting and scraping SEC filings.',
