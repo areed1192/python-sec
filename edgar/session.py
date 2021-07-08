@@ -1,4 +1,5 @@
 import json
+import time
 from pprint import pprint
 import requests
 import logging
@@ -148,13 +149,24 @@ class EdgarSession():
             request=request_request
         )
 
+        # Keep going.
+        while response.status_code != 200:
+
+            try:
+                response: requests.Response = request_session.send(
+                    request=request_request
+                )
+            except:
+                time.sleep(5)
+
         # Close the session.
         request_session.close()
 
         # Grab the headers.
         response_headers = response.headers
         content_type = response_headers['Content-Type']
-        print(content_type)
+
+
 
         # If it's okay and no details.
         if response.ok and len(response.content) > 0:

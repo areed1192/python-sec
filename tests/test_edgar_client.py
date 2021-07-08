@@ -93,7 +93,9 @@ class Edg(TestCase):
 
         # Make sure it matches.
         self.assertIsInstance(
-            self.edgar_client.ownership_filings(), OwnershipFilings)
+            self.edgar_client.ownership_filings(),
+            OwnershipFilings
+        )
 
     def tearDown(self) -> None:
         """Teardown the `Edgar` Client."""

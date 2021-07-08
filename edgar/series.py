@@ -213,7 +213,7 @@ class Series():
         )
 
         # Parse it.
-        self.edgar_parser.parse_series_filings(
+        response = self.edgar_parser.parse_series_table(
             response_text=response,
         )
 

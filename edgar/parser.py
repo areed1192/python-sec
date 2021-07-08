@@ -644,3 +644,57 @@ class EdgarParser():
         #     )
 
         # return sid_data
+
+    def parse_series_table(self, response_text: str) -> List[Dict]:
+        """Parses the series table returned from a Series query.
+
+        ### Parameters
+        ----
+        response_text : str 
+            The raw HTML of the Product query result page.
+
+        ### Returns
+        ----
+        List[Dict] : 
+            A list of variable products.
+        """
+        # Parse the Page.
+        series_page_soup = BeautifulSoup(response_text, 'html.parser')
+        series_table: Tag = series_page_soup.find_all(name='table')[5]
+
+        # Find all the rows.
+        series_table_rows = series_table.find_all(
+            name='tr',
+            attrs={'valign':'top', 'align':'left'}
+        )
+
+        records = []
+
+        for row in series_table_rows:
+
+            # Grab all the table elements.
+            row: Tag = row
+            row_elements = row.find_all('td')
+            series_record = {}
+
+            for row_element in row_elements:
+                row_element: Tag = row_element
+
+                # Most of the time this will capture the CIK number.
+                if row_element.find(name='a'):
+                    series_record['cik'] = row_element.a.text.strip()
+                    series_record['link'] = 'https://www.sec.gov' + row_element.a['href']
+
+                # this will capture the company name.
+                elif row_element.text.strip() != '':
+                    series_record['company'] = row_element.text.strip()
+
+            # edge case, the first record is incorrect, but it just involves swapping
+            # out the company and the cik. 
+            if 'company' not in series_record:
+                series_record['company'] = series_record['cik']
+                series_record['cik'] = series_record['link'].split('CIK=')[1].split('&')[0]
+            
+            records.append(series_record)
+
+        return records
