@@ -70,6 +70,22 @@ pip install .
 This will install all the dependencies listed in the `setup.py` file. Once done
 you can use the library wherever you want.
 
+**Setup - PyPi Install:**
+
+To install the library, run the following command from the terminal.
+
+```console
+pip install python-sec
+```
+
+**Setup - PyPi Upgrade:**
+
+To upgrade the library, run the following command from the terminal.
+
+```console
+pip install --upgrade python-sec
+```
+
 ## Usage
 
 Here is a simple example of using the `pysec` library to grab the index files for specific quarter.
