@@ -88,7 +88,7 @@ pip install --upgrade python-sec
 
 ## Usage
 
-Here is a simple example of using the `pysec` library to grab the index files for specific quarter.
+Here is a simple example of using the `edgar` library to grab different groups of filings.
 
 ```python
 from pprint import pprint
