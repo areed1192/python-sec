@@ -4,16 +4,18 @@ Will perform an instance test to make sure it creates it.
 """
 
 import unittest
-from typing import List
 from unittest import TestCase
+
+from edgar.xbrl import Xbrl
 from edgar.series import Series
 from edgar.filings import Filings
 from edgar.issuers import Issuers
 from edgar.archives import Archives
 from edgar.datasets import Datasets
 from edgar.client import EdgarClient
-from edgar.session import EdgarSession
 from edgar.companies import Companies
+from edgar.session import EdgarSession
+from edgar.submissions import Submissions
 from edgar.current_events import CurrentEvents
 from edgar.ownership_filings import OwnershipFilings
 
@@ -96,6 +98,18 @@ class Edg(TestCase):
             self.edgar_client.ownership_filings(),
             OwnershipFilings
         )
+
+    def test_creates_instance_of_submissions(self):
+        """Create an instance and make sure it's a `Submissions` object."""
+
+        # Make sure it matches.
+        self.assertIsInstance(self.edgar_client.submissions(), Submissions)
+
+    def test_creates_instance_of_xbrl(self):
+        """Create an instance and make sure it's a `Xbrl` object."""
+
+        # Make sure it matches.
+        self.assertIsInstance(self.edgar_client.xbrl(), Xbrl)
 
     def tearDown(self) -> None:
         """Teardown the `Edgar` Client."""

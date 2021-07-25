@@ -9,6 +9,8 @@ from edgar.filings import Filings
 from edgar.current_events import CurrentEvents
 from edgar.issuers import Issuers
 from edgar.ownership_filings import OwnershipFilings
+from edgar.submissions import Submissions
+from edgar.xbrl import Xbrl
 
 
 class EdgarClient():
@@ -36,7 +38,7 @@ class EdgarClient():
 
         ### Returns
         ---
-        Users:
+        Archives:
             The `Archives` services Object.
         """
 
@@ -50,7 +52,7 @@ class EdgarClient():
 
         ### Returns
         ---
-        Users:
+        Companies:
             The `Companies` services Object.
         """
 
@@ -64,7 +66,7 @@ class EdgarClient():
 
         ### Returns
         ---
-        Users:
+        Series:
             The `Series` services Object.
         """
 
@@ -78,7 +80,7 @@ class EdgarClient():
 
         ### Returns
         ---
-        Users:
+        MutualFunds:
             The `MutualFunds` services Object.
         """
 
@@ -92,7 +94,7 @@ class EdgarClient():
 
         ### Returns
         ---
-        Users:
+        VariableInsuranceProducts:
             The `VariableInsuranceProducts` services Object.
         """
 
@@ -106,7 +108,7 @@ class EdgarClient():
 
         ### Returns
         ---
-        Users:
+        Datasets:
             The `Datasets` services Object.
         """
 
@@ -120,7 +122,7 @@ class EdgarClient():
 
         ### Returns
         ---
-        Users:
+        Filings:
             The `Filings` services Object.
         """
 
@@ -134,7 +136,7 @@ class EdgarClient():
 
         ### Returns
         ---
-        Users:
+        CurrentEvents:
             The `CurrentEvents` services Object.
         """
 
@@ -148,7 +150,7 @@ class EdgarClient():
 
         ### Returns
         ---
-        Users:
+        Issuers:
             The `Issuers` services Object.
         """
 
@@ -162,11 +164,39 @@ class EdgarClient():
 
         ### Returns
         ---
-        Users:
+        OwnershipFilings:
             The `OwnershipFilings` services Object.
         """
 
         # Grab the `OwnershipFilings` object.
         object = OwnershipFilings(session=self.edgar_session)
+
+        return object
+
+    def submissions(self) -> Submissions:
+        """Used to access the `Submissions` services.
+
+        ### Returns
+        ---
+        Submissions:
+            The `Submissions` services Object.
+        """
+
+        # Grab the `Submissions` object.
+        object = Submissions(session=self.edgar_session)
+
+        return object
+
+    def xbrl(self) -> Xbrl:
+        """Used to access the `Xbrl` services.
+
+        ### Returns
+        ---
+        Xbrl:
+            The `Xbrl` services Object.
+        """
+
+        # Grab the `Xbrl` object.
+        object = Xbrl(session=self.edgar_session)
 
         return object

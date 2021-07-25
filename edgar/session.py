@@ -1,13 +1,10 @@
 import json
 import time
-from pprint import pprint
 import requests
 import logging
 import pathlib
 
 from typing import Dict
-from datetime import datetime
-from datetime import date
 
 
 class EdgarSession():
@@ -40,6 +37,8 @@ class EdgarSession():
 
         self.client: EdgarClient = client
         self.resource = 'https://www.sec.gov'
+        self.api_resource = 'https://data.sec.gov'
+        self.total_requests = 0
 
         if not pathlib.Path('logs').exists():
             pathlib.Path('logs').mkdir()
@@ -60,7 +59,7 @@ class EdgarSession():
 
         return str_representation
 
-    def build_url(self, endpoint: str) -> str:
+    def build_url(self, endpoint: str, use_api: bool = False) -> str:
         """Builds the full url for the endpoint.
 
         ### Parameters
@@ -68,13 +67,20 @@ class EdgarSession():
         endpoint : str
             The endpoint being requested.
 
+        use_api : bool (optional, Default=False)
+            If `True` use the API resource URL, `False`
+            use the filings resource URL.
+
         ### Returns
         ----
         str:
             The full URL with the endpoint needed.
         """
 
-        url = self.resource + endpoint
+        if use_api:
+            url = self.api_resource + endpoint
+        else:
+            url = self.resource + endpoint
 
         return url
 
@@ -84,7 +90,8 @@ class EdgarSession():
         endpoint: str,
         params: dict = None,
         data: dict = None,
-        json_payload: dict = None
+        json_payload: dict = None,
+        use_api: bool = False
     ) -> Dict:
         """Handles all the requests in the library.
 
@@ -112,13 +119,17 @@ class EdgarSession():
         json : dict (optional, Default=None)
             A json data payload for a request
 
+        use_api : bool (optional, Default=False)
+            If `True` use the API resource URL, `False`
+            use the filings resource URL.
+
         ### Returns:
         ----
             A Dictionary object containing the JSON values.
         """
 
         # Build the URL.
-        url = self.build_url(endpoint=endpoint)
+        url = self.build_url(endpoint=endpoint, use_api=use_api)
 
         logging.info(
             "URL: {url}".format(url=url)
@@ -144,10 +155,17 @@ class EdgarSession():
 
         print(request_request.url)
 
+        self.total_requests += 1
+
         # Send the request.
         response: requests.Response = request_session.send(
             request=request_request
         )
+
+        if self.total_requests == 9:
+            print("sleeping for 5 seconds.")
+            time.sleep(5)
+            self.total_requests = 0
 
         # Keep going.
         while response.status_code != 200:
@@ -157,6 +175,7 @@ class EdgarSession():
                     request=request_request
                 )
             except:
+                print("Sleeping for five seconds")
                 time.sleep(5)
 
         # Close the session.
@@ -165,8 +184,6 @@ class EdgarSession():
         # Grab the headers.
         response_headers = response.headers
         content_type = response_headers['Content-Type']
-
-
 
         # If it's okay and no details.
         if response.ok and len(response.content) > 0:
