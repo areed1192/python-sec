@@ -1,3 +1,5 @@
+"""This module provides access to the different endpoint services of Edgar."""
+
 from edgar.session import EdgarSession
 from edgar.archives import Archives
 from edgar.companies import Companies
@@ -15,6 +17,13 @@ from edgar.xbrl import Xbrl
 
 class EdgarClient():
 
+    """
+    ## Overview:
+    ----
+    Represents the main Edgar client which is used to
+    instantiate the different endpoints.
+    """
+
     def __init__(self) -> None:
         """Initializes the `EdgarClient`.
 
@@ -28,10 +37,7 @@ class EdgarClient():
     def __repr__(self) -> str:
         """String representation of the `EdgarClient` object."""
 
-        # define the string representation
-        str_representation = '<EdgarClient (active=True, connected=True)>'
-
-        return str_representation
+        return '<EdgarClient (active=True, connected=True)>'
 
     def archives(self) -> Archives:
         """Used to access the `Archives` services.
@@ -42,10 +48,7 @@ class EdgarClient():
             The `Archives` services Object.
         """
 
-        # Grab the `Archives` object.
-        object = Archives(session=self.edgar_session)
-
-        return object
+        return Archives(session=self.edgar_session)
 
     def companies(self) -> Companies:
         """Used to access the `Companies` services.
@@ -56,10 +59,7 @@ class EdgarClient():
             The `Companies` services Object.
         """
 
-        # Grab the `Archives` object.
-        object = Companies(session=self.edgar_session)
-
-        return object
+        return Companies(session=self.edgar_session)
 
     def series(self) -> Series:
         """Used to access the `Series` services.
@@ -70,10 +70,7 @@ class EdgarClient():
             The `Series` services Object.
         """
 
-        # Grab the `Series` object.
-        object = Series(session=self.edgar_session)
-
-        return object
+        return Series(session=self.edgar_session)
 
     def mutual_funds(self) -> MutualFunds:
         """Used to access the `MutualFunds` services.
@@ -84,10 +81,7 @@ class EdgarClient():
             The `MutualFunds` services Object.
         """
 
-        # Grab the `MutualFunds` object.
-        object = MutualFunds(session=self.edgar_session)
-
-        return object
+        return MutualFunds(session=self.edgar_session)
 
     def variable_insurance_products(self) -> VariableInsuranceProducts:
         """Used to access the `VariableInsuranceProducts` services.
@@ -98,10 +92,7 @@ class EdgarClient():
             The `VariableInsuranceProducts` services Object.
         """
 
-        # Grab the `VariableInsuranceProducts` object.
-        object = VariableInsuranceProducts(session=self.edgar_session)
-
-        return object
+        return VariableInsuranceProducts(session=self.edgar_session)
 
     def datasets(self) -> Datasets:
         """Used to access the `Datasets` services.
@@ -112,10 +103,7 @@ class EdgarClient():
             The `Datasets` services Object.
         """
 
-        # Grab the `Datasets` object.
-        object = Datasets(session=self.edgar_session)
-
-        return object
+        return Datasets(session=self.edgar_session)
 
     def filings(self) -> Filings:
         """Used to access the `Filings` services.
@@ -126,10 +114,7 @@ class EdgarClient():
             The `Filings` services Object.
         """
 
-        # Grab the `Filings` object.
-        object = Filings(session=self.edgar_session)
-
-        return object
+        return Filings(session=self.edgar_session)
 
     def current_events(self) -> CurrentEvents:
         """Used to access the `CurrentEvents` services.
@@ -140,10 +125,7 @@ class EdgarClient():
             The `CurrentEvents` services Object.
         """
 
-        # Grab the `CurrentEvents` object.
-        object = CurrentEvents(session=self.edgar_session)
-
-        return object
+        return CurrentEvents(session=self.edgar_session)
 
     def issuers(self) -> Issuers:
         """Used to access the `Issuers` services.
@@ -154,10 +136,7 @@ class EdgarClient():
             The `Issuers` services Object.
         """
 
-        # Grab the `Issuers` object.
-        object = Issuers(session=self.edgar_session)
-
-        return object
+        return Issuers(session=self.edgar_session)
 
     def ownership_filings(self) -> OwnershipFilings:
         """Used to access the `OwnershipFilings` services.
@@ -168,10 +147,7 @@ class EdgarClient():
             The `OwnershipFilings` services Object.
         """
 
-        # Grab the `OwnershipFilings` object.
-        object = OwnershipFilings(session=self.edgar_session)
-
-        return object
+        return OwnershipFilings(session=self.edgar_session)
 
     def submissions(self) -> Submissions:
         """Used to access the `Submissions` services.
@@ -182,10 +158,7 @@ class EdgarClient():
             The `Submissions` services Object.
         """
 
-        # Grab the `Submissions` object.
-        object = Submissions(session=self.edgar_session)
-
-        return object
+        return Submissions(session=self.edgar_session)
 
     def xbrl(self) -> Xbrl:
         """Used to access the `Xbrl` services.
@@ -196,7 +169,4 @@ class EdgarClient():
             The `Xbrl` services Object.
         """
 
-        # Grab the `Xbrl` object.
-        object = Xbrl(session=self.edgar_session)
-
-        return object
+        return Xbrl(session=self.edgar_session)

@@ -1,7 +1,4 @@
 from typing import Dict
-from typing import List
-from typing import Union
-from datetime import datetime
 from edgar.session import EdgarSession
 from edgar.utilis import EdgarUtilities
 from edgar.parser import EdgarParser
@@ -62,7 +59,7 @@ class Series():
 
 
     def _reset_params(self) -> None:
-        """Resets the params for the next request.""" 
+        """Resets the params for the next request."""
 
         self.series_params = {
             'company': ''
@@ -172,7 +169,11 @@ class Series():
         return response
 
 
-    def get_series_filings_by_series_id(self, series_id: str, number_of_filings: int = 1000, start: int = None) -> Dict:
+    def get_series_filings_by_series_id(
+        self,
+        series_id: str,
+        start: int = None
+    ) -> Dict:
         """Returns a list of series that fall under a specific CIK number.
 
         ### Arguments:

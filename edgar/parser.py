@@ -1,21 +1,25 @@
-import re
 import xml.etree.ElementTree as ET
-import requests
 
-from pprint import pprint
 from typing import List
 from typing import Dict
 from typing import Union
 
-from html.parser import HTMLParser
+import requests
+
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from bs4 import BeautifulSoup
 from bs4 import Tag
-from bs4 import NavigableString
 
 
 class EdgarParser():
+
+    """
+    ## Overview:
+    ----
+    Handles all the parsing operations of the library
+    and will reorganize data into more structured formats.
+    """
 
     def __init__(self):
         """Initalizes the `EdgarParser` Object.
@@ -43,7 +47,13 @@ class EdgarParser():
         )
         self.adapter = HTTPAdapter(max_retries=self.retry_strategy)
 
-    def parse_entries(self, response_text: str, num_of_items: int = None, start: int = None, path: str = 'atom:entry') -> List[Dict]:
+    def parse_entries(
+        self,
+        response_text: str,
+        num_of_items: int = None,
+        start: int = None,
+        path: str = 'atom:entry'
+    ) -> List[Dict]:
         """Parses all the entries from an entry element list.
 
         ### Parameters
@@ -53,7 +63,7 @@ class EdgarParser():
 
         ### Returns
         ----
-        List[Dict] : 
+        List[Dict] :
             A dictionary containing all the information from the
             original entry element.
         """
@@ -127,7 +137,7 @@ class EdgarParser():
         # Make the request.
         try:
             entries_response = http.get(url=next_url)
-        except:
+        except requests.exceptions.HTTPError:
             return None
 
         # If it was successful, get the data.
@@ -155,7 +165,7 @@ class EdgarParser():
         replace_tag = self.entries_namespace['atom_with_quote']
 
         for entry in entry.findall(path=path, namespaces=self.entries_namespace):
-            
+
             for element in entry.iter():
                 name = element.tag.replace(replace_tag, '')
 
@@ -175,7 +185,7 @@ class EdgarParser():
 
         ### Parameters
         ----
-        root_document : ET.Element 
+        root_document : ET.Element
             The Parsed root document, which contains entry elements.
 
         ### Returns
@@ -232,20 +242,20 @@ class EdgarParser():
 
                 return next_page_link
 
-    def parse_issuer_table(self, response_text: str, num_of_items: int = None) -> List[Dict]:
+    def parse_issuer_table(self, response_text: str) -> List[Dict]:
         """Parses the Issuer tables found from a query to owner distribtuion page.
 
         ### Parameters
         ----
-        response_text : str 
+        response_text : str
             The raw HTML content to be parsed.
 
-        num_of_items : int (optional, Default=None): 
+        num_of_items : int (optional, Default=None):
             The number of items to return from the query.
 
         ### Returns
         ----
-        List[Dict]: 
+        List[Dict]:
             A list of dictionaries where each dictionary contains
             the `ownership_report` and the `ownership_transaction_report`.
         """
@@ -320,12 +330,12 @@ class EdgarParser():
 
         ### Parameters
         ----
-        table : Tag 
+        table : Tag
             The raw HTML table.
 
         ### Returns
         ----
-        List[Dict] : 
+        List[Dict] :
             A list of ownership transaction reports.
         """
 
@@ -358,7 +368,7 @@ class EdgarParser():
 
         ### Parameters
         ----
-        product_table_soup : Tag 
+        product_table_soup : Tag
             The product page HTML that has been parsed.
 
         ### Returns
@@ -398,12 +408,12 @@ class EdgarParser():
 
         ### Parameters
         ----
-        response_text : str 
+        response_text : str
             The raw HTML of the Product query result page.
 
         ### Returns
         ----
-        List[Dict] : 
+        List[Dict] :
             A list of variable products.
         """
         # Parse the Page.
@@ -504,7 +514,7 @@ class EdgarParser():
                         # Set the Ticker symbol.
                         try:
                             row_dict['ticker_symbol'] = values[2]
-                        except:
+                        except KeyError:
                             row_dict['ticker_symbol'] = "null"
 
                         for link in row_links:
@@ -596,13 +606,15 @@ class EdgarParser():
 
         return entries
 
+    # def parse_series_filings(self, response_text: str) -> List[dict]:
 
-    def parse_series_filings(self, response_text: str) -> List[dict]:
+    #     root = ET.fromstring(response_text)
 
-        root = ET.fromstring(response_text)
-
-        for elem in root.iterfind('.atom:entry/atom:content/atom:company-info/atom:sids/atom:sid', namespaces=self.entries_namespace):
-            print(elem)
+    #     for elem in root.iterfind(
+    #         '.atom:entry/atom:content/atom:company-info/atom:sids/atom:sid',
+    #         namespaces=self.entries_namespace
+    #     ):
+    #         print(elem)
 
         # soup = BeautifulSoup(response_text, 'html.parser')
 
@@ -616,7 +628,6 @@ class EdgarParser():
         #     print(len(list(sid.children)))
 
         #     for element in sid.children:
-            
 
         #         if not isinstance(element, NavigableString) and element.name != 'cids':
         #             element_dict[
@@ -650,12 +661,12 @@ class EdgarParser():
 
         ### Parameters
         ----
-        response_text : str 
+        response_text : str
             The raw HTML of the Product query result page.
 
         ### Returns
         ----
-        List[Dict] : 
+        List[Dict] :
             A list of variable products.
         """
         # Parse the Page.
@@ -665,7 +676,7 @@ class EdgarParser():
         # Find all the rows.
         series_table_rows = series_table.find_all(
             name='tr',
-            attrs={'valign':'top', 'align':'left'}
+            attrs={'valign': 'top', 'align': 'left'}
         )
 
         records = []
@@ -683,18 +694,20 @@ class EdgarParser():
                 # Most of the time this will capture the CIK number.
                 if row_element.find(name='a'):
                     series_record['cik'] = row_element.a.text.strip()
-                    series_record['link'] = 'https://www.sec.gov' + row_element.a['href']
+                    series_record['link'] = 'https://www.sec.gov' + \
+                        row_element.a['href']
 
                 # this will capture the company name.
                 elif row_element.text.strip() != '':
                     series_record['company'] = row_element.text.strip()
 
             # edge case, the first record is incorrect, but it just involves swapping
-            # out the company and the cik. 
+            # out the company and the cik.
             if 'company' not in series_record:
                 series_record['company'] = series_record['cik']
-                series_record['cik'] = series_record['link'].split('CIK=')[1].split('&')[0]
-            
+                series_record['cik'] = series_record['link'].split('CIK=')[
+                    1].split('&')[0]
+
             records.append(series_record)
 
         return records

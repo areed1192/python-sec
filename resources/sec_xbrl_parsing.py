@@ -19,18 +19,23 @@ storage_values = {}
 storage_gaap = {}
 
 # Create a named tuple
-FilingTuple = collections.namedtuple('FilingTuple',['file_path','namespace_root','namespace_label'])
+FilingTuple = collections.namedtuple(
+    'FilingTuple', ['file_path', 'namespace_root', 'namespace_label'])
 
 # Initalize my list of named tuples, I plan to parse.
 files_list = [
-    FilingTuple(file_cal, r'{http://www.xbrl.org/2003/linkbase}calculationLink', 'calculation'), 
-    FilingTuple(file_def, r'{http://www.xbrl.org/2003/linkbase}definitionLink','definition'), 
-    FilingTuple(file_lab, r'{http://www.xbrl.org/2003/linkbase}labelLink','label')
-    ]
+    FilingTuple(
+        file_cal, r'{http://www.xbrl.org/2003/linkbase}calculationLink', 'calculation'),
+    FilingTuple(
+        file_def, r'{http://www.xbrl.org/2003/linkbase}definitionLink', 'definition'),
+    FilingTuple(
+        file_lab, r'{http://www.xbrl.org/2003/linkbase}labelLink', 'label')
+]
 
 # Labels come in two forms, those I want and those I don't want.
-avoids = ['linkbase','roleRef']
-parse = ['label','labelLink','labelArc','loc','definitionLink','definitionArc','calculationArc']
+avoids = ['linkbase', 'roleRef']
+parse = ['label', 'labelLink', 'labelArc', 'loc',
+         'definitionLink', 'definitionArc', 'calculationArc']
 
 # part of the process is matching up keys, to do that we will store some keys as we parse them.
 lab_list = set()
@@ -63,7 +68,7 @@ for file in files_list:
 
                 # define the item type label
                 element_type_label = file.namespace_label + '_' + label
-                
+
                 # initalize a smaller dictionary that will house all the content from that element.
                 dict_storage = {}
                 dict_storage['item_type'] = element_type_label
@@ -93,7 +98,7 @@ for file in files_list:
                     key_store = dict_storage['label']
 
                     # Create the Master Key, now it's this: `us-gaap_AllocatedShareBasedCompensationExpense_E5D37E400FB5193199CFCB477063C5EB`
-                    master_key = key_store.replace('lab_','')
+                    master_key = key_store.replace('lab_', '')
 
                     # Split the Key, now it's this: ['us-gaap', 'AllocatedShareBasedCompensationExpense', 'E5D37E400FB5193199CFCB477063C5EB']
                     label_split = master_key.split('_')
@@ -102,12 +107,13 @@ for file in files_list:
                     gaap_id = label_split[0] + ':' + label_split[1]
 
                     # One Dictionary contains only the values from the XML Files.
-                    storage_values[master_key] = {} 
+                    storage_values[master_key] = {}
                     storage_values[master_key]['label_id'] = key_store
-                    storage_values[master_key]['location_id'] = key_store.replace('lab_','loc_')
+                    storage_values[master_key]['location_id'] = key_store.replace(
+                        'lab_', 'loc_')
                     storage_values[master_key]['us_gaap_id'] = gaap_id
                     storage_values[master_key]['us_gaap_value'] = None
-                    storage_values[master_key][element_type_label] = dict_storage 
+                    storage_values[master_key][element_type_label] = dict_storage
 
                     # The other dicitonary will only contain the values related to GAAP Metrics.
                     storage_gaap[gaap_id] = {}
@@ -129,38 +135,45 @@ context_dictionary = {}
 
 # loop through all the elements in the HTML file.
 for element in tree.iter():
-    
+
     # for nonNumber the content is different.
     if 'nonNumeric' in element.tag:
-        
+
         # Grab the attribute name and the master ID.
         attr_name = element.attrib['name']
         gaap_id = storage_gaap[attr_name]['master_id']
 
         storage_gaap[attr_name]['context_ref'] = element.attrib['contextRef']
         storage_gaap[attr_name]['context_id'] = element.attrib['id']
-        storage_gaap[attr_name]['continued_at'] = element.attrib.get('continuedAt','null')
-        storage_gaap[attr_name]['escape'] = element.attrib.get('escape','null')
-        storage_gaap[attr_name]['format'] = element.attrib.get('format','null')
+        storage_gaap[attr_name]['continued_at'] = element.attrib.get(
+            'continuedAt', 'null')
+        storage_gaap[attr_name]['escape'] = element.attrib.get(
+            'escape', 'null')
+        storage_gaap[attr_name]['format'] = element.attrib.get(
+            'format', 'null')
 
     # same for nonFraction tags.
     if 'nonFraction' in element.tag:
-        
+
         # Grab the attribute name and the master ID.
         attr_name = element.attrib['name']
         gaap_id = storage_gaap[attr_name]['master_id']
 
         storage_gaap[attr_name]['context_ref'] = element.attrib['contextRef']
         storage_gaap[attr_name]['fraction_id'] = element.attrib['id']
-        storage_gaap[attr_name]['unit_ref'] = element.attrib.get('unitRef','null')
-        storage_gaap[attr_name]['decimals'] = element.attrib.get('decimals','null')
-        storage_gaap[attr_name]['scale'] = element.attrib.get('scale','null')
-        storage_gaap[attr_name]['format'] = element.attrib.get('format','null')
-        storage_gaap[attr_name]['value'] = element.text.strip() if element.text else 'Null'
+        storage_gaap[attr_name]['unit_ref'] = element.attrib.get(
+            'unitRef', 'null')
+        storage_gaap[attr_name]['decimals'] = element.attrib.get(
+            'decimals', 'null')
+        storage_gaap[attr_name]['scale'] = element.attrib.get('scale', 'null')
+        storage_gaap[attr_name]['format'] = element.attrib.get(
+            'format', 'null')
+        storage_gaap[attr_name]['value'] = element.text.strip(
+        ) if element.text else 'Null'
 
         # don't forget to store the actual value if it exist.
         if gaap_id in storage_values:
-            storage_values[gaap_id]['us_gaap_value'] = storage_gaap[attr_name]  
+            storage_values[gaap_id]['us_gaap_value'] = storage_gaap[attr_name]
 
     # context is very different.
     if 'context' in element.tag:
@@ -168,12 +181,15 @@ for element in tree.iter():
         for cnx_item in element.iter():
             for att in cnx_item.attrib:
                 if att:
-                    context_dictionary[element.attrib['id']][att] = cnx_item.attrib[att]
+                    context_dictionary[element.attrib['id']
+                                       ][att] = cnx_item.attrib[att]
                     if cnx_item.text.strip() != '':
-                        context_dictionary[element.attrib['id']]['text'] = cnx_item.text.strip()
+                        context_dictionary[element.attrib['id']
+                                           ]['text'] = cnx_item.text.strip()
                     else:
-                        context_dictionary[element.attrib['id']]['text'] = 'Null'
-    
+                        context_dictionary[element.attrib['id']
+                                           ]['text'] = 'Null'
+
 
 # pprint.pprint(list(storage_values.keys()))
 # pprint.pprint(storage_list)
@@ -192,7 +208,7 @@ with open(file_name, mode='w', newline='') as sec_file:
     writer = csv.writer(sec_file)
 
     # write the header.
-    writer.writerow(['FILE','LABEL','VALUE'])
+    writer.writerow(['FILE', 'LABEL', 'VALUE'])
 
     # dump the dict to the csv file.
     for dict_cont in storage_list:
@@ -210,7 +226,7 @@ with open(file_name, mode='w', newline='') as sec_file:
     writer = csv.writer(sec_file)
 
     # write the header.
-    writer.writerow(['ID','CATEGORY','LABEL','VALUE'])
+    writer.writerow(['ID', 'CATEGORY', 'LABEL', 'VALUE'])
 
     # start at level 1
     for storage_1 in storage_values:
@@ -225,9 +241,10 @@ with open(file_name, mode='w', newline='') as sec_file:
                 for storage_3 in storage_2[1].items():
 
                     # Write the values to the csv.
-                    writer.writerow([storage_1] + [storage_2[0]] + list(storage_3))
+                    writer.writerow(
+                        [storage_1] + [storage_2[0]] + list(storage_3))
 
             # else just write it to the CSV.
             else:
                 if storage_2[1] != None:
-                    writer.writerow([storage_1] + list(storage_2) + ['None'])  
+                    writer.writerow([storage_1] + list(storage_2) + ['None'])
