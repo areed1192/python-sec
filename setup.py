@@ -17,7 +17,7 @@ setup(
     author_email='coding.sigma@gmail.com',
 
     # define the version of the package.
-    version='0.1.5',
+    version='0.1.6',
 
     # here is a simple description of the library, this will appear when someone
     # searches for the library on https://pypi.org/search
@@ -47,12 +47,6 @@ setup(
     packages=find_namespace_packages(
         include=['edgar', 'samples', 'tests']
     ),
-
-    package_dir={
-        "": ".",
-        "samples": ".",
-        "tests": "."
-    },
 
     # here we specify any package data.
     package_data={
