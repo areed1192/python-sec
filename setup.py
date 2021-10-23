@@ -17,12 +17,14 @@ setup(
     author_email='coding.sigma@gmail.com',
 
     # define the version of the package.
-    version='0.1.3',
+    version='0.1.4',
 
-    # here is a simple description of the library, this will appear when someone searches for the library on https://pypi.org/search
+    # here is a simple description of the library, this will appear when someone
+    # searches for the library on https://pypi.org/search
     description='A client library for collecting and scraping SEC filings.',
 
-    # I have a long description but that will just be my README file, note the variable up above where I read the file.
+    # I have a long description but that will just be my README file, note the
+    # variable up above where I read the file.
     long_description=long_description,
 
     # want to make sure that I specify the long description as MARKDOWN.

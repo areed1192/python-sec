@@ -9,7 +9,7 @@
 
 ## Overview
 
-Current Version: **0.1.3**
+Current Version: **0.1.4**
 
 The Securities & Exchange Commission (SEC) has a treasure trove of business data available to indviduals
 for free. However, the biggest obstacle to getting this free data boils down to two challenges:
