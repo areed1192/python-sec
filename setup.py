@@ -42,7 +42,7 @@ setup(
     keywords='finance, sec, api, web scraping, financial disclosures',
 
     # here are the packages I want "build."
-    packages=find_packages(include=['pysec']),
+    packages=find_packages(include=['edgar']),
 
     # here we specify any package data.
     package_data={

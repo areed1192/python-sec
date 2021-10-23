@@ -1,4 +1,3 @@
-import json
 from pprint import pprint
 from edgar.client import EdgarClient
 
