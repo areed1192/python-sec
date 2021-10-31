@@ -1,9 +1,7 @@
-from typing import Dict
+from enum import Enum
 from typing import List
 from typing import Union
-from datetime import datetime
 
-from enum import Enum
 from edgar.session import EdgarSession
 from edgar.utilis import EdgarUtilities
 from edgar.parser import EdgarParser
@@ -14,7 +12,9 @@ class Companies():
     """
     ## Overview:
     ----
-
+    Used to interact with the `Companies` service. This
+    service can be used to query company information and
+    also use that information to do more granular searches.
     """
 
     def __init__(self, session: EdgarSession) -> None:
@@ -79,7 +79,12 @@ class Companies():
 
         return str_representation
 
-    def get_companies_by_state(self, state_code: Union[str, Enum], number_of_companies: int = 100, start: int = 0) -> dict:
+    def get_companies_by_state(
+        self,
+        state_code: Union[str, Enum],
+        number_of_companies: int = 100,
+        start: int = 0
+    ) -> dict:
         """Grabs all the companies that fall in a specific state.
 
         ### Arguments:
@@ -133,7 +138,12 @@ class Companies():
 
         return response
 
-    def get_companies_by_country(self, country_code: Union[str, Enum], number_of_companies: int = 100, start: int = 0) -> dict:
+    def get_companies_by_country(
+        self,
+        country_code: Union[str, Enum],
+        number_of_companies: int = 100,
+        start: int = 0
+    ) -> dict:
         """Grabs all the companies that fall in a specific country.
 
         ### Arguments:
@@ -188,7 +198,12 @@ class Companies():
 
         return response
 
-    def get_companies_by_sic(self, sic_code: Union[str, Enum], number_of_companies: int = 100, start: int = 0) -> dict:
+    def get_companies_by_sic(
+        self,
+        sic_code: Union[str, Enum],
+        number_of_companies: int = 100,
+        start: int = 0
+    ) -> dict:
         """Grabs all the companies that fall under a specific SIC code.
 
         ### Arguments:

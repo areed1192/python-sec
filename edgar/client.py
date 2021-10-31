@@ -1,18 +1,16 @@
-"""This module provides access to the different endpoint services of Edgar."""
-
-from edgar.session import EdgarSession
+from edgar.xbrl import Xbrl
+from edgar.series import Series
+from edgar.issuers import Issuers
+from edgar.filings import Filings
+from edgar.datasets import Datasets
 from edgar.archives import Archives
 from edgar.companies import Companies
-from edgar.series import Series
-from edgar.mutual_funds import MutualFunds
-from edgar.variable_insurance_products import VariableInsuranceProducts
-from edgar.datasets import Datasets
-from edgar.filings import Filings
-from edgar.current_events import CurrentEvents
-from edgar.issuers import Issuers
-from edgar.ownership_filings import OwnershipFilings
+from edgar.session import EdgarSession
 from edgar.submissions import Submissions
-from edgar.xbrl import Xbrl
+from edgar.mutual_funds import MutualFunds
+from edgar.current_events import CurrentEvents
+from edgar.ownership_filings import OwnershipFilings
+from edgar.variable_insurance_products import VariableInsuranceProducts
 
 
 class EdgarClient():

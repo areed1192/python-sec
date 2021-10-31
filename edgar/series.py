@@ -1,4 +1,3 @@
-from typing import Dict
 from edgar.session import EdgarSession
 from edgar.utilis import EdgarUtilities
 from edgar.parser import EdgarParser
@@ -91,7 +90,7 @@ class Series():
 
         return str_representation
 
-    def get_series_by_cik(self, cik: str) -> Dict:
+    def get_series_by_cik(self, cik: str) -> dict:
         """Returns a list of series that fall under a specific CIK number.
 
         ### Arguments:
@@ -129,7 +128,7 @@ class Series():
 
         return response
 
-    def get_series_by_series_id(self, series_id: str) -> Dict:
+    def get_series_by_series_id(self, series_id: str) -> dict:
         """Returns a list of series that fall under a specific CIK number.
 
         ### Arguments:
@@ -173,7 +172,7 @@ class Series():
         self,
         series_id: str,
         start: int = None
-    ) -> Dict:
+    ) -> dict:
         """Returns a list of series that fall under a specific CIK number.
 
         ### Arguments:

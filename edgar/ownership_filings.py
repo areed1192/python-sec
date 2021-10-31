@@ -1,4 +1,3 @@
-from typing import Dict
 from typing import List
 from typing import Union
 from datetime import date
@@ -74,7 +73,12 @@ class OwnershipFilings():
 
         return str_representation
 
-    def get_ownership_filings_by_cik(self, cik: str, number_of_filings: int = 100, start: int = 0) -> dict:
+    def get_ownership_filings_by_cik(
+        self,
+        cik: str,
+        number_of_filings: int = 100,
+        start: int = 0
+    ) -> dict:
         """Returns all the ownership filings for a given CIK number.
 
         ### Arguments:
@@ -126,7 +130,12 @@ class OwnershipFilings():
 
         return response
 
-    def get_ownership_filings_by_name(self, company_name: str, number_of_filings: int = 100, start: int = 0) -> dict:
+    def get_ownership_filings_by_name(
+        self,
+        company_name: str,
+        number_of_filings: int = 100,
+        start: int = 0
+    ) -> dict:
         """Returns all the ownership filings for a given company name.
 
         ### Arguments:
@@ -178,7 +187,12 @@ class OwnershipFilings():
 
         return response
 
-    def get_non_ownership_filings_by_cik(self, cik: str, number_of_filings: int = 100, start: int = 0) -> dict:
+    def get_non_ownership_filings_by_cik(
+        self,
+        cik: str,
+        number_of_filings: int = 100,
+        start: int = 0
+    ) -> dict:
         """Returns all the non-ownership filings for a given CIK number.
 
         ### Arguments:
@@ -231,7 +245,12 @@ class OwnershipFilings():
 
         return response
 
-    def get_non_ownership_filings_by_name(self, company_name: str, number_of_filings: int = 100, start: int = 0) -> dict:
+    def get_non_ownership_filings_by_name(
+        self,
+        company_name: str,
+        number_of_filings: int = 100,
+        start: int = 0
+    ) -> dict:
         """Returns all the non-ownership filings for a given company name.
 
         ### Arguments:
@@ -321,11 +340,11 @@ class OwnershipFilings():
             after this and up until the `number_of_filings`.
 
         before_date: Union[str, datetime, date] (optional, Default=None)
-            Represents filings that you want before a certain date. For example, 
+            Represents filings that you want before a certain date. For example,
             `2019-12-01` means return all the filings `BEFORE` Decemeber 1, 2019.
 
         after_date : Union[str, datetime, date] (optional, Default=None)
-            Represents filings that you want after a certain date. For example, 
+            Represents filings that you want after a certain date. For example,
             `2019-12-01` means return all the filings `AFTER` Decemeber 1, 2019.
 
         ### Returns:
@@ -419,11 +438,11 @@ class OwnershipFilings():
             after this and up until the `number_of_filings`.
 
         before_date: Union[str, datetime, date] (optional, Default=None)
-            Represents filings that you want before a certain date. For example, 
+            Represents filings that you want before a certain date. For example,
             `2019-12-01` means return all the filings `BEFORE` Decemeber 1, 2019.
 
         after_date : Union[str, datetime, date] (optional, Default=None)
-            Represents filings that you want after a certain date. For example, 
+            Represents filings that you want after a certain date. For example,
             `2019-12-01` means return all the filings `AFTER` Decemeber 1, 2019.
 
         ### Returns:

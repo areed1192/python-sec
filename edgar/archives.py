@@ -1,7 +1,3 @@
-from typing import Dict
-from typing import List
-from typing import Union
-from datetime import datetime
 from edgar.session import EdgarSession
 from edgar.utilis import EdgarUtilities
 
@@ -69,9 +65,7 @@ class Archives():
             >>> archives_services.get_company_directories(cik='1265107')
         """
 
-        url = self.endpoint + "/data/{cik_number}/index.json".format(
-            cik_number=cik
-        )
+        url = self.endpoint + f"/data/{cik}/index.json"
 
         response = self.edgar_session.make_request(
             method='get',
@@ -80,8 +74,7 @@ class Archives():
 
         directories = self.edgar_utilities.clean_directories(
             directories=response,
-            cik=cik,
-            service_url=self.endpoint
+            cik=cik
         )
 
         return directories
@@ -172,8 +165,7 @@ class Archives():
 
         if not quarter:
             directories = self.edgar_utilities.clean_directories(
-                directories=response,
-                service_url=self.endpoint
+                directories=response
             )
         else:
             directories = self.edgar_utilities.clean_filing_directory(
@@ -220,8 +212,7 @@ class Archives():
 
         if not quarter:
             directories = self.edgar_utilities.clean_directories(
-                directories=response,
-                service_url=self.endpoint
+                directories=response
             )
         else:
             directories = self.edgar_utilities.clean_filing_directory(
@@ -252,8 +243,7 @@ class Archives():
         )
 
         directories = self.edgar_utilities.clean_directories(
-            directories=response,
-            service_url=url
+            directories=response
         )
 
         return directories
@@ -310,7 +300,7 @@ class Archives():
         """
 
 
-        url = self.endpoint + f"/daily-index/index.json"
+        url = self.endpoint + "/daily-index/index.json"
 
         response = self.edgar_session.make_request(
             method='get',
@@ -318,8 +308,7 @@ class Archives():
         )
 
         directories = self.edgar_utilities.clean_directories(
-            directories=response,
-            service_url=url
+            directories=response
         )
 
         return directories
@@ -362,8 +351,7 @@ class Archives():
 
         if not quarter:
             directories = self.edgar_utilities.clean_directories(
-                directories=response,
-                service_url=url
+                directories=response
             )
         else:
             directories = self.edgar_utilities.clean_filing_directory(
@@ -373,13 +361,13 @@ class Archives():
         return directories
 
     def get_full_indexes(self) -> dict:
-        """Gets all the full indexes. 
+        """Gets all the full indexes.
 
         ### Overview:
         ----
         Full indexes offer a "bridge" between quarterly and daily indexes,
         compiling filings from the beginning of the current quarter through
-        the previous business day. At the end of the quarter, the full 
+        the previous business day. At the end of the quarter, the full
         index is rolled into a static quarterly index.
 
         ### Returns:
@@ -394,7 +382,7 @@ class Archives():
             >>> archives_services.get_full_index(year=2002, quarter='qtr4')
         """
 
-        url = self.endpoint + f"/full-index/index.json"
+        url = self.endpoint + "/full-index/index.json"
 
         response = self.edgar_session.make_request(
             method='get',
@@ -403,20 +391,19 @@ class Archives():
 
 
         directories = self.edgar_utilities.clean_directories(
-            directories=response,
-            service_url=url
+            directories=response
         )
 
         return directories
 
     def get_full_index(self, year: int, quarter: str = None) -> dict:
-        """Gets the full indexes. 
+        """Gets the full indexes.
 
         ### Overview:
         ----
         Full indexes offer a "bridge" between quarterly and daily indexes,
         compiling filings from the beginning of the current quarter through
-        the previous business day. At the end of the quarter, the full 
+        the previous business day. At the end of the quarter, the full
         index is rolled into a static quarterly index.
 
         ### Arguments:
@@ -453,8 +440,7 @@ class Archives():
 
         if not quarter:
             directories = self.edgar_utilities.clean_directories(
-                directories=response,
-                service_url=url
+                directories=response
             )
         else:
             directories = self.edgar_utilities.clean_filing_directory(

@@ -2,7 +2,7 @@ from setuptools import setup
 from setuptools import find_namespace_packages
 
 # load the README file.
-with open(file="README.md", mode="r") as readme_file:
+with open(file="README.md", mode="r", encoding="utf-8") as readme_file:
     long_description = readme_file.read()
 
 setup(

@@ -1,11 +1,7 @@
 
 from typing import Dict
 from typing import List
-from typing import Union
-from datetime import date
-from datetime import datetime
 
-from enum import Enum
 from edgar.session import EdgarSession
 from edgar.utilis import EdgarUtilities
 from edgar.parser import EdgarParser
@@ -48,7 +44,7 @@ class VariableInsuranceProducts():
         }
 
     def _reset_params(self) -> None:
-        """Resets the params for the next request.""" 
+        """Resets the params for the next request."""
 
         self.params = {
             'sc': 'companyseries',
@@ -65,7 +61,12 @@ class VariableInsuranceProducts():
 
         return str_representation
 
-    def get_products_by_name(self, company_name: str, start: int = 0, number_of_filings: int = None) -> List[Dict]:
+    def get_products_by_name(
+        self,
+        company_name: str,
+        start: int = 0,
+        number_of_filings: int = None
+    ) -> List[Dict]:
         """Returns all the variable insurance products for a specific name.
 
         ### Parameters
@@ -108,50 +109,3 @@ class VariableInsuranceProducts():
         self._reset_params()
 
         return entries
-
-
-    # def get_variable_insurance_products_by_cik(self, cik: str, before: str = None, after: str = None) -> List[dict]:
-    #     """Returns all the filings (ownership and non-ownership) for a given company in a given date range.
-
-    #     Arguments:
-    #     ----
-    #     cik {str} -- The CIK number of the company to be queried.
-
-    #     Keyword Arguments:
-    #     ----
-    #     before {Union[str, date]} -- Represents filings that you want before a certain
-    #         date. For example, "2019-12-01" means return all the filings BEFORE
-    #         Decemeber 1, 2019. (default: {None})
-
-    #     after {Union[str, date]} -- Represents filings that you want after a certain
-    #         date. For example, "2019-12-01" means return all the filings AFTER
-    #         Decemeber 1, 2019. (default: {None})
-
-    #     Returns:
-    #     ----
-    #     List[dict] -- A list of mutual fund prospectus.
-    #     """
-
-    #     # define the arguments of the request
-    #     search_params = {
-    #         'CIK': cik,
-    #         'Count': '100',
-    #         'myowner': 'include',
-    #         'action': 'getcompany',
-    #         'type': '485',
-    #         'hidefilings': '0',
-    #         'output': 'atom',
-    #         'datea': after,
-    #         'dateb': before
-    #     }
-
-    #     # Make the response.
-    #     response = requests.get(
-    #         url=self.series_service,
-    #         params=search_params
-    #     )
-
-    #     # Parse the entries.
-    #     entries = self.parser_client.parse_entries(entries_text=response.text)
-
-    #     return entries

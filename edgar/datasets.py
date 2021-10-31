@@ -43,7 +43,7 @@ class Datasets():
 
         ### Returns:
         ----
-        dict: 
+        dict:
             A collection of `Dataset` resources.
 
         ### Usage:
@@ -66,7 +66,7 @@ class Datasets():
 
         ### Returns:
         ----
-        dict: 
+        dict:
             A collection of `Dataset` taxonomy resources.
 
         ### Usage:

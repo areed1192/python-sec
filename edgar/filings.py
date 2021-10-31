@@ -1,9 +1,9 @@
-from typing import Dict
+from enum import Enum
 from typing import List
 from typing import Union
-from enum import Enum
-from datetime import datetime
 from datetime import date
+from datetime import datetime
+
 from edgar.session import EdgarSession
 from edgar.utilis import EdgarUtilities
 from edgar.parser import EdgarParser
@@ -76,7 +76,7 @@ class Filings():
 
         return str_representation
 
-    def get_filings_by_cik(self, cik: str, start: int = 0, number_of_filings: int = 100) -> Dict:
+    def get_filings_by_cik(self, cik: str, start: int = 0, number_of_filings: int = 100) -> dict:
         """Returns a list of filings that fall under a specific CIK number.
 
         ### Arguments:
@@ -127,7 +127,13 @@ class Filings():
 
         return response
 
-    def get_filings_by_type(self, cik: str, filing_type: Union[str, Enum], start: int = 0, number_of_filings: int = 100) -> Dict:
+    def get_filings_by_type(
+        self,
+        cik: str,
+        filing_type: Union[str, Enum],
+        start: int = 0,
+        number_of_filings: int = 100
+    ) -> dict:
         """Returns a list of filings that fall under a specific CIK number.
 
         ### Arguments:
@@ -227,11 +233,11 @@ class Filings():
             after this and up until the `number_of_filings`.
 
         before_date: Union[str, datetime, date] (optional, Default=None)
-            Represents filings that you want before a certain date. For example, 
+            Represents filings that you want before a certain date. For example,
             `2019-12-01` means return all the filings `BEFORE` Decemeber 1, 2019.
 
         after_date : Union[str, datetime, date] (optional, Default=None)
-            Represents filings that you want after a certain date. For example, 
+            Represents filings that you want after a certain date. For example,
             `2019-12-01` means return all the filings `AFTER` Decemeber 1, 2019.
 
         ### Returns:

@@ -6,10 +6,10 @@ from typing import Union
 
 import requests
 
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
-from bs4 import BeautifulSoup
 from bs4 import Tag
+from bs4 import BeautifulSoup
+from urllib3.util.retry import Retry
+from requests.adapters import HTTPAdapter
 
 
 class EdgarParser():
@@ -101,7 +101,7 @@ class EdgarParser():
                 keep_going = False
             else:
                 root = self._grab_next_page(next_url=next_page)
-                print('Grabbed Next URL: {url}'.format(url=next_page))
+                print(f'Grabbed Next URL: {next_page}')
 
                 if not root or (num_of_items and num_of_items < current_count):
                     keep_going = False
@@ -144,8 +144,8 @@ class EdgarParser():
         if entries_response.status_code == 200:
             root = ET.fromstring(entries_response.content)
             return root
-        else:
-            return None
+
+        return None
 
     def parse_entry_element(self, entry: ET.ElementTree, path: str = './') -> dict:
         """Converts the XML entry element into a python dictionary.
@@ -164,9 +164,9 @@ class EdgarParser():
         entry_element_dict = {}
         replace_tag = self.entries_namespace['atom_with_quote']
 
-        for entry in entry.findall(path=path, namespaces=self.entries_namespace):
+        for entry_itm in entry.findall(path=path, namespaces=self.entries_namespace):
 
-            for element in entry.iter():
+            for element in entry_itm.iter():
                 name = element.tag.replace(replace_tag, '')
 
                 if element.text:
@@ -176,7 +176,7 @@ class EdgarParser():
                 if element.attrib:
                     for key, value in element.attrib.items():
                         key = key.replace('-', '_')
-                        entry_element_dict[name + "_{}".format(key)] = value
+                        entry_element_dict[name + f"_{key}"] = value
 
         return entry_element_dict
 
@@ -195,7 +195,9 @@ class EdgarParser():
         """
 
         next_page = root_document.findall(
-            "atom:link[@rel='next']", namespaces=self.entries_namespace)
+            path="atom:link[@rel='next']",
+            namespaces=self.entries_namespace
+        )
 
         if next_page:
             element_attributes = next_page[0].attrib
@@ -209,7 +211,7 @@ class EdgarParser():
 
         return next_page_url
 
-    def _parse_issuer_next_button(self, button_soup: Tag) -> Union[str]:
+    def _parse_issuer_next_button(self, button_soup: Tag) -> str:
         """Parses the next button in the issuer report.
 
         ### Parameters
@@ -234,11 +236,13 @@ class EdgarParser():
 
             # If there is a next button, grab the link.
             if 'Next' in button['value']:
-                next_page = button['onclick']
+                next_page: str = button['onclick']
 
                 # Build the URL
                 next_page_link = next_page.replace(
-                    "parent.location='", "https://www.sec.gov").replace("'", "")
+                    "parent.location='",
+                    "https://www.sec.gov"
+                ).replace("'", "")
 
                 return next_page_link
 
@@ -284,9 +288,9 @@ class EdgarParser():
 
                 issuer_dict = {}
 
-                row: Tag = row
-                elements = row.text.split('\n')
-                links = row.find_all('a', href=True)
+                row_new: Tag = row
+                elements = row_new.text.split('\n')
+                links = row_new.find_all('a', href=True)
 
                 issuer_dict = {
                     'issuer': elements[0],
@@ -313,7 +317,7 @@ class EdgarParser():
 
             master_list.append(master_dict)
 
-            print("Pulling URL: {url}".format(url=next_page_link))
+            print(f"Pulling URL: {next_page_link}")
 
             if next_page_link:
                 response_text = requests.get(next_page_link).content
@@ -363,7 +367,7 @@ class EdgarParser():
 
         return master_list
 
-    def _check_center_tag(self, product_table_soup: Tag) -> Union[List[str]]:
+    def _check_center_tag(self, product_table_soup: Tag) -> List[str]:
         """Grabs all the links that are in the Center tag of the Product Page.
 
         ### Parameters
@@ -421,24 +425,29 @@ class EdgarParser():
 
         # Check for the other links.
         href_links = self._check_center_tag(
-            product_table_soup=product_page_soup)
+            product_table_soup=product_page_soup
+        )
 
         # Parse the table.
         product_list_all = self._parse_variable_product_page(
-            product_page_soup=product_page_soup)
+            product_page_soup=product_page_soup
+        )
 
         # Loop through all the pages, and grab those entries.
         for link in href_links:
 
             product_page_soup = BeautifulSoup(
-                requests.get(url=link).text, 'html.parser')
+                markup=requests.get(url=link).text,
+                features='html.parser'
+            )
+
             product_list = self._parse_variable_product_page(
-                product_page_soup=product_page_soup)
+                product_page_soup=product_page_soup
+            )
             product_list_all = product_list_all + product_list
 
-            print("Pulling URL: {url}".format(url=link))
-            print("Total Entries Scraped: {quant}".format(
-                quant=len(product_list_all)))
+            print(f"Pulling URL: {link}")
+            print(f"Total Entries Scraped: {len(product_list_all)}")
 
         return product_list_all
 
@@ -458,7 +467,9 @@ class EdgarParser():
 
         # Grab all the Summary Tables.
         summary_table = product_page_soup.find_all(
-            name='table', attrs={'summary': '.'})
+            name='table',
+            attrs={'summary': '.'}
+        )
 
         master_list = []
 

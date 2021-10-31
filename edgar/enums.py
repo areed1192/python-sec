@@ -326,7 +326,7 @@ class CountryCodes(Enum):
 
 
 class FilingTypeCodes(Enum):
-    """Available filing types to be used when creating 
+    """Available filing types to be used when creating
     Filing object.
 
     ### Usage:
@@ -933,6 +933,15 @@ class StandardIndustrialClassificationCodes(Enum):
 
 
 class OtherFilingTypes(Enum):
+
+    """Represents all other types of filings you can
+    query.
+
+    ### Usage:
+    ----
+        >>> from edgar.enums import OtherFilingTypes
+        >>> OtherFilingTypes._25NSEAD.value
+    """
 
     _1012B = '1012B'
     _1012BAD = '1012BAD'

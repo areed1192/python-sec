@@ -1,4 +1,3 @@
-from typing import Dict
 from edgar.session import EdgarSession
 from edgar.utilis import EdgarUtilities
 from edgar.parser import EdgarParser
@@ -60,7 +59,7 @@ class Issuers():
 
         return str_representation
 
-    def get_issuers_by_cik(self, cik: str, number_of_issuers: int = 100) -> list:
+    def get_issuers_by_cik(self, cik: str) -> list:
         """Returns all the issuers for a given CIK number.
 
         ### Arguments:
@@ -82,7 +81,7 @@ class Issuers():
         ----
             >>> edgar_client = EdgarClient()
             >>> issuers_services = edgar_client.issuers()
-            >>> issuers_services.get_issuers_by_cik(                
+            >>> issuers_services.get_issuers_by_cik(
                 cik=''
             )
         """
@@ -98,8 +97,7 @@ class Issuers():
 
         # Parse it.
         response = self.edgar_parser.parse_issuer_table(
-            response_text=response,
-            num_of_items=number_of_issuers
+            response_text=response
         )
 
         self._reset_params()

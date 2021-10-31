@@ -1,13 +1,7 @@
-from typing import Dict
-from typing import List
-from typing import Union
-from datetime import date
-from datetime import datetime
-
 from enum import Enum
+from typing import Union
 from edgar.session import EdgarSession
 from edgar.utilis import EdgarUtilities
-from edgar.parser import EdgarParser
 
 
 class Xbrl():
@@ -126,7 +120,12 @@ class Xbrl():
 
         return response
 
-    def frames(self, concept: Union[str, Enum], unit_of_measure: Union[str, Enum], period: str) -> dict:
+    def frames(
+        self,
+        concept: Union[str, Enum],
+        unit_of_measure: Union[str, Enum],
+        period: str
+    ) -> dict:
         """Aggregates one fact for each reporting entity that is last filed that most closely
         fits the calendrical period requested.
 
@@ -134,7 +133,7 @@ class Xbrl():
         ----
         This API supports for annual, quarterly and instantaneous data. Where the units of measure
         specified in the XBRL contains a numerator and a denominator, these are separated by “-per-”
-        such as “USD-per-shares”. Note that the default unit in XBRL is “pure”. 
+        such as “USD-per-shares”. Note that the default unit in XBRL is “pure”.
 
         The period format is CY#### for annual data (duration 365 days +/- 30 days), CY####Q# for
         quarterly data (duration 91 days +/- 30 days), and CY####Q#I for instantaneous data. Because

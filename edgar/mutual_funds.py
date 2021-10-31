@@ -1,11 +1,8 @@
-
-from typing import Dict
 from typing import List
 from typing import Union
 from datetime import date
 from datetime import datetime
 
-from enum import Enum
 from edgar.session import EdgarSession
 from edgar.utilis import EdgarUtilities
 from edgar.parser import EdgarParser
@@ -16,7 +13,7 @@ class MutualFunds():
     """
     ## Overview:
     ----
-
+    Used to interact with the `MutualFunds` service.
     """
 
     def __init__(self, session: EdgarSession) -> None:
@@ -120,11 +117,11 @@ class MutualFunds():
             after this and up until the `number_of_filings`.
 
         before_date: Union[str, datetime, date] (optional, Default=None)
-            Represents filings that you want before a certain date. For example, 
+            Represents filings that you want before a certain date. For example,
             `2019-12-01` means return all the filings `BEFORE` Decemeber 1, 2019.
 
         after_date : Union[str, datetime, date] (optional, Default=None)
-            Represents filings that you want after a certain date. For example, 
+            Represents filings that you want after a certain date. For example,
             `2019-12-01` means return all the filings `AFTER` Decemeber 1, 2019.
 
         ### Returns:
@@ -178,7 +175,13 @@ class MutualFunds():
 
         return entries
 
-    def get_mutual_fund_filings_by_type(self, cik: str, mutual_fund_type: str, start: int = 0, number_of_filings: int = 100) -> List[dict]:
+    def get_mutual_fund_filings_by_type(
+        self,
+        cik: str,
+        mutual_fund_type: str,
+        start: int = 0,
+        number_of_filings: int = 100
+    ) -> List[dict]:
         """Returns all mutual fund filings matching the specified type for specific CIK.
 
         ### Parameters
@@ -189,7 +192,7 @@ class MutualFunds():
         mutual_fund_type : str
             The type of mutual fund you want to query. Can be one of the
             following: `['mutual-fund', 'mutual-fund-prospectus', 'mutual-fund-proxy-records',
-            'mutual-fund-shareholder-reports', 'mutual-fund-summary-prospectus', 
+            'mutual-fund-shareholder-reports', 'mutual-fund-summary-prospectus',
             'mutual-fund-effectiveness-notice']`
 
         number_of_filings : int (optional, Default=1000)
@@ -282,7 +285,12 @@ class MutualFunds():
 
         return entries
 
-    def get_mutual_funds_by_name(self, company_name: str, start: int = 0, number_of_filings: int = 100) -> List[dict]:
+    def get_mutual_funds_by_name(
+        self,
+        company_name: str,
+        start: int = 0,
+        number_of_filings: int = 100
+    ) -> List[dict]:
         """Returns all mutual fund filings matching a specific name.
 
         ### Parameters

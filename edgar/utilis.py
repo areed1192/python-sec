@@ -1,7 +1,6 @@
-from datetime import datetime
-from datetime import date
-
 from typing import Union
+from datetime import date
+from datetime import datetime
 
 
 class EdgarUtilities():
@@ -17,7 +16,7 @@ class EdgarUtilities():
         """Initializes the `EdgarUtilities` object."""
         self.resource = 'https://www.sec.gov'
 
-    def clean_directories(self, directories: list, service_url: str, cik: str = None) -> dict:
+    def clean_directories(self, directories: list, cik: str = None) -> dict:
         """Used to clean the directories and add additional fields.
 
         ### Parameters
@@ -122,14 +121,15 @@ class EdgarUtilities():
 
         """
 
-        if isinstance(date_or_datetime, date) or isinstance(date_or_datetime, datetime):
+        if isinstance(date_or_datetime, (date, datetime)):
             return date_or_datetime.isoformat()
-        elif isinstance(date_or_datetime, str):
+
+        if isinstance(date_or_datetime, str):
             try:
                 datetime.strptime(date_or_datetime, '%Y-%m-%d')
                 return date_or_datetime
-            except:
-                raise ValueError(
+            except ValueError:
+                print(
                     "Date is not the correct format, must be ISO-Format."
                 )
         else:

@@ -1,18 +1,17 @@
 import json
 import time
-import requests
 import logging
 import pathlib
-
 from typing import Dict
 
+import requests
 
 class EdgarSession():
 
     """
     Overview:
     ----
-    Serves as the main Session for the 
+    Serves as the main Session for the
     `EDGARClient`. The `EdgarSession` object
     handles all the requests made to EDGAR.
     """
@@ -110,7 +109,7 @@ class EdgarSession():
         endpoint : str
             The API URL endpoint.
 
-        params : dict (optional, Default=None) 
+        params : dict (optional, Default=None)
             The URL params for the request.
 
         data : dict (optional, Default=None)
@@ -131,14 +130,8 @@ class EdgarSession():
         # Build the URL.
         url = self.build_url(endpoint=endpoint, use_api=use_api)
 
-        logging.info(
-            "URL: {url}".format(url=url)
-        )
-
-        if params:
-            logging.info(
-                "PARAMS: {params}".format(params=params)
-            )
+        logging.info("URL: %s", url)
+        logging.info("PARAMETERS %s", params)
 
         # Define a new session.
         request_session = requests.Session()
@@ -174,7 +167,7 @@ class EdgarSession():
                 response: requests.Response = request_session.send(
                     request=request_request
                 )
-            except:
+            except requests.HTTPError:
                 print("Sleeping for five seconds")
                 time.sleep(5)
 
@@ -190,15 +183,15 @@ class EdgarSession():
 
             if content_type in ['application/atom+xml', 'text/xml', 'text/html']:
                 return response.text
-            else:
-                try:
-                    return response.json()
-                except:
-                    content = response.content.replace(
-                        b'Content-type: application/json\r\n\r\n',
-                        b''
-                    )
-                    return json.loads(content)
+
+            try:
+                return response.json()
+            except requests.exceptions.ContentDecodingError:
+                content = response.content.replace(
+                    b'Content-type: application/json\r\n\r\n',
+                    b''
+                )
+                return json.loads(content)
 
         elif len(response.content) > 0 and response.ok:
             return {
