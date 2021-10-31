@@ -1,3 +1,4 @@
+import sys
 import json
 import time
 import logging
@@ -5,6 +6,7 @@ import pathlib
 from typing import Dict
 
 import requests
+
 
 class EdgarSession():
 
@@ -43,12 +45,22 @@ class EdgarSession():
             pathlib.Path('logs').mkdir()
             pathlib.Path('logs/sec_api_log.log').touch()
 
-        logging.basicConfig(
-            filename="logs/sec_api_log.log",
-            level=logging.INFO,
-            encoding="utf-8",
-            format=log_format
-        )
+        if sys.version_info >= (3, 9):
+
+            logging.basicConfig(
+                filename="logs/sec_api_log.log",
+                level=logging.INFO,
+                encoding="utf-8",
+                format=log_format
+            )
+
+        else:
+
+            logging.basicConfig(
+                filename="logs/sec_api_log.log",
+                level=logging.INFO,
+                encoding="utf-8"
+            )
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient.EdgarSession` object."""
