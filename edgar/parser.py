@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 
+from edgar.logger import logger
+
 
 class EdgarParser():
 
@@ -101,7 +103,7 @@ class EdgarParser():
                 keep_going = False
             else:
                 root = self._grab_next_page(next_url=next_page)
-                print(f'Grabbed Next URL: {next_page}')
+                logger.info(f'Grabbed Next URL: {next_page}')
 
                 if not root or (num_of_items and num_of_items < current_count):
                     keep_going = False
@@ -317,7 +319,7 @@ class EdgarParser():
 
             master_list.append(master_dict)
 
-            print(f"Pulling URL: {next_page_link}")
+            logger.info(f"Pulling URL: {next_page_link}")
 
             if next_page_link:
                 response_text = requests.get(next_page_link).content
@@ -363,7 +365,7 @@ class EdgarParser():
             values.insert(5, href)
 
             master_list.append(dict(zip(headers, values)))
-            # print([header.strip() for header in row.strings if header != '\n'])
+            # logger.info(([header.strip() for header in row.strings if header != '\n'])
 
         return master_list
 
@@ -446,8 +448,8 @@ class EdgarParser():
             )
             product_list_all = product_list_all + product_list
 
-            print(f"Pulling URL: {link}")
-            print(f"Total Entries Scraped: {len(product_list_all)}")
+            logger.info(f"Pulling URL: {link}")
+            logger.info(f"Total Entries Scraped: {len(product_list_all)}")
 
         return product_list_all
 
@@ -625,7 +627,7 @@ class EdgarParser():
     #         '.atom:entry/atom:content/atom:company-info/atom:sids/atom:sid',
     #         namespaces=self.entries_namespace
     #     ):
-    #         print(elem)
+    #         logger.info((elem)
 
         # soup = BeautifulSoup(response_text, 'html.parser')
 
@@ -636,7 +638,7 @@ class EdgarParser():
         #     sid: Tag = sid
         #     element_dict = {}
 
-        #     print(len(list(sid.children)))
+        #     logger.info((len(list(sid.children)))
 
         #     for element in sid.children:
 

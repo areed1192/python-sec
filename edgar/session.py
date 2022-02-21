@@ -1,11 +1,10 @@
-import sys
 import json
 import time
-import logging
-import pathlib
 from typing import Dict
 
 import requests
+
+from edgar.logger import logger
 
 
 class EdgarSession():
@@ -41,26 +40,26 @@ class EdgarSession():
         self.api_resource = 'https://data.sec.gov'
         self.total_requests = 0
 
-        if not pathlib.Path('logs').exists():
-            pathlib.Path('logs').mkdir()
-            pathlib.Path('logs/sec_api_log.log').touch()
+        # if not pathlib.Path('logs').exists():
+        #     pathlib.Path('logs').mkdir()
+        #     pathlib.Path('logs/sec_api_log.log').touch()
 
-        if sys.version_info >= (3, 9):
+        # if sys.version_info >= (3, 9):
 
-            logging.basicConfig(
-                filename="logs/sec_api_log.log",
-                level=logging.INFO,
-                encoding="utf-8",
-                format=log_format
-            )
+        #     logging.basicConfig(
+        #         filename="logs/sec_api_log.log",
+        #         level=logging.INFO,
+        #         encoding="utf-8",
+        #         format=log_format
+        #     )
 
-        else:
+        # else:
 
-            logging.basicConfig(
-                filename="logs/sec_api_log.log",
-                level=logging.INFO,
-                encoding="utf-8"
-            )
+        #     logging.basicConfig(
+        #         filename="logs/sec_api_log.log",
+        #         level=logging.INFO,
+        #         encoding="utf-8"
+        #     )
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient.EdgarSession` object."""
@@ -142,8 +141,8 @@ class EdgarSession():
         # Build the URL.
         url = self.build_url(endpoint=endpoint, use_api=use_api)
 
-        logging.info("URL: %s", url)
-        logging.info("PARAMETERS %s", params)
+        logger.info("URL: %s", url)
+        logger.info("PARAMETERS %s", params)
 
         # Define a new session.
         request_session = requests.Session()
@@ -158,7 +157,7 @@ class EdgarSession():
             json=json_payload
         ).prepare()
 
-        print(request_request.url)
+        logger.info(request_request.url)
 
         self.total_requests += 1
 
@@ -168,7 +167,7 @@ class EdgarSession():
         )
 
         if self.total_requests == 9:
-            print("sleeping for 5 seconds.")
+            logger.info("sleeping for 5 seconds.")
             time.sleep(5)
             self.total_requests = 0
 
@@ -180,7 +179,7 @@ class EdgarSession():
                     request=request_request
                 )
             except requests.HTTPError:
-                print("Sleeping for five seconds")
+                logger.info("Sleeping for five seconds")
                 time.sleep(5)
 
         # Close the session.
@@ -223,7 +222,7 @@ class EdgarSession():
             }
 
             # Log the error.
-            logging.error(
+            logger.error(
                 msg=json.dumps(obj=error_dict, indent=4)
             )
 

@@ -2,6 +2,8 @@ from edgar.session import EdgarSession
 from edgar.utilis import EdgarUtilities
 from edgar.parser import EdgarParser
 
+from edgar.logger import logger
+
 
 class Series():
 
@@ -156,7 +158,7 @@ class Series():
             endpoint=self.browse_endpoint,
             params=self.browse_params
         )
-        print(response)
+        logger.info(response)
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
