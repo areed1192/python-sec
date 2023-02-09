@@ -1,0 +1,102 @@
+No.	Symbol	Name	% Weight	Shares
+1	MSFT	Microsoft Corporation	12.48%	75,986,273
+2	AAPL	Apple Inc.	11.88%	130,967,725
+3	AMZN	Amazon.com, Inc.	6.13%	104,423,283
+4	GOOG	Alphabet Inc.	3.85%	62,295,792
+5	GOOGL	Alphabet Inc.	3.83%	62,314,959
+6	NVDA	NVIDIA Corporation	3.42%	32,666,461
+7	TSLA	Tesla, Inc.	2.74%	32,322,529
+8	META	Meta Platforms, Inc.	2.43%	29,860,335
+9	PEP	PepsiCo, Inc.	2.29%	18,294,735
+10	AVGO	Broadcom Inc.	2.04%	5,378,038
+11	COST	Costco Wholesale Corporation	1.87%	5,877,364
+12	CSCO	Cisco Systems, Inc.	1.78%	54,551,864
+13	TMUS	T-Mobile US, Inc.	1.59%	16,521,234
+14	ADBE	Adobe Inc.	1.44%	6,173,447
+15	CMCSA	Comcast Corporation	1.39%	57,285,421
+16	TXN	Texas Instruments Incorporated	1.36%	12,051,712
+17	HON	Honeywell International Inc.	1.31%	8,927,851
+18	AMGN	Amgen Inc.	1.29%	7,085,439
+19	NFLX	Netflix, Inc.	1.20%	5,909,447
+20	QCOM	QUALCOMM Incorporated	1.14%	14,885,768
+21	SBUX	Starbucks Corporation	1.03%	15,241,757
+22	INTU	Intuit Inc.	0.99%	3,730,446
+23	INTC	Intel Corporation	0.98%	54,802,803
+24	GILD	Gilead Sciences, Inc.	0.97%	16,655,238
+25	AMD	Advanced Micro Devices, Inc.	0.95%	21,410,611
+26	ADP	Automatic Data Processing, Inc.	0.91%	5,508,522
+27	ISRG	Intuitive Surgical, Inc.	0.85%	4,692,609
+28	MDLZ	Mondelez International, Inc.	0.84%	18,134,070
+29	AMAT	Applied Materials, Inc.	0.76%	11,424,128
+30	ADI	Analog Devices, Inc.	0.76%	6,763,000
+31	PYPL	PayPal Holdings, Inc.	0.72%	15,138,517
+32	REGN	Regeneron Pharmaceuticals, Inc.	0.71%	1,421,964
+33	MRNA	Moderna, Inc.	0.70%	5,101,590
+34	BKNG	Booking Holdings Inc.	0.70%	515,112
+35	VRTX	Vertex Pharmaceuticals Incorporated	0.68%	3,408,604
+36	CSX	CSX Corporation	0.60%	27,917,983
+37	FISV	Fiserv, Inc.	0.58%	8,432,583
+38	ATVI	Activision Blizzard, Inc.	0.54%	10,392,561
+39	LRCX	Lam Research Corporation	0.51%	1,810,969
+40	MU	Micron Technology, Inc.	0.50%	14,436,622
+41	KLAC	KLA Corporation	0.49%	1,881,899
+42	MNST	Monster Beverage Corporation	0.48%	6,928,307
+43	ORLY	O'Reilly Automotive, Inc.	0.48%	830,980
+44	CHTR	Charter Communications, Inc.	0.48%	2,067,199
+45	KDP	Keurig Dr Pepper Inc.	0.47%	18,806,544
+46	KHC	The Kraft Heinz Company	0.45%	16,265,865
+47	AEP	American Electric Power Company, Inc.	0.45%	6,823,629
+48	SNPS	Synopsys, Inc.	0.45%	2,030,512
+49	ASML	ASML Holding N.V.	0.45%	1,173,129
+50	MAR	Marriott International, Inc.	0.43%	4,203,340
+51	CTAS	Cintas Corporation	0.42%	1,348,433
+52	CDNS	Cadence Design Systems, Inc.	0.41%	3,642,675
+53	MELI	MercadoLibre, Inc.	0.40%	667,899
+54	DXCM	DexCom, Inc.	0.39%	5,129,150
+55	EXC	Exelon Corporation	0.39%	13,195,994
+56	PANW	Palo Alto Networks, Inc.	0.39%	4,015,050
+57	PAYX	Paychex, Inc.	0.38%	4,785,811
+58	AZN	AstraZeneca PLC	0.38%	8,112,451
+59	NXPI	NXP Semiconductors N.V.	0.37%	3,441,048
+60	ADSK	Autodesk, Inc.	0.37%	2,866,393
+61	BIIB	Biogen Inc.	0.37%	1,912,203
+62	ROST	Ross Stores, Inc.	0.37%	4,608,679
+63	ENPH	Enphase Energy, Inc.	0.37%	1,804,945
+64	PDD	Pinduoduo Inc.	0.36%	6,215,659
+65	XEL	Xcel Energy Inc.	0.36%	7,266,935
+66	MCHP	Microchip Technology Incorporated	0.35%	7,303,612
+67	LULU	Lululemon Athletica Inc.	0.35%	1,624,104
+68	FTNT	Fortinet, Inc.	0.35%	10,374,006
+69	PCAR	PACCAR Inc	0.32%	4,618,029
+70	IDXX	IDEXX Laboratories, Inc.	0.31%	1,099,745
+71	ABNB	Airbnb, Inc.	0.31%	5,288,326
+72	EA	Electronic Arts Inc.	0.31%	3,666,112
+73	WBA	Walgreens Boots Alliance, Inc.	0.31%	11,483,840
+74	WDAY	Workday, Inc.	0.30%	2,682,362
+75	MRVL	Marvell Technology, Inc.	0.29%	11,321,728
+76	ODFL	Old Dominion Freight Line, Inc.	0.29%	1,467,093
+77	DLTR	Dollar Tree, Inc.	0.29%	2,937,143
+78	CSGP	CoStar Group, Inc.	0.29%	5,400,465
+79	ILMN	Illumina, Inc.	0.28%	2,088,812
+80	GFS	GLOBALFOUNDRIES Inc.	0.27%	7,238,074
+81	BKR	Baker Hughes Company	0.27%	13,298,484
+82	CPRT	Copart, Inc.	0.26%	6,324,824
+83	CEG	Constellation Energy Corporation	0.26%	4,342,408
+84	CTSH	Cognizant Technology Solutions Corporation	0.26%	6,824,400
+85	VRSK	Verisk Analytics, Inc.	0.25%	2,076,693
+86	JD	JD.com, Inc.	0.25%	6,450,799
+87	FAST	Fastenal Company	0.25%	7,605,714
+88	FANG	Diamondback Energy, Inc.	0.22%	2,337,102
+89	SGEN	Seagen Inc.	0.22%	2,465,450
+90	SIRI	Sirius XM Holdings Inc.	0.21%	51,649,444
+91	WBD	Warner Bros. Discovery, Inc.	0.20%	32,246,876
+92	CRWD	CrowdStrike Holdings, Inc.	0.20%	2,898,563
+93	EBAY	eBay Inc.	0.20%	7,206,017
+94	DDOG	Datadog, Inc.	0.19%	3,878,144
+95	ANSS	ANSYS, Inc.	0.19%	1,156,799
+96	TEAM	Atlassian Corporation	0.17%	1,968,930
+97	RIVN	Rivian Automotive, Inc.	0.16%	12,125,457
+98	ZM	Zoom Video Communications, Inc.	0.15%	3,262,044
+99	ALGN	Align Technology, Inc.	0.15%	1,037,288
+100	ZS	Zscaler, Inc.	0.14%	1,915,007
+101	LCID	Lucid Group, Inc.	0.10%	22,314,595

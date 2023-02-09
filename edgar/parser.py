@@ -107,6 +107,49 @@ class EdgarParser():
                     keep_going = False
 
         return entries
+    
+    '''
+    response_text: form_4_filling_detail_page. 
+    e.g: https://www.sec.gov/Archives/edgar/data/1326801/000095010322021406/0000950103-22-021406-index.htm
+    '''
+    def get_form_4_xml_path(self, response_text):
+        form_4_page_soup = BeautifulSoup(response_text, 'html.parser')
+        links = form_4_page_soup.find(id="contentDiv").find_all(id="formDiv")[1].find_all("a", href=True)
+        xml_format_path = links[1].get('href') # the elements are html, xml, txt
+        return xml_format_path
+    
+    def parse_form_4_xml(self, response_text):
+        root = ET.fromstring(response_text)
+        form_4 = {}
+        issuer = root.find('issuer')
+        for ele in issuer:
+            form_4[ele.tag] = ele.text
+        reporter = root.find('reportingOwner')
+        form_4["rptOwnerName"] = reporter.find('reportingOwnerId').find('rptOwnerName').text
+        form_4["isDirector"] = reporter.find('reportingOwnerRelationship').find('isDirector').text
+        form_4["isOfficer"] = reporter.find('reportingOwnerRelationship').find('isOfficer').text
+        form_4["isTenPercentOwner"] = reporter.find('reportingOwnerRelationship').find('isTenPercentOwner').text
+        form_4["isOther"] = reporter.find('reportingOwnerRelationship').find('isOther').text
+        officerTitle = reporter.find('reportingOwnerRelationship').find('officerTitle')
+        if officerTitle is not None:
+            form_4["officerTitle"] = officerTitle.text
+
+        nonDerivativeTransaction = root.find('nonDerivativeTable')
+        if nonDerivativeTransaction is not None:
+            transaction = nonDerivativeTransaction.find('nonDerivativeTransaction')
+            form_4["transactionDate"] = transaction.find('transactionDate').find('value').text
+            form_4["securityTitle"] = transaction.find('securityTitle').find('value').text
+            form_4["transactionCoding"] = transaction.find('transactionCoding').find('transactionCode').text
+            form_4["transactionShares"] = transaction.find('transactionAmounts').find('transactionShares').find('value').text
+            form_4["transactionPricePerShare"] = transaction.find('transactionAmounts').find('transactionPricePerShare').find('value').text
+            form_4["transactionAcquiredDisposedCode"] = transaction.find('transactionAmounts').find('transactionAcquiredDisposedCode').find('value').text
+
+            form_4["postTransactionAmounts"] = transaction.find('postTransactionAmounts').find('sharesOwnedFollowingTransaction').find('value').text
+            form_4["directOrIndirectOwnership"] = transaction.find('ownershipNature').find('directOrIndirectOwnership').find('value').text
+        
+        form_4["ownerSignature"] = root.find('ownerSignature').find('signatureDate').text
+        return form_4
+
 
     def _grab_next_page(self, next_url: str) -> ET.ElementTree:
         """Grabs the next page text content.

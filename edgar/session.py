@@ -6,6 +6,7 @@ import pathlib
 from typing import Dict
 
 import requests
+import requests_random_user_agent
 
 
 class EdgarSession():
@@ -147,7 +148,9 @@ class EdgarSession():
 
         # Define a new session.
         request_session = requests.Session()
-        request_session.verify = True
+        # request_session.verify = True
+        # request_session.headers['User-Agent'] = 'GA'
+        # print("user-agent: {}".format(request_session.headers['User-Agent']))
 
         # Define a new request.
         request_request = requests.Request(
@@ -158,22 +161,25 @@ class EdgarSession():
             json=json_payload
         ).prepare()
 
-        print(request_request.url)
+        response = requests.get(request_request.url, headers={'User-Agent': 'GA-'}, stream=True)
+        print("request_request.url: {}".format(request_request.url))
 
         self.total_requests += 1
 
         # Send the request.
-        response: requests.Response = request_session.send(
-            request=request_request
-        )
-
+        # response: requests.Response = request_session.send(
+        #     request=request_request
+        # )
         if self.total_requests == 9:
             print("sleeping for 5 seconds.")
             time.sleep(5)
             self.total_requests = 0
 
         # Keep going.
-        while response.status_code != 200:
+        retry_count = 0
+        while response.status_code != 200 and retry_count < 3:
+            print("response.status_code: {}. response {}".format(response.status_code, response.content))
+            retry_count += 1
 
             try:
                 response: requests.Response = request_session.send(
@@ -182,6 +188,7 @@ class EdgarSession():
             except requests.HTTPError:
                 print("Sleeping for five seconds")
                 time.sleep(5)
+            time.sleep(5)
 
         # Close the session.
         request_session.close()

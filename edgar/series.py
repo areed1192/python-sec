@@ -156,7 +156,6 @@ class Series():
             endpoint=self.browse_endpoint,
             params=self.browse_params
         )
-        print(response)
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
