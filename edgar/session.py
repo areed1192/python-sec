@@ -18,7 +18,7 @@ class EdgarSession():
     handles all the requests made to EDGAR.
     """
 
-    def __init__(self, client: object) -> None:
+    def __init__(self, client: object, user_agent: str) -> None:
         """Initializes the `EdgarSession` client.
 
         ### Parameters:
@@ -40,6 +40,7 @@ class EdgarSession():
         self.resource = 'https://www.sec.gov'
         self.api_resource = 'https://data.sec.gov'
         self.total_requests = 0
+        self.user_agent = user_agent
 
         if not pathlib.Path('logs').exists():
             pathlib.Path('logs').mkdir()
@@ -151,6 +152,7 @@ class EdgarSession():
 
         # Define a new request.
         request_request = requests.Request(
+            headers={'user-agent': self.user_agent},
             method=method.upper(),
             url=url,
             params=params,
