@@ -22,7 +22,7 @@ class EdgarClient():
     instantiate the different endpoints.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, user_agent: str) -> None:
         """Initializes the `EdgarClient`.
 
         ### Usage
@@ -30,7 +30,7 @@ class EdgarClient():
             >>> edgar_client = EdgarClient()
         """
 
-        self.edgar_session = EdgarSession(client=self)
+        self.edgar_session = EdgarSession(client=self, user_agent=user_agent)
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient` object."""

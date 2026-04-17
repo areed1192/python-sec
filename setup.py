@@ -36,7 +36,7 @@ setup(
     # there are some dependencies to use the library, so let's list them out.
     install_requires=[
         'requests==2.32.2',
-        'urllib3==1.26.5',
+        'urllib3==1.26.19',
         'beautifulsoup4==4.9.1'
     ],
 
