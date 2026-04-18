@@ -47,7 +47,12 @@ class Xbrl():
 
         return str_representation
 
-    def company_concepts(self, cik: str, concept: Union[str, Enum]) -> dict | None:
+    def company_concepts(
+        self,
+        cik: str,
+        concept: Union[str, Enum],
+        taxonomy: str = "us-gaap",
+    ) -> dict | None:
         """Returns all the XBRL disclosures from a single company and concept.
 
         ### Parameters
@@ -57,6 +62,10 @@ class Xbrl():
 
         concept : Union[str, Enum]
             A taxonomy and tag you want to retrieve data for.
+
+        taxonomy : str (optional, Default="us-gaap")
+            The taxonomy namespace (e.g. ``"us-gaap"``, ``"ifrs-full"``,
+            ``"dei"``).
 
         ### Returns
         ----
@@ -71,6 +80,11 @@ class Xbrl():
                cik='1326801',
                concept='AccountsPayableCurrent'
             )
+            >>> xbrl_services.company_concepts(
+               cik='1326801',
+               concept='Revenue',
+               taxonomy='ifrs-full'
+            )
         """
         if not cik.isdigit():
             raise ValueError(f"CIK must contain only digits, got: {cik!r}")
@@ -79,7 +93,7 @@ class Xbrl():
             num_of_zeros = 10 - len(cik)
             cik = num_of_zeros*"0" + cik
 
-        endpoint = f'/api/xbrl/companyconcept/CIK{cik}/us-gaap/{concept}.json'
+        endpoint = f'/api/xbrl/companyconcept/CIK{cik}/{taxonomy}/{concept}.json'
 
         # Grab the Data.
         response = self.edgar_session.make_request(
@@ -129,11 +143,42 @@ class Xbrl():
 
         return response
 
+    def get_facts(self, cik: str) -> object:
+        """Returns XBRL company facts as a structured ``Facts`` model.
+
+        Wraps the raw ``company_facts()`` response in a ``Facts``
+        dataclass for convenient access by taxonomy, concept, and unit.
+
+        ### Parameters
+        ----
+        cik : str
+            The CIK number you want to query.
+
+        ### Returns
+        ----
+        Facts | None:
+            A ``Facts`` object, or ``None`` if no data was returned.
+
+        ### Usage
+        ----
+            >>> xbrl = edgar_client.xbrl()
+            >>> facts = xbrl.get_facts(cik='320193')
+            >>> facts.get('us-gaap', 'Revenue')
+        """
+
+        from edgar.models import Facts
+
+        raw = self.company_facts(cik=cik)
+        if raw is None:
+            return None
+        return Facts(raw=raw)
+
     def frames(
         self,
         concept: Union[str, Enum],
         unit_of_measure: Union[str, Enum],
-        period: str
+        period: str,
+        taxonomy: str = "us-gaap",
     ) -> dict | None:
         """Aggregates one fact for each reporting entity that is last filed that most closely
         fits the calendrical period requested.
@@ -165,6 +210,9 @@ class Xbrl():
             CY2020. If I want Q1 of 2020 then it would look like CY2020Q1.
             Instantaneous data would look like CY2020Q1I.
 
+        taxonomy : str (optional, Default="us-gaap")
+            The taxonomy namespace (e.g. ``"us-gaap"``, ``"ifrs-full"``).
+
         ### Returns
         ----
         dict :
@@ -181,7 +229,7 @@ class Xbrl():
             )
         """
 
-        endpoint = f'/api/xbrl/frames/us-gaap/{concept}/{unit_of_measure}/{period}.json'
+        endpoint = f'/api/xbrl/frames/{taxonomy}/{concept}/{unit_of_measure}/{period}.json'
 
         # Grab the Data.
         response = self.edgar_session.make_request(

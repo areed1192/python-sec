@@ -40,3 +40,26 @@ include = ["edgar*"]
 
 [tool.setuptools.package-data]
 edgar = ["parsing/*", "py.typed"]
+
+[tool.pylint.main]
+# Only lint source and test directories.
+ignore-paths = ["resources", "samples"]
+
+[tool.pylint.format]
+max-line-length = 120
+
+[tool.pylint."messages_control"]
+disable = [
+    "missing-module-docstring",   # Enforced by convention, not pylint.
+    "missing-class-docstring",    # Many small dataclasses don't need one.
+    "too-few-public-methods",     # Dataclasses and service wrappers trigger this.
+    "too-many-arguments",         # Some SEC endpoints have many parameters.
+    "too-many-instance-attributes", # Session and client objects need many attrs.
+    "import-error",               # Handled by the build system, not pylint.
+]
+
+[tool.pylint.design]
+max-args = 8
+
+[tool.pylint.similarities]
+min-similarity-lines = 6

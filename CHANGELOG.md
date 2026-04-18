@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
+- **edgar/models.py**: `Fact` and `Facts` XBRL dataclass models.
+  - `Facts` wraps the deeply nested `company_facts` JSON (4 levels) with `get(taxonomy, concept, unit=None)` returning a flat `list[Fact]` sorted by end date.
+  - `Facts.taxonomies` lists available namespaces (e.g. `['dei', 'us-gaap', 'ifrs-full']`).
+  - `Facts.concepts(taxonomy)` lists concept names within a taxonomy.
+  - `Facts.label()`, `Facts.description()`, `Facts.units()` for concept metadata.
+  - `Fact` wraps a single data point with `value`, `end`, `start`, `fiscal_year`, `fiscal_period`, `form`, `filed`, `frame` properties.
+- **xbrl.py**: `get_facts(cik)` method returning a structured `Facts` model.
+- **company.py**: `get_facts()` method returning a structured `Facts` model.
+- **tests/test_xbrl_facts.py**: 39 unit tests for `Fact`, `Facts`, `Company.get_facts()`, `Xbrl.get_facts()`, and taxonomy parameter support.
+
+### Changed
+
+- **xbrl.py**: `company_concepts()` and `frames()` now accept an optional `taxonomy` parameter (default `"us-gaap"`). Previously hardcoded to `us-gaap`, now supports `"ifrs-full"`, `"dei"`, or any other taxonomy.
 - **edgar/tickers.py**: New `Tickers` service for ticker/CIK/company name resolution via `sec.gov/files/company_tickers.json`.
   - `resolve_ticker("AAPL")` → zero-padded CIK string (`"0000320193"`).
   - `resolve_cik(320193)` → list of company entries (ticker, title, CIK).
@@ -38,19 +52,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **README.md**: Complete rewrite with hero example, full service table (15 services), usage examples for ticker resolution, fluent Company API, XBRL, filing search, downloads, response models, and badge row.
 - **samples/use_company.py**: Sample file demonstrating the fluent Company interface (creation by ticker/CIK, filings, submissions, XBRL, download).
 - **samples/use_models.py**: Sample file demonstrating structured dataclass response models (`Filing`, `CompanyInfo`, `Submission`).
+- **samples/use_xbrl_facts.py**: Sample file demonstrating `Facts` and `Fact` XBRL dataclass models (taxonomy browsing, concept retrieval, unit filtering, metadata, cross-taxonomy access).
 - **tests/test_rate_limiter.py**: 9 unit tests for the sliding-window rate limiter (under-limit, at-limit sleep, timestamp expiry, integration checks for all three request paths).
 
 ### Changed
+
 - **session.py**: Replaced counter-based rate limiter (`sleep 5s every 10 requests`) with a sliding-window algorithm using `collections.deque` of `time.monotonic()` timestamps. Sleeps only the minimum time needed when the 1-second window is full. `MAX_REQUESTS_PER_SECOND = 10` enforced per SEC policy.
 - **session.py**: Rate limiting now applies to all three outgoing request paths (`make_request()`, `fetch_page()`, `download()`). Previously `fetch_page()` and `download()` bypassed rate limiting entirely.
 
 ### Changed
+
 - Migrated from `setup.py` to `pyproject.toml` for modern packaging.
 - Relaxed dependency version pins to use minimum ranges instead of exact versions.
 - Updated minimum Python version to 3.9.
 - Excluded `samples/` and `tests/` from distributed package.
 
 ### Fixed
+
 - **enums.py**: Renamed `StateCodes` members from mixed-case (`Alabama`, `New_York`) to UPPER_CASE (`ALABAMA`, `NEW_YORK`) to follow Python enum naming conventions.
 - **utils.py**: Exception chaining — `except ValueError as exc` / `raise ... from exc` in `parse_dates`.
 - **session.py**: Replaced infinite retry loop with bounded retry (max 5) and exponential backoff.
@@ -90,11 +108,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **All examples**: Updated `EdgarClient()` → `EdgarClient(user_agent=...)` across 13 sample files, README.md, test file, and 55 docstring examples in 14 `edgar/` modules to reflect the required `user_agent` parameter.
 
 ### Removed
+
 - **`edgar/parser/xbrl.py`**: Deleted `XbrlFiling` stub class — never imported or referenced.
 - **`edgar/parser/`**: Removed empty directory that conflicted with `parser.py` module.
 - **`edgar/enums.py`**: Replaced monolithic 1581-line file with `edgar/enums/` package — one module per enum class (`state_codes.py`, `country_codes.py`, `filing_type_codes.py`, `sic_codes.py`, `other_filing_types.py`) plus `__init__.py` re-exporting all names. All existing `from edgar.enums import X` imports continue to work.
 
 ### Added
+
 - `py.typed` marker for PEP 561 type checker support.
 - `CHANGELOG.md` to track version history.
 - `.gitignore` file.
@@ -111,5 +131,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.6] - 2021-01-01
 
 ### Added
+
 - Initial public release.
 - EDGAR client with services: Archives, Companies, CurrentEvents, Datasets, Filings, Issuers, MutualFunds, OwnershipFilings, Series, Submissions, VariableInsuranceProducts, XBRL.

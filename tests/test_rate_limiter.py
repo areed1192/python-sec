@@ -1,6 +1,8 @@
 """Tests for the sliding-window rate limiter in EdgarSession."""
 
+# Disable warnings about accessing protected members since we're testing internal behavior.
 # pylint: disable=redefined-outer-name
+# pylint: disable=protected-access
 
 from unittest.mock import MagicMock, patch
 

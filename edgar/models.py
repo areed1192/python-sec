@@ -137,10 +137,7 @@ class CompanyInfo:
             return []
 
         num_rows = len(recent[keys[0]])
-        return [
-            {key: recent[key][i] for key in keys}
-            for i in range(num_rows)
-        ]
+        return [{key: recent[key][i] for key in keys} for i in range(num_rows)]
 
     @property
     def recent_submissions(self) -> list[Submission]:
@@ -153,7 +150,9 @@ class CompanyInfo:
 
     def __repr__(self) -> str:
         ticker_str = ", ".join(self.tickers[:3]) if self.tickers else "N/A"
-        return f"<CompanyInfo name={self.name!r} cik={self.cik!r} tickers={ticker_str!r}>"
+        return (
+            f"<CompanyInfo name={self.name!r} cik={self.cik!r} tickers={ticker_str!r}>"
+        )
 
 
 @dataclass(frozen=True)
@@ -222,3 +221,248 @@ class Submission:
 
     def __repr__(self) -> str:
         return f"<Submission form={self.form!r} date={self.filing_date!r} accession={self.accession_number!r}>"
+
+
+@dataclass(frozen=True)
+class Fact:
+    """A single XBRL fact data point.
+
+    Each fact represents one reported value for a specific concept,
+    unit, and period.
+
+    ### Usage
+    ----
+        >>> facts = edgar_client.company("AAPL").get_facts()
+        >>> revenue = facts.get("us-gaap", "Revenue")
+        >>> revenue[0].value
+        274515000000
+    """
+
+    raw: dict = field(repr=False)
+
+    @property
+    def end(self) -> str:
+        """The period end date."""
+        return self.raw.get("end", "")
+
+    @property
+    def start(self) -> str:
+        """The period start date (empty for instant facts)."""
+        return self.raw.get("start", "")
+
+    @property
+    def value(self):
+        """The reported numeric value."""
+        return self.raw.get("val")
+
+    @property
+    def accession_number(self) -> str:
+        """The filing accession number."""
+        return self.raw.get("accn", "")
+
+    @property
+    def fiscal_year(self) -> int:
+        """The fiscal year."""
+        return self.raw.get("fy", 0)
+
+    @property
+    def fiscal_period(self) -> str:
+        """The fiscal period (e.g. ``'FY'``, ``'Q1'``, ``'Q2'``)."""
+        return self.raw.get("fp", "")
+
+    @property
+    def form(self) -> str:
+        """The form type that reported this fact (e.g. ``'10-K'``)."""
+        return self.raw.get("form", "")
+
+    @property
+    def filed(self) -> str:
+        """The date the filing was submitted."""
+        return self.raw.get("filed", "")
+
+    @property
+    def frame(self) -> str:
+        """The XBRL frame identifier (e.g. ``'CY2020Q4I'``), if present."""
+        return self.raw.get("frame", "")
+
+    def __repr__(self) -> str:
+        return (
+            f"<Fact end={self.end!r} value={self.value!r}"
+            f" form={self.form!r} fy={self.fiscal_year}>"
+        )
+
+
+@dataclass(frozen=True)
+class Facts:
+    """Structured wrapper around the SEC EDGAR company_facts XBRL response.
+
+    Navigates the deeply nested ``facts`` JSON (4 levels deep) and
+    provides convenient access by taxonomy and concept name.
+
+    ### Usage
+    ----
+        >>> facts = edgar_client.company("AAPL").get_facts()
+        >>> facts.entity_name
+        'Apple Inc.'
+        >>> revenue = facts.get("us-gaap", "Revenues")
+        >>> revenue[0].value
+        274515000000
+        >>> facts.taxonomies
+        ['dei', 'us-gaap']
+        >>> facts.concepts("us-gaap")
+        ['AccountsPayableCurrent', 'AccountsReceivableNetCurrent', ...]
+    """
+
+    raw: dict = field(repr=False)
+
+    @property
+    def cik(self) -> int:
+        """The CIK number."""
+        return self.raw.get("cik", 0)
+
+    @property
+    def entity_name(self) -> str:
+        """The entity name as reported in XBRL."""
+        return self.raw.get("entityName", "")
+
+    @property
+    def taxonomies(self) -> list[str]:
+        """List of taxonomy namespaces present (e.g. ``['dei', 'us-gaap']``)."""
+        return list(self.raw.get("facts", {}).keys())
+
+    def concepts(self, taxonomy: str = "us-gaap") -> list[str]:
+        """List of concept names within a taxonomy.
+
+        ### Parameters
+        ----
+        taxonomy : str (optional, Default=``"us-gaap"``)
+            The taxonomy namespace.
+
+        ### Returns
+        ----
+        list[str]:
+            Sorted list of concept names.
+        """
+        return sorted(self.raw.get("facts", {}).get(taxonomy, {}).keys())
+
+    def get(
+        self,
+        taxonomy: str,
+        concept: str,
+        unit: str | None = None,
+    ) -> list[Fact]:
+        """Retrieves fact data points for a given taxonomy/concept pair.
+
+        ### Parameters
+        ----
+        taxonomy : str
+            The taxonomy namespace (e.g. ``"us-gaap"``, ``"dei"``,
+            ``"ifrs-full"``).
+
+        concept : str
+            The concept tag name (e.g. ``"Revenue"``,
+            ``"AccountsPayableCurrent"``).
+
+        unit : str | None (optional, Default=None)
+            If provided, returns only facts in this unit of measure
+            (e.g. ``"USD"``, ``"shares"``). If ``None``, returns
+            facts from all units combined.
+
+        ### Returns
+        ----
+        list[Fact]:
+            A flat list of ``Fact`` objects, sorted by end date.
+        """
+        concept_data = self.raw.get("facts", {}).get(taxonomy, {}).get(concept, {})
+        if not concept_data:
+            return []
+
+        units_data = concept_data.get("units", {})
+
+        results: list[dict] = []
+        if unit is not None:
+            results = units_data.get(unit, [])
+        else:
+            for entries in units_data.values():
+                results.extend(entries)
+
+        results.sort(key=lambda d: d.get("end", ""))
+        return [Fact(raw=entry) for entry in results]
+
+    def label(self, taxonomy: str, concept: str) -> str:
+        """Returns the human-readable label for a concept.
+
+        ### Parameters
+        ----
+        taxonomy : str
+            The taxonomy namespace.
+
+        concept : str
+            The concept tag name.
+
+        ### Returns
+        ----
+        str:
+            The label string, or empty string if not found.
+        """
+        return (
+            self.raw.get("facts", {})
+            .get(taxonomy, {})
+            .get(concept, {})
+            .get("label", "")
+        )
+
+    def description(self, taxonomy: str, concept: str) -> str:
+        """Returns the description for a concept.
+
+        ### Parameters
+        ----
+        taxonomy : str
+            The taxonomy namespace.
+
+        concept : str
+            The concept tag name.
+
+        ### Returns
+        ----
+        str:
+            The description string, or empty string if not found.
+        """
+        return (
+            self.raw.get("facts", {})
+            .get(taxonomy, {})
+            .get(concept, {})
+            .get("description", "")
+        )
+
+    def units(self, taxonomy: str, concept: str) -> list[str]:
+        """Returns the available units of measure for a concept.
+
+        ### Parameters
+        ----
+        taxonomy : str
+            The taxonomy namespace.
+
+        concept : str
+            The concept tag name.
+
+        ### Returns
+        ----
+        list[str]:
+            List of unit names (e.g. ``["USD", "USD-per-shares"]``).
+        """
+        return list(
+            self.raw.get("facts", {})
+            .get(taxonomy, {})
+            .get(concept, {})
+            .get("units", {})
+            .keys()
+        )
+
+    def __repr__(self) -> str:
+        tax_count = len(self.taxonomies)
+        total = sum(len(self.concepts(t)) for t in self.taxonomies)
+        return (
+            f"<Facts entity={self.entity_name!r} cik={self.cik}"
+            f" taxonomies={tax_count} concepts={total}>"
+        )

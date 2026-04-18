@@ -251,3 +251,28 @@ class Company:
         if raw is None:
             return None
         return CompanyInfo(raw=raw)
+
+    def get_facts(self) -> object:
+        """Returns XBRL company facts as a structured ``Facts`` model.
+
+        Wraps the raw ``xbrl_facts()`` response in a ``Facts``
+        dataclass for convenient access by taxonomy, concept, and unit.
+
+        ### Returns
+        ----
+        Facts | None:
+            A ``Facts`` object, or ``None`` if no data was returned.
+
+        ### Usage
+        ----
+            >>> company = edgar_client.company("AAPL")
+            >>> facts = company.get_facts()
+            >>> facts.get("us-gaap", "Revenue")
+        """
+
+        from edgar.models import Facts
+
+        raw = self.xbrl_facts()
+        if raw is None:
+            return None
+        return Facts(raw=raw)
