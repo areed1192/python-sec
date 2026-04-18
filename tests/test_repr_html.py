@@ -3,8 +3,6 @@
 # pylint: disable=redefined-outer-name
 # pylint: disable=protected-access
 
-import pytest
-
 from edgar.models import (
     CompanyInfo,
     Fact,

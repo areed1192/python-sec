@@ -1,6 +1,7 @@
 """Tests for the EDGAR Full-Text Search (EFTS) service and SearchResult model."""
 
 # pylint: disable=redefined-outer-name
+# pylint: disable=protected-access
 
 from unittest.mock import MagicMock, patch
 

@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **edgar/\_\_init\_\_.py**: Top-level convenience functions for reduced boilerplate.
+  - `edgar.company("AAPL")` — create a `Company` without instantiating `EdgarClient`.
+  - `edgar.get_filings("AAPL", form="10-K")` — fetch filings in one call.
+  - `edgar.search("revenue recognition")` — full-text search in one call.
+  - `edgar.set_user_agent()` — set user-agent programmatically.
+  - `SEC_EDGAR_USER_AGENT` environment variable auto-detected as fallback.
+  - Lazy singleton `EdgarClient` created on first use and cached.
+- **tests/test_convenience.py**: 17 unit tests for convenience functions (`set_user_agent`, `_get_client`, `company`, `get_filings`, `search`, env var fallback, caching, exports).
+- **samples/use_convenience.py**: Sample file demonstrating top-level convenience functions (env var, `set_user_agent`, `company`, `get_filings`, `search`).
 - **edgar/models.py**: `Fact` and `Facts` XBRL dataclass models.
   - `Facts` wraps the deeply nested `company_facts` JSON (4 levels) with `get(taxonomy, concept, unit=None)` returning a flat `list[Fact]` sorted by end date.
   - `Facts.taxonomies` lists available namespaces (e.g. `['dei', 'us-gaap', 'ifrs-full']`).
