@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from edgar.cache import TTL_SUBMISSIONS
 from edgar.session import EdgarSession
 
 
@@ -69,11 +70,23 @@ class Submissions():
             num_of_zeros = 10 - len(cik)
             cik = num_of_zeros*"0" + cik
 
+        # Check TTL cache.
+        cache = self.edgar_session.cache
+        cache_key = f"submissions:{cik}"
+        if cache is not None:
+            cached = cache.get(cache_key)
+            if cached is not None:
+                return cached
+
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=f'/submissions/CIK{cik}.json',
             use_api=True
         )
+
+        # Store in TTL cache.
+        if cache is not None and response is not None:
+            cache.set(cache_key, response, TTL_SUBMISSIONS)
 
         return response

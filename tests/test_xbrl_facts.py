@@ -397,6 +397,7 @@ class TestCompanyGetFacts:
     def test_get_facts_returns_facts_model(self, mock_tickers):
         """Verify get_facts() returns a Facts model instance."""
         session = MagicMock()
+        session.cache = None
         session.make_request.return_value = SAMPLE_COMPANY_FACTS
         session.edgar_utilities = MagicMock()
 
@@ -410,6 +411,7 @@ class TestCompanyGetFacts:
     def test_get_facts_returns_none_when_no_data(self, mock_tickers):
         """Verify get_facts() returns None when xbrl_facts returns None."""
         session = MagicMock()
+        session.cache = None
         session.make_request.return_value = None
         session.edgar_utilities = MagicMock()
 
@@ -428,6 +430,7 @@ class TestXbrlGetFacts:
     def test_get_facts_returns_facts_model(self):
         """Verify Xbrl.get_facts() returns a Facts model instance."""
         session = MagicMock()
+        session.cache = None
         session.make_request.return_value = SAMPLE_COMPANY_FACTS
         session.edgar_utilities = MagicMock()
 
@@ -440,6 +443,7 @@ class TestXbrlGetFacts:
     def test_get_facts_returns_none_when_no_data(self):
         """Verify Xbrl.get_facts() returns None when company_facts returns None."""
         session = MagicMock()
+        session.cache = None
         session.make_request.return_value = None
         session.edgar_utilities = MagicMock()
 

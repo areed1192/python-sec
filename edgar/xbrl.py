@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from enum import Enum
 from typing import Union
+
+from edgar.cache import TTL_TAXONOMY
 from edgar.models import Facts
 from edgar.session import EdgarSession
 
@@ -133,6 +135,14 @@ class Xbrl():
             num_of_zeros = 10 - len(cik)
             cik = num_of_zeros*"0" + cik
 
+        # Check TTL cache.
+        cache = self.edgar_session.cache
+        cache_key = f"company_facts:{cik}"
+        if cache is not None:
+            cached = cache.get(cache_key)
+            if cached is not None:
+                return cached
+
         endpoint = f'/api/xbrl/companyfacts/CIK{cik}.json'
 
         # Grab the Data.
@@ -141,6 +151,10 @@ class Xbrl():
             endpoint=endpoint,
             use_api=True
         )
+
+        # Store in TTL cache.
+        if cache is not None and response is not None:
+            cache.set(cache_key, response, TTL_TAXONOMY)
 
         return response
 

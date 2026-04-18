@@ -1,5 +1,6 @@
 """Main entry-point client for the SEC EDGAR API."""
 
+from edgar.cache import TTLCache
 from edgar.xbrl import Xbrl
 from edgar.series import Series
 from edgar.search import Search
@@ -26,15 +27,36 @@ class EdgarClient:
     instantiate the different endpoints.
     """
 
-    def __init__(self, user_agent: str) -> None:
+    def __init__(self, user_agent: str, rate_limit: int = 10, cache: bool = True) -> None:
         """Initializes the `EdgarClient`.
+
+        ### Parameters
+        ----
+        user_agent : str
+            SEC EDGAR requires a User-Agent header in the format
+            ``"Company/Name email@example.com"``.
+
+        rate_limit : int (optional, Default=10)
+            Maximum requests per second. SEC allows 10 req/s.
+            Set lower to be more conservative.
+
+        cache : bool (optional, Default=True)
+            Enable in-memory TTL caching for ticker resolution (24h),
+            submission metadata (1h), and taxonomy data (24h).
+            Set ``False`` to always fetch fresh data from SEC.
 
         ### Usage
         ----
             >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
+            >>> edgar_client = EdgarClient(user_agent="...", rate_limit=5)
+            >>> edgar_client = EdgarClient(user_agent="...", cache=False)
         """
 
-        self.edgar_session = EdgarSession(client=self, user_agent=user_agent)
+        self._ttl_cache = TTLCache() if cache else None
+        self.edgar_session = EdgarSession(
+            client=self, user_agent=user_agent, rate_limit=rate_limit,
+            cache=self._ttl_cache,
+        )
         self._services: dict = {}
 
     def __repr__(self) -> str:

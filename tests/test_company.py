@@ -54,7 +54,9 @@ def mock_tickers():
 @pytest.fixture
 def mock_session():
     """Return a mock EdgarSession."""
-    return MagicMock()
+    session = MagicMock()
+    session.cache = None
+    return session
 
 
 @pytest.fixture

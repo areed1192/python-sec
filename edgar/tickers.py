@@ -5,6 +5,7 @@ from __future__ import annotations
 import logging
 from typing import TYPE_CHECKING
 
+from edgar.cache import TTL_TICKERS
 from edgar.exceptions import EdgarRequestError
 
 if TYPE_CHECKING:
@@ -13,6 +14,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 TICKERS_ENDPOINT = "/files/company_tickers.json"
+_CACHE_KEY = "tickers"
 
 
 class Tickers:
@@ -29,6 +31,14 @@ class Tickers:
 
         if self._data is not None:
             return
+
+        # Check TTL cache for previously fetched data.
+        cache = self._session.cache
+        if cache is not None:
+            cached = cache.get(_CACHE_KEY)
+            if cached is not None:
+                self._data, self._ticker_to_cik, self._cik_to_entries = cached
+                return
 
         raw = self._session.make_request(
             method="GET",
@@ -52,6 +62,14 @@ class Tickers:
                 self._ticker_to_cik[ticker] = cik
 
             self._cik_to_entries.setdefault(cik, []).append(entry)
+
+        # Store in TTL cache for reuse across service re-instantiations.
+        if cache is not None:
+            cache.set(
+                _CACHE_KEY,
+                (self._data, self._ticker_to_cik, self._cik_to_entries),
+                TTL_TICKERS,
+            )
 
     def resolve_ticker(self, ticker: str) -> str:
         """Resolves a ticker symbol to a zero-padded CIK string.

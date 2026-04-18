@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **edgar/cache.py**: In-memory TTL cache for SEC EDGAR API responses.
+  - `TTLCache` class with `get()`, `set()`, `invalidate()`, `clear()`, `__len__()`, `__repr__()`.
+  - Uses `time.monotonic()` for expiration immune to wall-clock adjustments.
+  - Module-level TTL constants: `TTL_TICKERS` (24h), `TTL_TAXONOMY` (24h), `TTL_SUBMISSIONS` (1h).
+- **tests/test_cache.py**: 29 unit tests for `TTLCache` (get/set, expiration, invalidate, clear, len/repr, constants) and cache integration with `Tickers`, `Submissions`, and `Xbrl` services.
 - **edgar/\_\_init\_\_.py**: Top-level convenience functions for reduced boilerplate.
   - `edgar.company("AAPL")` — create a `Company` without instantiating `EdgarClient`.
   - `edgar.get_filings("AAPL", form="10-K")` — fetch filings in one call.
@@ -37,6 +42,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **edgar/client.py**: `EdgarClient` now accepts `rate_limit` parameter: `EdgarClient(user_agent="...", rate_limit=5)`.
+  - Defaults to 10 (SEC's maximum). Validates range 1–10.
+  - Passed through to `EdgarSession` for sliding-window enforcement.
+- **edgar/client.py**: `EdgarClient` now accepts `cache` parameter (`bool`, default `True`).
+  - `cache=True` creates a shared `TTLCache` passed to `EdgarSession`.
+  - `cache=False` disables caching; all requests hit the network.
+- **edgar/session.py**: `EdgarSession` accepts optional `cache` parameter storing a `TTLCache` instance.
+- **edgar/tickers.py**: `Tickers._load()` checks/stores data in the TTL cache (`TTL_TICKERS`).
+- **edgar/submissions.py**: `Submissions.get_submissions()` checks/stores responses in the TTL cache (`TTL_SUBMISSIONS`).
+- **edgar/xbrl.py**: `Xbrl.company_facts()` checks/stores responses in the TTL cache (`TTL_TAXONOMY`).
+- **tests/test_rate_limiter.py**: 8 new tests for configurable rate limit (custom values, boundary validation, client passthrough). Total: 17 tests.
 - **xbrl.py**: `company_concepts()` and `frames()` now accept an optional `taxonomy` parameter (default `"us-gaap"`). Previously hardcoded to `us-gaap`, now supports `"ifrs-full"`, `"dei"`, or any other taxonomy.
 - **edgar/tickers.py**: New `Tickers` service for ticker/CIK/company name resolution via `sec.gov/files/company_tickers.json`.
   - `resolve_ticker("AAPL")` → zero-padded CIK string (`"0000320193"`).

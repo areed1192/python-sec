@@ -26,6 +26,7 @@ SAMPLE_TICKERS_JSON = {
 def mock_session():
     """Return a mock EdgarSession whose make_request returns sample tickers."""
     session = MagicMock()
+    session.cache = None
     session.make_request.return_value = SAMPLE_TICKERS_JSON
     return session
 
@@ -149,6 +150,7 @@ class TestCaching:
     def test_bad_response_raises(self):
         """Verify a None response from the API raises EdgarRequestError."""
         session = MagicMock()
+        session.cache = None
         session.make_request.return_value = None
         service = Tickers(session=session)
 

@@ -309,6 +309,7 @@ class TestCompanyGetInfo:
     def test_get_info_returns_company_info(self, mock_tickers):
         """Verify get_info() returns a CompanyInfo model."""
         session = MagicMock()
+        session.cache = None
         session.make_request.return_value = SAMPLE_SUBMISSIONS_RAW
         session.edgar_utilities = MagicMock()
 
@@ -322,6 +323,7 @@ class TestCompanyGetInfo:
     def test_get_info_returns_none_when_no_data(self, mock_tickers):
         """Verify get_info() returns None when submissions returns None."""
         session = MagicMock()
+        session.cache = None
         session.make_request.return_value = None
         session.edgar_utilities = MagicMock()
 

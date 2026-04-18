@@ -33,12 +33,28 @@ class EdgarSession:
     handles all the requests made to EDGAR.
     """
 
-    def __init__(self, client: EdgarClient, user_agent: str) -> None:
+    def __init__(
+        self,
+        client: EdgarClient,
+        user_agent: str,
+        rate_limit: int = MAX_REQUESTS_PER_SECOND,
+        cache: object | None = None,
+    ) -> None:
         """Initializes the `EdgarSession` client.
 
         ### Parameters
         ----
-        client (str): The `edgar.EdgarClient` Python Client.
+        client : EdgarClient
+            The `edgar.EdgarClient` Python Client.
+
+        user_agent : str
+            SEC EDGAR User-Agent header value.
+
+        rate_limit : int (optional, Default=MAX_REQUESTS_PER_SECOND)
+            Maximum requests per second. Must be between 1 and 10.
+
+        cache : TTLCache | None (optional, Default=None)
+            Shared TTL cache instance. ``None`` disables caching.
 
         ### Usage
         ----
@@ -46,14 +62,21 @@ class EdgarSession:
             >>> edgar_session = EdgarSession(client=edgar_client, user_agent="your_user_agent")
         """
 
+        if not 1 <= rate_limit <= MAX_REQUESTS_PER_SECOND:
+            raise ValueError(
+                f"rate_limit must be between 1 and {MAX_REQUESTS_PER_SECOND}, "
+                f"got {rate_limit}"
+            )
+
         self.client: EdgarClient = client
         self.resource = "https://www.sec.gov"
         self.api_resource = "https://data.sec.gov"
         self.user_agent = user_agent
+        self.cache = cache
 
         # Sliding-window rate limiter: track timestamps of recent requests.
         self._request_times: deque[float] = deque()
-        self._rate_limit = MAX_REQUESTS_PER_SECOND
+        self._rate_limit = rate_limit
 
         # Create a single reusable session with connection pooling.
         self.http_session = requests.Session()

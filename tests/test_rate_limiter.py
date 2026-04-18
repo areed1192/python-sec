@@ -1,8 +1,9 @@
 """Tests for the sliding-window rate limiter in EdgarSession."""
 
-# Disable warnings about accessing protected members since we're testing internal behavior.
+# Disable protected access warnings since we're testing internal behavior.
 # pylint: disable=redefined-outer-name
 # pylint: disable=protected-access
+# pylint: disable=import-outside-toplevel
 
 from unittest.mock import MagicMock, patch
 
@@ -16,6 +17,100 @@ def session():
     """Return an EdgarSession with a mock client."""
     mock_client = MagicMock()
     return EdgarSession(client=mock_client, user_agent="Test Agent test@example.com")
+
+
+# ---------------------------------------------------------------------------
+# Configurable rate_limit tests
+# ---------------------------------------------------------------------------
+
+
+class TestConfigurableRateLimit:
+    """Tests for the configurable rate_limit parameter."""
+
+    def test_default_rate_limit(self, session):
+        """Verify the default rate limit is MAX_REQUESTS_PER_SECOND."""
+        assert session._rate_limit == MAX_REQUESTS_PER_SECOND
+
+    def test_custom_rate_limit(self):
+        """Verify a custom rate limit is stored."""
+        mock_client = MagicMock()
+        sess = EdgarSession(
+            client=mock_client,
+            user_agent="Test test@example.com",
+            rate_limit=5,
+        )
+        assert sess._rate_limit == 5
+
+    def test_custom_rate_limit_throttles_at_custom_value(self):
+        """Verify throttle triggers at the custom rate, not the default."""
+        mock_client = MagicMock()
+        sess = EdgarSession(
+            client=mock_client,
+            user_agent="Test test@example.com",
+            rate_limit=3,
+        )
+        with patch("edgar.session.time") as mock_time:
+            mock_time.monotonic.return_value = 100.0
+            for _ in range(3):
+                sess._throttle()
+            # 4th request at same time should trigger sleep.
+            mock_time.monotonic.return_value = 100.0
+            sess._throttle()
+            mock_time.sleep.assert_called()
+
+    def test_rate_limit_of_one(self):
+        """Verify rate_limit=1 allows only one request per second."""
+        mock_client = MagicMock()
+        sess = EdgarSession(
+            client=mock_client,
+            user_agent="Test test@example.com",
+            rate_limit=1,
+        )
+        with patch("edgar.session.time") as mock_time:
+            mock_time.monotonic.return_value = 100.0
+            sess._throttle()
+            # Second request in the same instant should sleep.
+            mock_time.monotonic.return_value = 100.0
+            sess._throttle()
+            mock_time.sleep.assert_called()
+
+    def test_rate_limit_too_low_raises(self):
+        """Verify rate_limit=0 raises ValueError."""
+        mock_client = MagicMock()
+        with pytest.raises(ValueError, match="rate_limit must be between 1 and"):
+            EdgarSession(
+                client=mock_client,
+                user_agent="Test test@example.com",
+                rate_limit=0,
+            )
+
+    def test_rate_limit_too_high_raises(self):
+        """Verify rate_limit above MAX_REQUESTS_PER_SECOND raises ValueError."""
+        mock_client = MagicMock()
+        with pytest.raises(ValueError, match="rate_limit must be between 1 and"):
+            EdgarSession(
+                client=mock_client,
+                user_agent="Test test@example.com",
+                rate_limit=20,
+            )
+
+    def test_rate_limit_negative_raises(self):
+        """Verify negative rate_limit raises ValueError."""
+        mock_client = MagicMock()
+        with pytest.raises(ValueError, match="rate_limit must be between 1 and"):
+            EdgarSession(
+                client=mock_client,
+                user_agent="Test test@example.com",
+                rate_limit=-1,
+            )
+
+    def test_client_passes_rate_limit_to_session(self):
+        """Verify EdgarClient forwards rate_limit to EdgarSession."""
+        from edgar.client import EdgarClient
+        client = EdgarClient(
+            user_agent="Test test@example.com", rate_limit=5
+        )
+        assert client.edgar_session._rate_limit == 5
 
 
 class TestThrottleBasics:
