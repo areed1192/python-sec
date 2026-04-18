@@ -3,6 +3,52 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from html import escape as _html_escape
+
+
+_TABLE_STYLE = (
+    "border-collapse:collapse;font-family:monospace;font-size:13px;"
+)
+_TH_STYLE = (
+    "text-align:left;padding:4px 10px;border:1px solid #ccc;"
+    "background:#f4f4f4;font-weight:600;"
+)
+_TD_STYLE = "text-align:left;padding:4px 10px;border:1px solid #ccc;"
+_CAPTION_STYLE = (
+    "caption-side:top;text-align:left;font-weight:700;"
+    "font-size:14px;padding-bottom:4px;"
+)
+
+
+def _html_kv_table(pairs: list[tuple[str, str]], caption: str = "") -> str:
+    """Build an HTML key-value table (two columns: Field / Value)."""
+    rows = "".join(
+        f"<tr><th style=\"{_TH_STYLE}\">{_html_escape(str(k))}</th>"
+        f"<td style=\"{_TD_STYLE}\">{v}</td></tr>"
+        for k, v in pairs
+    )
+    cap = f"<caption style=\"{_CAPTION_STYLE}\">{_html_escape(caption)}</caption>" if caption else ""
+    return f"<table style=\"{_TABLE_STYLE}\">{cap}{rows}</table>"
+
+
+def _html_row_table(
+    headers: list[str],
+    rows: list[list[str]],
+    caption: str = "",
+) -> str:
+    """Build an HTML table with column headers and multiple data rows."""
+    hdr = "".join(f"<th style=\"{_TH_STYLE}\">{_html_escape(h)}</th>" for h in headers)
+    body = ""
+    for row in rows:
+        cells = "".join(f"<td style=\"{_TD_STYLE}\">{v}</td>" for v in row)
+        body += f"<tr>{cells}</tr>"
+    cap = f"<caption style=\"{_CAPTION_STYLE}\">{_html_escape(caption)}</caption>" if caption else ""
+    return f"<table style=\"{_TABLE_STYLE}\">{cap}<tr>{hdr}</tr>{body}</table>"
+
+
+def _esc(value) -> str:
+    """Escape a value for safe HTML display."""
+    return _html_escape(str(value))
 
 
 def _require_pandas():
@@ -72,6 +118,23 @@ class Filing:
 
     def __repr__(self) -> str:
         return f"<Filing form={self.form_type!r} date={self.filing_date[:10]!r} title={self.title!r}>"
+
+    def _repr_html_(self) -> str:
+        url_cell = (
+            f"<a href=\"{_esc(self.url)}\">{_esc(self.url)}</a>"
+            if self.url else ""
+        )
+        return _html_kv_table(
+            [
+                ("Form Type", _esc(self.form_type)),
+                ("Filing Date", _esc(self.filing_date[:10])),
+                ("Accession #", _esc(self.accession_number)),
+                ("Title", _esc(self.title)),
+                ("Summary", _esc(self.summary)),
+                ("URL", url_cell),
+            ],
+            caption="Filing",
+        )
 
 
 @dataclass(frozen=True)
@@ -166,6 +229,39 @@ class CompanyInfo:
             f"<CompanyInfo name={self.name!r} cik={self.cik!r} tickers={ticker_str!r}>"
         )
 
+    def _repr_html_(self) -> str:
+        ticker_str = ", ".join(self.tickers) if self.tickers else "—"
+        exchange_str = ", ".join(self.exchanges) if self.exchanges else "—"
+        info = _html_kv_table(
+            [
+                ("Name", _esc(self.name)),
+                ("CIK", _esc(self.cik)),
+                ("Entity Type", _esc(self.entity_type)),
+                ("SIC", f"{_esc(self.sic)} — {_esc(self.sic_description)}"),
+                ("Tickers", _esc(ticker_str)),
+                ("Exchanges", _esc(exchange_str)),
+                ("Fiscal Year End", _esc(self.fiscal_year_end)),
+            ],
+            caption="Company Info",
+        )
+        subs = self.recent_submissions[:10]
+        if subs:
+            rows = [
+                [
+                    _esc(s.form),
+                    _esc(s.filing_date),
+                    _esc(s.accession_number),
+                    _esc(s.primary_doc_description),
+                ]
+                for s in subs
+            ]
+            info += _html_row_table(
+                ["Form", "Filing Date", "Accession #", "Description"],
+                rows,
+                caption=f"Recent Filings (showing {len(subs)})",
+            )
+        return info
+
 
 @dataclass(frozen=True)
 class Submission:
@@ -234,6 +330,22 @@ class Submission:
     def __repr__(self) -> str:
         return f"<Submission form={self.form!r} date={self.filing_date!r} accession={self.accession_number!r}>"
 
+    def _repr_html_(self) -> str:
+        return _html_kv_table(
+            [
+                ("Form", _esc(self.form)),
+                ("Filing Date", _esc(self.filing_date)),
+                ("Report Date", _esc(self.report_date)),
+                ("Accession #", _esc(self.accession_number)),
+                ("Primary Document", _esc(self.primary_document)),
+                ("Description", _esc(self.primary_doc_description)),
+                ("XBRL", "Yes" if self.is_xbrl else "No"),
+                ("Inline XBRL", "Yes" if self.is_inline_xbrl else "No"),
+                ("Size", f"{self.size:,} bytes" if self.size else "—"),
+            ],
+            caption="Submission",
+        )
+
 
 @dataclass(frozen=True)
 class Fact:
@@ -301,6 +413,22 @@ class Fact:
         return (
             f"<Fact end={self.end!r} value={self.value!r}"
             f" form={self.form!r} fy={self.fiscal_year}>"
+        )
+
+    def _repr_html_(self) -> str:
+        val = f"{self.value:,}" if isinstance(self.value, (int, float)) else _esc(self.value)
+        return _html_kv_table(
+            [
+                ("End", _esc(self.end)),
+                ("Start", _esc(self.start)),
+                ("Value", val),
+                ("Form", _esc(self.form)),
+                ("Filed", _esc(self.filed)),
+                ("Fiscal Year", _esc(self.fiscal_year)),
+                ("Fiscal Period", _esc(self.fiscal_period)),
+                ("Frame", _esc(self.frame)),
+            ],
+            caption="Fact",
         )
 
 
@@ -512,6 +640,27 @@ class Facts:
             f" taxonomies={tax_count} concepts={total}>"
         )
 
+    def _repr_html_(self) -> str:
+        info = _html_kv_table(
+            [
+                ("Entity", _esc(self.entity_name)),
+                ("CIK", _esc(self.cik)),
+                ("Taxonomies", _esc(", ".join(self.taxonomies))),
+            ],
+            caption="Facts",
+        )
+        rows = [
+            [_esc(t), str(len(self.concepts(t)))]
+            for t in self.taxonomies
+        ]
+        if rows:
+            info += _html_row_table(
+                ["Taxonomy", "Concepts"],
+                rows,
+                caption="Taxonomy Summary",
+            )
+        return info
+
 
 @dataclass(frozen=True)
 class SearchResult:
@@ -602,6 +751,25 @@ class SearchResult:
         return (
             f"<SearchResult form={self.form!r} date={self.filing_date!r}"
             f" company={self.company_name!r}>"
+        )
+
+    def _repr_html_(self) -> str:
+        url_cell = (
+            f"<a href=\"{_esc(self.url)}\">{_esc(self.url)}</a>"
+            if self.url else ""
+        )
+        return _html_kv_table(
+            [
+                ("Company", _esc(self.company_name)),
+                ("CIK", _esc(self.cik)),
+                ("Form", _esc(self.form)),
+                ("Filing Date", _esc(self.filing_date)),
+                ("Accession #", _esc(self.accession_number)),
+                ("File Type", _esc(self.file_type)),
+                ("Period Ending", _esc(self.period_ending)),
+                ("URL", url_cell),
+            ],
+            caption="Search Result",
         )
 
 

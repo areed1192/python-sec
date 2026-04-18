@@ -70,6 +70,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **edgar/session.py**: `build_url()` and `make_request()` accept optional `base_url` parameter to support third-party SEC endpoints (e.g. `efts.sec.gov`).
 - **tests/test_search.py**: 35 unit tests for `SearchResult` model, `Search` service, `EdgarClient.search()` integration, and `build_url` base_url parameter.
 - **samples/use_search.py**: Sample file demonstrating full-text search (basic query, form type filtering, date ranges, result properties, pagination).
+- **edgar/models.py**: `_repr_html_()` on all six response models for Jupyter/notebook rendering.
+  - `Filing`, `CompanyInfo`, `Submission`, `Fact`, `Facts`, `SearchResult` auto-render as styled HTML tables.
+  - Helper functions `_html_kv_table()`, `_html_row_table()`, `_esc()` for XSS-safe HTML generation.
+  - Inline CSS constants (`_TABLE_STYLE`, `_TH_STYLE`, `_TD_STYLE`, `_CAPTION_STYLE`) for consistent styling across Jupyter Lab, Notebook, VS Code, and Colab.
+- **tests/test_repr_html.py**: 35 unit tests for `_repr_html_()` on all models (HTML output, key values, XSS escaping, edge cases).
+- **samples/demo_jupyter_rendering.ipynb**: Jupyter notebook demonstrating auto-rendering for all model types and DataFrame conversion.
 
 ### Changed
 
