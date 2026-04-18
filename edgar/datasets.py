@@ -85,6 +85,9 @@ class Datasets():
             endpoint='/info/edgar/edgartaxonomies.xml'
         )
 
+        if response is None:
+            return []
+
         response = self.edgar_parser.parse_loc_elements(
             response_text=response
         )

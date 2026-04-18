@@ -254,7 +254,12 @@ class EdgarSession:
                 return response.json()
             elif any(
                 ct in content_type
-                for ct in ["application/atom+xml", "text/xml", "text/html"]
+                for ct in [
+                    "application/atom+xml",
+                    "application/xml",
+                    "text/xml",
+                    "text/html",
+                ]
             ):
                 return response.text
 

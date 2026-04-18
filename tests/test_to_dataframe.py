@@ -4,8 +4,9 @@
 
 from unittest.mock import patch
 
-import pandas as pd
 import pytest
+
+pd = pytest.importorskip("pandas", reason="pandas required for DataFrame tests")
 
 from edgar.models import (
     Fact,
