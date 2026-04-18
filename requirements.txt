@@ -1,3 +1,4 @@
-requests>=2.25.1
-urllib3>=1.26.5
-beautifulsoup4>=4.9.1
+requests>=2.33.1
+urllib3>=2.6.3
+beautifulsoup4>=4.14.3
+defusedxml>=0.7.1

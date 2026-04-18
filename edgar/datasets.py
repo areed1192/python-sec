@@ -1,11 +1,14 @@
+"""Service for downloading SEC EDGAR XBRL datasets."""
+
+from __future__ import annotations
+
 from edgar.session import EdgarSession
-from edgar.parser import EdgarParser
 
 
 class Datasets():
 
     """
-    ## Overview:
+    ## Overview
     ----
     The SEC offers free datasets for individuals and companies to use
     in their own research. The `Datasets` client helps users query these
@@ -22,13 +25,13 @@ class Datasets():
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> datasets_services = edgar_client.Datasets()
         """
 
         # Set the session.
         self.edgar_session: EdgarSession = session
-        self.edgar_parser: EdgarParser = EdgarParser()
+        self.edgar_parser = session.edgar_parser
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient.Datasets` object."""
@@ -38,17 +41,17 @@ class Datasets():
 
         return str_representation
 
-    def get_sec_datasets(self) -> dict:
+    def get_sec_datasets(self) -> dict | None:
         """Grabs all the Public datasets provided by the SEC.
 
-        ### Returns:
+        ### Returns
         ----
         dict:
             A collection of `Dataset` resources.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> datasets_services = edgar_client.Datasets()
             >>> datasets_services.get_sec_datasets()
         """
@@ -61,17 +64,17 @@ class Datasets():
 
         return response
 
-    def get_edgar_taxonomies(self) -> dict:
+    def get_edgar_taxonomies(self) -> list[dict]:
         """Grabs all the Public taxonomies datasets provided by the SEC.
 
-        ### Returns:
+        ### Returns
         ----
         dict:
             A collection of `Dataset` taxonomy resources.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> datasets_services = edgar_client.Datasets()
             >>> datasets_services.get_sec_datasets()
         """

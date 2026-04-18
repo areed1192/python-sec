@@ -70,22 +70,6 @@ pip install .
 This will install all the dependencies listed in the `setup.py` file. Once done
 you can use the library wherever you want.
 
-**Setup - PyPi Install:**
-
-To install the library, run the following command from the terminal.
-
-```console
-pip install python-sec
-```
-
-**Setup - PyPi Upgrade:**
-
-To upgrade the library, run the following command from the terminal.
-
-```console
-pip install --upgrade python-sec
-```
-
 ## Usage
 
 Here is a simple example of using the `edgar` library to grab different groups of filings.
@@ -98,7 +82,8 @@ from edgar.enums import CountryCodes
 from edgar.enums import StandardIndustrialClassificationCodes
 
 # Initialize the Edgar Client
-edgar_client = EdgarClient()
+# SEC EDGAR requires a User-Agent in the format "Company/Name email@example.com".
+edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
 
 # Initialize the Company Services.
 company_services = edgar_client.companies()
@@ -109,7 +94,7 @@ pprint(company_services.get_companies_by_state(state_code='TX'))
 # Alternatively, if you didn't know the 2 letter code you could pass through an Enum.
 pprint(
     company_services.get_companies_by_state(
-        state_code=StateCodes.West_Virginia
+        state_code=StateCodes.WEST_VIRGINIA
     )
 )
 

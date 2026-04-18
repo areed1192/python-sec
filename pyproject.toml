@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=82.0.1", "wheel>=0.46.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-sec"
+version = "0.1.6"
+description = "A client library for collecting and scraping SEC filings."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "Alex Reed", email = "coding.sigma@gmail.com" },
+]
+keywords = ["finance", "sec", "api", "web scraping", "financial disclosures"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "requests>=2.33.1",
+    "urllib3>=2.6.3",
+    "beautifulsoup4>=4.14.3",
+    "defusedxml>=0.7.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/areed1192/python-sec"
+Repository = "https://github.com/areed1192/python-sec"
+
+[tool.setuptools.packages.find]
+include = ["edgar*"]
+
+[tool.setuptools.package-data]
+edgar = ["parsing/*", "py.typed"]

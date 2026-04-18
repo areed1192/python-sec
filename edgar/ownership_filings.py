@@ -1,20 +1,23 @@
-from typing import List
+"""Service for querying SEC EDGAR ownership and non-ownership filings."""
+
+from __future__ import annotations
+
 from typing import Union
 from datetime import date
 from datetime import datetime
 
 from enum import Enum
 from edgar.session import EdgarSession
-from edgar.utilis import EdgarUtilities
-from edgar.parser import EdgarParser
 
 
 class OwnershipFilings():
 
     """
-    ## Overview:
+    ## Overview
     ----
-
+    Queries the SEC EDGAR full-text search system for ownership
+    (Section 16) and non-ownership filings, with support for
+    filtering by CIK, company name, SIC code, and filing type.
     """
 
     def __init__(self, session: EdgarSession) -> None:
@@ -27,43 +30,17 @@ class OwnershipFilings():
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> ownership_filings_services = edgar_client.ownership_filings()
         """
 
         # Set the session.
         self.edgar_session: EdgarSession = session
-        self.edgar_utilities: EdgarUtilities = EdgarUtilities()
-        self.edgar_parser: EdgarParser = EdgarParser()
+        self.edgar_utilities = session.edgar_utilities
+        self.edgar_parser = session.edgar_parser
 
         # Set the endpoint.
         self.endpoint = '/cgi-bin/browse-edgar'
-        self.params = {
-            'CIK': '',
-            'company': '',
-            'Count': '100',
-            'myowner': 'only',
-            'action': 'getcompany',
-            'output': 'atom',
-            'start': '',
-            'datea': '',
-            'dateb': ''
-        }
-
-    def _reset_params(self) -> None:
-        """Resets the params for the next request."""
-
-        self.params = {
-            'CIK': '',
-            'company': '',
-            'Count': '100',
-            'myowner': 'only',
-            'action': 'getcompany',
-            'output': 'atom',
-            'start': '',
-            'datea': '',
-            'dateb': ''
-        }
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient.OwnershipFilings` object."""
@@ -78,10 +55,10 @@ class OwnershipFilings():
         cik: str,
         number_of_filings: int = 100,
         start: int = 0
-    ) -> dict:
+    ) -> list[dict]:
         """Returns all the ownership filings for a given CIK number.
 
-        ### Arguments:
+        ### Parameters
         ----
         cik : str
             The CIK number you want to query ownership filings for.
@@ -96,37 +73,42 @@ class OwnershipFilings():
             set the `start` argument. This will start parsing the companies that come
             after this and up until the `number_of_filings`.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A collection of `OwnershipFiling` resource objects.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> ownership_filings_services = edgar_client.ownership_filings()
             >>> ownership_filings_services.get_ownership_filings_by_cik(
                cik='1326801'
             )
         """
 
-        self.params['CIK'] = cik
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'Count': '100',
+            'myowner': 'only',
+            'CIK': cik,
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params,
         )
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_filings,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return response
 
@@ -135,10 +117,10 @@ class OwnershipFilings():
         company_name: str,
         number_of_filings: int = 100,
         start: int = 0
-    ) -> dict:
+    ) -> list[dict]:
         """Returns all the ownership filings for a given company name.
 
-        ### Arguments:
+        ### Parameters
         ----
         company_name : str
             The company nameyou want to query ownership filings for.
@@ -153,37 +135,42 @@ class OwnershipFilings():
             set the `start` argument. This will start parsing the companies that come
             after this and up until the `number_of_filings`.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A collection of `OwnershipFiling` resource objects.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> ownership_filings_services = edgar_client.ownership_filings()
             >>> ownership_filings_services.get_ownership_filings_by_cik(
                company_name='facebook'
             )
         """
 
-        self.params['company'] = company_name
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'Count': '100',
+            'myowner': 'only',
+            'company': company_name,
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params,
         )
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_filings,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return response
 
@@ -192,10 +179,10 @@ class OwnershipFilings():
         cik: str,
         number_of_filings: int = 100,
         start: int = 0
-    ) -> dict:
+    ) -> list[dict]:
         """Returns all the non-ownership filings for a given CIK number.
 
-        ### Arguments:
+        ### Parameters
         ----
         cik : str
             The CIK number you want to query ownership filings for.
@@ -210,38 +197,42 @@ class OwnershipFilings():
             set the `start` argument. This will start parsing the companies that come
             after this and up until the `number_of_filings`.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A collection of `NonOwnershipFiling` resource objects.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> ownership_filings_services = edgar_client.ownership_filings()
             >>> ownership_filings_services.get_non_ownership_filings_by_cik(
                cik='1326801'
             )
         """
 
-        self.params['CIK'] = cik
-        self.params['myowner'] = 'exclude'
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'Count': '100',
+            'myowner': 'exclude',
+            'CIK': cik,
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params,
         )
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_filings,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return response
 
@@ -250,10 +241,10 @@ class OwnershipFilings():
         company_name: str,
         number_of_filings: int = 100,
         start: int = 0
-    ) -> dict:
+    ) -> list[dict]:
         """Returns all the non-ownership filings for a given company name.
 
-        ### Arguments:
+        ### Parameters
         ----
         company_name : str
             The company nameyou want to query ownership filings for.
@@ -268,38 +259,42 @@ class OwnershipFilings():
             set the `start` argument. This will start parsing the companies that come
             after this and up until the `number_of_filings`.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A collection of `NonOwnershipFiling` resource objects.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> ownership_filings_services = edgar_client.ownership_filings()
             >>> ownership_filings_services.get_non_ownership_filings_by_cik(
                company_name='facebook'
             )
         """
 
-        self.params['company'] = company_name
-        self.params['myowner'] = 'exclude'
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'Count': '100',
+            'myowner': 'exclude',
+            'company': company_name,
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params,
         )
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_filings,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return response
 
@@ -313,7 +308,7 @@ class OwnershipFilings():
         number_of_filings: int = 100,
         after_date: Union[str, datetime, date] = None,
         before_date: Union[str, datetime, date] = None
-    ) -> List[dict]:
+    ) -> list[dict]:
         """Allows for complex queries by giving access to all query parameters.
 
         ### Parameters
@@ -347,14 +342,14 @@ class OwnershipFilings():
             Represents filings that you want after a certain date. For example,
             `2019-12-01` means return all the filings `AFTER` Decemeber 1, 2019.
 
-        ### Returns:
+        ### Returns
         ----
         List[dict]:
             A collection of `OwnershipFilings` resources.
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> ownership_filings_services = edgar_client.ownership_filings()
             >>> ownership_filings_services.query_ownership_filings(
                cik='1326801',
@@ -375,29 +370,34 @@ class OwnershipFilings():
                 date_or_datetime=after_date
             )
 
-        self.params['start'] = start
-        self.params['CIK'] = cik
-        self.params['SIC'] = sic
-        self.params['type'] = filing_type
-        self.params['company'] = company_name
-        self.params['datea'] = after_date
-        self.params['dateb'] = before_date
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'Count': '100',
+            'myowner': 'only',
+            'start': start,
+            'CIK': cik or '',
+            'SIC': sic or '',
+            'type': filing_type or '',
+            'company': company_name or '',
+            'datea': after_date or '',
+            'dateb': before_date or '',
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params,
         )
 
         # Parse the entries.
         entries = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_filings,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return entries
 
@@ -411,7 +411,7 @@ class OwnershipFilings():
         number_of_filings: int = 100,
         after_date: Union[str, datetime, date] = None,
         before_date: Union[str, datetime, date] = None
-    ) -> List[dict]:
+    ) -> list[dict]:
         """Allows for complex queries by giving access to all query parameters.
 
         ### Parameters
@@ -445,14 +445,14 @@ class OwnershipFilings():
             Represents filings that you want after a certain date. For example,
             `2019-12-01` means return all the filings `AFTER` Decemeber 1, 2019.
 
-        ### Returns:
+        ### Returns
         ----
         List[dict]:
             A collection of `NonOwnershipFilings` resources.
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> ownership_filings_services = edgar_client.ownership_filings()
             >>> ownership_filings_services.query_non_ownership_filings(
                cik='1326801',
@@ -473,28 +473,33 @@ class OwnershipFilings():
                 date_or_datetime=after_date
             )
 
-        self.params['start'] = start
-        self.params['CIK'] = cik
-        self.params['SIC'] = sic
-        self.params['type'] = filing_type
-        self.params['company'] = company_name
-        self.params['datea'] = after_date
-        self.params['dateb'] = before_date
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'Count': '100',
+            'myowner': 'exclude',
+            'start': start,
+            'CIK': cik or '',
+            'SIC': sic or '',
+            'type': filing_type or '',
+            'company': company_name or '',
+            'datea': after_date or '',
+            'dateb': before_date or '',
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params,
         )
 
         # Parse the entries.
         entries = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_filings,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return entries

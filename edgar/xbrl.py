@@ -1,13 +1,16 @@
+"""Service for querying SEC EDGAR XBRL company facts, concepts, and frames."""
+
+from __future__ import annotations
+
 from enum import Enum
 from typing import Union
 from edgar.session import EdgarSession
-from edgar.utilis import EdgarUtilities
 
 
 class Xbrl():
 
     """
-    ## Overview:
+    ## Overview
     ----
     Extensible Business Markup Language (XBRL) is an XML-based format for
     reporting financial statements used by the SEC and financial regulatory
@@ -28,13 +31,13 @@ class Xbrl():
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> xbrl_services = edgar_client.xbrl()
         """
 
         # Set the session.
         self.edgar_session: EdgarSession = session
-        self.edgar_utilities: EdgarUtilities = EdgarUtilities()
+        self.edgar_utilities = session.edgar_utilities
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient.Xbrl` object."""
@@ -44,10 +47,10 @@ class Xbrl():
 
         return str_representation
 
-    def company_concepts(self, cik: str, concept: Union[str, Enum]) -> dict:
+    def company_concepts(self, cik: str, concept: Union[str, Enum]) -> dict | None:
         """Returns all the XBRL disclosures from a single company and concept.
 
-        ### Arguments:
+        ### Parameters
         ----
         cik : str
             The CIK number you want to query.
@@ -55,20 +58,23 @@ class Xbrl():
         concept : Union[str, Enum]
             A taxonomy and tag you want to retrieve data for.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A collection of `CompanyConcept` resource objects.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> xbrl_services = edgar_client.xbrl()
             >>> xbrl_services.company_concepts(
                cik='1326801',
                concept='AccountsPayableCurrent'
             )
         """
+        if not cik.isdigit():
+            raise ValueError(f"CIK must contain only digits, got: {cik!r}")
+
         if len(cik) < 10:
             num_of_zeros = 10 - len(cik)
             cik = num_of_zeros*"0" + cik
@@ -84,27 +90,30 @@ class Xbrl():
 
         return response
 
-    def company_facts(self, cik: str) -> dict:
+    def company_facts(self, cik: str) -> dict | None:
         """Returns all the company concepts data for a company.
 
-        ### Arguments:
+        ### Parameters
         ----
         cik : str
             The CIK number you want to query.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A collection of `CompanyFact` resource objects.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> xbrl_services = edgar_client.xbrl()
             >>> xbrl_services.company_facts(
                cik='1326801'
             )
         """
+        if not cik.isdigit():
+            raise ValueError(f"CIK must contain only digits, got: {cik!r}")
+
         if len(cik) < 10:
             num_of_zeros = 10 - len(cik)
             cik = num_of_zeros*"0" + cik
@@ -125,15 +134,15 @@ class Xbrl():
         concept: Union[str, Enum],
         unit_of_measure: Union[str, Enum],
         period: str
-    ) -> dict:
+    ) -> dict | None:
         """Aggregates one fact for each reporting entity that is last filed that most closely
         fits the calendrical period requested.
 
-        ### Overview:
+        ### Overview
         ----
         This API supports for annual, quarterly and instantaneous data. Where the units of measure
-        specified in the XBRL contains a numerator and a denominator, these are separated by “-per-”
-        such as “USD-per-shares”. Note that the default unit in XBRL is “pure”.
+        specified in the XBRL contains a numerator and a denominator, these are separated by "-per-"
+        such as "USD-per-shares". Note that the default unit in XBRL is "pure".
 
         The period format is CY#### for annual data (duration 365 days +/- 30 days), CY####Q# for
         quarterly data (duration 91 days +/- 30 days), and CY####Q#I for instantaneous data. Because
@@ -142,7 +151,7 @@ class Xbrl():
         the dates that best align with a calendar quarter or year. Data users should be mindful
         different reporting start and end dates for facts contained in a frame.
 
-        ### Arguments:
+        ### Parameters
         ----
         concept : Union[str, Enum]
             A taxonomy and tag you want to retrieve data for.
@@ -156,14 +165,14 @@ class Xbrl():
             CY2020. If I want Q1 of 2020 then it would look like CY2020Q1.
             Instantaneous data would look like CY2020Q1I.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A collection of `AggregatedCompanyFact` resource objects.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> xbrl_services = edgar_client.xbrl()
             >>> xbrl_services.frames(
                concept='AccountsPayableCurrent',

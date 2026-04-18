@@ -133,3 +133,6 @@ dmypy.json
 .vscode/
 .pypirc
 configs/
+
+# Application logs
+logs/

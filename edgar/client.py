@@ -1,3 +1,5 @@
+"""Main entry-point client for the SEC EDGAR API."""
+
 from edgar.xbrl import Xbrl
 from edgar.series import Series
 from edgar.issuers import Issuers
@@ -13,10 +15,9 @@ from edgar.ownership_filings import OwnershipFilings
 from edgar.variable_insurance_products import VariableInsuranceProducts
 
 
-class EdgarClient():
-
+class EdgarClient:
     """
-    ## Overview:
+    ## Overview
     ----
     Represents the main Edgar client which is used to
     instantiate the different endpoints.
@@ -27,15 +28,16 @@ class EdgarClient():
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
         """
 
         self.edgar_session = EdgarSession(client=self, user_agent=user_agent)
+        self._services: dict = {}
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient` object."""
 
-        return '<EdgarClient (active=True, connected=True)>'
+        return "<EdgarClient (active=True, connected=True)>"
 
     def archives(self) -> Archives:
         """Used to access the `Archives` services.
@@ -46,7 +48,9 @@ class EdgarClient():
             The `Archives` services Object.
         """
 
-        return Archives(session=self.edgar_session)
+        if "archives" not in self._services:
+            self._services["archives"] = Archives(session=self.edgar_session)
+        return self._services["archives"]
 
     def companies(self) -> Companies:
         """Used to access the `Companies` services.
@@ -57,7 +61,9 @@ class EdgarClient():
             The `Companies` services Object.
         """
 
-        return Companies(session=self.edgar_session)
+        if "companies" not in self._services:
+            self._services["companies"] = Companies(session=self.edgar_session)
+        return self._services["companies"]
 
     def series(self) -> Series:
         """Used to access the `Series` services.
@@ -68,7 +74,9 @@ class EdgarClient():
             The `Series` services Object.
         """
 
-        return Series(session=self.edgar_session)
+        if "series" not in self._services:
+            self._services["series"] = Series(session=self.edgar_session)
+        return self._services["series"]
 
     def mutual_funds(self) -> MutualFunds:
         """Used to access the `MutualFunds` services.
@@ -79,7 +87,9 @@ class EdgarClient():
             The `MutualFunds` services Object.
         """
 
-        return MutualFunds(session=self.edgar_session)
+        if "mutual_funds" not in self._services:
+            self._services["mutual_funds"] = MutualFunds(session=self.edgar_session)
+        return self._services["mutual_funds"]
 
     def variable_insurance_products(self) -> VariableInsuranceProducts:
         """Used to access the `VariableInsuranceProducts` services.
@@ -90,7 +100,11 @@ class EdgarClient():
             The `VariableInsuranceProducts` services Object.
         """
 
-        return VariableInsuranceProducts(session=self.edgar_session)
+        if "variable_insurance_products" not in self._services:
+            self._services["variable_insurance_products"] = VariableInsuranceProducts(
+                session=self.edgar_session
+            )
+        return self._services["variable_insurance_products"]
 
     def datasets(self) -> Datasets:
         """Used to access the `Datasets` services.
@@ -101,7 +115,9 @@ class EdgarClient():
             The `Datasets` services Object.
         """
 
-        return Datasets(session=self.edgar_session)
+        if "datasets" not in self._services:
+            self._services["datasets"] = Datasets(session=self.edgar_session)
+        return self._services["datasets"]
 
     def filings(self) -> Filings:
         """Used to access the `Filings` services.
@@ -112,7 +128,9 @@ class EdgarClient():
             The `Filings` services Object.
         """
 
-        return Filings(session=self.edgar_session)
+        if "filings" not in self._services:
+            self._services["filings"] = Filings(session=self.edgar_session)
+        return self._services["filings"]
 
     def current_events(self) -> CurrentEvents:
         """Used to access the `CurrentEvents` services.
@@ -123,7 +141,9 @@ class EdgarClient():
             The `CurrentEvents` services Object.
         """
 
-        return CurrentEvents(session=self.edgar_session)
+        if "current_events" not in self._services:
+            self._services["current_events"] = CurrentEvents(session=self.edgar_session)
+        return self._services["current_events"]
 
     def issuers(self) -> Issuers:
         """Used to access the `Issuers` services.
@@ -134,7 +154,9 @@ class EdgarClient():
             The `Issuers` services Object.
         """
 
-        return Issuers(session=self.edgar_session)
+        if "issuers" not in self._services:
+            self._services["issuers"] = Issuers(session=self.edgar_session)
+        return self._services["issuers"]
 
     def ownership_filings(self) -> OwnershipFilings:
         """Used to access the `OwnershipFilings` services.
@@ -145,7 +167,11 @@ class EdgarClient():
             The `OwnershipFilings` services Object.
         """
 
-        return OwnershipFilings(session=self.edgar_session)
+        if "ownership_filings" not in self._services:
+            self._services["ownership_filings"] = OwnershipFilings(
+                session=self.edgar_session
+            )
+        return self._services["ownership_filings"]
 
     def submissions(self) -> Submissions:
         """Used to access the `Submissions` services.
@@ -156,7 +182,9 @@ class EdgarClient():
             The `Submissions` services Object.
         """
 
-        return Submissions(session=self.edgar_session)
+        if "submissions" not in self._services:
+            self._services["submissions"] = Submissions(session=self.edgar_session)
+        return self._services["submissions"]
 
     def xbrl(self) -> Xbrl:
         """Used to access the `Xbrl` services.
@@ -167,4 +195,6 @@ class EdgarClient():
             The `Xbrl` services Object.
         """
 
-        return Xbrl(session=self.edgar_session)
+        if "xbrl" not in self._services:
+            self._services["xbrl"] = Xbrl(session=self.edgar_session)
+        return self._services["xbrl"]

@@ -1,18 +1,17 @@
+"""Service for querying SEC EDGAR variable insurance product filings."""
 
-from typing import Dict
-from typing import List
+from __future__ import annotations
 
 from edgar.session import EdgarSession
-from edgar.utilis import EdgarUtilities
-from edgar.parser import EdgarParser
 
 
 class VariableInsuranceProducts():
 
     """
-    ## Overview:
+    ## Overview
     ----
-
+    Queries the SEC EDGAR system for variable insurance product
+    filings, including series and contract information.
     """
 
     def __init__(self, session: EdgarSession) -> None:
@@ -25,33 +24,17 @@ class VariableInsuranceProducts():
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> insurance_prods_services = edgar_client.variable_insurance_products()
         """
 
         # Set the session.
         self.edgar_session: EdgarSession = session
-        self.edgar_utilities: EdgarUtilities = EdgarUtilities()
-        self.edgar_parser: EdgarParser = EdgarParser()
+        self.edgar_utilities = session.edgar_utilities
+        self.edgar_parser = session.edgar_parser
 
         # Set the endpoint.
         self.endpoint = '/cgi-bin/browse-edgar'
-        self.params = {
-            'sc': 'companyseries',
-            'company': '',
-            'count': '500',
-            'start': ''
-        }
-
-    def _reset_params(self) -> None:
-        """Resets the params for the next request."""
-
-        self.params = {
-            'sc': 'companyseries',
-            'company': '',
-            'count': '500',
-            'start': ''
-        }
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient.VariableInsuranceProducts` object."""
@@ -66,7 +49,7 @@ class VariableInsuranceProducts():
         company_name: str,
         start: int = 0,
         number_of_filings: int = None
-    ) -> List[Dict]:
+    ) -> list[dict]:
         """Returns all the variable insurance products for a specific name.
 
         ### Parameters
@@ -75,37 +58,40 @@ class VariableInsuranceProducts():
             The name of the company you want to query. For example,
             `goldman sachs`.
 
-        ### Returns:
+        ### Returns
         ----
         List[dict]:
             A collection of `InsuranceProduct` resources.
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> insurance_prods_services = edgar_client.variable_insurance_products()
             >>> insurance_prods_services.get_products_by_name(
                 company_name='goldman sachs'
             )
         """
 
-        self.params['company'] = company_name
-        self.params['start'] = start
+        params = {
+            'sc': 'companyseries',
+            'company': company_name,
+            'count': '500',
+            'start': start,
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params,
         )
 
         # Parse the entries.
         entries = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_filings,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return entries

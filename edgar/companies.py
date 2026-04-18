@@ -1,16 +1,17 @@
+"""Service for querying SEC EDGAR company filings and information."""
+
+from __future__ import annotations
+
 from enum import Enum
-from typing import List
 from typing import Union
 
 from edgar.session import EdgarSession
-from edgar.utilis import EdgarUtilities
-from edgar.parser import EdgarParser
 
 
 class Companies():
 
     """
-    ## Overview:
+    ## Overview
     ----
     Used to interact with the `Companies` service. This
     service can be used to query company information and
@@ -18,7 +19,7 @@ class Companies():
     """
 
     def __init__(self, session: EdgarSession) -> None:
-        """Initializes the `Comapnies` object.
+        """Initializes the `Companies` object.
 
         ### Parameters
         ----
@@ -27,55 +28,23 @@ class Companies():
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> company_services = edgar_client.companies()
         """
 
         # Set the session.
         self.edgar_session: EdgarSession = session
-        self.edgar_utilities: EdgarUtilities = EdgarUtilities()
-        self.edgar_parser: EdgarParser = EdgarParser()
+        self.edgar_utilities = session.edgar_utilities
+        self.edgar_parser = session.edgar_parser
 
         # Set the endpoint.
         self.endpoint = '/cgi-bin/browse-edgar'
-        self.params = {
-            'action': 'getcompany',
-            'output': 'atom',
-            'State': '',
-            'Country': '',
-            'SIC': '',
-            'CIK': '',
-            'type': '',
-            'company': '',
-            'start': '0',
-            'datea': '',
-            'dateb': '',
-            'count': ''
-        }
-
-    def _reset_params(self) -> None:
-        """Resets the params for the next request."""
-
-        self.params = {
-            'action': 'getcompany',
-            'output': 'atom',
-            'State': '',
-            'Country': '',
-            'SIC': '',
-            'CIK': '',
-            'type': '',
-            'company': '',
-            'start': '0',
-            'datea': '',
-            'dateb': '',
-            'count': ''
-        }
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient.Companies` object."""
 
         # define the string representation
-        str_representation = '<EdgarClient.Comapnies (active=True, connected=True)>'
+        str_representation = '<EdgarClient.Companies (active=True, connected=True)>'
 
         return str_representation
 
@@ -84,10 +53,10 @@ class Companies():
         state_code: Union[str, Enum],
         number_of_companies: int = 100,
         start: int = 0
-    ) -> dict:
+    ) -> list[dict]:
         """Grabs all the companies that fall in a specific state.
 
-        ### Arguments:
+        ### Parameters
         ----
         state_code : Union[str, Enum]
             The two letter state code you want to query.
@@ -102,14 +71,14 @@ class Companies():
             set the `start` argument. This will start parsing the companies that come
             after this and up until the `number_of_companies`.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A collection of `Comapny` resource objects.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> company_services = edgar_client.companies()
             >>> company_services.get_companies_by_state(state_code='tx')
         """
@@ -118,23 +87,26 @@ class Companies():
         if isinstance(state_code, Enum):
             state_code = state_code.value
 
-        self.params['State'] = state_code.upper()
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'State': state_code.upper(),
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params
         )
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_companies,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return response
 
@@ -143,10 +115,10 @@ class Companies():
         country_code: Union[str, Enum],
         number_of_companies: int = 100,
         start: int = 0
-    ) -> dict:
+    ) -> list[dict]:
         """Grabs all the companies that fall in a specific country.
 
-        ### Arguments:
+        ### Parameters
         ----
         country_code : Union[str, Enum]
             The two letter country code or country name you want to query.
@@ -161,14 +133,14 @@ class Companies():
             set the `start` argument. This will start parsing the companies that come
             after this and up until the `number_of_companies`.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A collection of `Comapny` resource objects.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> company_services = edgar_client.companies()
             >>> company_services.get_companies_by_country(country_code='q1')
             >>> company_services.get_companies_by_country(country_code=CountryCode.AUSTRALIA)
@@ -178,23 +150,26 @@ class Companies():
         if isinstance(country_code, Enum):
             country_code = country_code.value
 
-        self.params['Country'] = country_code.upper()
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'Country': country_code.upper(),
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params
         )
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_companies,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return response
 
@@ -203,10 +178,10 @@ class Companies():
         sic_code: Union[str, Enum],
         number_of_companies: int = 100,
         start: int = 0
-    ) -> dict:
+    ) -> list[dict]:
         """Grabs all the companies that fall under a specific SIC code.
 
-        ### Arguments:
+        ### Parameters
         ----
         sic_code : Union[str, Enum]
             The 3 or 4 number SIC code you want to query.
@@ -221,14 +196,14 @@ class Companies():
             set the `start` argument. This will start parsing the companies that come
             after this and up until the `number_of_companies`.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A collection of `Comapny` resource objects.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> company_services = edgar_client.companies()
             >>> company_services.get_companies_by_sic(sic_code='800')
             >>> company_services.get_companies_by_sic(
@@ -240,140 +215,152 @@ class Companies():
         if isinstance(sic_code, Enum):
             sic_code = sic_code.value
 
-        self.params['SIC'] = sic_code.upper()
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'SIC': sic_code.upper(),
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params
         )
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_companies,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return response
 
-    def get_company_by_file_number(self, file_number: str) -> dict:
+    def get_company_by_file_number(self, file_number: str) -> list[dict]:
         """Finds the company by doing a reverse look based on the file number.
 
-        ### Arguments:
+        ### Parameters
         ----
         file_number : str
             The filing number you want to use in order to do the reverse
             lookup.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A `Comapny` resource object.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> company_services = edgar_client.companies()
             >>> company_services.get_companies_by_file_number(file_number='021-230507')
         """
 
-        self.params['filenum'] = file_number
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'filenum': file_number,
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params
         )
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
-            response_text=response
+            response_text=response,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return response
 
-    def get_company_by_cik(self, cik: str) -> dict:
+    def get_company_by_cik(self, cik: str) -> list[dict]:
         """Searches for a company using their CIK number.
 
-        ### Arguments:
+        ### Parameters
         ----
         cik : str
             The CIK number you want to lookup.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A `Comapny` resource object.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> company_services = edgar_client.companies()
             >>> company_services.get_company_by_cik(cik='1628533')
         """
 
-        self.params['CIK'] = cik
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'CIK': cik,
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params
         )
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
-            response_text=response
+            response_text=response,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return response
 
-    def get_companies_by_name(self, name: str) -> dict:
+    def get_companies_by_name(self, name: str) -> list[dict]:
         """Searches for a company by looking for it's name. Can
         return multiple results depending on how simply you make
         the search.
 
-        ### Arguments:
+        ### Parameters
         ----
         name : str
             The name you can to lookup.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A `Comapny` resource object.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> company_services = edgar_client.companies()
             >>> company_services.get_companies_by_name(name='Microsoft')
         """
 
-        self.params['company'] = name
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'company': name,
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params
         )
 
         # Parse it.
         response = self.edgar_parser.parse_entries(
-            response_text=response
+            response_text=response,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return response
 
@@ -385,16 +372,16 @@ class Companies():
         country: str = None,
         number_of_companies: int = 100,
         start: int = 0
-    ) -> List[dict]:
+    ) -> list[dict]:
         """Used to grab companies matching multiple criteria.
 
-        ### Overview:
+        ### Overview
         ----
         Returns all companies, that fall under a particular filter. This
         endpoint allows you to grab companies matching multiple criteria
         instead of a single criteria like in the other endpoints.
 
-        ### Arguments:
+        ### Parameters
         ----
         company_name : str (optional, Default=None)
             The company name you want to search for.
@@ -418,7 +405,7 @@ class Companies():
             set the `start` argument. This will start parsing the filings that come
             after this and up until the `number_of_filings`.
 
-        ### Returns:
+        ### Returns
         ----
         List[dict]:
             A collection of `Company` resources.
@@ -431,14 +418,18 @@ class Companies():
         if isinstance(sic_code, Enum):
             sic_code = sic_code.value
 
-        self.params['SIC'] = sic_code.upper()
-        self.params['State'] = state
-        self.params['Country'] = country
-        self.params['company'] = company_name
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'SIC': sic_code.upper() if sic_code else '',
+            'State': state or '',
+            'Country': country or '',
+            'company': company_name or '',
+        }
 
         response = self.edgar_session.make_request(
             method='get',
-            params=self.params,
+            params=params,
             endpoint=self.endpoint
         )
 
@@ -446,9 +437,8 @@ class Companies():
         entries = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_companies,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return entries

@@ -1,7 +1,7 @@
-import pprint
-from datetime import date
-from edgar.client import EdgarClient
-from edgar.enums import FilingTypeCodes
+"""Example usage of the EdgarClient entry point."""
 
-# Initalize the client.
-edgar_client = EdgarClient()
+from edgar.client import EdgarClient
+
+# Initialize the client.
+# SEC EDGAR requires a User-Agent in the format "Company/Name email@example.com".
+edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")

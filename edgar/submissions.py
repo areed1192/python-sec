@@ -1,11 +1,14 @@
+"""Service for retrieving SEC EDGAR company submission histories."""
+
+from __future__ import annotations
+
 from edgar.session import EdgarSession
-from edgar.utilis import EdgarUtilities
 
 
 class Submissions():
 
     """
-    ## Overview:
+    ## Overview
     ----
     Allows a user to query each entity’s current filing
     history using the SEC Restful API.
@@ -21,13 +24,13 @@ class Submissions():
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> submissions_service = edgar_client.submissions()
         """
 
         # Set the session.
         self.edgar_session: EdgarSession = session
-        self.edgar_utilities: EdgarUtilities = EdgarUtilities()
+        self.edgar_utilities = session.edgar_utilities
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient.Submissions` object."""
@@ -37,27 +40,30 @@ class Submissions():
 
         return str_representation
 
-    def get_submissions(self, cik: str) -> dict:
+    def get_submissions(self, cik: str) -> dict | None:
         """Returns all the ownership filings for a given CIK number.
 
-        ### Arguments:
+        ### Parameters
         ----
         cik : str
             The CIK number you want to query.
 
-        ### Returns:
+        ### Returns
         ----
         dict :
             A collection of `Submission` resource objects.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> submissions_service = edgar_client.submissions()
             >>> submissions_service.get_submissions(
                 cik='1326801'
             )
         """
+
+        if not cik.isdigit():
+            raise ValueError(f"CIK must contain only digits, got: {cik!r}")
 
         if len(cik) < 10:
             num_of_zeros = 10 - len(cik)

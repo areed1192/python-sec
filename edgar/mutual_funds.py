@@ -1,17 +1,18 @@
-from typing import List
+"""Service for querying SEC EDGAR mutual fund filings."""
+
+from __future__ import annotations
+
 from typing import Union
 from datetime import date
 from datetime import datetime
 
 from edgar.session import EdgarSession
-from edgar.utilis import EdgarUtilities
-from edgar.parser import EdgarParser
 
 
 class MutualFunds():
 
     """
-    ## Overview:
+    ## Overview
     ----
     Used to interact with the `MutualFunds` service.
     """
@@ -26,51 +27,17 @@ class MutualFunds():
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> mutual_funds_services = edgar_client.mutual_funds()
         """
 
         # Set the session.
         self.edgar_session: EdgarSession = session
-        self.edgar_utilities: EdgarUtilities = EdgarUtilities()
-        self.edgar_parser: EdgarParser = EdgarParser()
+        self.edgar_utilities = session.edgar_utilities
+        self.edgar_parser = session.edgar_parser
 
         # Set the endpoint.
         self.endpoint = '/cgi-bin/browse-edgar'
-        self.params = {
-            'action': 'getcompany',
-            'output': 'atom',
-            'Count': '100',
-            'myowner': 'include',
-            'State': '',
-            'Country': '',
-            'SIC': '',
-            'CIK': '',
-            'type': '',
-            'company': '',
-            'start': '',
-            'datea': '',
-            'dateb': ''
-        }
-
-    def _reset_params(self) -> None:
-        """Resets the params for the next request."""
-
-        self.params = {
-            'action': 'getcompany',
-            'output': 'atom',
-            'Count': '100',
-            'myowner': 'include',
-            'State': '',
-            'Country': '',
-            'SIC': '',
-            'CIK': '',
-            'type': '',
-            'company': '',
-            'start': '',
-            'datea': '',
-            'dateb': ''
-        }
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient.Companies` object."""
@@ -90,7 +57,7 @@ class MutualFunds():
         number_of_filings: int = 100,
         after_date: Union[str, datetime, date] = None,
         before_date: Union[str, datetime, date] = None
-    ) -> List[dict]:
+    ) -> list[dict]:
         """Allows for complex queries by giving access to all query parameters.
 
         ### Parameters
@@ -124,14 +91,14 @@ class MutualFunds():
             Represents filings that you want after a certain date. For example,
             `2019-12-01` means return all the filings `AFTER` Decemeber 1, 2019.
 
-        ### Returns:
+        ### Returns
         ----
         List[dict]:
             A collection of `MutualFundDocument` resources.
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> mutual_funds_services = edgar_client.mutual_funds()
             >>> mutual_funds_services.query(
                 cik='C000005193'
@@ -149,29 +116,34 @@ class MutualFunds():
                 date_or_datetime=after_date
             )
 
-        self.params['start'] = start
-        self.params['CIK'] = cik
-        self.params['SIC'] = sic
-        self.params['type'] = mutual_fund_type
-        self.params['company'] = company_name
-        self.params['datea'] = after_date
-        self.params['dateb'] = before_date
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'Count': '100',
+            'myowner': 'include',
+            'start': start or '',
+            'CIK': cik or '',
+            'SIC': sic or '',
+            'type': mutual_fund_type or '',
+            'company': company_name or '',
+            'datea': after_date or '',
+            'dateb': before_date or '',
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params,
         )
 
         # Parse the entries.
         entries = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_filings,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return entries
 
@@ -181,7 +153,7 @@ class MutualFunds():
         mutual_fund_type: str,
         start: int = 0,
         number_of_filings: int = 100
-    ) -> List[dict]:
+    ) -> list[dict]:
         """Returns all mutual fund filings matching the specified type for specific CIK.
 
         ### Parameters
@@ -205,14 +177,14 @@ class MutualFunds():
             set the `start` argument. This will start parsing the filings that come
             after this and up until the `number_of_filings`.
 
-        ### Returns:
+        ### Returns
         ----
         List[dict]:
             A collection of `MutualFundDocument` resources.
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> mutual_funds_services = edgar_client.mutual_funds()
             >>> mutual_funds_services.get_mutual_fund_filings_by_type(
                 mutual_fund_type='mutual-fund'
@@ -262,26 +234,31 @@ class MutualFunds():
         # Grab the one specified.
         query_params = mutual_funds_type[mutual_fund_type]
 
-        # Add the additional arguments.
-        self.params.update(query_params['query_params'])
-        self.params['start'] = start
-        self.params['CIK'] = cik
+        # Build local params.
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'Count': '100',
+            'myowner': 'include',
+            'start': start,
+            'CIK': cik,
+        }
+        params.update(query_params['query_params'])
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params,
         )
 
         # Parse the entries.
         entries = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_filings,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return entries
 
@@ -290,7 +267,7 @@ class MutualFunds():
         company_name: str,
         start: int = 0,
         number_of_filings: int = 100
-    ) -> List[dict]:
+    ) -> list[dict]:
         """Returns all mutual fund filings matching a specific name.
 
         ### Parameters
@@ -308,41 +285,46 @@ class MutualFunds():
             set the `start` argument. This will start parsing the filings that come
             after this and up until the `number_of_filings`.
 
-        ### Returns:
+        ### Returns
         ----
         List[dict]:
             A collection of `MutualFundDocument` resources.
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> mutual_funds_services = edgar_client.mutual_funds()
             >>> mutual_funds_services.get_mutual_funds_by_name(
                 company_name='ADVANCED SERIES TRUST'
             )
         """
 
-        self.params['company'] = company_name
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'Count': '100',
+            'myowner': 'include',
+            'company': company_name,
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params,
         )
 
         # Parse the entries.
         entries = self.edgar_parser.parse_entries(
             response_text=response,
             num_of_items=number_of_filings,
-            start=start
+            start=start,
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
 
         return entries
 
-    def list_series_and_contracts_by_cik(self, cik: str) -> List[dict]:
+    def list_series_and_contracts_by_cik(self, cik: str) -> list[dict]:
         """Returns all the Series IDs and Contract IDs that fall under
         a specific Series ID for the specific CIK number.
 
@@ -351,26 +333,32 @@ class MutualFunds():
         cik : str
             The CIK number you want to query Series ID for
 
-        ### Returns:
+        ### Returns
         ----
         List[dict]:
             A collection of `Series` and `Contract` resources.
 
         ### Usage
         ----
-            >>> edgar_client = EdgarClient()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
             >>> mutual_funds_services = edgar_client.mutual_funds()
             >>> mutual_funds_services.list_series_and_contracts_by_cik(cik='814679')
         """
 
-        self.params['CIK'] = cik
-        self.params['scd'] = 'series'
+        params = {
+            'action': 'getcompany',
+            'output': 'atom',
+            'Count': '100',
+            'myowner': 'include',
+            'CIK': cik,
+            'scd': 'series',
+        }
 
         # Grab the Data.
         response = self.edgar_session.make_request(
             method='get',
             endpoint=self.endpoint,
-            params=self.params
+            params=params,
         )
 
         # Parse the entries.
@@ -378,10 +366,8 @@ class MutualFunds():
             response_text=response,
             num_of_items=300,
             start=0,
-            path='.atom:entry/atom:content/atom:company-info/atom:sids/atom:sid'
+            path='.atom:entry/atom:content/atom:company-info/atom:sids/atom:sid',
+            fetch_page=self.edgar_session.fetch_page,
         )
-
-        self._reset_params()
-        del self.params['scd']
 
         return entries

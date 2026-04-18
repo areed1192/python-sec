@@ -1,11 +1,11 @@
+"""Example usage of the EDGAR Issuers service."""
+
 from pprint import pprint
 from edgar.client import EdgarClient
-from edgar.enums import StateCodes
-from edgar.enums import CountryCodes
-from edgar.enums import StandardIndustrialClassificationCodes
 
 # Initialize the Edgar Client
-edgar_client = EdgarClient()
+# SEC EDGAR requires a User-Agent in the format "Company/Name email@example.com".
+edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
 
 # Initialize the Issuers Services.
 issuers_service = edgar_client.issuers()

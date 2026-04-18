@@ -1,73 +1,81 @@
-import sys
-import json
-import time
+"""HTTP session management for SEC EDGAR requests."""
+
+from __future__ import annotations
+
 import logging
-import pathlib
-from typing import Dict
+import time
+from typing import TYPE_CHECKING, Union
 
 import requests
+from urllib3.util.retry import Retry
+from requests.adapters import HTTPAdapter
+
+from edgar.exceptions import EdgarRequestError
+from edgar.parser import EdgarParser
+from edgar.utils import EdgarUtilities
+
+if TYPE_CHECKING:
+    from edgar.client import EdgarClient
+
+logger = logging.getLogger(__name__)
+
+MAX_RETRIES = 5
+RATE_LIMIT_INTERVAL = 10
+RATE_LIMIT_SLEEP = 5
 
 
-class EdgarSession():
-
+class EdgarSession:
     """
-    Overview:
+    Overview
     ----
     Serves as the main Session for the
     `EDGARClient`. The `EdgarSession` object
     handles all the requests made to EDGAR.
     """
 
-    def __init__(self, client: object, user_agent: str) -> None:
+    def __init__(self, client: EdgarClient, user_agent: str) -> None:
         """Initializes the `EdgarSession` client.
 
-        ### Parameters:
+        ### Parameters
         ----
         client (str): The `edgar.EdgarClient` Python Client.
 
-        ### Usage:
+        ### Usage
         ----
-            >>> edgar_client = EdgarClient()
-            >>> edgar_session = EdgarSession()
+            >>> edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
+            >>> edgar_session = EdgarSession(client=edgar_client, user_agent="your_user_agent")
         """
 
-        from edgar.client import EdgarClient
-
-        # We can also add custom formatting to our log messages.
-        log_format = '%(asctime)-15s|%(filename)s|%(message)s'
-
         self.client: EdgarClient = client
-        self.resource = 'https://www.sec.gov'
-        self.api_resource = 'https://data.sec.gov'
+        self.resource = "https://www.sec.gov"
+        self.api_resource = "https://data.sec.gov"
         self.total_requests = 0
         self.user_agent = user_agent
 
-        if not pathlib.Path('logs').exists():
-            pathlib.Path('logs').mkdir()
-            pathlib.Path('logs/sec_api_log.log').touch()
+        # Create a single reusable session with connection pooling.
+        self.http_session = requests.Session()
+        self.http_session.verify = True
+        self.http_session.headers.update({"user-agent": self.user_agent})
 
-        if sys.version_info >= (3, 9):
+        # Mount retry adapter for resilience.
+        retry_strategy = Retry(
+            total=MAX_RETRIES,
+            backoff_factor=1,
+            status_forcelist=[429, 500, 502, 503, 504],
+        )
+        adapter = HTTPAdapter(max_retries=retry_strategy)
+        self.http_session.mount("https://", adapter)
+        self.http_session.mount("http://", adapter)
 
-            logging.basicConfig(
-                filename="logs/sec_api_log.log",
-                level=logging.INFO,
-                encoding="utf-8",
-                format=log_format
-            )
-
-        else:
-
-            logging.basicConfig(
-                filename="logs/sec_api_log.log",
-                level=logging.INFO,
-                encoding="utf-8"
-            )
+        # Shared service dependencies.
+        self.edgar_parser = EdgarParser()
+        self.edgar_utilities = EdgarUtilities()
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient.EdgarSession` object."""
 
         # define the string representation
-        str_representation = '<EdgarClient.EdgarSession (active=True, connected=True)>'
+        str_representation = "<EdgarClient.EdgarSession (active=True, connected=True)>"
 
         return str_representation
 
@@ -103,17 +111,17 @@ class EdgarSession():
         params: dict = None,
         data: dict = None,
         json_payload: dict = None,
-        use_api: bool = False
-    ) -> Dict:
+        use_api: bool = False,
+    ) -> Union[dict, str, None]:
         """Handles all the requests in the library.
 
-        ### Overview:
+        ### Overview
         ---
         A central function used to handle all the requests made in the library,
         this function handles building the URL, defining Content-Type, passing
         through payloads, and handling any errors that may arise during the request.
 
-        ### Parameters:
+        ### Parameters
         ----
         method : str
             The Request method, can be one of the
@@ -135,7 +143,7 @@ class EdgarSession():
             If `True` use the API resource URL, `False`
             use the filings resource URL.
 
-        ### Returns:
+        ### Returns
         ----
             A Dictionary object containing the JSON values.
         """
@@ -143,90 +151,94 @@ class EdgarSession():
         # Build the URL.
         url = self.build_url(endpoint=endpoint, use_api=use_api)
 
-        logging.info("URL: %s", url)
-        logging.info("PARAMETERS %s", params)
+        logger.info("URL: %s", url)
+        logger.info("PARAMETERS %s", params)
 
-        # Define a new session.
-        request_session = requests.Session()
-        request_session.verify = True
-
-        # Define a new request.
-        request_request = requests.Request(
-            headers={'user-agent': self.user_agent},
-            method=method.upper(),
-            url=url,
-            params=params,
-            data=data,
-            json=json_payload
-        ).prepare()
-
-        print(request_request.url)
+        # Build the request kwargs.
+        request_kwargs = {
+            "method": method.upper(),
+            "url": url,
+            "params": params,
+            "data": data,
+            "json": json_payload,
+        }
 
         self.total_requests += 1
 
-        # Send the request.
-        response: requests.Response = request_session.send(
-            request=request_request
-        )
-
-        if self.total_requests == 9:
-            print("sleeping for 5 seconds.")
-            time.sleep(5)
+        # SEC rate limit: pause every N requests.
+        if self.total_requests >= RATE_LIMIT_INTERVAL:
+            logger.info("Rate limit pause: sleeping for %s seconds.", RATE_LIMIT_SLEEP)
+            time.sleep(RATE_LIMIT_SLEEP)
             self.total_requests = 0
 
-        # Keep going.
-        while response.status_code != 200:
+        # Send the request with retry logic.
+        try:
+            response: requests.Response = self.http_session.request(**request_kwargs)
+        except requests.RequestException as exc:
+            logger.error("Request failed: %s", exc)
+            raise EdgarRequestError(f"Request to {url} failed: {exc}") from exc
+
+        # Retry on non-200 with backoff, up to MAX_RETRIES.
+        retries = 0
+        while response.status_code != 200 and retries < MAX_RETRIES:
+            retries += 1
+            sleep_time = 2**retries
+            logger.warning(
+                "Non-200 status %s, retry %s/%s in %ss",
+                response.status_code,
+                retries,
+                MAX_RETRIES,
+                sleep_time,
+            )
+            time.sleep(sleep_time)
 
             try:
-                response: requests.Response = request_session.send(
-                    request=request_request
-                )
-            except requests.HTTPError:
-                print("Sleeping for five seconds")
-                time.sleep(5)
+                response = self.http_session.request(**request_kwargs)
+            except requests.RequestException as exc:
+                logger.error("Retry %s failed: %s", retries, exc)
+                if retries >= MAX_RETRIES:
+                    raise EdgarRequestError(
+                        f"Request to {url} failed after {MAX_RETRIES} retries: {exc}"
+                    ) from exc
+                continue
 
-        # Close the session.
-        request_session.close()
+        if response.status_code != 200:
+            try:
+                response.raise_for_status()
+            except requests.HTTPError as exc:
+                raise EdgarRequestError(
+                    f"Request to {url} returned status {response.status_code}"
+                ) from exc
 
         # Grab the headers.
         response_headers = response.headers
-        content_type = response_headers['Content-Type']
+        content_type = response_headers.get("Content-Type", "")
 
-        # If it's okay and no details.
+        # If it's okay and has content.
         if response.ok and len(response.content) > 0:
 
-            if content_type in ['application/atom+xml', 'text/xml', 'text/html']:
+            if "application/json" in content_type:
+                return response.json()
+            elif any(
+                ct in content_type
+                for ct in ["application/atom+xml", "text/xml", "text/html"]
+            ):
                 return response.text
 
-            try:
-                return response.json()
-            except requests.exceptions.ContentDecodingError:
-                content = response.content.replace(
-                    b'Content-type: application/json\r\n\r\n',
-                    b''
-                )
-                return json.loads(content)
+        return None
 
-        elif len(response.content) > 0 and response.ok:
-            return {
-                'message': 'response successful',
-                'status_code': response.status_code
-            }
+    def fetch_page(self, url: str) -> bytes | None:
+        """Fetches a raw page by URL, returning bytes or None on failure.
 
-        elif not response.ok:
+        Used as a callback for parser pagination so the parser
+        does not need its own HTTP session.
+        """
 
-            # Define the error dict.
-            error_dict = {
-                'error_code': response.status_code,
-                'response_url': response.url,
-                'response_body': json.loads(response.content.decode('ascii')),
-                'response_request': dict(response.request.headers),
-                'response_method': response.request.method,
-            }
+        try:
+            response = self.http_session.get(url)
+        except requests.RequestException as exc:
+            raise EdgarRequestError(f"Failed to fetch page {url}: {exc}") from exc
 
-            # Log the error.
-            logging.error(
-                msg=json.dumps(obj=error_dict, indent=4)
-            )
-
-            raise requests.HTTPError()
+        if response.status_code == 200:
+            return response.content
+        return None

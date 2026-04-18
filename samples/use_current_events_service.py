@@ -1,8 +1,11 @@
+"""Example usage of the EDGAR Current Events service."""
+
 from pprint import pprint
 from edgar.client import EdgarClient
 
 # Initialize the Edgar Client
-edgar_client = EdgarClient()
+# SEC EDGAR requires a User-Agent in the format "Company/Name email@example.com".
+edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
 
 # Initialize the Current Events Services.
 current_events_services = edgar_client.current_events()

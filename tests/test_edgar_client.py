@@ -20,7 +20,7 @@ from edgar.current_events import CurrentEvents
 from edgar.ownership_filings import OwnershipFilings
 
 
-class Edg(TestCase):
+class TestEdgarClient(TestCase):
 
     """Will perform a unit test for the `EdgarClient` session."""
 
@@ -28,7 +28,7 @@ class Edg(TestCase):
         """Set up the `EdgarClient` Client."""
 
         # Initialize a new instance.
-        self.edgar_client = EdgarClient()
+        self.edgar_client = EdgarClient(user_agent="TestSuite test@example.com")
 
         # This is Facebook.
         self.cik_number = '1265107'
