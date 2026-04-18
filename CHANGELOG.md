@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **edgar/datasets.py**: Bulk DERA financial statement dataset download and extraction.
+  - `Datasets.get_financial_statements(year, quarter)` downloads quarterly ZIP from SEC DERA and returns parsed TSV data as `dict[str, list[dict]]` (keys: `sub`, `num`, `tag`, `pre`).
+  - `Datasets.get_financial_statements_dataframes(year, quarter)` returns the same data as `dict[str, pandas.DataFrame]` (requires `pandas` optional dep).
+  - Internal `_extract_tsv_zip()` helper handles ZIP extraction and tab-separated parsing.
+- **tests/test_datasets.py**: 15 unit tests for bulk dataset download, extraction, DataFrame conversion, and error handling.
+- **samples/use_dataset_service.py**: Added bulk financial statements sections demonstrating `get_financial_statements()` and DataFrame variant.
 - **edgar/models.py**: `to_json()` and `to_csv()` serialization methods on all model classes (`Filing`, `CompanyInfo`, `Submission`, `Fact`, `Facts`, `SearchResult`).
   - `result.to_json(path=None, indent=2)` serializes to a JSON string; optionally writes to file.
   - `result.to_csv(path=None)` serializes to a CSV string (header + one row); optionally writes to file.
