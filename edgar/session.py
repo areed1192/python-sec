@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import time
+from collections import deque
 from typing import TYPE_CHECKING, Union
 
 import requests
@@ -20,8 +21,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 MAX_RETRIES = 5
-RATE_LIMIT_INTERVAL = 10
-RATE_LIMIT_SLEEP = 5
+MAX_REQUESTS_PER_SECOND = 10
 
 
 class EdgarSession:
@@ -49,8 +49,11 @@ class EdgarSession:
         self.client: EdgarClient = client
         self.resource = "https://www.sec.gov"
         self.api_resource = "https://data.sec.gov"
-        self.total_requests = 0
         self.user_agent = user_agent
+
+        # Sliding-window rate limiter: track timestamps of recent requests.
+        self._request_times: deque[float] = deque()
+        self._rate_limit = MAX_REQUESTS_PER_SECOND
 
         # Create a single reusable session with connection pooling.
         self.http_session = requests.Session()
@@ -163,13 +166,8 @@ class EdgarSession:
             "json": json_payload,
         }
 
-        self.total_requests += 1
-
-        # SEC rate limit: pause every N requests.
-        if self.total_requests >= RATE_LIMIT_INTERVAL:
-            logger.info("Rate limit pause: sleeping for %s seconds.", RATE_LIMIT_SLEEP)
-            time.sleep(RATE_LIMIT_SLEEP)
-            self.total_requests = 0
+        # Enforce SEC rate limit before sending.
+        self._throttle()
 
         # Send the request with retry logic.
         try:
@@ -227,12 +225,46 @@ class EdgarSession:
 
         return None
 
+    def _throttle(self) -> None:
+        """Enforces the SEC rate limit using a sliding-window algorithm.
+
+        Tracks the timestamp of each outgoing request in a deque.
+        If ``MAX_REQUESTS_PER_SECOND`` requests have been made within
+        the last 1-second window, sleeps until the oldest one falls
+        outside the window.
+        """
+
+        now = time.monotonic()
+
+        # Discard timestamps older than 1 second.
+        while self._request_times and (now - self._request_times[0]) >= 1.0:
+            self._request_times.popleft()
+
+        # If at capacity, wait until the oldest request exits the window.
+        if len(self._request_times) >= self._rate_limit:
+            sleep_duration = 1.0 - (now - self._request_times[0])
+            if sleep_duration > 0:
+                logger.info(
+                    "Rate limit: %d requests in window, sleeping %.3fs",
+                    len(self._request_times),
+                    sleep_duration,
+                )
+                time.sleep(sleep_duration)
+            # After sleeping, discard expired timestamps again.
+            now = time.monotonic()
+            while self._request_times and (now - self._request_times[0]) >= 1.0:
+                self._request_times.popleft()
+
+        self._request_times.append(time.monotonic())
+
     def fetch_page(self, url: str) -> bytes | None:
         """Fetches a raw page by URL, returning bytes or None on failure.
 
         Used as a callback for parser pagination so the parser
         does not need its own HTTP session.
         """
+
+        self._throttle()
 
         try:
             response = self.http_session.get(url)
@@ -262,6 +294,8 @@ class EdgarSession:
             or bytes (for binary content like PDF).
             If ``path`` is given, returns the path string.
         """
+
+        self._throttle()
 
         try:
             response = self.http_session.get(url)

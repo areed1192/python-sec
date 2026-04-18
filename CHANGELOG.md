@@ -36,6 +36,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **company.py**: `get_filings(form=None)` → `list[Filing]` and `get_info()` → `CompanyInfo` convenience methods returning structured models.
 - **tests/test_models.py**: 23 unit tests for all three models and the Company integration methods.
 - **README.md**: Complete rewrite with hero example, full service table (15 services), usage examples for ticker resolution, fluent Company API, XBRL, filing search, downloads, response models, and badge row.
+- **samples/use_company.py**: Sample file demonstrating the fluent Company interface (creation by ticker/CIK, filings, submissions, XBRL, download).
+- **samples/use_models.py**: Sample file demonstrating structured dataclass response models (`Filing`, `CompanyInfo`, `Submission`).
+- **tests/test_rate_limiter.py**: 9 unit tests for the sliding-window rate limiter (under-limit, at-limit sleep, timestamp expiry, integration checks for all three request paths).
+
+### Changed
+- **session.py**: Replaced counter-based rate limiter (`sleep 5s every 10 requests`) with a sliding-window algorithm using `collections.deque` of `time.monotonic()` timestamps. Sleeps only the minimum time needed when the 1-second window is full. `MAX_REQUESTS_PER_SECOND = 10` enforced per SEC policy.
+- **session.py**: Rate limiting now applies to all three outgoing request paths (`make_request()`, `fetch_page()`, `download()`). Previously `fetch_page()` and `download()` bypassed rate limiting entirely.
 
 ### Changed
 - Migrated from `setup.py` to `pyproject.toml` for modern packaging.
