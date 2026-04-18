@@ -6,6 +6,7 @@ from edgar.issuers import Issuers
 from edgar.filings import Filings
 from edgar.datasets import Datasets
 from edgar.archives import Archives
+from edgar.tickers import Tickers
 from edgar.companies import Companies
 from edgar.session import EdgarSession
 from edgar.submissions import Submissions
@@ -198,3 +199,67 @@ class EdgarClient:
         if "xbrl" not in self._services:
             self._services["xbrl"] = Xbrl(session=self.edgar_session)
         return self._services["xbrl"]
+
+    def tickers(self) -> Tickers:
+        """Used to access the `Tickers` services.
+
+        ### Returns
+        ---
+        Tickers:
+            The `Tickers` services Object.
+        """
+
+        if "tickers" not in self._services:
+            self._services["tickers"] = Tickers(session=self.edgar_session)
+        return self._services["tickers"]
+
+    def resolve_ticker(self, ticker: str) -> str:
+        """Convenience method to resolve a ticker symbol to a CIK string.
+
+        ### Parameters
+        ----
+        ticker : str
+            A stock ticker symbol (e.g. "AAPL").
+
+        ### Returns
+        ----
+        str:
+            The zero-padded 10-digit CIK string.
+        """
+
+        return self.tickers().resolve_ticker(ticker)
+
+    def resolve_cik(self, cik: str | int) -> list[dict]:
+        """Convenience method to resolve a CIK to company information.
+
+        ### Parameters
+        ----
+        cik : str | int
+            A CIK number.
+
+        ### Returns
+        ----
+        list[dict]:
+            Entries with keys: cik_str, ticker, title.
+        """
+
+        return self.tickers().resolve_cik(cik)
+
+    def download(self, url: str, path: str | None = None) -> str | bytes:
+        """Downloads a filing document from a full SEC URL.
+
+        ### Parameters
+        ----
+        url : str
+            The full URL to the filing document.
+
+        path : str | None (optional, Default=None)
+            If provided, saves the content to this file path.
+
+        ### Returns
+        ----
+        str | bytes:
+            The document content, or the path if ``path`` was given.
+        """
+
+        return self.edgar_session.download(url=url, path=path)

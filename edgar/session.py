@@ -242,3 +242,48 @@ class EdgarSession:
         if response.status_code == 200:
             return response.content
         return None
+
+    def download(self, url: str, path: str | None = None) -> str | bytes:
+        """Downloads a filing document from a full SEC URL.
+
+        ### Parameters
+        ----
+        url : str
+            The full URL to the filing document.
+
+        path : str | None (optional, Default=None)
+            If provided, saves the content to this file path
+            and returns the path. Otherwise returns the content.
+
+        ### Returns
+        ----
+        str | bytes:
+            The document content as text (for HTML/XML/text)
+            or bytes (for binary content like PDF).
+            If ``path`` is given, returns the path string.
+        """
+
+        try:
+            response = self.http_session.get(url)
+        except requests.RequestException as exc:
+            raise EdgarRequestError(f"Failed to download {url}: {exc}") from exc
+
+        if response.status_code != 200:
+            raise EdgarRequestError(
+                f"Download from {url} returned status {response.status_code}"
+            )
+
+        content_type = response.headers.get("Content-Type", "")
+        is_text = any(
+            ct in content_type for ct in ["text/", "application/json", "application/xml"]
+        )
+        content = response.text if is_text else response.content
+
+        if path is not None:
+            mode = "w" if is_text else "wb"
+            encoding = "utf-8" if is_text else None
+            with open(path, mode, encoding=encoding) as f:
+                f.write(content)
+            return path
+
+        return content

@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **edgar/tickers.py**: New `Tickers` service for ticker/CIK/company name resolution via `sec.gov/files/company_tickers.json`.
+  - `resolve_ticker("AAPL")` → zero-padded CIK string (`"0000320193"`).
+  - `resolve_cik(320193)` → list of company entries (ticker, title, CIK).
+  - `search("Apple")` → case-insensitive fuzzy search across tickers and company names.
+  - Data is fetched once and cached in memory for the session lifetime.
+- **session.py**: `download(url, path=None)` method to fetch filing documents (HTML, XML, PDF) from any SEC URL. Auto-detects text vs binary content. Optional `path` parameter saves directly to file.
+- **client.py**: Convenience methods `resolve_ticker()`, `resolve_cik()`, `tickers()`, and `download()` on `EdgarClient`.
+- **samples/use_tickers_and_download.py**: Sample file demonstrating ticker resolution, company search, and filing download.
+- **tests/test_tickers.py**: 14 unit tests for the `Tickers` service (resolve, reverse lookup, search, caching, error handling).
+- **tests/test_download.py**: 9 unit tests for `download()` (text/binary content, save-to-file, error handling, client delegation).
+
 ### Changed
 - Migrated from `setup.py` to `pyproject.toml` for modern packaging.
 - Relaxed dependency version pins to use minimum ranges instead of exact versions.
