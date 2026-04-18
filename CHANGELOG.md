@@ -18,6 +18,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **xbrl.py**: `get_facts(cik)` method returning a structured `Facts` model.
 - **company.py**: `get_facts()` method returning a structured `Facts` model.
 - **tests/test_xbrl_facts.py**: 39 unit tests for `Fact`, `Facts`, `Company.get_facts()`, `Xbrl.get_facts()`, and taxonomy parameter support.
+- **edgar/models.py**: `to_dataframe()` standalone function and `Facts.to_dataframe()` method for pandas integration.
+  - `to_dataframe(items)` converts any list of model objects (`Filing`, `Fact`, `Submission`, `SearchResult`, `CompanyInfo`) to a `pandas.DataFrame`.
+  - `Facts.to_dataframe(taxonomy, concept, unit=None)` returns fact data points as a DataFrame.
+  - Graceful `ImportError` with message `"pip install python-sec[pandas]"` when pandas is not installed.
+- **pyproject.toml**: `[pandas]` optional dependency group (`pandas>=2.0`).
+- **tests/test_to_dataframe.py**: 20 unit tests for `to_dataframe()`, `Facts.to_dataframe()`, and graceful import error handling.
+- **samples/use_dataframes.py**: Sample file demonstrating DataFrame conversion for facts, filings, search results, and submissions.
 
 ### Changed
 
@@ -54,6 +61,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **samples/use_models.py**: Sample file demonstrating structured dataclass response models (`Filing`, `CompanyInfo`, `Submission`).
 - **samples/use_xbrl_facts.py**: Sample file demonstrating `Facts` and `Fact` XBRL dataclass models (taxonomy browsing, concept retrieval, unit filtering, metadata, cross-taxonomy access).
 - **tests/test_rate_limiter.py**: 9 unit tests for the sliding-window rate limiter (under-limit, at-limit sleep, timestamp expiry, integration checks for all three request paths).
+- **edgar/search.py**: New `Search` service wrapping the EDGAR Full-Text Search (EFTS) endpoint at `efts.sec.gov/LATEST/search-index`.
+  - `full_text_search(q, form_types=None, start_date=None, end_date=None, start=0, size=100)` — query filings by keyword, form type, and date range.
+- **edgar/models.py**: `SearchResult` dataclass wrapping EFTS Elasticsearch hit dicts.
+  - Properties: `company_name`, `cik`, `form`, `filing_date`, `accession_number`, `file_type`, `file_description`, `period_ending`, `url`.
+  - URL constructed from `_id` field (`{adsh}:{filename}`) pointing to the full filing document on SEC.gov.
+- **edgar/client.py**: `search()` convenience method and `full_text_search()` service accessor for EFTS search.
+- **edgar/session.py**: `build_url()` and `make_request()` accept optional `base_url` parameter to support third-party SEC endpoints (e.g. `efts.sec.gov`).
+- **tests/test_search.py**: 35 unit tests for `SearchResult` model, `Search` service, `EdgarClient.search()` integration, and `build_url` base_url parameter.
+- **samples/use_search.py**: Sample file demonstrating full-text search (basic query, form type filtering, date ranges, result properties, pagination).
 
 ### Changed
 

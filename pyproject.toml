@@ -31,6 +31,9 @@ dependencies = [
     "defusedxml>=0.7.1",
 ]
 
+[project.optional-dependencies]
+pandas = ["pandas>=3.0.2"]
+
 [project.urls]
 Homepage = "https://github.com/areed1192/python-sec"
 Repository = "https://github.com/areed1192/python-sec"

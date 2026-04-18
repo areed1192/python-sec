@@ -2,6 +2,7 @@
 
 from edgar.xbrl import Xbrl
 from edgar.series import Series
+from edgar.search import Search
 from edgar.issuers import Issuers
 from edgar.filings import Filings
 from edgar.company import Company
@@ -289,3 +290,87 @@ class EdgarClient:
         """
 
         return self.edgar_session.download(url=url, path=path)
+
+    def full_text_search(self) -> Search:
+        """Used to access the ``Search`` services (EDGAR Full-Text Search).
+
+        ### Returns
+        ---
+        Search:
+            The ``Search`` services Object.
+        """
+
+        if "search" not in self._services:
+            self._services["search"] = Search(session=self.edgar_session)
+        return self._services["search"]
+
+    def search(
+        self,
+        q: str,
+        form_types: list[str] | None = None,
+        start_date: str | None = None,
+        end_date: str | None = None,
+        start: int = 0,
+        size: int = 100,
+    ) -> list:
+        """Full-text search across SEC EDGAR filings.
+
+        Convenience method wrapping the free EFTS endpoint at
+        ``efts.sec.gov/LATEST/search-index``. Returns structured
+        ``SearchResult`` objects with filing URLs, dates, and
+        company information.
+
+        ### Parameters
+        ----
+        q : str
+            The search query. Use double quotes for exact phrase
+            matching (e.g. ``'"revenue recognition"'``).
+
+        form_types : list[str] | None (optional, Default=None)
+            Filter by form types (e.g. ``["10-K", "10-Q"]``).
+
+        start_date : str | None (optional, Default=None)
+            Start of date range filter (``YYYY-MM-DD``).
+
+        end_date : str | None (optional, Default=None)
+            End of date range filter (``YYYY-MM-DD``).
+
+        start : int (optional, Default=0)
+            Pagination offset.
+
+        size : int (optional, Default=100)
+            Number of results per page (max 100).
+
+        ### Returns
+        ----
+        list[SearchResult]:
+            A list of ``SearchResult`` objects with typed properties.
+
+        ### Usage
+        ----
+            >>> results = edgar_client.search(
+            ...     q='"revenue recognition"',
+            ...     form_types=["10-K"],
+            ...     start_date="2024-01-01",
+            ...     end_date="2024-12-31",
+            ... )
+            >>> results[0].company_name
+            'Apple Inc.  (AAPL)  (CIK 0000320193)'
+        """
+
+        from edgar.models import SearchResult
+
+        raw = self.full_text_search().full_text_search(
+            q=q,
+            form_types=form_types,
+            start_date=start_date,
+            end_date=end_date,
+            start=start,
+            size=size,
+        )
+
+        if raw is None:
+            return []
+
+        hits = raw.get("hits", {}).get("hits", [])
+        return [SearchResult(raw=hit) for hit in hits]

@@ -5,6 +5,18 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 
+def _require_pandas():
+    """Import and return the ``pandas`` module, raising a helpful error if missing."""
+    try:
+        import pandas as pd  # pylint: disable=import-outside-toplevel
+        return pd
+    except ImportError as exc:
+        raise ImportError(
+            "pandas is required for to_dataframe(). "
+            "Install it with: pip install python-sec[pandas]"
+        ) from exc
+
+
 @dataclass(frozen=True)
 class Filing:
     """A single SEC filing entry returned by the EDGAR search/browse feeds.
@@ -459,6 +471,39 @@ class Facts:
             .keys()
         )
 
+    def to_dataframe(
+        self,
+        taxonomy: str,
+        concept: str,
+        unit: str | None = None,
+    ):
+        """Returns fact data points as a pandas DataFrame.
+
+        Requires the ``pandas`` optional dependency. Install with
+        ``pip install python-sec[pandas]``.
+
+        ### Parameters
+        ----
+        taxonomy : str
+            The taxonomy namespace (e.g. ``"us-gaap"``).
+
+        concept : str
+            The concept tag name (e.g. ``"Revenues"``).
+
+        unit : str | None (optional, Default=None)
+            If provided, filter to a specific unit of measure.
+
+        ### Returns
+        ----
+        pandas.DataFrame:
+            DataFrame with columns: ``end``, ``start``, ``value``,
+            ``form``, ``filed``, ``fiscal_year``, ``fiscal_period``,
+            ``accession_number``, ``frame``.
+        """
+        pd = _require_pandas()
+        facts = self.get(taxonomy, concept, unit=unit)
+        return to_dataframe(facts) if facts else pd.DataFrame()
+
     def __repr__(self) -> str:
         tax_count = len(self.taxonomies)
         total = sum(len(self.concepts(t)) for t in self.taxonomies)
@@ -466,3 +511,147 @@ class Facts:
             f"<Facts entity={self.entity_name!r} cik={self.cik}"
             f" taxonomies={tax_count} concepts={total}>"
         )
+
+
+@dataclass(frozen=True)
+class SearchResult:
+    """A single EDGAR full-text search (EFTS) hit.
+
+    Wraps a raw Elasticsearch hit dict (including ``_id``, ``_score``,
+    and ``_source``) from the ``efts.sec.gov`` search-index endpoint.
+
+    ### Usage
+    ----
+        >>> results = edgar_client.search(q="revenue recognition", form_types=["10-K"])
+        >>> results[0].company_name
+        'Apple Inc.  (AAPL)  (CIK 0000320193)'
+        >>> results[0].url
+        'https://www.sec.gov/Archives/edgar/data/320193/...'
+    """
+
+    raw: dict = field(repr=False)
+
+    @property
+    def _source(self) -> dict:
+        """The ``_source`` sub-dict from the Elasticsearch hit."""
+        return self.raw.get("_source", {})
+
+    @property
+    def company_name(self) -> str:
+        """The display name of the first filer (e.g. ``'Apple Inc.  (AAPL)  (CIK 0000320193)'``)."""
+        names = self._source.get("display_names", [])
+        return names[0] if names else ""
+
+    @property
+    def cik(self) -> str:
+        """The CIK of the first filer."""
+        ciks = self._source.get("ciks", [])
+        return ciks[0] if ciks else ""
+
+    @property
+    def form(self) -> str:
+        """The specific form type (e.g. ``'10-K'``, ``'10-K/A'``)."""
+        return self._source.get("form", "")
+
+    @property
+    def filing_date(self) -> str:
+        """The filing date (``YYYY-MM-DD``)."""
+        return self._source.get("file_date", "")
+
+    @property
+    def accession_number(self) -> str:
+        """The accession number with dashes (e.g. ``'0001193125-24-047930'``)."""
+        return self._source.get("adsh", "")
+
+    @property
+    def file_type(self) -> str:
+        """The document type within the filing (e.g. ``'10-K'``, ``'EX-99.1'``)."""
+        return self._source.get("file_type", "")
+
+    @property
+    def file_description(self) -> str:
+        """The human-readable description of the document."""
+        return self._source.get("file_description", "") or ""
+
+    @property
+    def period_ending(self) -> str:
+        """The fiscal period end date (``YYYY-MM-DD``)."""
+        return self._source.get("period_ending", "")
+
+    @property
+    def url(self) -> str:
+        """Constructs the filing document URL from the hit ID.
+
+        The Elasticsearch ``_id`` is ``{accession}:{filename}`` which
+        maps to ``https://www.sec.gov/Archives/edgar/data/{cik}/{accession_no_dashes}/{filename}``.
+        """
+        hit_id = self.raw.get("_id", "")
+        cik = self.cik.lstrip("0") or "0"
+        adsh = self.accession_number
+        adsh_clean = adsh.replace("-", "")
+
+        parts = hit_id.split(":", 1)
+        filename = parts[1] if len(parts) > 1 else ""
+
+        if not adsh_clean or not filename:
+            return ""
+
+        return f"https://www.sec.gov/Archives/edgar/data/{cik}/{adsh_clean}/{filename}"
+
+    def __repr__(self) -> str:
+        return (
+            f"<SearchResult form={self.form!r} date={self.filing_date!r}"
+            f" company={self.company_name!r}>"
+        )
+
+
+def to_dataframe(items: list):
+    """Convert a list of model objects to a pandas DataFrame.
+
+    Works with any list of ``Filing``, ``Submission``, ``Fact``,
+    ``SearchResult``, or other model objects from this module.
+    Columns are derived automatically from the model's public
+    properties (excluding ``raw``).
+
+    Requires the ``pandas`` optional dependency. Install with
+    ``pip install python-sec[pandas]``.
+
+    ### Parameters
+    ----
+    items : list
+        A list of model objects (e.g. ``list[Filing]``,
+        ``list[SearchResult]``).
+
+    ### Returns
+    ----
+    pandas.DataFrame:
+        One row per item, one column per public property.
+
+    ### Usage
+    ----
+        >>> from edgar.models import to_dataframe
+        >>> results = edgar_client.search(q="revenue", form_types=["10-K"])
+        >>> df = to_dataframe(results)
+        >>> df.columns
+        Index(['company_name', 'cik', 'form', 'filing_date', ...])
+    """
+    pd = _require_pandas()
+
+    if not items:
+        return pd.DataFrame()
+
+    model_cls = type(items[0])
+    prop_names = [
+        name
+        for name in dir(model_cls)
+        if not name.startswith("_")
+        and name != "raw"
+        and isinstance(getattr(model_cls, name, None), property)
+    ]
+
+    records = [
+        {name: getattr(item, name) for name in prop_names}
+        for item in items
+    ]
+
+    return pd.DataFrame(records)

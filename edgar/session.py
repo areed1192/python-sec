@@ -82,7 +82,12 @@ class EdgarSession:
 
         return str_representation
 
-    def build_url(self, endpoint: str, use_api: bool = False) -> str:
+    def build_url(
+        self,
+        endpoint: str,
+        use_api: bool = False,
+        base_url: str | None = None,
+    ) -> str:
         """Builds the full url for the endpoint.
 
         ### Parameters
@@ -94,13 +99,19 @@ class EdgarSession:
             If `True` use the API resource URL, `False`
             use the filings resource URL.
 
+        base_url : str | None (optional, Default=None)
+            If provided, overrides both ``use_api`` and the
+            default resource URL.
+
         ### Returns
         ----
         str:
             The full URL with the endpoint needed.
         """
 
-        if use_api:
+        if base_url:
+            url = base_url + endpoint
+        elif use_api:
             url = self.api_resource + endpoint
         else:
             url = self.resource + endpoint
@@ -115,6 +126,7 @@ class EdgarSession:
         data: dict = None,
         json_payload: dict = None,
         use_api: bool = False,
+        base_url: str | None = None,
     ) -> Union[dict, str, None]:
         """Handles all the requests in the library.
 
@@ -152,7 +164,7 @@ class EdgarSession:
         """
 
         # Build the URL.
-        url = self.build_url(endpoint=endpoint, use_api=use_api)
+        url = self.build_url(endpoint=endpoint, use_api=use_api, base_url=base_url)
 
         logger.info("URL: %s", url)
         logger.info("PARAMETERS %s", params)
