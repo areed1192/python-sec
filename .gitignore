@@ -136,3 +136,6 @@ configs/
 
 # Application logs
 logs/
+
+# Credentials
+pypi_creds.json
