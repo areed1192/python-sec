@@ -19,10 +19,12 @@ from __future__ import annotations
 import os
 
 from edgar.client import EdgarClient
+from edgar.async_client import EdgarAsyncClient
 from edgar.exceptions import EdgarError, EdgarRequestError, EdgarParseError
 
 __all__ = [
     "EdgarClient",
+    "EdgarAsyncClient",
     "EdgarError",
     "EdgarRequestError",
     "EdgarParseError",

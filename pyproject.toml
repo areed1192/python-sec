@@ -33,6 +33,7 @@ dependencies = [
 
 [project.optional-dependencies]
 pandas = ["pandas>=3.0.2"]
+async = ["httpx>=0.28"]
 
 [project.urls]
 Homepage = "https://github.com/areed1192/python-sec"

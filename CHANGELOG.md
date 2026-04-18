@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **edgar/async_client.py**: `EdgarAsyncClient` — async counterpart of `EdgarClient` using `httpx`.
+  - Same API surface with `await`: `resolve_ticker()`, `resolve_cik()`, `get_company_info()`, `get_filings()`, `get_facts()`, `search()`, `download()`.
+  - Async context manager support (`async with EdgarAsyncClient(...) as client`).
+  - Enables `asyncio.gather()` for concurrent requests in web apps and data pipelines.
+- **edgar/async_session.py**: `EdgarAsyncSession` — async HTTP session with `httpx.AsyncClient`.
+  - Sliding-window rate limiter using `asyncio.sleep()`.
+  - Retry logic with exponential backoff on non-200 responses.
+  - `make_request()`, `fetch_page()`, `download()`, `close()` coroutines.
+- **pyproject.toml**: Added `[async]` optional dependency group (`pip install python-sec[async]`).
+  - Requires `httpx>=0.28`.
+- **edgar/\_\_init\_\_.py**: Exports `EdgarAsyncClient` from the top-level package.
+- **tests/test_async_client.py**: 28 unit tests for async session and client (init, rate limiting, URL building, make_request, download, fetch_page, ticker/CIK resolution, search, context manager).
+- **samples/use_async_client.py**: Sample demonstrating async client usage with concurrent requests.
 - **edgar/datasets.py**: Bulk DERA financial statement dataset download and extraction.
   - `Datasets.get_financial_statements(year, quarter)` downloads quarterly ZIP from SEC DERA and returns parsed TSV data as `dict[str, list[dict]]` (keys: `sub`, `num`, `tag`, `pre`).
   - `Datasets.get_financial_statements_dataframes(year, quarter)` returns the same data as `dict[str, pandas.DataFrame]` (requires `pandas` optional dep).
