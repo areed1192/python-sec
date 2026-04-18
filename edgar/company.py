@@ -5,6 +5,11 @@ from __future__ import annotations
 from enum import Enum
 from typing import TYPE_CHECKING, Union
 
+from edgar.filings import Filings
+from edgar.models import CompanyInfo, Facts, Filing
+from edgar.submissions import Submissions
+from edgar.xbrl import Xbrl
+
 if TYPE_CHECKING:
     from edgar.session import EdgarSession
     from edgar.tickers import Tickers
@@ -120,8 +125,6 @@ class Company:
             >>> company.filings(form="10-K")
         """
 
-        from edgar.filings import Filings
-
         filings_service = Filings(session=self._session)
 
         if form is not None:
@@ -152,8 +155,6 @@ class Company:
             >>> company.submissions()
         """
 
-        from edgar.submissions import Submissions
-
         submissions_service = Submissions(session=self._session)
         return submissions_service.get_submissions(cik=self.cik_unpadded)
 
@@ -170,8 +171,6 @@ class Company:
             >>> company = edgar_client.company("AAPL")
             >>> company.xbrl_facts()
         """
-
-        from edgar.xbrl import Xbrl
 
         xbrl_service = Xbrl(session=self._session)
         return xbrl_service.company_facts(cik=self.cik_unpadded)
@@ -219,8 +218,6 @@ class Company:
             '10-K'
         """
 
-        from edgar.models import Filing
-
         raw_filings = self.filings(
             form=form, start=start, number_of_filings=number_of_filings
         )
@@ -245,8 +242,6 @@ class Company:
             'Apple Inc.'
         """
 
-        from edgar.models import CompanyInfo
-
         raw = self.submissions()
         if raw is None:
             return None
@@ -269,8 +264,6 @@ class Company:
             >>> facts = company.get_facts()
             >>> facts.get("us-gaap", "Revenue")
         """
-
-        from edgar.models import Facts
 
         raw = self.xbrl_facts()
         if raw is None:

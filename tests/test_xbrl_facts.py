@@ -338,7 +338,7 @@ class TestFacts:
     def test_units_missing(self):
         """Verify units() returns empty list for missing concept."""
         facts = Facts(raw=SAMPLE_COMPANY_FACTS)
-        assert facts.units("us-gaap", "Nonexistent") == []
+        assert not facts.units("us-gaap", "Nonexistent")
 
     def test_raw_attribute(self):
         """Verify the raw dict is accessible."""
@@ -358,7 +358,7 @@ class TestFacts:
         facts = Facts(raw=SAMPLE_EMPTY_FACTS)
         assert facts.cik == 999999
         assert facts.entity_name == "Empty Corp"
-        assert facts.taxonomies == []
+        assert not facts.taxonomies
         assert facts.concepts() == []
 
     def test_defaults_for_missing_keys(self):
@@ -366,7 +366,7 @@ class TestFacts:
         facts = Facts(raw={})
         assert facts.cik == 0
         assert facts.entity_name == ""
-        assert facts.taxonomies == []
+        assert not facts.taxonomies
 
     def test_frozen(self):
         """Verify the dataclass is immutable."""

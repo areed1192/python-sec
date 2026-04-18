@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from enum import Enum
 from typing import Union
+from edgar.models import Facts
 from edgar.session import EdgarSession
 
 
@@ -165,8 +166,6 @@ class Xbrl():
             >>> facts = xbrl.get_facts(cik='320193')
             >>> facts.get('us-gaap', 'Revenue')
         """
-
-        from edgar.models import Facts
 
         raw = self.company_facts(cik=cik)
         if raw is None:
