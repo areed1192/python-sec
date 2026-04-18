@@ -2,8 +2,12 @@
 
 from __future__ import annotations
 
+import csv
+import io
+import json
 from dataclasses import dataclass, field
 from html import escape as _html_escape
+from pathlib import Path
 
 
 _TABLE_STYLE = (
@@ -61,6 +65,34 @@ def _require_pandas():
             "pandas is required for to_dataframe(). "
             "Install it with: pip install python-sec[pandas]"
         ) from exc
+
+
+def _model_to_dict(obj) -> dict:
+    """Extract all public properties (except ``raw``) into a plain dict.
+
+    Handles nested model objects and lists of models recursively so the
+    result is always JSON-serializable.
+    """
+    model_cls = type(obj)
+    prop_names = sorted(
+        name
+        for name in dir(model_cls)
+        if not name.startswith("_")
+        and name != "raw"
+        and isinstance(getattr(model_cls, name, None), property)
+    )
+    result: dict = {}
+    for name in prop_names:
+        val = getattr(obj, name)
+        if isinstance(val, list):
+            val = [
+                _model_to_dict(item) if hasattr(item, "raw") else item
+                for item in val
+            ]
+        elif hasattr(val, "raw"):
+            val = _model_to_dict(val)
+        result[name] = val
+    return result
 
 
 @dataclass(frozen=True)
@@ -135,6 +167,39 @@ class Filing:
             ],
             caption="Filing",
         )
+
+    def to_json(self, path: str | None = None, indent: int = 2) -> str:
+        """Serialize the filing to a JSON string.
+
+        ### Parameters
+        ----
+        path : str | None (optional, Default=None)
+            If provided, write JSON to this file path.
+
+        indent : int (optional, Default=2)
+            JSON indentation level.
+
+        ### Returns
+        ----
+        str:
+            The JSON string.
+        """
+        return _to_json_impl(self, path=path, indent=indent)
+
+    def to_csv(self, path: str | None = None) -> str:
+        """Serialize the filing to a CSV string (header + one row).
+
+        ### Parameters
+        ----
+        path : str | None (optional, Default=None)
+            If provided, write CSV to this file path.
+
+        ### Returns
+        ----
+        str:
+            The CSV string.
+        """
+        return _to_csv_impl([self], path=path)
 
 
 @dataclass(frozen=True)
@@ -262,6 +327,39 @@ class CompanyInfo:
             )
         return info
 
+    def to_json(self, path: str | None = None, indent: int = 2) -> str:
+        """Serialize the company info to a JSON string.
+
+        ### Parameters
+        ----
+        path : str | None (optional, Default=None)
+            If provided, write JSON to this file path.
+
+        indent : int (optional, Default=2)
+            JSON indentation level.
+
+        ### Returns
+        ----
+        str:
+            The JSON string.
+        """
+        return _to_json_impl(self, path=path, indent=indent)
+
+    def to_csv(self, path: str | None = None) -> str:
+        """Serialize the company info to a CSV string (header + one row).
+
+        ### Parameters
+        ----
+        path : str | None (optional, Default=None)
+            If provided, write CSV to this file path.
+
+        ### Returns
+        ----
+        str:
+            The CSV string.
+        """
+        return _to_csv_impl([self], path=path)
+
 
 @dataclass(frozen=True)
 class Submission:
@@ -345,6 +443,39 @@ class Submission:
             ],
             caption="Submission",
         )
+
+    def to_json(self, path: str | None = None, indent: int = 2) -> str:
+        """Serialize the submission to a JSON string.
+
+        ### Parameters
+        ----
+        path : str | None (optional, Default=None)
+            If provided, write JSON to this file path.
+
+        indent : int (optional, Default=2)
+            JSON indentation level.
+
+        ### Returns
+        ----
+        str:
+            The JSON string.
+        """
+        return _to_json_impl(self, path=path, indent=indent)
+
+    def to_csv(self, path: str | None = None) -> str:
+        """Serialize the submission to a CSV string (header + one row).
+
+        ### Parameters
+        ----
+        path : str | None (optional, Default=None)
+            If provided, write CSV to this file path.
+
+        ### Returns
+        ----
+        str:
+            The CSV string.
+        """
+        return _to_csv_impl([self], path=path)
 
 
 @dataclass(frozen=True)
@@ -430,6 +561,39 @@ class Fact:
             ],
             caption="Fact",
         )
+
+    def to_json(self, path: str | None = None, indent: int = 2) -> str:
+        """Serialize the fact to a JSON string.
+
+        ### Parameters
+        ----
+        path : str | None (optional, Default=None)
+            If provided, write JSON to this file path.
+
+        indent : int (optional, Default=2)
+            JSON indentation level.
+
+        ### Returns
+        ----
+        str:
+            The JSON string.
+        """
+        return _to_json_impl(self, path=path, indent=indent)
+
+    def to_csv(self, path: str | None = None) -> str:
+        """Serialize the fact to a CSV string (header + one row).
+
+        ### Parameters
+        ----
+        path : str | None (optional, Default=None)
+            If provided, write CSV to this file path.
+
+        ### Returns
+        ----
+        str:
+            The CSV string.
+        """
+        return _to_csv_impl([self], path=path)
 
 
 @dataclass(frozen=True)
@@ -661,6 +825,39 @@ class Facts:
             )
         return info
 
+    def to_json(self, path: str | None = None, indent: int = 2) -> str:
+        """Serialize the facts metadata to a JSON string.
+
+        ### Parameters
+        ----
+        path : str | None (optional, Default=None)
+            If provided, write JSON to this file path.
+
+        indent : int (optional, Default=2)
+            JSON indentation level.
+
+        ### Returns
+        ----
+        str:
+            The JSON string.
+        """
+        return _to_json_impl(self, path=path, indent=indent)
+
+    def to_csv(self, path: str | None = None) -> str:
+        """Serialize the facts metadata to a CSV string (header + one row).
+
+        ### Parameters
+        ----
+        path : str | None (optional, Default=None)
+            If provided, write CSV to this file path.
+
+        ### Returns
+        ----
+        str:
+            The CSV string.
+        """
+        return _to_csv_impl([self], path=path)
+
 
 @dataclass(frozen=True)
 class SearchResult:
@@ -772,6 +969,39 @@ class SearchResult:
             caption="Search Result",
         )
 
+    def to_json(self, path: str | None = None, indent: int = 2) -> str:
+        """Serialize the search result to a JSON string.
+
+        ### Parameters
+        ----
+        path : str | None (optional, Default=None)
+            If provided, write JSON to this file path.
+
+        indent : int (optional, Default=2)
+            JSON indentation level.
+
+        ### Returns
+        ----
+        str:
+            The JSON string.
+        """
+        return _to_json_impl(self, path=path, indent=indent)
+
+    def to_csv(self, path: str | None = None) -> str:
+        """Serialize the search result to a CSV string (header + one row).
+
+        ### Parameters
+        ----
+        path : str | None (optional, Default=None)
+            If provided, write CSV to this file path.
+
+        ### Returns
+        ----
+        str:
+            The CSV string.
+        """
+        return _to_csv_impl([self], path=path)
+
 
 def to_dataframe(items: list):
     """Convert a list of model objects to a pandas DataFrame.
@@ -823,3 +1053,95 @@ def to_dataframe(items: list):
     ]
 
     return pd.DataFrame(records)
+
+
+def _to_json_impl(obj, path: str | None = None, indent: int = 2) -> str:
+    """Shared implementation for model ``to_json()`` methods."""
+    data = _model_to_dict(obj)
+    text = json.dumps(data, indent=indent, default=str)
+    if path is not None:
+        Path(path).write_text(text, encoding="utf-8")
+    return text
+
+
+def _to_csv_impl(items: list, path: str | None = None) -> str:
+    """Shared implementation for model ``to_csv()`` methods."""
+    if not items:
+        return ""
+    dicts = [_model_to_dict(item) for item in items]
+    fieldnames = list(dicts[0].keys())
+    buf = io.StringIO()
+    writer = csv.DictWriter(buf, fieldnames=fieldnames, lineterminator="\n")
+    writer.writeheader()
+    for row in dicts:
+        writer.writerow({
+            k: json.dumps(v, default=str) if isinstance(v, (list, dict)) else v
+            for k, v in row.items()
+        })
+    text = buf.getvalue()
+    if path is not None:
+        Path(path).write_text(text, encoding="utf-8")
+    return text
+
+
+def to_json(items: list, path: str | None = None, indent: int = 2) -> str:
+    """Serialize a list of model objects to a JSON string.
+
+    Works with any list of ``Filing``, ``Submission``, ``Fact``,
+    ``SearchResult``, or other model objects from this module.
+
+    ### Parameters
+    ----
+    items : list
+        A list of model objects.
+
+    path : str | None (optional, Default=None)
+        If provided, write JSON to this file path.
+
+    indent : int (optional, Default=2)
+        JSON indentation level.
+
+    ### Returns
+    ----
+    str:
+        The JSON array string.
+
+    ### Usage
+    ----
+        >>> from edgar.models import to_json
+        >>> results = edgar_client.search(q="revenue", form_types=["10-K"])
+        >>> to_json(results, path="results.json")
+    """
+    data = [_model_to_dict(item) for item in items]
+    text = json.dumps(data, indent=indent, default=str)
+    if path is not None:
+        Path(path).write_text(text, encoding="utf-8")
+    return text
+
+
+def to_csv(items: list, path: str | None = None) -> str:
+    """Serialize a list of model objects to a CSV string.
+
+    Works with any list of ``Filing``, ``Submission``, ``Fact``,
+    ``SearchResult``, or other model objects from this module.
+
+    ### Parameters
+    ----
+    items : list
+        A list of model objects.
+
+    path : str | None (optional, Default=None)
+        If provided, write CSV to this file path.
+
+    ### Returns
+    ----
+    str:
+        The CSV string.
+
+    ### Usage
+    ----
+        >>> from edgar.models import to_csv
+        >>> results = edgar_client.search(q="revenue", form_types=["10-K"])
+        >>> to_csv(results, path="results.csv")
+    """
+    return _to_csv_impl(items, path=path)

@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **edgar/models.py**: `to_json()` and `to_csv()` serialization methods on all model classes (`Filing`, `CompanyInfo`, `Submission`, `Fact`, `Facts`, `SearchResult`).
+  - `result.to_json(path=None, indent=2)` serializes to a JSON string; optionally writes to file.
+  - `result.to_csv(path=None)` serializes to a CSV string (header + one row); optionally writes to file.
+  - Module-level `to_json(items, path=None)` and `to_csv(items, path=None)` for serializing lists of models.
+  - List/dict properties are JSON-encoded in CSV cells for lossless round-tripping.
+- **tests/test_serialization.py**: 35 unit tests for JSON/CSV serialization (instance methods, module-level functions, file writing, edge cases).
+- **samples/use_models.py**: Added JSON and CSV serialization sections demonstrating `to_json()` and `to_csv()`.
+- **samples/cookbook_company_research.ipynb**: Cookbook notebook — company research workflow (ticker lookup, metadata, filings, XBRL facts, DataFrame export, multi-company comparison).
+- **samples/cookbook_xbrl_analysis.ipynb**: Cookbook notebook — XBRL financial analysis (taxonomy browsing, concept retrieval, unit filtering, time-series DataFrames, frames cross-company comparison).
+- **samples/cookbook_filing_search.ipynb**: Cookbook notebook — filing search & download (full-text search, form/date filters, pagination, document download, save to file).
+- **samples/cookbook_bulk_pipeline.ipynb**: Cookbook notebook — bulk data pipeline (batch processing, multi-company aggregation, SEC datasets, rate limiting, caching, CSV export).
 - **edgar/cache.py**: In-memory TTL cache for SEC EDGAR API responses.
   - `TTLCache` class with `get()`, `set()`, `invalidate()`, `clear()`, `__len__()`, `__repr__()`.
   - Uses `time.monotonic()` for expiration immune to wall-clock adjustments.

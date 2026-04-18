@@ -111,3 +111,46 @@ filings = company.get_filings(form="10-K")
 if filings and filings[0].url:
     content = company.download(filings[0].url)
     print(f"Downloaded {len(content):,} characters from filing: {filings[0].form_type}")
+
+
+# ---------------------------------------------------------------------------
+# JSON serialization — to_json()
+# ---------------------------------------------------------------------------
+
+print("\n=== JSON Serialization ===")
+
+# Serialize a single Filing to JSON.
+if filings:
+    json_str = filings[0].to_json()
+    print(f"Filing JSON (first 200 chars):\n{json_str[:200]}...")
+
+    # Write JSON to a file.
+    # filings[0].to_json(path="filing.json")
+
+# Serialize a list of Filings to JSON via the module-level function.
+from edgar.models import to_json, to_csv
+
+json_array = to_json(filings[:3])
+print(f"\nFilings JSON array length: {len(json_array)} characters")
+
+# Write a list to a file.
+# to_json(filings[:3], path="filings.json")
+
+
+# ---------------------------------------------------------------------------
+# CSV serialization — to_csv()
+# ---------------------------------------------------------------------------
+
+print("\n=== CSV Serialization ===")
+
+# Serialize a single Filing to CSV (header + one row).
+if filings:
+    csv_str = filings[0].to_csv()
+    print(f"Filing CSV:\n{csv_str}")
+
+# Serialize a list of Filings to CSV via the module-level function.
+csv_str = to_csv(filings[:3])
+print(f"Filings CSV (first 300 chars):\n{csv_str[:300]}...")
+
+# Write CSV to a file.
+# to_csv(filings[:3], path="filings.csv")
