@@ -4,6 +4,7 @@ from edgar.xbrl import Xbrl
 from edgar.series import Series
 from edgar.issuers import Issuers
 from edgar.filings import Filings
+from edgar.company import Company
 from edgar.datasets import Datasets
 from edgar.archives import Archives
 from edgar.tickers import Tickers
@@ -212,6 +213,31 @@ class EdgarClient:
         if "tickers" not in self._services:
             self._services["tickers"] = Tickers(session=self.edgar_session)
         return self._services["tickers"]
+
+    def company(self, identifier: str) -> Company:
+        """Creates a ``Company`` object from a ticker symbol or CIK number.
+
+        ### Parameters
+        ----
+        identifier : str
+            A stock ticker symbol (e.g. ``"AAPL"``) or a CIK number
+            (e.g. ``"320193"``).
+
+        ### Returns
+        ----
+        Company:
+            A fluent ``Company`` object for chaining.
+
+        ### Usage
+        ----
+            >>> edgar_client.company("AAPL").filings(form="10-K")
+        """
+
+        return Company(
+            identifier=identifier,
+            session=self.edgar_session,
+            tickers_service=self.tickers(),
+        )
 
     def resolve_ticker(self, ticker: str) -> str:
         """Convenience method to resolve a ticker symbol to a CIK string.

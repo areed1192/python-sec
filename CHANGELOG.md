@@ -18,6 +18,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **samples/use_tickers_and_download.py**: Sample file demonstrating ticker resolution, company search, and filing download.
 - **tests/test_tickers.py**: 14 unit tests for the `Tickers` service (resolve, reverse lookup, search, caching, error handling).
 - **tests/test_download.py**: 9 unit tests for `download()` (text/binary content, save-to-file, error handling, client delegation).
+- **edgar/company.py**: New fluent `Company` class for ticker-based SEC EDGAR access.
+  - `client.company("AAPL")` resolves ticker or CIK → `Company` object with `cik`, `ticker`, `name` properties.
+  - `company.filings(form="10-K")` — fluent chaining to get filings without separate service objects.
+  - `company.submissions()` — fetch full submission history.
+  - `company.xbrl_facts()` — fetch XBRL company facts.
+  - `company.download(url)` — download filing documents.
+  - Accepts both ticker symbols (`"AAPL"`) and CIK numbers (`"320193"`).
+- **client.py**: `company()` method on `EdgarClient` for fluent company access. Existing `filings()` / `companies()` methods remain for backward compatibility.
+- **tests/test_company.py**: 21 unit tests for the `Company` class (construction, properties, fluent methods, client integration, backward compat).
+- **edgar/models.py**: New structured dataclass response models — `Filing`, `CompanyInfo`, `Submission`.
+  - `Filing` wraps filing search result dicts with `form_type`, `filing_date`, `url`, `accession_number`, `title`, `summary` properties.
+  - `CompanyInfo` wraps submissions metadata with `name`, `cik`, `tickers`, `sic`, `sic_description`, `recent_filings`, `recent_submissions` properties.
+  - `Submission` wraps individual filing records with `form`, `filing_date`, `accession_number`, `report_date`, `is_xbrl`, `size` properties.
+  - All models expose `.raw` attribute for backward compatibility with raw dict access.
+  - All models are frozen (immutable) with `__repr__` for REPL/notebook discoverability.
+- **company.py**: `get_filings(form=None)` → `list[Filing]` and `get_info()` → `CompanyInfo` convenience methods returning structured models.
+- **tests/test_models.py**: 23 unit tests for all three models and the Company integration methods.
+- **README.md**: Complete rewrite with hero example, full service table (15 services), usage examples for ticker resolution, fluent Company API, XBRL, filing search, downloads, response models, and badge row.
 
 ### Changed
 - Migrated from `setup.py` to `pyproject.toml` for modern packaging.

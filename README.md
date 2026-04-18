@@ -1,116 +1,169 @@
 # Python SEC
 
-## Table of Contents
+[![PyPI version](https://img.shields.io/pypi/v/python-sec.svg)](https://pypi.org/project/python-sec/)
+[![Python versions](https://img.shields.io/pypi/pyversions/python-sec.svg)](https://pypi.org/project/python-sec/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-- [Overview](#overview)
-- [Setup](#setup)
-- [Usage](#usage)
-- [Support These Projects](#support-these-projects)
+A lightweight Python client for the SEC EDGAR API. Look up companies by ticker, search filings, download documents, and query XBRL financial data — all in a few lines of code.
 
-## Overview
+## Quick Start
 
-Current Version: **0.1.6**
-
-The Securities & Exchange Commission (SEC) has a treasure trove of business data available to indviduals
-for free. However, the biggest obstacle to getting this free data boils down to two challenges:
-
-1. Figuring out where it is
-2. Figuring out how to extract it
-
-The Python SEC library (`edgar`) is designed to make the collection and the extraction of SEC data quick
-and effortless. The library was designed around some of the following goals:
-
-1. Making the usage of the EDGAR search system, in a prgorammatic fashion, more intuitive.
-2. Making the definition of queries more customizeable while still maintaining the overall clearity
-   of the library.
-3. Standardize the returning content so that content is organized consistently and ensuring gaps in data
-   are filled in or extended that way navigating to other directories or files can be done dynamically.
-4. Simplify the parsing of XBRL files so that data can be more easily manipulated.
-
-## Setup
-
-**Setup - PyPi Install:**
-
-To **install** the library, run the following command from the terminal.
-
-```console
+```bash
 pip install python-sec
 ```
 
-**Setup - PyPi Upgrade:**
+```python
+from edgar.client import EdgarClient
 
-To **upgrade** the library, run the following command from the terminal.
+# SEC requires a User-Agent identifying you.
+client = EdgarClient(user_agent="Your Name your-email@example.com")
 
-```console
-pip install --upgrade python-sec
+# Look up Apple's 10-K filings — by ticker, no CIK needed.
+company = client.company("AAPL")
+filings = company.get_filings(form="10-K")
+
+print(filings[0])
+# <Filing form='10-K' date='2024-11-01' title='10-K - Annual report ...'>
+
+# Get structured company metadata.
+info = company.get_info()
+print(info.name, info.tickers, info.sic_description)
+# Apple Inc. ['AAPL'] ELECTRONIC COMPUTERS
+
+# Access XBRL facts.
+facts = company.xbrl_facts()
 ```
 
-**Setup - Local Install:**
+## Installation
 
-If you are planning to make modifications to this project or you would like to access it
-before it has been indexed on `PyPi`. I would recommend you either install this project
-in `editable` mode or do a `local install`. For those of you, who want to make modifications
-to this project. I would recommend you install the library in `editable` mode.
-
-If you want to install the library in `editable` mode, make sure to run the `setup.py`
-file, so you can install any dependencies you may need. To run the `setup.py` file,
-run the following command in your terminal.
-
-```console
-pip install -e .
+```bash
+pip install python-sec          # from PyPI
+pip install --upgrade python-sec  # upgrade
+pip install -e .                 # local dev (editable mode)
 ```
 
-If you don't plan to make any modifications to the project but still want to use it across
-your different projects, then do a local install.
+## Services
 
-```console
-pip install .
-```
+| Service                | Access                                 | Description                                                |
+| ---------------------- | -------------------------------------- | ---------------------------------------------------------- |
+| **Company**            | `client.company("AAPL")`               | Fluent interface — ticker/CIK → filings, submissions, XBRL |
+| **Tickers**            | `client.resolve_ticker("AAPL")`        | Resolve tickers ↔ CIK numbers, search by company name      |
+| **Filings**            | `client.filings()`                     | Search filings by CIK, form type, date range, company name |
+| **Companies**          | `client.companies()`                   | Query companies by state, country, SIC code, name          |
+| **Submissions**        | `client.submissions()`                 | Full filing history for any entity via the REST API        |
+| **XBRL**               | `client.xbrl()`                        | Company facts, concepts, and cross-company frames          |
+| **Archives**           | `client.archives()`                    | Browse EDGAR archive directories                           |
+| **Current Events**     | `client.current_events()`              | Recent RSS filing feeds                                    |
+| **Datasets**           | `client.datasets()`                    | DERA financial datasets                                    |
+| **Issuers**            | `client.issuers()`                     | Issuer information                                         |
+| **Mutual Funds**       | `client.mutual_funds()`                | Mutual fund filings                                        |
+| **Series**             | `client.series()`                      | Investment company series                                  |
+| **Ownership Filings**  | `client.ownership_filings()`           | Insider ownership (Forms 3/4/5)                            |
+| **Variable Insurance** | `client.variable_insurance_products()` | Variable insurance product filings                         |
+| **Download**           | `client.download(url)`                 | Fetch any filing document (HTML, XML, PDF)                 |
 
-This will install all the dependencies listed in the `setup.py` file. Once done
-you can use the library wherever you want.
+## Usage Examples
 
-## Usage
-
-Here is a simple example of using the `edgar` library to grab different groups of filings.
+### Ticker Resolution
 
 ```python
-from pprint import pprint
-from edgar.client import EdgarClient
-from edgar.enums import StateCodes
-from edgar.enums import CountryCodes
-from edgar.enums import StandardIndustrialClassificationCodes
+# Ticker → CIK
+cik = client.resolve_ticker("MSFT")  # "0000789019"
 
-# Initialize the Edgar Client
-# SEC EDGAR requires a User-Agent in the format "Company/Name email@example.com".
-edgar_client = EdgarClient(user_agent="Your Name your-email@example.com")
+# CIK → company info
+entries = client.resolve_cik("789019")
+# [{'cik_str': 789019, 'ticker': 'MSFT', 'title': 'MICROSOFT CORP'}]
 
-# Initialize the Company Services.
-company_services = edgar_client.companies()
+# Search by company name
+results = client.tickers().search("Tesla")
+```
 
-# Grab all the companies that are based in Texas.
-pprint(company_services.get_companies_by_state(state_code='TX'))
+### Company Research (Fluent API)
 
-# Alternatively, if you didn't know the 2 letter code you could pass through an Enum.
-pprint(
-    company_services.get_companies_by_state(
-        state_code=StateCodes.WEST_VIRGINIA
-    )
-)
+```python
+company = client.company("META")
 
-# Grab all the companies that are based in Australia, same logic here with the Enums.
-pprint(
-    company_services.get_companies_by_country(
-        country_code=CountryCodes.AUSTRALIA
-    )
+# Structured Filing objects with typed properties.
+filings = company.get_filings(form="10-K")
+for f in filings[:3]:
+    print(f.form_type, f.filing_date[:10], f.url)
+
+# Structured CompanyInfo with typed properties.
+info = company.get_info()
+print(info.name, info.sic_description, info.fiscal_year_end)
+
+# Recent submissions as Submission objects.
+for sub in info.recent_submissions[:5]:
+    print(sub.form, sub.filing_date, sub.accession_number)
+```
+
+### Filing Search
+
+```python
+filings_service = client.filings()
+
+# By CIK
+filings_service.get_filings_by_cik(cik="320193")
+
+# By form type
+filings_service.get_filings_by_type(cik="320193", filing_type="10-K")
+
+# Complex query with date range
+filings_service.query(
+    cik="320193",
+    filing_type="10-Q",
+    after_date="2023-01-01",
+    before_date="2024-01-01",
 )
 ```
+
+### XBRL Financial Data
+
+```python
+xbrl = client.xbrl()
+
+# All facts for a company.
+facts = xbrl.company_facts(cik="320193")
+
+# A single concept across time.
+revenue = xbrl.company_concepts(cik="320193", concept="us-gaap/Revenue")
+
+# Cross-company comparison for a single period.
+frame = xbrl.frames(taxonomy="us-gaap", concept="AccountsPayableCurrent", uom="USD", period="CY2023Q1I")
+```
+
+### Download Filing Documents
+
+```python
+# Download as text.
+html = client.download("https://www.sec.gov/Archives/edgar/data/320193/filing.htm")
+
+# Download and save to file.
+client.download("https://www.sec.gov/Archives/edgar/data/320193/filing.htm", path="filing.html")
+
+# Download through the Company interface.
+company = client.company("AAPL")
+filings = company.get_filings(form="10-K")
+content = company.download(filings[0].url)
+```
+
+## Response Models
+
+The library provides structured dataclass models alongside raw dictionary access:
+
+| Model         | Wraps                     | Key Properties                                                            |
+| ------------- | ------------------------- | ------------------------------------------------------------------------- |
+| `Filing`      | Filing search results     | `form_type`, `filing_date`, `url`, `accession_number`, `title`, `summary` |
+| `CompanyInfo` | Submissions metadata      | `name`, `cik`, `tickers`, `sic`, `sic_description`, `recent_submissions`  |
+| `Submission`  | Individual filing records | `form`, `filing_date`, `accession_number`, `report_date`, `is_xbrl`       |
+
+All models expose a `.raw` attribute containing the original dictionary for backward compatibility.
 
 ## Support These Projects
 
 **Patreon:**
 Help support this project and future projects by donating to my [Patreon Page](https://www.patreon.com/sigmacoding). I'm
-always looking to add more content for individuals like yourself, unfortuantely some of the APIs I would require me to
+always looking to add more content for individuals like yourself, unfortunately some of the APIs would require me to
 pay monthly fees.
 
 **YouTube:**
