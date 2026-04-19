@@ -139,3 +139,6 @@ logs/
 
 # Credentials
 pypi_creds.json
+
+#
+**/guides/
