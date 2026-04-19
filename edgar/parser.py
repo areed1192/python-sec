@@ -103,7 +103,7 @@ class EdgarParser:
                 keep_going = False
             elif fetch_page:
                 page_content = fetch_page(next_page)
-                logger.info("Grabbed Next URL: %s", next_page)
+                logger.debug("Grabbed next URL: %s", next_page)
 
                 if page_content:
                     try:
@@ -286,7 +286,7 @@ class EdgarParser:
 
             master_list.append(master_dict)
 
-            logger.info("Pulling URL: %s", next_page_link)
+            logger.debug("Pulling URL: %s", next_page_link)
 
             if next_page_link and fetch_page:
                 page_content = fetch_page(next_page_link)
@@ -428,8 +428,8 @@ class EdgarParser:
             )
             product_list_all = product_list_all + product_list
 
-            logger.info("Pulling URL: %s", link)
-            logger.info("Total Entries Scraped: %s", len(product_list_all))
+            logger.debug("Pulling URL: %s", link)
+            logger.debug("Total entries scraped: %s", len(product_list_all))
 
         return product_list_all
 

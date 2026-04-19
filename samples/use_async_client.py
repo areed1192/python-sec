@@ -6,6 +6,8 @@ from edgar.async_client import EdgarAsyncClient
 
 
 async def main():
+    """Main async function to demonstrate usage of EdgarAsyncClient."""
+
     # Initialize the async client.
     # SEC EDGAR requires a User-Agent in the format "Company/Name email@example.com".
     # Use as an async context manager for automatic cleanup.

@@ -145,8 +145,8 @@ class EdgarAsyncSession:
 
         url = self.build_url(endpoint=endpoint, use_api=use_api, base_url=base_url)
 
-        logger.info("URL: %s", url)
-        logger.info("PARAMETERS %s", params)
+        logger.debug("URL: %s", url)
+        logger.debug("Parameters: %s", params)
 
         await self._throttle()
 
@@ -289,7 +289,7 @@ class EdgarAsyncSession:
         if len(self._request_times) >= self._rate_limit:
             sleep_duration = 1.0 - (now - self._request_times[0])
             if sleep_duration > 0:
-                logger.info(
+                logger.debug(
                     "Rate limit: %d requests in window, sleeping %.3fs",
                     len(self._request_times),
                     sleep_duration,

@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
+import logging
 from enum import Enum
 from typing import Union
 
 from edgar.cache import TTL_TAXONOMY
 from edgar.models import Facts
 from edgar.session import EdgarSession
+
+logger = logging.getLogger(__name__)
 
 
 class Xbrl():
@@ -141,6 +144,7 @@ class Xbrl():
         if cache is not None:
             cached = cache.get(cache_key)
             if cached is not None:
+                logger.debug("XBRL company_facts cache hit for CIK %s", cik)
                 return cached
 
         endpoint = f'/api/xbrl/companyfacts/CIK{cik}.json'

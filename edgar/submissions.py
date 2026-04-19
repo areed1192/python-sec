@@ -2,8 +2,12 @@
 
 from __future__ import annotations
 
+import logging
+
 from edgar.cache import TTL_SUBMISSIONS
 from edgar.session import EdgarSession
+
+logger = logging.getLogger(__name__)
 
 
 class Submissions():
@@ -76,6 +80,7 @@ class Submissions():
         if cache is not None:
             cached = cache.get(cache_key)
             if cached is not None:
+                logger.debug("Submissions cache hit for CIK %s", cik)
                 return cached
 
         # Grab the Data.

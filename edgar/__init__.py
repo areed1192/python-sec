@@ -16,11 +16,17 @@ Set the ``SEC_EDGAR_USER_AGENT`` environment variable to avoid passing
 
 from __future__ import annotations
 
+import logging
 import os
 
 from edgar.client import EdgarClient
 from edgar.async_client import EdgarAsyncClient
 from edgar.exceptions import EdgarError, EdgarRequestError, EdgarParseError
+
+# Library best practice: add a NullHandler so users don't see
+# "No handlers could be found for logger 'edgar'" warnings.
+# Users configure logging in their own applications.
+logging.getLogger("edgar").addHandler(logging.NullHandler())
 
 __all__ = [
     "EdgarClient",

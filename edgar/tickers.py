@@ -38,6 +38,7 @@ class Tickers:
             cached = cache.get(_CACHE_KEY)
             if cached is not None:
                 self._data, self._ticker_to_cik, self._cik_to_entries = cached
+                logger.debug("Tickers loaded from cache (%d entries)", len(self._data))
                 return
 
         raw = self._session.make_request(
@@ -50,6 +51,7 @@ class Tickers:
             raise EdgarRequestError("Failed to fetch company tickers data from SEC.")
 
         self._data = list(raw.values())
+        logger.debug("Tickers fetched from SEC (%d entries)", len(self._data))
 
         self._ticker_to_cik = {}
         self._cik_to_entries = {}
@@ -95,7 +97,10 @@ class Tickers:
         cik = self._ticker_to_cik.get(ticker_upper)
 
         if cik is None:
+            logger.warning("Ticker not found: %s", ticker)
             raise ValueError(f"Ticker '{ticker}' not found in SEC company tickers.")
+
+        logger.debug("Resolved ticker %s → CIK %s", ticker_upper, cik)
 
         return str(cik).zfill(10)
 
@@ -123,6 +128,7 @@ class Tickers:
         entries = self._cik_to_entries.get(cik_int)
 
         if entries is None:
+            logger.warning("CIK not found: %s", cik)
             raise ValueError(f"CIK '{cik}' not found in SEC company tickers.")
 
         return entries

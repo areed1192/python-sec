@@ -6,6 +6,7 @@ and notebooks.
 """
 
 from edgar.client import EdgarClient
+from edgar.models import to_json, to_csv
 
 # Initialize the client.
 # SEC EDGAR requires a User-Agent in the format "Company/Name email@example.com".
@@ -126,9 +127,6 @@ if filings:
 
     # Write JSON to a file.
     # filings[0].to_json(path="filing.json")
-
-# Serialize a list of Filings to JSON via the module-level function.
-from edgar.models import to_json, to_csv
 
 json_array = to_json(filings[:3])
 print(f"\nFilings JSON array length: {len(json_array)} characters")

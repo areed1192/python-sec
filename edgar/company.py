@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 from enum import Enum
 from typing import TYPE_CHECKING, Union
 
@@ -9,6 +10,8 @@ from edgar.filings import Filings
 from edgar.models import CompanyInfo, Facts, Filing
 from edgar.submissions import Submissions
 from edgar.xbrl import Xbrl
+
+logger = logging.getLogger(__name__)
 
 if TYPE_CHECKING:
     from edgar.session import EdgarSession
@@ -57,12 +60,14 @@ class Company:
         stripped = str(identifier).lstrip("0")
         if stripped.isdigit():
             # CIK path — resolve to get metadata.
+            logger.debug("Resolving identifier as CIK: %s", identifier)
             entries = tickers_service.resolve_cik(identifier)
             self._cik: str = str(entries[0]["cik_str"]).zfill(10)
             self._ticker: str = entries[0]["ticker"]
             self._name: str = entries[0]["title"]
         else:
             # Ticker path — resolve to get CIK.
+            logger.debug("Resolving identifier as ticker: %s", identifier)
             self._cik = tickers_service.resolve_ticker(identifier)
             self._ticker = identifier.upper()
             # Look up the company name from the resolved CIK.

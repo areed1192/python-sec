@@ -1,5 +1,7 @@
 """Main entry-point client for the SEC EDGAR API."""
 
+import logging
+
 from edgar.cache import TTLCache
 from edgar.xbrl import Xbrl
 from edgar.series import Series
@@ -17,6 +19,11 @@ from edgar.mutual_funds import MutualFunds
 from edgar.current_events import CurrentEvents
 from edgar.ownership_filings import OwnershipFilings
 from edgar.variable_insurance_products import VariableInsuranceProducts
+
+from edgar.models import SearchResult
+
+
+logger = logging.getLogger(__name__)
 
 
 class EdgarClient:
@@ -58,6 +65,11 @@ class EdgarClient:
             cache=self._ttl_cache,
         )
         self._services: dict = {}
+
+        logger.debug(
+            "EdgarClient initialized (rate_limit=%d, cache=%s)",
+            rate_limit, cache,
+        )
 
     def __repr__(self) -> str:
         """String representation of the `EdgarClient` object."""
@@ -379,8 +391,6 @@ class EdgarClient:
             >>> results[0].company_name
             'Apple Inc.  (AAPL)  (CIK 0000320193)'
         """
-
-        from edgar.models import SearchResult
 
         raw = self.full_text_search().full_text_search(
             q=q,

@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
+import logging
 import time
+
+logger = logging.getLogger(__name__)
 
 
 # Default TTLs in seconds.
@@ -26,22 +29,27 @@ class TTLCache:
 
         entry = self._store.get(key)
         if entry is None:
+            logger.debug("Cache miss: %s", key)
             return None
         value, expires_at = entry
         if time.monotonic() >= expires_at:
             del self._store[key]
+            logger.debug("Cache expired: %s", key)
             return None
+        logger.debug("Cache hit: %s", key)
         return value
 
     def set(self, key: str, value: object, ttl: float) -> None:
         """Store *value* under *key* with a TTL of *ttl* seconds."""
 
         self._store[key] = (value, time.monotonic() + ttl)
+        logger.debug("Cache set: %s (ttl=%.0fs)", key, ttl)
 
     def invalidate(self, key: str) -> None:
         """Remove a single key from the cache."""
 
         self._store.pop(key, None)
+        logger.debug("Cache invalidated: %s", key)
 
     def clear(self) -> None:
         """Remove all entries from the cache."""

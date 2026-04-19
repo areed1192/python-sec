@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
+import logging
+
 from edgar.session import EdgarSession
+
+logger = logging.getLogger(__name__)
 
 EFTS_BASE_URL = "https://efts.sec.gov"
 
@@ -100,6 +104,8 @@ class Search:
                 params["startdt"] = start_date
             if end_date:
                 params["enddt"] = end_date
+
+        logger.debug("EFTS search params: %s", params)
 
         return self.edgar_session.make_request(
             method="get",

@@ -4,9 +4,12 @@ from __future__ import annotations
 
 import csv
 import io
+import logging
 import zipfile
 
 from edgar.session import EdgarSession
+
+logger = logging.getLogger(__name__)
 
 _DERA_BASE = "/files/dera/data/financial-statement-data-sets"
 
@@ -157,6 +160,7 @@ class Datasets():
             raise ValueError(f"quarter must be between 1 and 4, got {quarter}")
 
         endpoint = f"{_DERA_BASE}/{year}q{quarter}.zip"
+        logger.info("Downloading DERA dataset %dQ%d", year, quarter)
         zip_bytes = self.edgar_session.fetch_page(
             self.edgar_session.build_url(endpoint=endpoint)
         )
@@ -233,5 +237,6 @@ def _extract_tsv_zip(zip_bytes: bytes) -> dict[str, list[dict]]:
                 text = io.TextIOWrapper(f, encoding="utf-8")
                 reader = csv.DictReader(text, delimiter="\t")
                 result[key] = list(reader)
+            logger.debug("Extracted %s (%d rows)", key, len(result[key]))
 
     return result

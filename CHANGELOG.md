@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- **edgar/\_\_init\_\_.py**: Added `NullHandler` to the `edgar` logger — follows Python library logging best practice so applications control log output.
+- **edgar/session.py**: Downgraded per-request URL, parameter, and rate-limit sleep logs from `info` to `debug`.
+- **edgar/async_session.py**: Same `info` → `debug` log-level fix as `session.py`.
+- **edgar/parser.py**: Downgraded pagination URL and entry-count logs from `info` to `debug`.
+- **edgar/client.py**: Added `logger` — logs `debug` on init (rate_limit, cache settings).
+- **edgar/cache.py**: Added `logger` — logs `debug` on cache hit, miss, expired, set, and invalidate.
+- **edgar/tickers.py**: Added `debug` logging for cache hit/miss and successful resolution; `warning` on failed ticker/CIK lookup.
+- **edgar/submissions.py**: Added `logger` — logs `debug` on submissions cache hit.
+- **edgar/xbrl.py**: Added `logger` — logs `debug` on company_facts cache hit.
+- **edgar/datasets.py**: Added `logger` — logs `info` on bulk download start, `debug` on per-file extraction with row counts.
+- **edgar/search.py**: Added `logger` — logs `debug` with EFTS search params before request.
+- **edgar/company.py**: Added `logger` — logs `debug` on identifier resolution path (CIK vs ticker).
+
 ## [0.2.0] - 2026-04-19
 
 ### Added
