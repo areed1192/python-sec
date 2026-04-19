@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "python-sec"
-version = "0.1.6"
+version = "0.2.0"
 description = "A client library for collecting and scraping SEC filings."
 readme = "README.md"
 license = "MIT"
