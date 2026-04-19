@@ -161,6 +161,7 @@ class EdgarAsyncSession:
                 json=json_payload,
             )
         except httpx.HTTPError as exc:
+            logger.error("Request failed: %s", exc)
             raise EdgarRequestError(f"Request to {url} failed: {exc}") from exc
 
         retries = 0
@@ -186,6 +187,7 @@ class EdgarAsyncSession:
                 )
             except httpx.HTTPError as exc:
                 if retries >= MAX_RETRIES:
+                    logger.error("Retry %s failed: %s", retries, exc)
                     raise EdgarRequestError(
                         f"Request to {url} failed after {MAX_RETRIES} retries: {exc}"
                     ) from exc
@@ -223,6 +225,7 @@ class EdgarAsyncSession:
         try:
             response = await self.http_client.get(url)
         except httpx.HTTPError as exc:
+            logger.error("Failed to fetch page %s: %s", url, exc)
             raise EdgarRequestError(f"Failed to fetch page {url}: {exc}") from exc
 
         if response.status_code == 200:
@@ -251,6 +254,7 @@ class EdgarAsyncSession:
         try:
             response = await self.http_client.get(url)
         except httpx.HTTPError as exc:
+            logger.error("Failed to download %s: %s", url, exc)
             raise EdgarRequestError(f"Failed to download {url}: {exc}") from exc
 
         if response.status_code != 200:

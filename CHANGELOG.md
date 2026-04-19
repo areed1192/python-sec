@@ -21,6 +21,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **edgar/datasets.py**: Added `logger` — logs `info` on bulk download start, `debug` on per-file extraction with row counts.
 - **edgar/search.py**: Added `logger` — logs `debug` with EFTS search params before request.
 - **edgar/company.py**: Added `logger` — logs `debug` on identifier resolution path (CIK vs ticker).
+- **edgar/async_session.py**: Added `logger.error()` before each `raise EdgarRequestError`, matching `session.py` pattern for consistent error observability.
+
+### Added
+
+- **tests/test_logging.py**: 7 unit tests for logging output (cache hit/miss/set/invalidate, session error, rate-limit sleep, async session error).
+
+### Fixed
+
+- **edgar/parser.py**: Changed `except KeyError` to `except IndexError` in ticker symbol extraction — `values[2]` is a list index, not a dict key.
+
+### Removed
+
+- **edgar/utilis.py**: Deleted dead duplicate of `utils.py` (nothing imported it).
+- **edgar/parser.py**: Removed 3 commented-out `print()` debug lines.
 
 ## [0.2.0] - 2026-04-19
 

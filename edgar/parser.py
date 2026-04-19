@@ -337,7 +337,6 @@ class EdgarParser:
             values.insert(5, href)
 
             master_list.append(dict(zip(headers, values)))
-            # print([header.strip() for header in row.strings if header != '\n'])
 
         return master_list
 
@@ -499,7 +498,8 @@ class EdgarParser:
                         # Set the Ticker symbol.
                         try:
                             row_dict["ticker_symbol"] = values[2]
-                        except KeyError:
+                        except IndexError:
+                            logger.debug("No ticker symbol at index 2 for %s", product_id)
                             row_dict["ticker_symbol"] = "null"
 
                         for link in row_links:
@@ -596,57 +596,6 @@ class EdgarParser:
             entries.append(location_dict)
 
         return entries
-
-    # def parse_series_filings(self, response_text: str) -> List[dict]:
-
-    #     root = ET.fromstring(response_text)
-
-    #     for elem in root.iterfind(
-    #         '.atom:entry/atom:content/atom:company-info/atom:sids/atom:sid',
-    #         namespaces=self.entries_namespace
-    #     ):
-    #         print(elem)
-
-    # soup = BeautifulSoup(response_text, 'html.parser')
-
-    # sid_data = []
-
-    # for sid in soup.find_all(name='sid'):
-
-    #     sid: Tag = sid
-    #     element_dict = {}
-
-    #     print(len(list(sid.children)))
-
-    #     for element in sid.children:
-
-    #         if not isinstance(element, NavigableString) and element.name != 'cids':
-    #             element_dict[
-    #                 element.name.replace('-', '_')
-    #             ] = element.text.strip()
-
-    #         elif not isinstance(element, NavigableString) and element.name == 'cids':
-    #             element_dict['cids'] = []
-
-    #             for cid in element.find_all('cid'):
-    #                 cid_dict = {}
-    #                 cid_dict['cid_id'] = cid['id']
-
-    #                 for cid_element in cid.find_all():
-    #                     cid_dict[
-    #                         cid_element.name.replace('-', '_').strip()
-    #                     ] = cid_element.text.strip()
-
-    #                 element_dict['cids'].append(
-    #                     cid_dict
-    #                 )
-
-    #     sid_data.append(
-    #         element_dict
-    #     )
-
-    # return sid_data
-
     def parse_series_table(self, response_text: str) -> list[dict]:
         """Parses the series table returned from a Series query.
 
