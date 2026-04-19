@@ -4,6 +4,7 @@
 # pylint: disable=protected-access
 # pylint: disable=import-outside-toplevel
 
+import importlib.util
 import logging
 from unittest.mock import MagicMock, patch, AsyncMock
 
@@ -119,6 +120,10 @@ class TestRateLimitLogging:
 class TestAsyncSessionErrorLogging:
     """Tests that EdgarAsyncSession logs errors on request failures."""
 
+    @pytest.mark.skipif(
+        not importlib.util.find_spec("pytest_asyncio"),
+        reason="pytest-asyncio not installed",
+    )
     @pytest.mark.asyncio
     async def test_async_request_failure_logs_error(self, caplog):
         """Verify async request exception is logged at error level."""
