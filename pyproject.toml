@@ -9,9 +9,7 @@ description = "A client library for collecting and scraping SEC filings."
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
-authors = [
-    { name = "Alex Reed", email = "coding.sigma@gmail.com" },
-]
+authors = [{ name = "Alex Reed", email = "coding.sigma@gmail.com" }]
 keywords = ["finance", "sec", "api", "web scraping", "financial disclosures"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -54,12 +52,12 @@ max-line-length = 120
 
 [tool.pylint."messages_control"]
 disable = [
-    "missing-module-docstring",   # Enforced by convention, not pylint.
-    "missing-class-docstring",    # Many small dataclasses don't need one.
-    "too-few-public-methods",     # Dataclasses and service wrappers trigger this.
-    "too-many-arguments",         # Some SEC endpoints have many parameters.
+    "missing-module-docstring",     # Enforced by convention, not pylint.
+    "missing-class-docstring",      # Many small dataclasses don't need one.
+    "too-few-public-methods",       # Dataclasses and service wrappers trigger this.
+    "too-many-arguments",           # Some SEC endpoints have many parameters.
     "too-many-instance-attributes", # Session and client objects need many attrs.
-    "import-error",               # Handled by the build system, not pylint.
+    "import-error",                 # Handled by the build system, not pylint.
 ]
 
 [tool.pylint.design]
